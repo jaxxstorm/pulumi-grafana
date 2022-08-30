@@ -13,42 +13,122 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLibraryPanelResult {
+    /**
+     * @return Timestamp when the library panel was created.
+     * 
+     */
     private String created;
+    /**
+     * @return Numerical IDs of Grafana dashboards containing the library panel.
+     * 
+     */
     private List<Integer> dashboardIds;
+    /**
+     * @return Description of the library panel.
+     * 
+     */
     private String description;
+    /**
+     * @return ID of the folder where the library panel is stored.
+     * 
+     */
     private Integer folderId;
+    /**
+     * @return Name of the folder containing the library panel.
+     * 
+     */
     private String folderName;
+    /**
+     * @return Unique ID (UID) of the folder containing the library panel.
+     * 
+     */
     private String folderUid;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The JSON model for the library panel.
+     * 
+     */
     private String modelJson;
+    /**
+     * @return Name of the library panel.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The numeric ID of the library panel computed by Grafana.
+     * 
+     */
     private Integer orgId;
+    /**
+     * @return The numeric ID of the library panel computed by Grafana.
+     * 
+     */
     private Integer panelId;
+    /**
+     * @return Type of the library panel (eg. text).
+     * 
+     */
     private String type;
+    /**
+     * @return The unique identifier (UID) of the library panel.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return Timestamp when the library panel was last modified.
+     * 
+     */
     private String updated;
+    /**
+     * @return Version of the library panel.
+     * 
+     */
     private Integer version;
 
     private GetLibraryPanelResult() {}
+    /**
+     * @return Timestamp when the library panel was created.
+     * 
+     */
     public String created() {
         return this.created;
     }
+    /**
+     * @return Numerical IDs of Grafana dashboards containing the library panel.
+     * 
+     */
     public List<Integer> dashboardIds() {
         return this.dashboardIds;
     }
+    /**
+     * @return Description of the library panel.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return ID of the folder where the library panel is stored.
+     * 
+     */
     public Integer folderId() {
         return this.folderId;
     }
+    /**
+     * @return Name of the folder containing the library panel.
+     * 
+     */
     public String folderName() {
         return this.folderName;
     }
+    /**
+     * @return Unique ID (UID) of the folder containing the library panel.
+     * 
+     */
     public String folderUid() {
         return this.folderUid;
     }
@@ -59,27 +139,59 @@ public final class GetLibraryPanelResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The JSON model for the library panel.
+     * 
+     */
     public String modelJson() {
         return this.modelJson;
     }
+    /**
+     * @return Name of the library panel.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The numeric ID of the library panel computed by Grafana.
+     * 
+     */
     public Integer orgId() {
         return this.orgId;
     }
+    /**
+     * @return The numeric ID of the library panel computed by Grafana.
+     * 
+     */
     public Integer panelId() {
         return this.panelId;
     }
+    /**
+     * @return Type of the library panel (eg. text).
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The unique identifier (UID) of the library panel.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return Timestamp when the library panel was last modified.
+     * 
+     */
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return Version of the library panel.
+     * 
+     */
     public Integer version() {
         return this.version;
     }

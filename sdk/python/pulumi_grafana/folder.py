@@ -115,7 +115,38 @@ class Folder(pulumi.CustomResource):
                  uid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Folder resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_folder_folder = grafana.Folder("testFolderFolder", title="Terraform Test Folder")
+        test_folder_dashboard = grafana.Dashboard("testFolderDashboard",
+            folder=test_folder_folder.id,
+            config_json=\"\"\"{
+          "title": "Dashboard in folder",
+          "uid": "dashboard-in-folder"
+        }
+        \"\"\")
+        test_folder_with_uid = grafana.Folder("testFolderWithUid",
+            uid="test-folder-uid",
+            title="Terraform Test Folder With UID")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+        ```
+
+        ```sh
+         $ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] title: The title of the folder.
@@ -128,7 +159,38 @@ class Folder(pulumi.CustomResource):
                  args: FolderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Folder resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_folder_folder = grafana.Folder("testFolderFolder", title="Terraform Test Folder")
+        test_folder_dashboard = grafana.Dashboard("testFolderDashboard",
+            folder=test_folder_folder.id,
+            config_json=\"\"\"{
+          "title": "Dashboard in folder",
+          "uid": "dashboard-in-folder"
+        }
+        \"\"\")
+        test_folder_with_uid = grafana.Folder("testFolderWithUid",
+            uid="test-folder-uid",
+            title="Terraform Test Folder With UID")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+        ```
+
+        ```sh
+         $ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

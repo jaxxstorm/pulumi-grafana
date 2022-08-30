@@ -17,37 +17,77 @@ public final class ContactPointGooglechatArgs extends com.pulumi.resources.Resou
 
     public static final ContactPointGooglechatArgs Empty = new ContactPointGooglechatArgs();
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * The templated content of the message.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * The Google Chat webhook URL.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return The Google Chat webhook URL.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -80,47 +120,107 @@ public final class ContactPointGooglechatArgs extends com.pulumi.resources.Resou
             $ = new ContactPointGooglechatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param message The templated content of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message The templated content of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }
 
+        /**
+         * @param url The Google Chat webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The Google Chat webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointGooglechat {
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The Google Chat webhook URL.
+     * 
+     */
     private String url;
 
     private ContactPointGooglechat() {}
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The Google Chat webhook URL.
+     * 
+     */
     public String url() {
         return this.url;
     }

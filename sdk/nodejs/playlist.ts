@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/playlist/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/playlist/)
+ */
 export class Playlist extends pulumi.CustomResource {
     /**
      * Get an existing Playlist resource's state with the given name, ID, and optional extra

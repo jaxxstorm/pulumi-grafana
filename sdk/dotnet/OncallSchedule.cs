@@ -9,6 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleSlackChannel = Grafana.GetOncallSlackChannel.Invoke(new()
+    ///     {
+    ///         Name = "example_slack_channel",
+    ///     });
+    /// 
+    ///     var exampleUserGroup = Grafana.GetOncallUserGroup.Invoke(new()
+    ///     {
+    ///         SlackHandle = "example_slack_handle",
+    ///     });
+    /// 
+    ///     // ICal based schedule
+    ///     var exampleScheduleOncallSchedule = new Grafana.OncallSchedule("exampleScheduleOncallSchedule", new()
+    ///     {
+    ///         Type = "ical",
+    ///         IcalUrlPrimary = "https://example.com/example_ical.ics",
+    ///         IcalUrlOverrides = "https://example.com/example_overrides_ical.ics",
+    ///         Slack = new Grafana.Inputs.OncallScheduleSlackArgs
+    ///         {
+    ///             ChannelId = exampleSlackChannel.Apply(getOncallSlackChannelResult =&gt; getOncallSlackChannelResult.SlackId),
+    ///             UserGroupId = exampleUserGroup.Apply(getOncallUserGroupResult =&gt; getOncallUserGroupResult.SlackId),
+    ///         },
+    ///     });
+    /// 
+    ///     // Shift based schedule
+    ///     var exampleScheduleIndex_oncallScheduleOncallSchedule = new Grafana.OncallSchedule("exampleScheduleIndex/oncallScheduleOncallSchedule", new()
+    ///     {
+    ///         Type = "calendar",
+    ///         TimeZone = "America/New_York",
+    ///         Shifts = new[] {},
+    ///         IcalUrlOverrides = "https://example.com/example_overrides_ical.ics",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/oncallSchedule:OncallSchedule")]
     public partial class OncallSchedule : global::Pulumi.CustomResource
     {

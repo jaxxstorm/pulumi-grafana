@@ -15,16 +15,32 @@ public final class OncallScheduleSlackArgs extends com.pulumi.resources.Resource
 
     public static final OncallScheduleSlackArgs Empty = new OncallScheduleSlackArgs();
 
+    /**
+     * Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+     * 
+     */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
+    /**
+     * @return Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+     * 
+     */
     public Optional<Output<String>> channelId() {
         return Optional.ofNullable(this.channelId);
     }
 
+    /**
+     * Slack user group id. Members of user group will be updated when on-call users change.
+     * 
+     */
     @Import(name="userGroupId")
     private @Nullable Output<String> userGroupId;
 
+    /**
+     * @return Slack user group id. Members of user group will be updated when on-call users change.
+     * 
+     */
     public Optional<Output<String>> userGroupId() {
         return Optional.ofNullable(this.userGroupId);
     }
@@ -54,20 +70,44 @@ public final class OncallScheduleSlackArgs extends com.pulumi.resources.Resource
             $ = new OncallScheduleSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param channelId Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(@Nullable Output<String> channelId) {
             $.channelId = channelId;
             return this;
         }
 
+        /**
+         * @param channelId Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(String channelId) {
             return channelId(Output.of(channelId));
         }
 
+        /**
+         * @param userGroupId Slack user group id. Members of user group will be updated when on-call users change.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userGroupId(@Nullable Output<String> userGroupId) {
             $.userGroupId = userGroupId;
             return this;
         }
 
+        /**
+         * @param userGroupId Slack user group id. Members of user group will be updated when on-call users change.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userGroupId(String userGroupId) {
             return userGroupId(Output.of(userGroupId));
         }

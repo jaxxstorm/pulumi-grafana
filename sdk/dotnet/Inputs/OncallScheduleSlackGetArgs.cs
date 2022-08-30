@@ -12,9 +12,15 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class OncallScheduleSlackGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+        /// </summary>
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }
 
+        /// <summary>
+        /// Slack user group id. Members of user group will be updated when on-call users change.
+        /// </summary>
         [Input("userGroupId")]
         public Input<string>? UserGroupId { get; set; }
 

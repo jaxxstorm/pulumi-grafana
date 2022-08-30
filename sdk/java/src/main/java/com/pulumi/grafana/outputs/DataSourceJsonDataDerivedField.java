@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 public final class DataSourceJsonDataDerivedField {
     private @Nullable String datasourceUid;
     private @Nullable String matcherRegex;
+    /**
+     * @return A unique name for the data source.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The URL for the data source. The type of URL required varies depending on the chosen data source type.
+     * 
+     */
     private @Nullable String url;
 
     private DataSourceJsonDataDerivedField() {}
@@ -23,9 +31,17 @@ public final class DataSourceJsonDataDerivedField {
     public Optional<String> matcherRegex() {
         return Optional.ofNullable(this.matcherRegex);
     }
+    /**
+     * @return A unique name for the data source.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The URL for the data source. The type of URL required varies depending on the chosen data source type.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

@@ -102,7 +102,45 @@ class MuteTiming(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a MuteTiming resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+        * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        my_mute_timing = grafana.MuteTiming("myMuteTiming", intervals=[grafana.MuteTimingIntervalArgs(
+            days_of_months=[
+                "1:7",
+                "-1",
+            ],
+            months=[
+                "1:3",
+                "december",
+            ],
+            times=[grafana.MuteTimingIntervalTimeArgs(
+                end="14:17",
+                start="04:56",
+            )],
+            weekdays=[
+                "monday",
+                "tuesday:thursday",
+            ],
+            years=[
+                "2030",
+                "2025:2026",
+            ],
+        )])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MuteTimingIntervalArgs']]]] intervals: The time intervals at which to mute notifications.
@@ -115,7 +153,45 @@ class MuteTiming(pulumi.CustomResource):
                  args: Optional[MuteTimingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MuteTiming resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+        * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        my_mute_timing = grafana.MuteTiming("myMuteTiming", intervals=[grafana.MuteTimingIntervalArgs(
+            days_of_months=[
+                "1:7",
+                "-1",
+            ],
+            months=[
+                "1:3",
+                "december",
+            ],
+            times=[grafana.MuteTimingIntervalTimeArgs(
+                end="14:17",
+                start="04:56",
+            )],
+            weekdays=[
+                "monday",
+                "tuesday:thursday",
+            ],
+            years=[
+                "2030",
+                "2025:2026",
+            ],
+        )])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param MuteTimingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

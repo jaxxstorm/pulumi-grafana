@@ -17,45 +17,93 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.AlertNotification;
+ * import com.pulumi.grafana.AlertNotificationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var emailSometeam = new AlertNotification(&#34;emailSometeam&#34;, AlertNotificationArgs.builder()        
+ *             .frequency(&#34;24h&#34;)
+ *             .isDefault(false)
+ *             .sendReminder(true)
+ *             .settings(Map.ofEntries(
+ *                 Map.entry(&#34;addresses&#34;, &#34;foo@example.net;bar@example.net&#34;),
+ *                 Map.entry(&#34;uploadImage&#34;, &#34;false&#34;)
+ *             ))
+ *             .type(&#34;email&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/alertNotification:AlertNotification alert_notification_name {{alert_notification_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/alertNotification:AlertNotification")
 public class AlertNotification extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to disable sending resolve messages.
+     * Whether to disable sending resolve messages. Defaults to `false`.
      * 
      */
     @Export(name="disableResolveMessage", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableResolveMessage;
 
     /**
-     * @return Whether to disable sending resolve messages.
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> disableResolveMessage() {
         return Codegen.optional(this.disableResolveMessage);
     }
     /**
-     * Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      * 
      */
     @Export(name="frequency", type=String.class, parameters={})
     private Output</* @Nullable */ String> frequency;
 
     /**
-     * @return Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * @return Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      * 
      */
     public Output<Optional<String>> frequency() {
         return Codegen.optional(this.frequency);
     }
     /**
-     * Is this the default channel for all your alerts.
+     * Is this the default channel for all your alerts. Defaults to `false`.
      * 
      */
     @Export(name="isDefault", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
-     * @return Is this the default channel for all your alerts.
+     * @return Is this the default channel for all your alerts. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> isDefault() {
@@ -76,46 +124,42 @@ public class AlertNotification extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      * 
      */
     @Export(name="secureSettings", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> secureSettings;
 
     /**
-     * @return Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * @return Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      * 
      */
     public Output<Optional<Map<String,Object>>> secureSettings() {
         return Codegen.optional(this.secureSettings);
     }
     /**
-     * Whether to send reminders for triggered alerts.
+     * Whether to send reminders for triggered alerts. Defaults to `false`.
      * 
      */
     @Export(name="sendReminder", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sendReminder;
 
     /**
-     * @return Whether to send reminders for triggered alerts.
+     * @return Whether to send reminders for triggered alerts. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> sendReminder() {
         return Codegen.optional(this.sendReminder);
     }
     /**
-     * Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      * 
      */
     @Export(name="settings", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> settings;
 
     /**
-     * @return Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * @return Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      * 
      */
     public Output<Optional<Map<String,Object>>> settings() {

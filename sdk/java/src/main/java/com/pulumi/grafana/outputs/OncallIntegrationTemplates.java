@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OncallIntegrationTemplates {
+    /**
+     * @return Template for the key by which alerts are grouped.
+     * 
+     */
     private @Nullable String groupingKey;
+    /**
+     * @return Template for sending a signal to resolve the Incident.
+     * 
+     */
     private @Nullable String resolveSignal;
+    /**
+     * @return Templates for Slack.
+     * 
+     */
     private @Nullable OncallIntegrationTemplatesSlack slack;
 
     private OncallIntegrationTemplates() {}
+    /**
+     * @return Template for the key by which alerts are grouped.
+     * 
+     */
     public Optional<String> groupingKey() {
         return Optional.ofNullable(this.groupingKey);
     }
+    /**
+     * @return Template for sending a signal to resolve the Incident.
+     * 
+     */
     public Optional<String> resolveSignal() {
         return Optional.ofNullable(this.resolveSignal);
     }
+    /**
+     * @return Templates for Slack.
+     * 
+     */
     public Optional<OncallIntegrationTemplatesSlack> slack() {
         return Optional.ofNullable(this.slack);
     }

@@ -12,12 +12,21 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class OncallIntegrationDefaultRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the escalation chain.
+        /// </summary>
         [Input("escalationChainId")]
         public Input<string>? EscalationChainId { get; set; }
 
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Slack-specific settings for a route.
+        /// </summary>
         [Input("slack")]
         public Input<Inputs.OncallIntegrationDefaultRouteSlackArgs>? Slack { get; set; }
 

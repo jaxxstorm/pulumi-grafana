@@ -11,6 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Grafana dashboards.
+//
+// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewDashboard(ctx, "metrics", &grafana.DashboardArgs{
+//				ConfigJson: readFileOrPanic("grafana-dashboard.json"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/dashboard:Dashboard dashboard_name {{dashboard_uid}}
+//
+// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 
@@ -22,21 +70,17 @@ type Dashboard struct {
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// Set a commit message for the version history.
 	Message pulumi.StringPtrOutput `pulumi:"message"`
-	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-	// dashboard uid.
+	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
 	// URL friendly version of the dashboard title. This field is deprecated, please use `uid` instead.
 	//
 	// Deprecated: Use `uid` instead.
 	Slug pulumi.StringOutput `pulumi:"slug"`
-	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-	// when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-	// between multiple Grafana installs.
+	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The full URL of the dashboard.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-	// dashboard are not lost.
+	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
 
@@ -81,21 +125,17 @@ type dashboardState struct {
 	Folder *string `pulumi:"folder"`
 	// Set a commit message for the version history.
 	Message *string `pulumi:"message"`
-	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-	// dashboard uid.
+	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 	Overwrite *bool `pulumi:"overwrite"`
 	// URL friendly version of the dashboard title. This field is deprecated, please use `uid` instead.
 	//
 	// Deprecated: Use `uid` instead.
 	Slug *string `pulumi:"slug"`
-	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-	// when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-	// between multiple Grafana installs.
+	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
 	Uid *string `pulumi:"uid"`
 	// The full URL of the dashboard.
 	Url *string `pulumi:"url"`
-	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-	// dashboard are not lost.
+	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
 	Version *int `pulumi:"version"`
 }
 
@@ -108,21 +148,17 @@ type DashboardState struct {
 	Folder pulumi.StringPtrInput
 	// Set a commit message for the version history.
 	Message pulumi.StringPtrInput
-	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-	// dashboard uid.
+	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 	Overwrite pulumi.BoolPtrInput
 	// URL friendly version of the dashboard title. This field is deprecated, please use `uid` instead.
 	//
 	// Deprecated: Use `uid` instead.
 	Slug pulumi.StringPtrInput
-	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-	// when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-	// between multiple Grafana installs.
+	// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
 	Uid pulumi.StringPtrInput
 	// The full URL of the dashboard.
 	Url pulumi.StringPtrInput
-	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-	// dashboard are not lost.
+	// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
 	Version pulumi.IntPtrInput
 }
 
@@ -137,8 +173,7 @@ type dashboardArgs struct {
 	Folder *string `pulumi:"folder"`
 	// Set a commit message for the version history.
 	Message *string `pulumi:"message"`
-	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-	// dashboard uid.
+	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 	Overwrite *bool `pulumi:"overwrite"`
 }
 
@@ -150,8 +185,7 @@ type DashboardArgs struct {
 	Folder pulumi.StringPtrInput
 	// Set a commit message for the version history.
 	Message pulumi.StringPtrInput
-	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-	// dashboard uid.
+	// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 	Overwrite pulumi.BoolPtrInput
 }
 
@@ -262,8 +296,7 @@ func (o DashboardOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-// dashboard uid.
+// Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
 func (o DashboardOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }
@@ -275,9 +308,7 @@ func (o DashboardOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
-// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-// when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-// between multiple Grafana installs.
+// The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
 func (o DashboardOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
@@ -287,8 +318,7 @@ func (o DashboardOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-// dashboard are not lost.
+// Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
 func (o DashboardOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }

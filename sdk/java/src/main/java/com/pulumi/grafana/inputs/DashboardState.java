@@ -78,16 +78,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     @Import(name="overwrite")
     private @Nullable Output<Boolean> overwrite;
 
     /**
-     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -118,18 +116,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * @return The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -152,16 +146,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * @return Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -285,8 +277,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-         * dashboard uid.
+         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
          * 
          * @return builder
          * 
@@ -297,8 +288,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-         * dashboard uid.
+         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
          * 
          * @return builder
          * 
@@ -337,9 +327,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-         * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-         * between multiple Grafana installs.
+         * @param uid The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
          * 
          * @return builder
          * 
@@ -350,9 +338,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-         * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-         * between multiple Grafana installs.
+         * @param uid The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
          * 
          * @return builder
          * 
@@ -383,8 +369,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-         * dashboard are not lost.
+         * @param version Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
          * 
          * @return builder
          * 
@@ -395,8 +380,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-         * dashboard are not lost.
+         * @param version Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
          * 
          * @return builder
          * 

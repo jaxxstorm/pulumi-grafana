@@ -64,14 +64,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of a User Group for notify_user_group type step.
+     * The ID of a User Group for notify*user*group type step.
      * 
      */
     @Import(name="groupToNotify")
     private @Nullable Output<String> groupToNotify;
 
     /**
-     * @return The ID of a User Group for notify_user_group type step.
+     * @return The ID of a User Group for notify*user*group type step.
      * 
      */
     public Optional<Output<String>> groupToNotify() {
@@ -79,16 +79,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      * 
      */
     @Import(name="important")
     private @Nullable Output<Boolean> important;
 
     /**
-     * @return Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * @return Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      * 
      */
     public Optional<Output<Boolean>> important() {
@@ -96,14 +94,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      * 
      */
     @Import(name="notifyIfTimeFrom")
     private @Nullable Output<String> notifyIfTimeFrom;
 
     /**
-     * @return The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * @return The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      * 
      */
     public Optional<Output<String>> notifyIfTimeFrom() {
@@ -111,14 +109,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      * 
      */
     @Import(name="notifyIfTimeTo")
     private @Nullable Output<String> notifyIfTimeTo;
 
     /**
-     * @return The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * @return The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      * 
      */
     public Optional<Output<String>> notifyIfTimeTo() {
@@ -126,14 +124,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * ID of a Schedule for notify_on_call_from_schedule type step.
+     * ID of a Schedule for notify*on*call*from*schedule type step.
      * 
      */
     @Import(name="notifyOnCallFromSchedule")
     private @Nullable Output<String> notifyOnCallFromSchedule;
 
     /**
-     * @return ID of a Schedule for notify_on_call_from_schedule type step.
+     * @return ID of a Schedule for notify*on*call*from*schedule type step.
      * 
      */
     public Optional<Output<String>> notifyOnCallFromSchedule() {
@@ -156,14 +154,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The list of ID&#39;s of users for notify_person_next_each_time type step.
+     * The list of ID&#39;s of users for notify*person*next*each*time type step.
      * 
      */
     @Import(name="personsToNotifyNextEachTimes")
     private @Nullable Output<List<String>> personsToNotifyNextEachTimes;
 
     /**
-     * @return The list of ID&#39;s of users for notify_person_next_each_time type step.
+     * @return The list of ID&#39;s of users for notify*person*next*each*time type step.
      * 
      */
     public Optional<Output<List<String>>> personsToNotifyNextEachTimes() {
@@ -186,16 +184,14 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * @return The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      * 
      */
     public Optional<Output<String>> type() {
@@ -301,7 +297,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param groupToNotify The ID of a User Group for notify_user_group type step.
+         * @param groupToNotify The ID of a User Group for notify*user*group type step.
          * 
          * @return builder
          * 
@@ -312,7 +308,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param groupToNotify The ID of a User Group for notify_user_group type step.
+         * @param groupToNotify The ID of a User Group for notify*user*group type step.
          * 
          * @return builder
          * 
@@ -322,8 +318,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param important Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-         * and notify_user_group
+         * @param important Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
          * 
          * @return builder
          * 
@@ -334,8 +329,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param important Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-         * and notify_user_group
+         * @param important Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
          * 
          * @return builder
          * 
@@ -345,7 +339,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyIfTimeFrom The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+         * @param notifyIfTimeFrom The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
          * 
          * @return builder
          * 
@@ -356,7 +350,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyIfTimeFrom The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+         * @param notifyIfTimeFrom The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
          * 
          * @return builder
          * 
@@ -366,7 +360,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyIfTimeTo The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+         * @param notifyIfTimeTo The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
          * 
          * @return builder
          * 
@@ -377,7 +371,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyIfTimeTo The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+         * @param notifyIfTimeTo The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
          * 
          * @return builder
          * 
@@ -387,7 +381,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyOnCallFromSchedule ID of a Schedule for notify_on_call_from_schedule type step.
+         * @param notifyOnCallFromSchedule ID of a Schedule for notify*on*call*from*schedule type step.
          * 
          * @return builder
          * 
@@ -398,7 +392,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifyOnCallFromSchedule ID of a Schedule for notify_on_call_from_schedule type step.
+         * @param notifyOnCallFromSchedule ID of a Schedule for notify*on*call*from*schedule type step.
          * 
          * @return builder
          * 
@@ -439,7 +433,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify_person_next_each_time type step.
+         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify*person*next*each*time type step.
          * 
          * @return builder
          * 
@@ -450,7 +444,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify_person_next_each_time type step.
+         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify*person*next*each*time type step.
          * 
          * @return builder
          * 
@@ -460,7 +454,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify_person_next_each_time type step.
+         * @param personsToNotifyNextEachTimes The list of ID&#39;s of users for notify*person*next*each*time type step.
          * 
          * @return builder
          * 
@@ -491,8 +485,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-         * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+         * @param type The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
          * 
          * @return builder
          * 
@@ -503,8 +496,7 @@ public final class OncallEscalationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-         * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+         * @param type The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
          * 
          * @return builder
          * 

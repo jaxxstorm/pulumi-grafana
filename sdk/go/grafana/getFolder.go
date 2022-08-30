@@ -10,6 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := grafana.NewFolder(ctx, "test", &grafana.FolderArgs{
+//				Title: pulumi.String("test-folder"),
+//				Uid:   pulumi.String("test-ds-folder-uid"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = grafana.LookupFolderOutput(ctx, GetFolderOutputArgs{
+//				Title: test.Title,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupFolderResult
@@ -22,15 +55,20 @@ func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFolder.
 type LookupFolderArgs struct {
+	// The name of the Grafana folder.
 	Title string `pulumi:"title"`
 }
 
 // A collection of values returned by getFolder.
 type LookupFolderResult struct {
-	Id    int    `pulumi:"id"`
+	// The numerical ID of the Grafana folder.
+	Id int `pulumi:"id"`
+	// The name of the Grafana folder.
 	Title string `pulumi:"title"`
-	Uid   string `pulumi:"uid"`
-	Url   string `pulumi:"url"`
+	// The uid of the Grafana folder.
+	Uid string `pulumi:"uid"`
+	// The full URL of the folder.
+	Url string `pulumi:"url"`
 }
 
 func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
@@ -48,6 +86,7 @@ func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts .
 
 // A collection of arguments for invoking getFolder.
 type LookupFolderOutputArgs struct {
+	// The name of the Grafana folder.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -70,18 +109,22 @@ func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx cont
 	return o
 }
 
+// The numerical ID of the Grafana folder.
 func (o LookupFolderResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFolderResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The name of the Grafana folder.
 func (o LookupFolderResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// The uid of the Grafana folder.
 func (o LookupFolderResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
+// The full URL of the folder.
 func (o LookupFolderResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.Url }).(pulumi.StringOutput)
 }

@@ -13,9 +13,17 @@ public final class GetSyntheticMonitoringProbeArgs extends com.pulumi.resources.
 
     public static final GetSyntheticMonitoringProbeArgs Empty = new GetSyntheticMonitoringProbeArgs();
 
+    /**
+     * Name of the probe.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the probe.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -44,11 +52,23 @@ public final class GetSyntheticMonitoringProbeArgs extends com.pulumi.resources.
             $ = new GetSyntheticMonitoringProbeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

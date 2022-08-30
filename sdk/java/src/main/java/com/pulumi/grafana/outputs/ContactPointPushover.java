@@ -14,57 +14,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointPushover {
+    /**
+     * @return The Pushover API token.
+     * 
+     */
     private String apiToken;
+    /**
+     * @return Comma-separated list of devices to which the event is associated.
+     * 
+     */
     private @Nullable String device;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return How many seconds for which the notification will continue to be retried by Pushover.
+     * 
+     */
     private @Nullable Integer expire;
+    /**
+     * @return The templated notification message content.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return The priority level of the resolved event.
+     * 
+     */
     private @Nullable Integer okPriority;
+    /**
+     * @return The sound associated with the resolved notification.
+     * 
+     */
     private @Nullable String okSound;
+    /**
+     * @return The priority level of the event.
+     * 
+     */
     private @Nullable Integer priority;
+    /**
+     * @return How often, in seconds, the Pushover servers will send the same notification to the user.
+     * 
+     */
     private @Nullable Integer retry;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The sound associated with the notification.
+     * 
+     */
     private @Nullable String sound;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The Pushover user key.
+     * 
+     */
     private String userKey;
 
     private ContactPointPushover() {}
+    /**
+     * @return The Pushover API token.
+     * 
+     */
     public String apiToken() {
         return this.apiToken;
     }
+    /**
+     * @return Comma-separated list of devices to which the event is associated.
+     * 
+     */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return How many seconds for which the notification will continue to be retried by Pushover.
+     * 
+     */
     public Optional<Integer> expire() {
         return Optional.ofNullable(this.expire);
     }
+    /**
+     * @return The templated notification message content.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return The priority level of the resolved event.
+     * 
+     */
     public Optional<Integer> okPriority() {
         return Optional.ofNullable(this.okPriority);
     }
+    /**
+     * @return The sound associated with the resolved notification.
+     * 
+     */
     public Optional<String> okSound() {
         return Optional.ofNullable(this.okSound);
     }
+    /**
+     * @return The priority level of the event.
+     * 
+     */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }
+    /**
+     * @return How often, in seconds, the Pushover servers will send the same notification to the user.
+     * 
+     */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The sound associated with the notification.
+     * 
+     */
     public Optional<String> sound() {
         return Optional.ofNullable(this.sound);
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The Pushover user key.
+     * 
+     */
     public String userKey() {
         return this.userKey;
     }

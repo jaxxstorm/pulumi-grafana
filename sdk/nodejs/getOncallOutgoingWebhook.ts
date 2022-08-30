@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleOutgoingWebhook = pulumi.output(grafana.getOncallOutgoingWebhook({
+ *     name: "example_outgoing_webhook",
+ * }));
+ * ```
+ */
 export function getOncallOutgoingWebhook(args: GetOncallOutgoingWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallOutgoingWebhookResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +33,9 @@ export function getOncallOutgoingWebhook(args: GetOncallOutgoingWebhookArgs, opt
  * A collection of arguments for invoking getOncallOutgoingWebhook.
  */
 export interface GetOncallOutgoingWebhookArgs {
+    /**
+     * The outgoing webhook name.
+     */
     name: string;
 }
 
@@ -30,6 +47,9 @@ export interface GetOncallOutgoingWebhookResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The outgoing webhook name.
+     */
     readonly name: string;
 }
 
@@ -41,5 +61,8 @@ export function getOncallOutgoingWebhookOutput(args: GetOncallOutgoingWebhookOut
  * A collection of arguments for invoking getOncallOutgoingWebhook.
  */
 export interface GetOncallOutgoingWebhookOutputArgs {
+    /**
+     * The outgoing webhook name.
+     */
     name: pulumi.Input<string>;
 }

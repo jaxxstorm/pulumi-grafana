@@ -16,6 +16,71 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.GrafanaFunctions;
+ * import com.pulumi.grafana.inputs.GetOncallSlackChannelArgs;
+ * import com.pulumi.grafana.inputs.GetOncallUserGroupArgs;
+ * import com.pulumi.grafana.OncallSchedule;
+ * import com.pulumi.grafana.OncallScheduleArgs;
+ * import com.pulumi.grafana.inputs.OncallScheduleSlackArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleSlackChannel = GrafanaFunctions.getOncallSlackChannel(GetOncallSlackChannelArgs.builder()
+ *             .name(&#34;example_slack_channel&#34;)
+ *             .build());
+ * 
+ *         final var exampleUserGroup = GrafanaFunctions.getOncallUserGroup(GetOncallUserGroupArgs.builder()
+ *             .slackHandle(&#34;example_slack_handle&#34;)
+ *             .build());
+ * 
+ *         var exampleScheduleOncallSchedule = new OncallSchedule(&#34;exampleScheduleOncallSchedule&#34;, OncallScheduleArgs.builder()        
+ *             .type(&#34;ical&#34;)
+ *             .icalUrlPrimary(&#34;https://example.com/example_ical.ics&#34;)
+ *             .icalUrlOverrides(&#34;https://example.com/example_overrides_ical.ics&#34;)
+ *             .slack(OncallScheduleSlackArgs.builder()
+ *                 .channelId(exampleSlackChannel.applyValue(getOncallSlackChannelResult -&gt; getOncallSlackChannelResult.slackId()))
+ *                 .userGroupId(exampleUserGroup.applyValue(getOncallUserGroupResult -&gt; getOncallUserGroupResult.slackId()))
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleScheduleIndex_oncallScheduleOncallSchedule = new OncallSchedule(&#34;exampleScheduleIndex/oncallScheduleOncallSchedule&#34;, OncallScheduleArgs.builder()        
+ *             .type(&#34;calendar&#34;)
+ *             .timeZone(&#34;America/New_York&#34;)
+ *             .shifts()
+ *             .icalUrlOverrides(&#34;https://example.com/example_overrides_ical.ics&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallSchedule:OncallSchedule")
 public class OncallSchedule extends com.pulumi.resources.CustomResource {
     /**

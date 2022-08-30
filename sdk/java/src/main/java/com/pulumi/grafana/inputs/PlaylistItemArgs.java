@@ -16,9 +16,17 @@ public final class PlaylistItemArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PlaylistItemArgs Empty = new PlaylistItemArgs();
 
+    /**
+     * The ID of this resource.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
@@ -79,11 +87,23 @@ public final class PlaylistItemArgs extends com.pulumi.resources.ResourceArgs {
             $ = new PlaylistItemArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

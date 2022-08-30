@@ -5,6 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleSlackChannel = grafana.getOncallSlackChannel({
+ *     name: "example_slack_channel",
+ * });
+ * const exampleUserGroup = grafana.getOncallUserGroup({
+ *     slackHandle: "example_slack_handle",
+ * });
+ * // ICal based schedule
+ * const exampleScheduleOncallSchedule = new grafana.OncallSchedule("exampleScheduleOncallSchedule", {
+ *     type: "ical",
+ *     icalUrlPrimary: "https://example.com/example_ical.ics",
+ *     icalUrlOverrides: "https://example.com/example_overrides_ical.ics",
+ *     slack: {
+ *         channelId: exampleSlackChannel.then(exampleSlackChannel => exampleSlackChannel.slackId),
+ *         userGroupId: exampleUserGroup.then(exampleUserGroup => exampleUserGroup.slackId),
+ *     },
+ * });
+ * // Shift based schedule
+ * const exampleScheduleIndex_oncallScheduleOncallSchedule = new grafana.OncallSchedule("exampleScheduleIndex/oncallScheduleOncallSchedule", {
+ *     type: "calendar",
+ *     timeZone: "America/New_York",
+ *     shifts: [],
+ *     icalUrlOverrides: "https://example.com/example_overrides_ical.ics",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+ * ```
+ */
 export class OncallSchedule extends pulumi.CustomResource {
     /**
      * Get an existing OncallSchedule resource's state with the given name, ID, and optional extra

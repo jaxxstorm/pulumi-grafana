@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const team = new grafana.Team("team", {});
+ * const user = new grafana.User("user", {email: "user.name@example.com"});
+ * const collection = new grafana.Folder("collection", {title: "Folder Title"});
+ * const collectionPermission = new grafana.FolderPermission("collectionPermission", {
+ *     folderUid: collection.uid,
+ *     permissions: [
+ *         {
+ *             role: "Editor",
+ *             permission: "Edit",
+ *         },
+ *         {
+ *             teamId: team.id,
+ *             permission: "View",
+ *         },
+ *         {
+ *             userId: user.id,
+ *             permission: "Admin",
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class FolderPermission extends pulumi.CustomResource {
     /**
      * Get an existing FolderPermission resource's state with the given name, ID, and optional extra

@@ -10,13 +10,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewTeam(ctx, "test-team", &grafana.TeamArgs{
+//				Email: pulumi.String("teamemail@example.com"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("viewer-01@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Team struct {
 	pulumi.CustomResourceState
 
 	// An email address for the team.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-	// must already exist in Grafana.
+	// A set of email addresses corresponding to users who should be given membership
+	// to the team. Note: users specified here must already exist in Grafana.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The display name for the Grafana team created.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -56,8 +87,8 @@ func GetTeam(ctx *pulumi.Context,
 type teamState struct {
 	// An email address for the team.
 	Email *string `pulumi:"email"`
-	// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-	// must already exist in Grafana.
+	// A set of email addresses corresponding to users who should be given membership
+	// to the team. Note: users specified here must already exist in Grafana.
 	Members []string `pulumi:"members"`
 	// The display name for the Grafana team created.
 	Name *string `pulumi:"name"`
@@ -68,8 +99,8 @@ type teamState struct {
 type TeamState struct {
 	// An email address for the team.
 	Email pulumi.StringPtrInput
-	// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-	// must already exist in Grafana.
+	// A set of email addresses corresponding to users who should be given membership
+	// to the team. Note: users specified here must already exist in Grafana.
 	Members pulumi.StringArrayInput
 	// The display name for the Grafana team created.
 	Name pulumi.StringPtrInput
@@ -84,8 +115,8 @@ func (TeamState) ElementType() reflect.Type {
 type teamArgs struct {
 	// An email address for the team.
 	Email *string `pulumi:"email"`
-	// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-	// must already exist in Grafana.
+	// A set of email addresses corresponding to users who should be given membership
+	// to the team. Note: users specified here must already exist in Grafana.
 	Members []string `pulumi:"members"`
 	// The display name for the Grafana team created.
 	Name *string `pulumi:"name"`
@@ -95,8 +126,8 @@ type teamArgs struct {
 type TeamArgs struct {
 	// An email address for the team.
 	Email pulumi.StringPtrInput
-	// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-	// must already exist in Grafana.
+	// A set of email addresses corresponding to users who should be given membership
+	// to the team. Note: users specified here must already exist in Grafana.
 	Members pulumi.StringArrayInput
 	// The display name for the Grafana team created.
 	Name pulumi.StringPtrInput
@@ -194,8 +225,8 @@ func (o TeamOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-// must already exist in Grafana.
+// A set of email addresses corresponding to users who should be given membership
+// to the team. Note: users specified here must already exist in Grafana.
 func (o TeamOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

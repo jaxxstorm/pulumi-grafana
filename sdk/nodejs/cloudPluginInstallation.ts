@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages Grafana Cloud Plugin Installations.
+ *
+ * * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.CloudPluginInstallation("test", {
+ *     slug: "some-plugin",
+ *     stackSlug: "stackname",
+ *     version: "1.2.3",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+ * ```
+ */
 export class CloudPluginInstallation extends pulumi.CustomResource {
     /**
      * Get an existing CloudPluginInstallation resource's state with the given name, ID, and optional extra

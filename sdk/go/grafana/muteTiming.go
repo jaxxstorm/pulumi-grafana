@@ -10,6 +10,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+// * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewMuteTiming(ctx, "myMuteTiming", &grafana.MuteTimingArgs{
+//				Intervals: MuteTimingIntervalArray{
+//					&MuteTimingIntervalArgs{
+//						DaysOfMonths: pulumi.StringArray{
+//							pulumi.String("1:7"),
+//							pulumi.String("-1"),
+//						},
+//						Months: pulumi.StringArray{
+//							pulumi.String("1:3"),
+//							pulumi.String("december"),
+//						},
+//						Times: MuteTimingIntervalTimeArray{
+//							&MuteTimingIntervalTimeArgs{
+//								End:   pulumi.String("14:17"),
+//								Start: pulumi.String("04:56"),
+//							},
+//						},
+//						Weekdays: pulumi.StringArray{
+//							pulumi.String("monday"),
+//							pulumi.String("tuesday:thursday"),
+//						},
+//						Years: pulumi.StringArray{
+//							pulumi.String("2030"),
+//							pulumi.String("2025:2026"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+//
+// ```
 type MuteTiming struct {
 	pulumi.CustomResourceState
 

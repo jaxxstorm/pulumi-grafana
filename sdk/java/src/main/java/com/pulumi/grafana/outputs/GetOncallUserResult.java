@@ -9,16 +9,32 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOncallUserResult {
+    /**
+     * @return The email of the user.
+     * 
+     */
     private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The role of the user.
+     * 
+     */
     private String role;
+    /**
+     * @return The username of the user.
+     * 
+     */
     private String username;
 
     private GetOncallUserResult() {}
+    /**
+     * @return The email of the user.
+     * 
+     */
     public String email() {
         return this.email;
     }
@@ -29,9 +45,17 @@ public final class GetOncallUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The role of the user.
+     * 
+     */
     public String role() {
         return this.role;
     }
+    /**
+     * @return The username of the user.
+     * 
+     */
     public String username() {
         return this.username;
     }

@@ -16,23 +16,47 @@ public final class OncallIntegrationDefaultRouteArgs extends com.pulumi.resource
 
     public static final OncallIntegrationDefaultRouteArgs Empty = new OncallIntegrationDefaultRouteArgs();
 
+    /**
+     * The ID of the escalation chain.
+     * 
+     */
     @Import(name="escalationChainId")
     private @Nullable Output<String> escalationChainId;
 
+    /**
+     * @return The ID of the escalation chain.
+     * 
+     */
     public Optional<Output<String>> escalationChainId() {
         return Optional.ofNullable(this.escalationChainId);
     }
 
+    /**
+     * The ID of this resource.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Slack-specific settings for a route.
+     * 
+     */
     @Import(name="slack")
     private @Nullable Output<OncallIntegrationDefaultRouteSlackArgs> slack;
 
+    /**
+     * @return Slack-specific settings for a route.
+     * 
+     */
     public Optional<Output<OncallIntegrationDefaultRouteSlackArgs>> slack() {
         return Optional.ofNullable(this.slack);
     }
@@ -63,29 +87,65 @@ public final class OncallIntegrationDefaultRouteArgs extends com.pulumi.resource
             $ = new OncallIntegrationDefaultRouteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param escalationChainId The ID of the escalation chain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder escalationChainId(@Nullable Output<String> escalationChainId) {
             $.escalationChainId = escalationChainId;
             return this;
         }
 
+        /**
+         * @param escalationChainId The ID of the escalation chain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder escalationChainId(String escalationChainId) {
             return escalationChainId(Output.of(escalationChainId));
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param slack Slack-specific settings for a route.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slack(@Nullable Output<OncallIntegrationDefaultRouteSlackArgs> slack) {
             $.slack = slack;
             return this;
         }
 
+        /**
+         * @param slack Slack-specific settings for a route.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slack(OncallIntegrationDefaultRouteSlackArgs slack) {
             return slack(Output.of(slack));
         }

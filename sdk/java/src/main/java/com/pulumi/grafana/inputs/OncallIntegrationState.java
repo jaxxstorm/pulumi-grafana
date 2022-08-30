@@ -93,18 +93,14 @@ public final class OncallIntegrationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-     * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-     * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+     * The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-     * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-     * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+     * @return The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
      * 
      */
     public Optional<Output<String>> type() {
@@ -246,9 +242,7 @@ public final class OncallIntegrationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-         * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-         * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+         * @param type The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
          * 
          * @return builder
          * 
@@ -259,9 +253,7 @@ public final class OncallIntegrationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-         * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-         * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+         * @param type The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
          * 
          * @return builder
          * 

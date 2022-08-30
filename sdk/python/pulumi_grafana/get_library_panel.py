@@ -71,31 +71,49 @@ class GetLibraryPanelResult:
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        Timestamp when the library panel was created.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="dashboardIds")
     def dashboard_ids(self) -> Sequence[int]:
+        """
+        Numerical IDs of Grafana dashboards containing the library panel.
+        """
         return pulumi.get(self, "dashboard_ids")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the library panel.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> int:
+        """
+        ID of the folder where the library panel is stored.
+        """
         return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter(name="folderName")
     def folder_name(self) -> str:
+        """
+        Name of the folder containing the library panel.
+        """
         return pulumi.get(self, "folder_name")
 
     @property
     @pulumi.getter(name="folderUid")
     def folder_uid(self) -> str:
+        """
+        Unique ID (UID) of the folder containing the library panel.
+        """
         return pulumi.get(self, "folder_uid")
 
     @property
@@ -109,41 +127,65 @@ class GetLibraryPanelResult:
     @property
     @pulumi.getter(name="modelJson")
     def model_json(self) -> str:
+        """
+        The JSON model for the library panel.
+        """
         return pulumi.get(self, "model_json")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the library panel.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        The numeric ID of the library panel computed by Grafana.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="panelId")
     def panel_id(self) -> int:
+        """
+        The numeric ID of the library panel computed by Grafana.
+        """
         return pulumi.get(self, "panel_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of the library panel (eg. text).
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uid(self) -> Optional[str]:
+        """
+        The unique identifier (UID) of the library panel.
+        """
         return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        Timestamp when the library panel was last modified.
+        """
         return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter
     def version(self) -> int:
+        """
+        Version of the library panel.
+        """
         return pulumi.get(self, "version")
 
 
@@ -174,7 +216,11 @@ def get_library_panel(name: Optional[str] = None,
                       uid: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLibraryPanelResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving a single library panel by name or uid.
+
+
+    :param str name: Name of the library panel.
+    :param str uid: The unique identifier (UID) of the library panel.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -205,6 +251,10 @@ def get_library_panel_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                              uid: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLibraryPanelResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving a single library panel by name or uid.
+
+
+    :param str name: Name of the library panel.
+    :param str uid: The unique identifier (UID) of the library panel.
     """
     ...

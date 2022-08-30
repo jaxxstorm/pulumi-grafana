@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RolePermission {
+    /**
+     * @return Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+     * 
+     */
     private String action;
+    /**
+     * @return Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+     * 
+     */
     private @Nullable String scope;
 
     private RolePermission() {}
+    /**
+     * @return Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+     * 
+     */
     public Optional<String> scope() {
         return Optional.ofNullable(this.scope);
     }

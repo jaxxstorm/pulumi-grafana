@@ -13,7 +13,13 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ReportTimeRange
     {
+        /// <summary>
+        /// Start of the time range.
+        /// </summary>
         public readonly string? From;
+        /// <summary>
+        /// End of the time range.
+        /// </summary>
         public readonly string? To;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class OncallRouteSlack
     {
+        /// <summary>
+        /// Slack channel id. Alerts will be directed to this channel in Slack.
+        /// </summary>
         public readonly string ChannelId;
 
         [OutputConstructor]

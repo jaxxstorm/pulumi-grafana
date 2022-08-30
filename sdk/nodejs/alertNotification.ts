@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const emailSometeam = new grafana.AlertNotification("email_someteam", {
+ *     frequency: "24h",
+ *     isDefault: false,
+ *     sendReminder: true,
+ *     settings: {
+ *         addresses: "foo@example.net;bar@example.net",
+ *         uploadImage: "false",
+ *     },
+ *     type: "email",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/alertNotification:AlertNotification alert_notification_name {{alert_notification_id}}
+ * ```
+ */
 export class AlertNotification extends pulumi.CustomResource {
     /**
      * Get an existing AlertNotification resource's state with the given name, ID, and optional extra
@@ -33,15 +61,15 @@ export class AlertNotification extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to disable sending resolve messages.
+     * Whether to disable sending resolve messages. Defaults to `false`.
      */
     public readonly disableResolveMessage!: pulumi.Output<boolean | undefined>;
     /**
-     * Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      */
     public readonly frequency!: pulumi.Output<string | undefined>;
     /**
-     * Is this the default channel for all your alerts.
+     * Is this the default channel for all your alerts. Defaults to `false`.
      */
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
@@ -49,17 +77,15 @@ export class AlertNotification extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      */
     public readonly secureSettings!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Whether to send reminders for triggered alerts.
+     * Whether to send reminders for triggered alerts. Defaults to `false`.
      */
     public readonly sendReminder!: pulumi.Output<boolean | undefined>;
     /**
-     * Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      */
     public readonly settings!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -118,15 +144,15 @@ export class AlertNotification extends pulumi.CustomResource {
  */
 export interface AlertNotificationState {
     /**
-     * Whether to disable sending resolve messages.
+     * Whether to disable sending resolve messages. Defaults to `false`.
      */
     disableResolveMessage?: pulumi.Input<boolean>;
     /**
-     * Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      */
     frequency?: pulumi.Input<string>;
     /**
-     * Is this the default channel for all your alerts.
+     * Is this the default channel for all your alerts. Defaults to `false`.
      */
     isDefault?: pulumi.Input<boolean>;
     /**
@@ -134,17 +160,15 @@ export interface AlertNotificationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      */
     secureSettings?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Whether to send reminders for triggered alerts.
+     * Whether to send reminders for triggered alerts. Defaults to `false`.
      */
     sendReminder?: pulumi.Input<boolean>;
     /**
-     * Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      */
     settings?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -162,15 +186,15 @@ export interface AlertNotificationState {
  */
 export interface AlertNotificationArgs {
     /**
-     * Whether to disable sending resolve messages.
+     * Whether to disable sending resolve messages. Defaults to `false`.
      */
     disableResolveMessage?: pulumi.Input<boolean>;
     /**
-     * Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      */
     frequency?: pulumi.Input<string>;
     /**
-     * Is this the default channel for all your alerts.
+     * Is this the default channel for all your alerts. Defaults to `false`.
      */
     isDefault?: pulumi.Input<boolean>;
     /**
@@ -178,17 +202,15 @@ export interface AlertNotificationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      */
     secureSettings?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Whether to send reminders for triggered alerts.
+     * Whether to send reminders for triggered alerts. Defaults to `false`.
      */
     sendReminder?: pulumi.Input<boolean>;
     /**
-     * Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      */
     settings?: pulumi.Input<{[key: string]: any}>;
     /**

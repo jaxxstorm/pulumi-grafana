@@ -32,18 +32,12 @@ class SyntheticMonitoringCheckArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] probes: List of probe location IDs where this target will be checked from.
         :param pulumi.Input['SyntheticMonitoringCheckSettingsArgs'] settings: Check settings. Should contain exactly one nested block.
         :param pulumi.Input[str] target: Hostname to ping.
-        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-               levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
-        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-               metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
-        :param pulumi.Input[bool] enabled: Whether to enable the check.
-        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-               value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-               check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-               the labels cannot be empty, and the maximum length is 32 bytes.
-        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-               and the maximum 10 seconds (10000 ms).
+        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
+        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable the check. Defaults to `true`.
+        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
+        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         pulumi.set(__self__, "job", job)
         pulumi.set(__self__, "probes", probes)
@@ -114,8 +108,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter(name="alertSensitivity")
     def alert_sensitivity(self) -> Optional[pulumi.Input[str]]:
         """
-        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-        levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
         """
         return pulumi.get(self, "alert_sensitivity")
 
@@ -127,8 +120,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter(name="basicMetricsOnly")
     def basic_metrics_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-        metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
         """
         return pulumi.get(self, "basic_metrics_only")
 
@@ -140,7 +132,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the check.
+        Whether to enable the check. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -152,8 +144,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[int]]:
         """
-        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-        value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         """
         return pulumi.get(self, "frequency")
 
@@ -165,9 +156,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-        check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-        the labels cannot be empty, and the maximum length is 32 bytes.
+        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -179,8 +168,7 @@ class SyntheticMonitoringCheckArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-        and the maximum 10 seconds (10000 ms).
+        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         return pulumi.get(self, "timeout")
 
@@ -205,23 +193,17 @@ class _SyntheticMonitoringCheckState:
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering SyntheticMonitoringCheck resources.
-        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-               levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
-        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-               metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
-        :param pulumi.Input[bool] enabled: Whether to enable the check.
-        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-               value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
+        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable the check. Defaults to `true`.
+        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         :param pulumi.Input[str] job: Name used for job label.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-               check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-               the labels cannot be empty, and the maximum length is 32 bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] probes: List of probe location IDs where this target will be checked from.
         :param pulumi.Input['SyntheticMonitoringCheckSettingsArgs'] settings: Check settings. Should contain exactly one nested block.
         :param pulumi.Input[str] target: Hostname to ping.
         :param pulumi.Input[int] tenant_id: The tenant ID of the check.
-        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-               and the maximum 10 seconds (10000 ms).
+        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         if alert_sensitivity is not None:
             pulumi.set(__self__, "alert_sensitivity", alert_sensitivity)
@@ -250,8 +232,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter(name="alertSensitivity")
     def alert_sensitivity(self) -> Optional[pulumi.Input[str]]:
         """
-        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-        levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
         """
         return pulumi.get(self, "alert_sensitivity")
 
@@ -263,8 +244,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter(name="basicMetricsOnly")
     def basic_metrics_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-        metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
         """
         return pulumi.get(self, "basic_metrics_only")
 
@@ -276,7 +256,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable the check.
+        Whether to enable the check. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -288,8 +268,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[int]]:
         """
-        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-        value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         """
         return pulumi.get(self, "frequency")
 
@@ -313,9 +292,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-        check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-        the labels cannot be empty, and the maximum length is 32 bytes.
+        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -375,8 +352,7 @@ class _SyntheticMonitoringCheckState:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-        and the maximum 10 seconds (10000 ms).
+        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         return pulumi.get(self, "timeout")
 
@@ -402,25 +378,34 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
                  timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a SyntheticMonitoringCheck resource with the given unique name, props, and options.
+        Synthetic Monitoring checks are tests that run on selected probes at defined
+        intervals and report metrics and logs back to your Grafana Cloud account. The
+        target for checks can be a domain name, a server, or a website, depending on
+        what information you would like to gather about your endpoint. You can define
+        multiple checks for a single endpoint to check different capabilities.
+
+        * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/checks/)
+
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/syntheticMonitoringCheck:SyntheticMonitoringCheck check {{check-id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-               levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
-        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-               metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
-        :param pulumi.Input[bool] enabled: Whether to enable the check.
-        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-               value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
+        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable the check. Defaults to `true`.
+        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         :param pulumi.Input[str] job: Name used for job label.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-               check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-               the labels cannot be empty, and the maximum length is 32 bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] probes: List of probe location IDs where this target will be checked from.
         :param pulumi.Input[pulumi.InputType['SyntheticMonitoringCheckSettingsArgs']] settings: Check settings. Should contain exactly one nested block.
         :param pulumi.Input[str] target: Hostname to ping.
-        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-               and the maximum 10 seconds (10000 ms).
+        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         ...
     @overload
@@ -429,7 +414,22 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
                  args: SyntheticMonitoringCheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SyntheticMonitoringCheck resource with the given unique name, props, and options.
+        Synthetic Monitoring checks are tests that run on selected probes at defined
+        intervals and report metrics and logs back to your Grafana Cloud account. The
+        target for checks can be a domain name, a server, or a website, depending on
+        what information you would like to gather about your endpoint. You can define
+        multiple checks for a single endpoint to check different capabilities.
+
+        * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/checks/)
+
+        ## Example Usage
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/syntheticMonitoringCheck:SyntheticMonitoringCheck check {{check-id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param SyntheticMonitoringCheckArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -511,23 +511,17 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-               levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
-        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-               metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
-        :param pulumi.Input[bool] enabled: Whether to enable the check.
-        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-               value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        :param pulumi.Input[str] alert_sensitivity: Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
+        :param pulumi.Input[bool] basic_metrics_only: Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable the check. Defaults to `true`.
+        :param pulumi.Input[int] frequency: How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         :param pulumi.Input[str] job: Name used for job label.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-               check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-               the labels cannot be empty, and the maximum length is 32 bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] probes: List of probe location IDs where this target will be checked from.
         :param pulumi.Input[pulumi.InputType['SyntheticMonitoringCheckSettingsArgs']] settings: Check settings. Should contain exactly one nested block.
         :param pulumi.Input[str] target: Hostname to ping.
         :param pulumi.Input[int] tenant_id: The tenant ID of the check.
-        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-               and the maximum 10 seconds (10000 ms).
+        :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,8 +544,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter(name="alertSensitivity")
     def alert_sensitivity(self) -> pulumi.Output[Optional[str]]:
         """
-        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-        levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+        Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
         """
         return pulumi.get(self, "alert_sensitivity")
 
@@ -559,8 +552,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter(name="basicMetricsOnly")
     def basic_metrics_only(self) -> pulumi.Output[Optional[bool]]:
         """
-        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of
-        metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+        Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
         """
         return pulumi.get(self, "basic_metrics_only")
 
@@ -568,7 +560,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable the check.
+        Whether to enable the check. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -576,8 +568,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter
     def frequency(self) -> pulumi.Output[Optional[int]]:
         """
-        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable
-        value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+        How often the check runs in milliseconds (the value is not truly a "frequency" but a "period"). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
         """
         return pulumi.get(self, "frequency")
 
@@ -593,9 +584,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-        check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-        the labels cannot be empty, and the maximum length is 32 bytes.
+        Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         """
         return pulumi.get(self, "labels")
 
@@ -635,8 +624,7 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
     @pulumi.getter
     def timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-        and the maximum 10 seconds (10000 ms).
+        Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
         return pulumi.get(self, "timeout")
 

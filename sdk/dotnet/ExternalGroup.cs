@@ -9,6 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_team_group = new Grafana.ExternalGroup("test-team-group", new()
+    ///     {
+    ///         Groups = new[]
+    ///         {
+    ///             "test-group-1",
+    ///             "test-group-2",
+    ///         },
+    ///         TeamId = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/externalGroup:ExternalGroup")]
     public partial class ExternalGroup : global::Pulumi.CustomResource
     {

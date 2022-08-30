@@ -9,36 +9,135 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/datasources/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/data_source/)
+    /// 
+    /// The required arguments for this resource vary depending on the type of data
+    /// source selected (via the 'type' argument).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var influxdb = new Grafana.DataSource("influxdb", new()
+    ///     {
+    ///         Type = "influxdb",
+    ///         Url = "http://influxdb.example.net:8086/",
+    ///         Username = "myapp",
+    ///         Password = "foobarbaz",
+    ///         DatabaseName = influxdb_database.Metrics.Name,
+    ///     });
+    /// 
+    ///     var cloudwatch = new Grafana.DataSource("cloudwatch", new()
+    ///     {
+    ///         Type = "cloudwatch",
+    ///         JsonDatas = new[]
+    ///         {
+    ///             new Grafana.Inputs.DataSourceJsonDataArgs
+    ///             {
+    ///                 DefaultRegion = "us-east-1",
+    ///                 AuthType = "keys",
+    ///             },
+    ///         },
+    ///         SecureJsonDatas = new[]
+    ///         {
+    ///             new Grafana.Inputs.DataSourceSecureJsonDataArgs
+    ///             {
+    ///                 AccessKey = "123",
+    ///                 SecretKey = "456",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var prometheus = new Grafana.DataSource("prometheus", new()
+    ///     {
+    ///         Type = "prometheus",
+    ///         Url = "https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-1234567890/",
+    ///         JsonDatas = new[]
+    ///         {
+    ///             new Grafana.Inputs.DataSourceJsonDataArgs
+    ///             {
+    ///                 HttpMethod = "POST",
+    ///                 Sigv4Auth = true,
+    ///                 Sigv4AuthType = "default",
+    ///                 Sigv4Region = "eu-west-1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var stackdriver = new Grafana.DataSource("stackdriver", new()
+    ///     {
+    ///         Type = "stackdriver",
+    ///         JsonDatas = new[]
+    ///         {
+    ///             new Grafana.Inputs.DataSourceJsonDataArgs
+    ///             {
+    ///                 TokenUri = "https://oauth2.googleapis.com/token",
+    ///                 AuthenticationType = "jwt",
+    ///                 DefaultProject = "default-project",
+    ///                 ClientEmail = "client-email@default-project.iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///         SecureJsonDatas = new[]
+    ///         {
+    ///             new Grafana.Inputs.DataSourceSecureJsonDataArgs
+    ///             {
+    ///                 PrivateKey = @"-----BEGIN PRIVATE KEY-----
+    /// private-key
+    /// -----END PRIVATE KEY-----
+    /// ",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/dataSource:DataSource by_integer_id {{datasource id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/dataSource:DataSource by_uid {{datasource uid}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/dataSource:DataSource")]
     public partial class DataSource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The method by which Grafana will access the data source: `proxy` or `direct`.
+        /// The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable basic auth for the data source.
+        /// Whether to enable basic auth for the data source. Defaults to `false`.
         /// </summary>
         [Output("basicAuthEnabled")]
         public Output<bool?> BasicAuthEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        /// 9.0+.
+        /// Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Output("basicAuthPassword")]
         public Output<string?> BasicAuthPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Basic auth username.
+        /// Basic auth username. Defaults to ``.
         /// </summary>
         [Output("basicAuthUsername")]
         public Output<string?> BasicAuthUsername { get; private set; } = null!;
 
         /// <summary>
-        /// (Required by some data source types) The name of the database to use on the selected data source server.
+        /// (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         /// </summary>
         [Output("databaseName")]
         public Output<string?> DatabaseName { get; private set; } = null!;
@@ -50,7 +149,7 @@ namespace Pulumi.Grafana
         public Output<ImmutableDictionary<string, string>?> HttpHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set the data source as default. This should only be `true` to a single data source.
+        /// Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
@@ -68,8 +167,7 @@ namespace Pulumi.Grafana
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        /// secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -96,7 +194,7 @@ namespace Pulumi.Grafana
         public Output<string?> Url { get; private set; } = null!;
 
         /// <summary>
-        /// (Required by some data source types) The username to use to authenticate to the data source.
+        /// (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -149,32 +247,31 @@ namespace Pulumi.Grafana
     public sealed class DataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method by which Grafana will access the data source: `proxy` or `direct`.
+        /// The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// Whether to enable basic auth for the data source.
+        /// Whether to enable basic auth for the data source. Defaults to `false`.
         /// </summary>
         [Input("basicAuthEnabled")]
         public Input<bool>? BasicAuthEnabled { get; set; }
 
         /// <summary>
-        /// Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        /// 9.0+.
+        /// Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Input("basicAuthPassword")]
         public Input<string>? BasicAuthPassword { get; set; }
 
         /// <summary>
-        /// Basic auth username.
+        /// Basic auth username. Defaults to ``.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The name of the database to use on the selected data source server.
+        /// (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
@@ -192,7 +289,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// Whether to set the data source as default. This should only be `true` to a single data source.
+        /// Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -216,8 +313,7 @@ namespace Pulumi.Grafana
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        /// secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -249,7 +345,7 @@ namespace Pulumi.Grafana
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The username to use to authenticate to the data source.
+        /// (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -263,32 +359,31 @@ namespace Pulumi.Grafana
     public sealed class DataSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method by which Grafana will access the data source: `proxy` or `direct`.
+        /// The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// Whether to enable basic auth for the data source.
+        /// Whether to enable basic auth for the data source. Defaults to `false`.
         /// </summary>
         [Input("basicAuthEnabled")]
         public Input<bool>? BasicAuthEnabled { get; set; }
 
         /// <summary>
-        /// Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        /// 9.0+.
+        /// Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Input("basicAuthPassword")]
         public Input<string>? BasicAuthPassword { get; set; }
 
         /// <summary>
-        /// Basic auth username.
+        /// Basic auth username. Defaults to ``.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The name of the database to use on the selected data source server.
+        /// (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
@@ -306,7 +401,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// Whether to set the data source as default. This should only be `true` to a single data source.
+        /// Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -330,8 +425,7 @@ namespace Pulumi.Grafana
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        /// secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        /// (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -363,7 +457,7 @@ namespace Pulumi.Grafana
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// (Required by some data source types) The username to use to authenticate to the data source.
+        /// (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

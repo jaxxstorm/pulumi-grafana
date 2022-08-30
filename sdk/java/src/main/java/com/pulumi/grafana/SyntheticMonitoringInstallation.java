@@ -14,6 +14,62 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+ * Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+ * This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+ * * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.CloudStack;
+ * import com.pulumi.grafana.CloudStackArgs;
+ * import com.pulumi.grafana.CloudApiKey;
+ * import com.pulumi.grafana.CloudApiKeyArgs;
+ * import com.pulumi.grafana.SyntheticMonitoringInstallation;
+ * import com.pulumi.grafana.SyntheticMonitoringInstallationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var smStackCloudStack = new CloudStack(&#34;smStackCloudStack&#34;, CloudStackArgs.builder()        
+ *             .slug(&#34;&lt;stack-slug&gt;&#34;)
+ *             .regionSlug(&#34;us&#34;)
+ *             .build());
+ * 
+ *         var metricsPublish = new CloudApiKey(&#34;metricsPublish&#34;, CloudApiKeyArgs.builder()        
+ *             .role(&#34;MetricsPublisher&#34;)
+ *             .cloudOrgSlug(&#34;&lt;org-slug&gt;&#34;)
+ *             .build());
+ * 
+ *         var smStackSyntheticMonitoringInstallation = new SyntheticMonitoringInstallation(&#34;smStackSyntheticMonitoringInstallation&#34;, SyntheticMonitoringInstallationArgs.builder()        
+ *             .stackId(smStackCloudStack.id())
+ *             .metricsInstanceId(smStackCloudStack.prometheusUserId())
+ *             .logsInstanceId(smStackCloudStack.logsUserId())
+ *             .metricsPublisherKey(metricsPublish.key())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/syntheticMonitoringInstallation:SyntheticMonitoringInstallation")
 public class SyntheticMonitoringInstallation extends com.pulumi.resources.CustomResource {
     /**

@@ -11,22 +11,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **Note:** This resource is available only with Grafana Enterprise 7.+.
+//
+// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/reporting/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/reporting/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testDashboard, err := grafana.NewDashboard(ctx, "testDashboard", &grafana.DashboardArgs{
+//				ConfigJson: pulumi.String(fmt.Sprintf("{\n  \"title\": \"Dashboard for report\",\n  \"uid\": \"report\"\n}\n")),
+//				Message:    pulumi.String("inital commit."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewReport(ctx, "testReport", &grafana.ReportArgs{
+//				DashboardId: testDashboard.DashboardId,
+//				Recipients: pulumi.StringArray{
+//					pulumi.String("some@email.com"),
+//				},
+//				Schedule: &ReportScheduleArgs{
+//					Frequency: pulumi.String("hourly"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Report struct {
 	pulumi.CustomResourceState
 
 	// Dashboard to be sent in the report.
 	DashboardId pulumi.IntOutput `pulumi:"dashboardId"`
-	// Whether to include a link to the dashboard in the report.
+	// Whether to include a link to the dashboard in the report. Defaults to `true`.
 	IncludeDashboardLink pulumi.BoolPtrOutput `pulumi:"includeDashboardLink"`
-	// Whether to include a CSV file of table panel data.
+	// Whether to include a CSV file of table panel data. Defaults to `false`.
 	IncludeTableCsv pulumi.BoolPtrOutput `pulumi:"includeTableCsv"`
-	// Layout of the report. `simple` or `grid`
+	// Layout of the report. `simple` or `grid` Defaults to `grid`.
 	Layout pulumi.StringPtrOutput `pulumi:"layout"`
 	// Message to be sent in the report.
 	Message pulumi.StringPtrOutput `pulumi:"message"`
 	// Name of the report.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Orientation of the report. `landscape` or `portrait`
+	// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 	Orientation pulumi.StringPtrOutput `pulumi:"orientation"`
 	// List of recipients of the report.
 	Recipients pulumi.StringArrayOutput `pulumi:"recipients"`
@@ -79,17 +125,17 @@ func GetReport(ctx *pulumi.Context,
 type reportState struct {
 	// Dashboard to be sent in the report.
 	DashboardId *int `pulumi:"dashboardId"`
-	// Whether to include a link to the dashboard in the report.
+	// Whether to include a link to the dashboard in the report. Defaults to `true`.
 	IncludeDashboardLink *bool `pulumi:"includeDashboardLink"`
-	// Whether to include a CSV file of table panel data.
+	// Whether to include a CSV file of table panel data. Defaults to `false`.
 	IncludeTableCsv *bool `pulumi:"includeTableCsv"`
-	// Layout of the report. `simple` or `grid`
+	// Layout of the report. `simple` or `grid` Defaults to `grid`.
 	Layout *string `pulumi:"layout"`
 	// Message to be sent in the report.
 	Message *string `pulumi:"message"`
 	// Name of the report.
 	Name *string `pulumi:"name"`
-	// Orientation of the report. `landscape` or `portrait`
+	// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 	Orientation *string `pulumi:"orientation"`
 	// List of recipients of the report.
 	Recipients []string `pulumi:"recipients"`
@@ -104,17 +150,17 @@ type reportState struct {
 type ReportState struct {
 	// Dashboard to be sent in the report.
 	DashboardId pulumi.IntPtrInput
-	// Whether to include a link to the dashboard in the report.
+	// Whether to include a link to the dashboard in the report. Defaults to `true`.
 	IncludeDashboardLink pulumi.BoolPtrInput
-	// Whether to include a CSV file of table panel data.
+	// Whether to include a CSV file of table panel data. Defaults to `false`.
 	IncludeTableCsv pulumi.BoolPtrInput
-	// Layout of the report. `simple` or `grid`
+	// Layout of the report. `simple` or `grid` Defaults to `grid`.
 	Layout pulumi.StringPtrInput
 	// Message to be sent in the report.
 	Message pulumi.StringPtrInput
 	// Name of the report.
 	Name pulumi.StringPtrInput
-	// Orientation of the report. `landscape` or `portrait`
+	// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 	Orientation pulumi.StringPtrInput
 	// List of recipients of the report.
 	Recipients pulumi.StringArrayInput
@@ -133,17 +179,17 @@ func (ReportState) ElementType() reflect.Type {
 type reportArgs struct {
 	// Dashboard to be sent in the report.
 	DashboardId int `pulumi:"dashboardId"`
-	// Whether to include a link to the dashboard in the report.
+	// Whether to include a link to the dashboard in the report. Defaults to `true`.
 	IncludeDashboardLink *bool `pulumi:"includeDashboardLink"`
-	// Whether to include a CSV file of table panel data.
+	// Whether to include a CSV file of table panel data. Defaults to `false`.
 	IncludeTableCsv *bool `pulumi:"includeTableCsv"`
-	// Layout of the report. `simple` or `grid`
+	// Layout of the report. `simple` or `grid` Defaults to `grid`.
 	Layout *string `pulumi:"layout"`
 	// Message to be sent in the report.
 	Message *string `pulumi:"message"`
 	// Name of the report.
 	Name *string `pulumi:"name"`
-	// Orientation of the report. `landscape` or `portrait`
+	// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 	Orientation *string `pulumi:"orientation"`
 	// List of recipients of the report.
 	Recipients []string `pulumi:"recipients"`
@@ -159,17 +205,17 @@ type reportArgs struct {
 type ReportArgs struct {
 	// Dashboard to be sent in the report.
 	DashboardId pulumi.IntInput
-	// Whether to include a link to the dashboard in the report.
+	// Whether to include a link to the dashboard in the report. Defaults to `true`.
 	IncludeDashboardLink pulumi.BoolPtrInput
-	// Whether to include a CSV file of table panel data.
+	// Whether to include a CSV file of table panel data. Defaults to `false`.
 	IncludeTableCsv pulumi.BoolPtrInput
-	// Layout of the report. `simple` or `grid`
+	// Layout of the report. `simple` or `grid` Defaults to `grid`.
 	Layout pulumi.StringPtrInput
 	// Message to be sent in the report.
 	Message pulumi.StringPtrInput
 	// Name of the report.
 	Name pulumi.StringPtrInput
-	// Orientation of the report. `landscape` or `portrait`
+	// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 	Orientation pulumi.StringPtrInput
 	// List of recipients of the report.
 	Recipients pulumi.StringArrayInput
@@ -273,17 +319,17 @@ func (o ReportOutput) DashboardId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Report) pulumi.IntOutput { return v.DashboardId }).(pulumi.IntOutput)
 }
 
-// Whether to include a link to the dashboard in the report.
+// Whether to include a link to the dashboard in the report. Defaults to `true`.
 func (o ReportOutput) IncludeDashboardLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Report) pulumi.BoolPtrOutput { return v.IncludeDashboardLink }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to include a CSV file of table panel data.
+// Whether to include a CSV file of table panel data. Defaults to `false`.
 func (o ReportOutput) IncludeTableCsv() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Report) pulumi.BoolPtrOutput { return v.IncludeTableCsv }).(pulumi.BoolPtrOutput)
 }
 
-// Layout of the report. `simple` or `grid`
+// Layout of the report. `simple` or `grid` Defaults to `grid`.
 func (o ReportOutput) Layout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Report) pulumi.StringPtrOutput { return v.Layout }).(pulumi.StringPtrOutput)
 }
@@ -298,7 +344,7 @@ func (o ReportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Orientation of the report. `landscape` or `portrait`
+// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
 func (o ReportOutput) Orientation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Report) pulumi.StringPtrOutput { return v.Orientation }).(pulumi.StringPtrOutput)
 }

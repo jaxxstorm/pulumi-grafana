@@ -178,7 +178,32 @@ class SyntheticMonitoringInstallation(pulumi.CustomResource):
                  stack_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a SyntheticMonitoringInstallation resource with the given unique name, props, and options.
+        Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+        Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+        This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+
+        * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+        * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        sm_stack_cloud_stack = grafana.CloudStack("smStackCloudStack",
+            slug="<stack-slug>",
+            region_slug="us")
+        metrics_publish = grafana.CloudApiKey("metricsPublish",
+            role="MetricsPublisher",
+            cloud_org_slug="<org-slug>")
+        sm_stack_synthetic_monitoring_installation = grafana.SyntheticMonitoringInstallation("smStackSyntheticMonitoringInstallation",
+            stack_id=sm_stack_cloud_stack.id,
+            metrics_instance_id=sm_stack_cloud_stack.prometheus_user_id,
+            logs_instance_id=sm_stack_cloud_stack.logs_user_id,
+            metrics_publisher_key=metrics_publish.key)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] logs_instance_id: The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
@@ -193,7 +218,32 @@ class SyntheticMonitoringInstallation(pulumi.CustomResource):
                  args: SyntheticMonitoringInstallationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SyntheticMonitoringInstallation resource with the given unique name, props, and options.
+        Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+        Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+        This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+
+        * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+        * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        sm_stack_cloud_stack = grafana.CloudStack("smStackCloudStack",
+            slug="<stack-slug>",
+            region_slug="us")
+        metrics_publish = grafana.CloudApiKey("metricsPublish",
+            role="MetricsPublisher",
+            cloud_org_slug="<org-slug>")
+        sm_stack_synthetic_monitoring_installation = grafana.SyntheticMonitoringInstallation("smStackSyntheticMonitoringInstallation",
+            stack_id=sm_stack_cloud_stack.id,
+            metrics_instance_id=sm_stack_cloud_stack.prometheus_user_id,
+            logs_instance_id=sm_stack_cloud_stack.logs_user_id,
+            metrics_publisher_key=metrics_publish.key)
+        ```
+
         :param str resource_name: The name of the resource.
         :param SyntheticMonitoringInstallationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -10,6 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewOncallEscalationChain(ctx, "default", nil, pulumi.Provider(grafana.Oncall))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+//
+// ```
 type OncallEscalationChain struct {
 	pulumi.CustomResourceState
 

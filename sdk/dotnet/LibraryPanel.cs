@@ -9,6 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// Manages Grafana library panels.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/panels/panel-library/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/library_element/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Grafana.LibraryPanel("test", new()
+    ///     {
+    ///         ModelJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["title"] = "updated name",
+    ///             ["id"] = 12,
+    ///             ["version"] = 35,
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/libraryPanel:LibraryPanel panel_name {{library_panel_slug}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/libraryPanel:LibraryPanel")]
     public partial class LibraryPanel : global::Pulumi.CustomResource
     {
@@ -79,9 +114,7 @@ namespace Pulumi.Grafana
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        /// It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        /// accessing library panels and when syncing library panels between multiple Grafana installs.
+        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -164,9 +197,7 @@ namespace Pulumi.Grafana
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        /// It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        /// accessing library panels and when syncing library panels between multiple Grafana installs.
+        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
@@ -252,9 +283,7 @@ namespace Pulumi.Grafana
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        /// It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        /// accessing library panels and when syncing library panels between multiple Grafana installs.
+        /// The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

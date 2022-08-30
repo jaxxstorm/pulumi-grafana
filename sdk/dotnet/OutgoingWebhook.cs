@@ -9,6 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_acc_outgoingWebhook = new Grafana.OutgoingWebhook("test-acc-outgoingWebhook", new()
+    ///     {
+    ///         Url = "https://example.com/",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = grafana.Oncall,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/outgoingWebhook:OutgoingWebhook outgoing_webhook_name {{outgoing_webhook_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/outgoingWebhook:OutgoingWebhook")]
     public partial class OutgoingWebhook : global::Pulumi.CustomResource
     {

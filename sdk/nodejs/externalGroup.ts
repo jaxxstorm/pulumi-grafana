@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test_team_group = new grafana.ExternalGroup("test-team-group", {
+ *     groups: [
+ *         "test-group-1",
+ *         "test-group-2",
+ *     ],
+ *     teamId: 1,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+ * ```
+ */
 export class ExternalGroup extends pulumi.CustomResource {
     /**
      * Get an existing ExternalGroup resource's state with the given name, ID, and optional extra

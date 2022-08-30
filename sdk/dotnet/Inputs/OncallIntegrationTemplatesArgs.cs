@@ -12,12 +12,21 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class OncallIntegrationTemplatesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Template for the key by which alerts are grouped.
+        /// </summary>
         [Input("groupingKey")]
         public Input<string>? GroupingKey { get; set; }
 
+        /// <summary>
+        /// Template for sending a signal to resolve the Incident.
+        /// </summary>
         [Input("resolveSignal")]
         public Input<string>? ResolveSignal { get; set; }
 
+        /// <summary>
+        /// Templates for Slack.
+        /// </summary>
         [Input("slack")]
         public Input<Inputs.OncallIntegrationTemplatesSlackArgs>? Slack { get; set; }
 

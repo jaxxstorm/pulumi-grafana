@@ -15,7 +15,13 @@ namespace Pulumi.Grafana.Outputs
     {
         public readonly string? DatasourceUid;
         public readonly string? MatcherRegex;
+        /// <summary>
+        /// A unique name for the data source.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The URL for the data source. The type of URL required varies depending on the chosen data source type.
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

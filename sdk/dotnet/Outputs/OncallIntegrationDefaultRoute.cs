@@ -13,8 +13,17 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class OncallIntegrationDefaultRoute
     {
+        /// <summary>
+        /// The ID of the escalation chain.
+        /// </summary>
         public readonly string? EscalationChainId;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Slack-specific settings for a route.
+        /// </summary>
         public readonly Outputs.OncallIntegrationDefaultRouteSlack? Slack;
 
         [OutputConstructor]

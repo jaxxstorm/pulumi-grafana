@@ -16,6 +16,48 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#stacks/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.CloudStack;
+ * import com.pulumi.grafana.CloudStackArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new CloudStack(&#34;test&#34;, CloudStackArgs.builder()        
+ *             .description(&#34;Test Grafana Cloud Stack&#34;)
+ *             .regionSlug(&#34;eu&#34;)
+ *             .slug(&#34;gcloudstacktest&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/cloudStack:CloudStack stack_name {{stack_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/cloudStack:CloudStack")
 public class CloudStack extends com.pulumi.resources.CustomResource {
     /**
@@ -113,14 +155,14 @@ public class CloudStack extends com.pulumi.resources.CustomResource {
         return this.logsUserId;
     }
     /**
-     * Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+     * @return Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      * 
      */
     public Output<String> name() {
@@ -253,32 +295,32 @@ public class CloudStack extends com.pulumi.resources.CustomResource {
         return this.prometheusUserId;
     }
     /**
-     * Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      * 
      */
     @Export(name="regionSlug", type=String.class, parameters={})
     private Output</* @Nullable */ String> regionSlug;
 
     /**
-     * @return Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * @return Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      * 
      */
     public Output<Optional<String>> regionSlug() {
         return Codegen.optional(this.regionSlug);
     }
     /**
-     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-     * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
      * 
      */
     @Export(name="slug", type=String.class, parameters={})
     private Output<String> slug;
 
     /**
-     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-     * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
      * 
      */
     public Output<String> slug() {
@@ -313,30 +355,28 @@ public class CloudStack extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      * 
      */
     @Export(name="waitForReadiness", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForReadiness;
 
     /**
-     * @return Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * @return Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> waitForReadiness() {
         return Codegen.optional(this.waitForReadiness);
     }
     /**
-     * How long to wait for readiness (if enabled).
+     * How long to wait for readiness (if enabled). Defaults to `5m0s`.
      * 
      */
     @Export(name="waitForReadinessTimeout", type=String.class, parameters={})
     private Output</* @Nullable */ String> waitForReadinessTimeout;
 
     /**
-     * @return How long to wait for readiness (if enabled).
+     * @return How long to wait for readiness (if enabled). Defaults to `5m0s`.
      * 
      */
     public Output<Optional<String>> waitForReadinessTimeout() {

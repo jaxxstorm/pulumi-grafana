@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-server-users/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/user/)
+ *
+ * This resource uses Grafana's admin APIs for creating and updating users which
+ * does not currently work with API Tokens. You must use basic auth.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const staff = new grafana.User("staff", {
+ *     email: "staff.name@example.com",
+ *     isAdmin: false,
+ *     login: "staff",
+ *     password: "my-password",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/user:User user_name {{user_id}}
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -37,7 +64,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Whether to make user an admin.
+     * Whether to make user an admin. Defaults to `false`.
      */
     public readonly isAdmin!: pulumi.Output<boolean | undefined>;
     /**
@@ -105,7 +132,7 @@ export interface UserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Whether to make user an admin.
+     * Whether to make user an admin. Defaults to `false`.
      */
     isAdmin?: pulumi.Input<boolean>;
     /**
@@ -135,7 +162,7 @@ export interface UserArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * Whether to make user an admin.
+     * Whether to make user an admin. Defaults to `false`.
      */
     isAdmin?: pulumi.Input<boolean>;
     /**

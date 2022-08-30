@@ -95,16 +95,14 @@ public final class SyntheticMonitoringProbeState extends com.pulumi.resources.Re
     }
 
     /**
-     * Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-     * to `true`.
+     * Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-     * to `true`.
+     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -278,8 +276,7 @@ public final class SyntheticMonitoringProbeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param public_ Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-         * to `true`.
+         * @param public_ Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -290,8 +287,7 @@ public final class SyntheticMonitoringProbeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param public_ Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-         * to `true`.
+         * @param public_ Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
          * 
          * @return builder
          * 

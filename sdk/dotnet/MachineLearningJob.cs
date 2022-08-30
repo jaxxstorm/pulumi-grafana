@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// A job defines the queries and model parameters for a machine learning task.
+    /// </summary>
     [GrafanaResourceType("grafana:index/machineLearningJob:MachineLearningJob")]
     public partial class MachineLearningJob : global::Pulumi.CustomResource
     {
@@ -31,14 +34,13 @@ namespace Pulumi.Grafana
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        /// for the full list of available hyperparameters.
+        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         /// </summary>
         [Output("hyperParams")]
         public Output<ImmutableDictionary<string, object>?> HyperParams { get; private set; } = null!;
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `300`.
         /// </summary>
         [Output("interval")]
         public Output<int?> Interval { get; private set; } = null!;
@@ -62,7 +64,7 @@ namespace Pulumi.Grafana
         public Output<ImmutableDictionary<string, object>> QueryParams { get; private set; } = null!;
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `7776000`.
         /// </summary>
         [Output("trainingWindow")]
         public Output<int?> TrainingWindow { get; private set; } = null!;
@@ -136,8 +138,7 @@ namespace Pulumi.Grafana
         private InputMap<object>? _hyperParams;
 
         /// <summary>
-        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        /// for the full list of available hyperparameters.
+        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         /// </summary>
         public InputMap<object> HyperParams
         {
@@ -146,7 +147,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `300`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
@@ -176,7 +177,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `7776000`.
         /// </summary>
         [Input("trainingWindow")]
         public Input<int>? TrainingWindow { get; set; }
@@ -211,8 +212,7 @@ namespace Pulumi.Grafana
         private InputMap<object>? _hyperParams;
 
         /// <summary>
-        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        /// for the full list of available hyperparameters.
+        /// The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         /// </summary>
         public InputMap<object> HyperParams
         {
@@ -221,7 +221,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `300`.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The data interval in seconds to train the data on.
+        /// The data interval in seconds to train the data on. Defaults to `7776000`.
         /// </summary>
         [Input("trainingWindow")]
         public Input<int>? TrainingWindow { get; set; }

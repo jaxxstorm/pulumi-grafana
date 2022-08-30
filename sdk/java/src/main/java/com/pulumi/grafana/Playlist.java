@@ -15,6 +15,11 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/playlist/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/playlist/)
+ * 
+ */
 @ResourceType(type="grafana:index/playlist:Playlist")
 public class Playlist extends com.pulumi.resources.CustomResource {
     @Export(name="interval", type=String.class, parameters={})

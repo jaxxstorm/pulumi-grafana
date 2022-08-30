@@ -10,6 +10,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := grafana.NewTeam(ctx, "test", &grafana.TeamArgs{
+//				Email: pulumi.String("test-team-email@test.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = grafana.LookupTeamOutput(ctx, GetTeamOutputArgs{
+//				Name: test.Name,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTeam(ctx *pulumi.Context, args *LookupTeamArgs, opts ...pulumi.InvokeOption) (*LookupTeamResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupTeamResult
@@ -22,13 +54,15 @@ func LookupTeam(ctx *pulumi.Context, args *LookupTeamArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getTeam.
 type LookupTeamArgs struct {
+	// The name of the Grafana team.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getTeam.
 type LookupTeamResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the Grafana team.
 	Name string `pulumi:"name"`
 }
 
@@ -47,6 +81,7 @@ func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getTeam.
 type LookupTeamOutputArgs struct {
+	// The name of the Grafana team.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -74,6 +109,7 @@ func (o LookupTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the Grafana team.
 func (o LookupTeamResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Name }).(pulumi.StringOutput)
 }

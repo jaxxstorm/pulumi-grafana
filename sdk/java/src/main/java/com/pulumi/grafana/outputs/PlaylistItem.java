@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PlaylistItem {
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private @Nullable String id;
     private Integer order;
     private String title;
@@ -19,6 +23,10 @@ public final class PlaylistItem {
     private @Nullable String value;
 
     private PlaylistItem() {}
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

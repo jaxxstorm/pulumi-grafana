@@ -11,6 +11,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewExternalGroup(ctx, "test-team-group", &grafana.ExternalGroupArgs{
+//				Groups: pulumi.StringArray{
+//					pulumi.String("test-group-1"),
+//					pulumi.String("test-group-2"),
+//				},
+//				TeamId: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+//
+// ```
 type ExternalGroup struct {
 	pulumi.CustomResourceState
 

@@ -10,6 +10,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Grafana Alerting contact points.
+//
+// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#contact-points)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewContactPoint(ctx, "myContactPoint", &grafana.ContactPointArgs{
+//				Emails: ContactPointEmailArray{
+//					&ContactPointEmailArgs{
+//						Addresses: pulumi.StringArray{
+//							pulumi.String("one@company.org"),
+//							pulumi.String("two@company.org"),
+//						},
+//						DisableResolveMessage: pulumi.Bool(false),
+//						Message:               pulumi.String("{{ len .Alerts.Firing }} firing."),
+//						SingleEmail:           pulumi.Bool(true),
+//						Subject:               pulumi.String("{{ template \"default.title\" .}}"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/contactPoint:ContactPoint contact_point_name {{contact_point_name}}
+//
+// ```
 type ContactPoint struct {
 	pulumi.CustomResourceState
 
@@ -45,8 +95,7 @@ type ContactPoint struct {
 	Threemas ContactPointThreemaArrayOutput `pulumi:"threemas"`
 	// A contact point that sends notifications to VictorOps (now known as Splunk OnCall).
 	Victorops ContactPointVictoropArrayOutput `pulumi:"victorops"`
-	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-	// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 	Webhooks ContactPointWebhookArrayOutput `pulumi:"webhooks"`
 	// A contact point that sends notifications to WeCom.
 	Wecoms ContactPointWecomArrayOutput `pulumi:"wecoms"`
@@ -114,8 +163,7 @@ type contactPointState struct {
 	Threemas []ContactPointThreema `pulumi:"threemas"`
 	// A contact point that sends notifications to VictorOps (now known as Splunk OnCall).
 	Victorops []ContactPointVictorop `pulumi:"victorops"`
-	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-	// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 	Webhooks []ContactPointWebhook `pulumi:"webhooks"`
 	// A contact point that sends notifications to WeCom.
 	Wecoms []ContactPointWecom `pulumi:"wecoms"`
@@ -154,8 +202,7 @@ type ContactPointState struct {
 	Threemas ContactPointThreemaArrayInput
 	// A contact point that sends notifications to VictorOps (now known as Splunk OnCall).
 	Victorops ContactPointVictoropArrayInput
-	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-	// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 	Webhooks ContactPointWebhookArrayInput
 	// A contact point that sends notifications to WeCom.
 	Wecoms ContactPointWecomArrayInput
@@ -198,8 +245,7 @@ type contactPointArgs struct {
 	Threemas []ContactPointThreema `pulumi:"threemas"`
 	// A contact point that sends notifications to VictorOps (now known as Splunk OnCall).
 	Victorops []ContactPointVictorop `pulumi:"victorops"`
-	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-	// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 	Webhooks []ContactPointWebhook `pulumi:"webhooks"`
 	// A contact point that sends notifications to WeCom.
 	Wecoms []ContactPointWecom `pulumi:"wecoms"`
@@ -239,8 +285,7 @@ type ContactPointArgs struct {
 	Threemas ContactPointThreemaArrayInput
 	// A contact point that sends notifications to VictorOps (now known as Splunk OnCall).
 	Victorops ContactPointVictoropArrayInput
-	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-	// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+	// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 	Webhooks ContactPointWebhookArrayInput
 	// A contact point that sends notifications to WeCom.
 	Wecoms ContactPointWecomArrayInput
@@ -413,8 +458,7 @@ func (o ContactPointOutput) Victorops() ContactPointVictoropArrayOutput {
 	return o.ApplyT(func(v *ContactPoint) ContactPointVictoropArrayOutput { return v.Victorops }).(ContactPointVictoropArrayOutput)
 }
 
-// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 func (o ContactPointOutput) Webhooks() ContactPointWebhookArrayOutput {
 	return o.ApplyT(func(v *ContactPoint) ContactPointWebhookArrayOutput { return v.Webhooks }).(ContactPointWebhookArrayOutput)
 }

@@ -43,26 +43,41 @@ class GetCloudIpsResult:
     @property
     @pulumi.getter(name="hostedAlerts")
     def hosted_alerts(self) -> Sequence[str]:
+        """
+        Set of IP addresses that are used for hosted alerts.
+        """
         return pulumi.get(self, "hosted_alerts")
 
     @property
     @pulumi.getter(name="hostedGrafanas")
     def hosted_grafanas(self) -> Sequence[str]:
+        """
+        Set of IP addresses that are used for hosted Grafana.
+        """
         return pulumi.get(self, "hosted_grafanas")
 
     @property
     @pulumi.getter(name="hostedLogs")
     def hosted_logs(self) -> Sequence[str]:
+        """
+        Set of IP addresses that are used for hosted logs.
+        """
         return pulumi.get(self, "hosted_logs")
 
     @property
     @pulumi.getter(name="hostedMetrics")
     def hosted_metrics(self) -> Sequence[str]:
+        """
+        Set of IP addresses that are used for hosted metrics.
+        """
         return pulumi.get(self, "hosted_metrics")
 
     @property
     @pulumi.getter(name="hostedTraces")
     def hosted_traces(self) -> Sequence[str]:
+        """
+        Set of IP addresses that are used for hosted traces.
+        """
         return pulumi.get(self, "hosted_traces")
 
     @property
@@ -90,7 +105,16 @@ class AwaitableGetCloudIpsResult(GetCloudIpsResult):
 
 def get_cloud_ips(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudIpsResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving sets of cloud IPs. See https://grafana.com/docs/grafana-cloud/reference/allow-list/ for more info
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test = grafana.get_cloud_ips()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

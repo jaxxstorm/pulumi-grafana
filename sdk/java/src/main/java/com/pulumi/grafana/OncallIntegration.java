@@ -16,6 +16,52 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/oncall/integrations/)
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.OncallIntegration;
+ * import com.pulumi.grafana.OncallIntegrationArgs;
+ * import com.pulumi.grafana.inputs.OncallIntegrationDefaultRouteArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test_acc_integration = new OncallIntegration(&#34;test-acc-integration&#34;, OncallIntegrationArgs.builder()        
+ *             .type(&#34;grafana&#34;)
+ *             .defaultRoute()
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(grafana.oncall())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallIntegration:OncallIntegration integration_name {{integration_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallIntegration:OncallIntegration")
 public class OncallIntegration extends com.pulumi.resources.CustomResource {
     /**
@@ -89,18 +135,14 @@ public class OncallIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.templates);
     }
     /**
-     * The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-     * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-     * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+     * The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-     * pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-     * uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+     * @return The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
      * 
      */
     public Output<String> type() {

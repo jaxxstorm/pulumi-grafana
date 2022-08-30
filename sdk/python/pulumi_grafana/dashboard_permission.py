@@ -100,7 +100,36 @@ class DashboardPermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPermissionPermissionArgs']]]]] = None,
                  __props__=None):
         """
-        Create a DashboardPermission resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        user = grafana.User("user", email="user.name@example.com")
+        metrics = grafana.Dashboard("metrics", config_json=(lambda path: open(path).read())("grafana-dashboard.json"))
+        collection_permission = grafana.DashboardPermission("collectionPermission",
+            dashboard_id=metrics.dashboard_id,
+            permissions=[
+                grafana.DashboardPermissionPermissionArgs(
+                    role="Editor",
+                    permission="Edit",
+                ),
+                grafana.DashboardPermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="View",
+                ),
+                grafana.DashboardPermissionPermissionArgs(
+                    user_id=user.id,
+                    permission="Admin",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] dashboard_id: ID of the dashboard to apply permissions to.
@@ -113,7 +142,36 @@ class DashboardPermission(pulumi.CustomResource):
                  args: DashboardPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DashboardPermission resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        user = grafana.User("user", email="user.name@example.com")
+        metrics = grafana.Dashboard("metrics", config_json=(lambda path: open(path).read())("grafana-dashboard.json"))
+        collection_permission = grafana.DashboardPermission("collectionPermission",
+            dashboard_id=metrics.dashboard_id,
+            permissions=[
+                grafana.DashboardPermissionPermissionArgs(
+                    role="Editor",
+                    permission="Edit",
+                ),
+                grafana.DashboardPermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="View",
+                ),
+                grafana.DashboardPermissionPermissionArgs(
+                    user_id=user.id,
+                    permission="Admin",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param DashboardPermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

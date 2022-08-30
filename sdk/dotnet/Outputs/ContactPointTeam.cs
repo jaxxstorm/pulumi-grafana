@@ -13,12 +13,33 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointTeam
     {
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The templated message content to send.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// The templated subtitle for each message section.
+        /// </summary>
         public readonly string? SectionTitle;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The templated title of the message.
+        /// </summary>
         public readonly string? Title;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
+        /// <summary>
+        /// A Teams webhook URL.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointThreema {
+    /**
+     * @return The Threema API key.
+     * 
+     */
     private String apiSecret;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The Threema gateway ID.
+     * 
+     */
     private String gatewayId;
+    /**
+     * @return The ID of the recipient of the message.
+     * 
+     */
     private String recipientId;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
 
     private ContactPointThreema() {}
+    /**
+     * @return The Threema API key.
+     * 
+     */
     public String apiSecret() {
         return this.apiSecret;
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The Threema gateway ID.
+     * 
+     */
     public String gatewayId() {
         return this.gatewayId;
     }
+    /**
+     * @return The ID of the recipient of the message.
+     * 
+     */
     public String recipientId() {
         return this.recipientId;
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

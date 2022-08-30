@@ -36,14 +36,14 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to include a link to the dashboard in the report.
+     * Whether to include a link to the dashboard in the report. Defaults to `true`.
      * 
      */
     @Import(name="includeDashboardLink")
     private @Nullable Output<Boolean> includeDashboardLink;
 
     /**
-     * @return Whether to include a link to the dashboard in the report.
+     * @return Whether to include a link to the dashboard in the report. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> includeDashboardLink() {
@@ -51,14 +51,14 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to include a CSV file of table panel data.
+     * Whether to include a CSV file of table panel data. Defaults to `false`.
      * 
      */
     @Import(name="includeTableCsv")
     private @Nullable Output<Boolean> includeTableCsv;
 
     /**
-     * @return Whether to include a CSV file of table panel data.
+     * @return Whether to include a CSV file of table panel data. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> includeTableCsv() {
@@ -66,14 +66,14 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Layout of the report. `simple` or `grid`
+     * Layout of the report. `simple` or `grid` Defaults to `grid`.
      * 
      */
     @Import(name="layout")
     private @Nullable Output<String> layout;
 
     /**
-     * @return Layout of the report. `simple` or `grid`
+     * @return Layout of the report. `simple` or `grid` Defaults to `grid`.
      * 
      */
     public Optional<Output<String>> layout() {
@@ -111,14 +111,14 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Orientation of the report. `landscape` or `portrait`
+     * Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      * 
      */
     @Import(name="orientation")
     private @Nullable Output<String> orientation;
 
     /**
-     * @return Orientation of the report. `landscape` or `portrait`
+     * @return Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      * 
      */
     public Optional<Output<String>> orientation() {
@@ -241,7 +241,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeDashboardLink Whether to include a link to the dashboard in the report.
+         * @param includeDashboardLink Whether to include a link to the dashboard in the report. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeDashboardLink Whether to include a link to the dashboard in the report.
+         * @param includeDashboardLink Whether to include a link to the dashboard in the report. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeTableCsv Whether to include a CSV file of table panel data.
+         * @param includeTableCsv Whether to include a CSV file of table panel data. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeTableCsv Whether to include a CSV file of table panel data.
+         * @param includeTableCsv Whether to include a CSV file of table panel data. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param layout Layout of the report. `simple` or `grid`
+         * @param layout Layout of the report. `simple` or `grid` Defaults to `grid`.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param layout Layout of the report. `simple` or `grid`
+         * @param layout Layout of the report. `simple` or `grid` Defaults to `grid`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orientation Orientation of the report. `landscape` or `portrait`
+         * @param orientation Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ReportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orientation Orientation of the report. `landscape` or `portrait`
+         * @param orientation Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
          * 
          * @return builder
          * 

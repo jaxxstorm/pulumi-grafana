@@ -15,6 +15,69 @@ import java.lang.Integer;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/datasource_permissions/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Team;
+ * import com.pulumi.grafana.DataSource;
+ * import com.pulumi.grafana.DataSourceArgs;
+ * import com.pulumi.grafana.inputs.DataSourceJsonDataArgs;
+ * import com.pulumi.grafana.inputs.DataSourceSecureJsonDataArgs;
+ * import com.pulumi.grafana.DataSourcePermission;
+ * import com.pulumi.grafana.DataSourcePermissionArgs;
+ * import com.pulumi.grafana.inputs.DataSourcePermissionPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var team = new Team(&#34;team&#34;);
+ * 
+ *         var foo = new DataSource(&#34;foo&#34;, DataSourceArgs.builder()        
+ *             .type(&#34;cloudwatch&#34;)
+ *             .jsonDatas(DataSourceJsonDataArgs.builder()
+ *                 .defaultRegion(&#34;us-east-1&#34;)
+ *                 .authType(&#34;keys&#34;)
+ *                 .build())
+ *             .secureJsonDatas(DataSourceSecureJsonDataArgs.builder()
+ *                 .accessKey(&#34;123&#34;)
+ *                 .secretKey(&#34;456&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooPermissions = new DataSourcePermission(&#34;fooPermissions&#34;, DataSourcePermissionArgs.builder()        
+ *             .datasourceId(foo.id())
+ *             .permissions(            
+ *                 DataSourcePermissionPermissionArgs.builder()
+ *                     .teamId(team.id())
+ *                     .permission(&#34;Query&#34;)
+ *                     .build(),
+ *                 DataSourcePermissionPermissionArgs.builder()
+ *                     .userId(3)
+ *                     .permission(&#34;Query&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/dataSourcePermission:DataSourcePermission")
 public class DataSourcePermission extends com.pulumi.resources.CustomResource {
     /**

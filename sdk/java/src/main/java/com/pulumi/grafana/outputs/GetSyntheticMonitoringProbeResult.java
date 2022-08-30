@@ -13,37 +13,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSyntheticMonitoringProbeResult {
+    /**
+     * @return The ID of the probe.
+     * 
+     */
     private String id;
+    /**
+     * @return Custom labels to be included with collected metrics and logs.
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return Latitude coordinates.
+     * 
+     */
     private Double latitude;
+    /**
+     * @return Longitude coordinates.
+     * 
+     */
     private Double longitude;
+    /**
+     * @return Name of the probe.
+     * 
+     */
     private String name;
+    /**
+     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`.
+     * 
+     */
     private Boolean public_;
+    /**
+     * @return Region of the probe.
+     * 
+     */
     private String region;
+    /**
+     * @return The tenant ID of the probe.
+     * 
+     */
     private Integer tenantId;
 
     private GetSyntheticMonitoringProbeResult() {}
+    /**
+     * @return The ID of the probe.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Custom labels to be included with collected metrics and logs.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Latitude coordinates.
+     * 
+     */
     public Double latitude() {
         return this.latitude;
     }
+    /**
+     * @return Longitude coordinates.
+     * 
+     */
     public Double longitude() {
         return this.longitude;
     }
+    /**
+     * @return Name of the probe.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`.
+     * 
+     */
     public Boolean public_() {
         return this.public_;
     }
+    /**
+     * @return Region of the probe.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return The tenant ID of the probe.
+     * 
+     */
     public Integer tenantId() {
         return this.tenantId;
     }

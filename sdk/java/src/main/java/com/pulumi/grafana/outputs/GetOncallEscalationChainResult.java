@@ -14,6 +14,10 @@ public final class GetOncallEscalationChainResult {
      * 
      */
     private String id;
+    /**
+     * @return The escalation chain name.
+     * 
+     */
     private String name;
 
     private GetOncallEscalationChainResult() {}
@@ -24,6 +28,10 @@ public final class GetOncallEscalationChainResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The escalation chain name.
+     * 
+     */
     public String name() {
         return this.name;
     }

@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointTelegram {
+    /**
+     * @return The chat ID to send messages to.
+     * 
+     */
     private String chatId;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The Telegram bot token.
+     * 
+     */
     private String token;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
 
     private ContactPointTelegram() {}
+    /**
+     * @return The chat ID to send messages to.
+     * 
+     */
     public String chatId() {
         return this.chatId;
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The Telegram bot token.
+     * 
+     */
     public String token() {
         return this.token;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

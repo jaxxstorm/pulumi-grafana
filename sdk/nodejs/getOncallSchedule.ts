@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/oncall/calendar-schedules/)
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const schedule = pulumi.output(grafana.getOncallSchedule({
+ *     name: "example_schedule",
+ * }));
+ * ```
+ */
 export function getOncallSchedule(args: GetOncallScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallScheduleResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +34,9 @@ export function getOncallSchedule(args: GetOncallScheduleArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getOncallSchedule.
  */
 export interface GetOncallScheduleArgs {
+    /**
+     * The schedule name.
+     */
     name: string;
 }
 
@@ -30,7 +48,13 @@ export interface GetOncallScheduleResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The schedule name.
+     */
     readonly name: string;
+    /**
+     * The schedule type.
+     */
     readonly type: string;
 }
 
@@ -42,5 +66,8 @@ export function getOncallScheduleOutput(args: GetOncallScheduleOutputArgs, opts?
  * A collection of arguments for invoking getOncallSchedule.
  */
 export interface GetOncallScheduleOutputArgs {
+    /**
+     * The schedule name.
+     */
     name: pulumi.Input<string>;
 }

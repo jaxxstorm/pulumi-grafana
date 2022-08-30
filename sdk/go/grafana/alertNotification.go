@@ -11,24 +11,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewAlertNotification(ctx, "emailSometeam", &grafana.AlertNotificationArgs{
+//				Frequency:    pulumi.String("24h"),
+//				IsDefault:    pulumi.Bool(false),
+//				SendReminder: pulumi.Bool(true),
+//				Settings: pulumi.AnyMap{
+//					"addresses":   pulumi.Any("foo@example.net;bar@example.net"),
+//					"uploadImage": pulumi.Any("false"),
+//				},
+//				Type: pulumi.String("email"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/alertNotification:AlertNotification alert_notification_name {{alert_notification_id}}
+//
+// ```
 type AlertNotification struct {
 	pulumi.CustomResourceState
 
-	// Whether to disable sending resolve messages.
+	// Whether to disable sending resolve messages. Defaults to `false`.
 	DisableResolveMessage pulumi.BoolPtrOutput `pulumi:"disableResolveMessage"`
-	// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+	// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
-	// Is this the default channel for all your alerts.
+	// Is this the default channel for all your alerts. Defaults to `false`.
 	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
 	// The name of the alert notification channel.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Additional secure settings, for full reference lookup [Grafana Supported Settings
-	// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+	// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 	SecureSettings pulumi.MapOutput `pulumi:"secureSettings"`
-	// Whether to send reminders for triggered alerts.
+	// Whether to send reminders for triggered alerts. Defaults to `false`.
 	SendReminder pulumi.BoolPtrOutput `pulumi:"sendReminder"`
-	// Additional settings, for full reference see [Grafana HTTP API
-	// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+	// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 	Settings pulumi.MapOutput `pulumi:"settings"`
 	// The type of the alert notification channel.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -69,21 +110,19 @@ func GetAlertNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertNotification resources.
 type alertNotificationState struct {
-	// Whether to disable sending resolve messages.
+	// Whether to disable sending resolve messages. Defaults to `false`.
 	DisableResolveMessage *bool `pulumi:"disableResolveMessage"`
-	// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+	// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
 	Frequency *string `pulumi:"frequency"`
-	// Is this the default channel for all your alerts.
+	// Is this the default channel for all your alerts. Defaults to `false`.
 	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the alert notification channel.
 	Name *string `pulumi:"name"`
-	// Additional secure settings, for full reference lookup [Grafana Supported Settings
-	// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+	// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 	SecureSettings map[string]interface{} `pulumi:"secureSettings"`
-	// Whether to send reminders for triggered alerts.
+	// Whether to send reminders for triggered alerts. Defaults to `false`.
 	SendReminder *bool `pulumi:"sendReminder"`
-	// Additional settings, for full reference see [Grafana HTTP API
-	// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+	// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 	Settings map[string]interface{} `pulumi:"settings"`
 	// The type of the alert notification channel.
 	Type *string `pulumi:"type"`
@@ -92,21 +131,19 @@ type alertNotificationState struct {
 }
 
 type AlertNotificationState struct {
-	// Whether to disable sending resolve messages.
+	// Whether to disable sending resolve messages. Defaults to `false`.
 	DisableResolveMessage pulumi.BoolPtrInput
-	// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+	// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
 	Frequency pulumi.StringPtrInput
-	// Is this the default channel for all your alerts.
+	// Is this the default channel for all your alerts. Defaults to `false`.
 	IsDefault pulumi.BoolPtrInput
 	// The name of the alert notification channel.
 	Name pulumi.StringPtrInput
-	// Additional secure settings, for full reference lookup [Grafana Supported Settings
-	// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+	// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 	SecureSettings pulumi.MapInput
-	// Whether to send reminders for triggered alerts.
+	// Whether to send reminders for triggered alerts. Defaults to `false`.
 	SendReminder pulumi.BoolPtrInput
-	// Additional settings, for full reference see [Grafana HTTP API
-	// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+	// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 	Settings pulumi.MapInput
 	// The type of the alert notification channel.
 	Type pulumi.StringPtrInput
@@ -119,21 +156,19 @@ func (AlertNotificationState) ElementType() reflect.Type {
 }
 
 type alertNotificationArgs struct {
-	// Whether to disable sending resolve messages.
+	// Whether to disable sending resolve messages. Defaults to `false`.
 	DisableResolveMessage *bool `pulumi:"disableResolveMessage"`
-	// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+	// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
 	Frequency *string `pulumi:"frequency"`
-	// Is this the default channel for all your alerts.
+	// Is this the default channel for all your alerts. Defaults to `false`.
 	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the alert notification channel.
 	Name *string `pulumi:"name"`
-	// Additional secure settings, for full reference lookup [Grafana Supported Settings
-	// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+	// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 	SecureSettings map[string]interface{} `pulumi:"secureSettings"`
-	// Whether to send reminders for triggered alerts.
+	// Whether to send reminders for triggered alerts. Defaults to `false`.
 	SendReminder *bool `pulumi:"sendReminder"`
-	// Additional settings, for full reference see [Grafana HTTP API
-	// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+	// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 	Settings map[string]interface{} `pulumi:"settings"`
 	// The type of the alert notification channel.
 	Type string `pulumi:"type"`
@@ -143,21 +178,19 @@ type alertNotificationArgs struct {
 
 // The set of arguments for constructing a AlertNotification resource.
 type AlertNotificationArgs struct {
-	// Whether to disable sending resolve messages.
+	// Whether to disable sending resolve messages. Defaults to `false`.
 	DisableResolveMessage pulumi.BoolPtrInput
-	// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+	// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
 	Frequency pulumi.StringPtrInput
-	// Is this the default channel for all your alerts.
+	// Is this the default channel for all your alerts. Defaults to `false`.
 	IsDefault pulumi.BoolPtrInput
 	// The name of the alert notification channel.
 	Name pulumi.StringPtrInput
-	// Additional secure settings, for full reference lookup [Grafana Supported Settings
-	// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+	// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 	SecureSettings pulumi.MapInput
-	// Whether to send reminders for triggered alerts.
+	// Whether to send reminders for triggered alerts. Defaults to `false`.
 	SendReminder pulumi.BoolPtrInput
-	// Additional settings, for full reference see [Grafana HTTP API
-	// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+	// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 	Settings pulumi.MapInput
 	// The type of the alert notification channel.
 	Type pulumi.StringInput
@@ -252,17 +285,17 @@ func (o AlertNotificationOutput) ToAlertNotificationOutputWithContext(ctx contex
 	return o
 }
 
-// Whether to disable sending resolve messages.
+// Whether to disable sending resolve messages. Defaults to `false`.
 func (o AlertNotificationOutput) DisableResolveMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.BoolPtrOutput { return v.DisableResolveMessage }).(pulumi.BoolPtrOutput)
 }
 
-// Frequency of alert reminders. Frequency must be set if reminders are enabled.
+// Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to “.
 func (o AlertNotificationOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-// Is this the default channel for all your alerts.
+// Is this the default channel for all your alerts. Defaults to `false`.
 func (o AlertNotificationOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
@@ -272,19 +305,17 @@ func (o AlertNotificationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Additional secure settings, for full reference lookup [Grafana Supported Settings
-// documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+// Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
 func (o AlertNotificationOutput) SecureSettings() pulumi.MapOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.MapOutput { return v.SecureSettings }).(pulumi.MapOutput)
 }
 
-// Whether to send reminders for triggered alerts.
+// Whether to send reminders for triggered alerts. Defaults to `false`.
 func (o AlertNotificationOutput) SendReminder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.BoolPtrOutput { return v.SendReminder }).(pulumi.BoolPtrOutput)
 }
 
-// Additional settings, for full reference see [Grafana HTTP API
-// documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+// Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
 func (o AlertNotificationOutput) Settings() pulumi.MapOutput {
 	return o.ApplyT(func(v *AlertNotification) pulumi.MapOutput { return v.Settings }).(pulumi.MapOutput)
 }

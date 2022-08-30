@@ -14,45 +14,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointWebhook {
+    /**
+     * @return Allows a custom authorization scheme - attaches an auth header with this value. Do not use in conjunction with basic auth parameters.
+     * 
+     */
     private @Nullable String authorizationCredentials;
+    /**
+     * @return Allows a custom authorization scheme - attaches an auth header with this name. Do not use in conjunction with basic auth parameters.
+     * 
+     */
     private @Nullable String authorizationScheme;
+    /**
+     * @return The username to use in basic auth headers attached to the request. If omitted, basic auth will not be used.
+     * 
+     */
     private @Nullable String basicAuthPassword;
+    /**
+     * @return The username to use in basic auth headers attached to the request. If omitted, basic auth will not be used.
+     * 
+     */
     private @Nullable String basicAuthUser;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The HTTP method to use in the request. Defaults to `POST`.
+     * 
+     */
     private @Nullable String httpMethod;
+    /**
+     * @return The maximum number of alerts to send in a single request. This can be helpful in limiting the size of the request body. The default is 0, which indicates no limit.
+     * 
+     */
     private @Nullable Integer maxAlerts;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The URL to send webhook requests to.
+     * 
+     */
     private String url;
 
     private ContactPointWebhook() {}
+    /**
+     * @return Allows a custom authorization scheme - attaches an auth header with this value. Do not use in conjunction with basic auth parameters.
+     * 
+     */
     public Optional<String> authorizationCredentials() {
         return Optional.ofNullable(this.authorizationCredentials);
     }
+    /**
+     * @return Allows a custom authorization scheme - attaches an auth header with this name. Do not use in conjunction with basic auth parameters.
+     * 
+     */
     public Optional<String> authorizationScheme() {
         return Optional.ofNullable(this.authorizationScheme);
     }
+    /**
+     * @return The username to use in basic auth headers attached to the request. If omitted, basic auth will not be used.
+     * 
+     */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
+    /**
+     * @return The username to use in basic auth headers attached to the request. If omitted, basic auth will not be used.
+     * 
+     */
     public Optional<String> basicAuthUser() {
         return Optional.ofNullable(this.basicAuthUser);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The HTTP method to use in the request. Defaults to `POST`.
+     * 
+     */
     public Optional<String> httpMethod() {
         return Optional.ofNullable(this.httpMethod);
     }
+    /**
+     * @return The maximum number of alerts to send in a single request. This can be helpful in limiting the size of the request body. The default is 0, which indicates no limit.
+     * 
+     */
     public Optional<Integer> maxAlerts() {
         return Optional.ofNullable(this.maxAlerts);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The URL to send webhook requests to.
+     * 
+     */
     public String url() {
         return this.url;
     }

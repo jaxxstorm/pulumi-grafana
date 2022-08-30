@@ -33,14 +33,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to make user an admin.
+     * Whether to make user an admin. Defaults to `false`.
      * 
      */
     @Import(name="isAdmin")
     private @Nullable Output<Boolean> isAdmin;
 
     /**
-     * @return Whether to make user an admin.
+     * @return Whether to make user an admin. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> isAdmin() {
@@ -158,7 +158,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isAdmin Whether to make user an admin.
+         * @param isAdmin Whether to make user an admin. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isAdmin Whether to make user an admin.
+         * @param isAdmin Whether to make user an admin. Defaults to `false`.
          * 
          * @return builder
          * 

@@ -130,7 +130,28 @@ class CloudPluginInstallation(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a CloudPluginInstallation resource with the given unique name, props, and options.
+        Manages Grafana Cloud Plugin Installations.
+
+        * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test = grafana.CloudPluginInstallation("test",
+            slug="some-plugin",
+            stack_slug="stackname",
+            version="1.2.3")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] slug: Slug of the plugin to be installed.
@@ -144,7 +165,28 @@ class CloudPluginInstallation(pulumi.CustomResource):
                  args: CloudPluginInstallationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a CloudPluginInstallation resource with the given unique name, props, and options.
+        Manages Grafana Cloud Plugin Installations.
+
+        * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test = grafana.CloudPluginInstallation("test",
+            slug="some-plugin",
+            stack_slug="stackname",
+            version="1.2.3")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param CloudPluginInstallationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

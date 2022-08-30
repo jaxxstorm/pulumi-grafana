@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const testFolderFolder = new grafana.Folder("testFolderFolder", {title: "Terraform Test Folder"});
+ * const testFolderDashboard = new grafana.Dashboard("testFolderDashboard", {
+ *     folder: testFolderFolder.id,
+ *     configJson: `{
+ *   "title": "Dashboard in folder",
+ *   "uid": "dashboard-in-folder"
+ * }
+ * `,
+ * });
+ * const testFolderWithUid = new grafana.Folder("testFolderWithUid", {
+ *     uid: "test-folder-uid",
+ *     title: "Terraform Test Folder With UID",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+ * ```
+ */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra

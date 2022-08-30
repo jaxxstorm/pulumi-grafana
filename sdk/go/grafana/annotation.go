@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/annotations/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/annotations/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewAnnotation(ctx, "test", &grafana.AnnotationArgs{
+//				Text: pulumi.String("basic text"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Annotation struct {
 	pulumi.CustomResourceState
 

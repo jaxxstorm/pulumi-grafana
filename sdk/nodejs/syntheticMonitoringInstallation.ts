@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+ * Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+ * This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+ * * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const smStackCloudStack = new grafana.CloudStack("smStackCloudStack", {
+ *     slug: "<stack-slug>",
+ *     regionSlug: "us",
+ * });
+ * const metricsPublish = new grafana.CloudApiKey("metricsPublish", {
+ *     role: "MetricsPublisher",
+ *     cloudOrgSlug: "<org-slug>",
+ * });
+ * const smStackSyntheticMonitoringInstallation = new grafana.SyntheticMonitoringInstallation("smStackSyntheticMonitoringInstallation", {
+ *     stackId: smStackCloudStack.id,
+ *     metricsInstanceId: smStackCloudStack.prometheusUserId,
+ *     logsInstanceId: smStackCloudStack.logsUserId,
+ *     metricsPublisherKey: metricsPublish.key,
+ * });
+ * ```
+ */
 export class SyntheticMonitoringInstallation extends pulumi.CustomResource {
     /**
      * Get an existing SyntheticMonitoringInstallation resource's state with the given name, ID, and optional extra
@@ -33,11 +63,11 @@ export class SyntheticMonitoringInstallation extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+     * The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
      */
     public readonly logsInstanceId!: pulumi.Output<number>;
     /**
-     * The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+     * The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
      */
     public readonly metricsInstanceId!: pulumi.Output<number>;
     /**
@@ -101,11 +131,11 @@ export class SyntheticMonitoringInstallation extends pulumi.CustomResource {
  */
 export interface SyntheticMonitoringInstallationState {
     /**
-     * The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+     * The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
      */
     logsInstanceId?: pulumi.Input<number>;
     /**
-     * The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+     * The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
      */
     metricsInstanceId?: pulumi.Input<number>;
     /**
@@ -127,11 +157,11 @@ export interface SyntheticMonitoringInstallationState {
  */
 export interface SyntheticMonitoringInstallationArgs {
     /**
-     * The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+     * The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
      */
     logsInstanceId: pulumi.Input<number>;
     /**
-     * The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+     * The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
      */
     metricsInstanceId: pulumi.Input<number>;
     /**

@@ -12,6 +12,9 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class OncallRouteSlackArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Slack channel id. Alerts will be directed to this channel in Slack.
+        /// </summary>
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;
 

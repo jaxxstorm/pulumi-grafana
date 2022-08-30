@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class OncallRouteSlack {
+    /**
+     * @return Slack channel id. Alerts will be directed to this channel in Slack.
+     * 
+     */
     private String channelId;
 
     private OncallRouteSlack() {}
+    /**
+     * @return Slack channel id. Alerts will be directed to this channel in Slack.
+     * 
+     */
     public String channelId() {
         return this.channelId;
     }

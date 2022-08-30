@@ -16,16 +16,32 @@ public final class GetDashboardArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDashboardArgs Empty = new GetDashboardArgs();
 
+    /**
+     * The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+     * 
+     */
     @Import(name="dashboardId")
     private @Nullable Output<Integer> dashboardId;
 
+    /**
+     * @return The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+     * 
+     */
     public Optional<Output<Integer>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
 
+    /**
+     * The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -55,20 +71,44 @@ public final class GetDashboardArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetDashboardArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dashboardId The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(@Nullable Output<Integer> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
+        /**
+         * @param dashboardId The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(Integer dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param uid The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

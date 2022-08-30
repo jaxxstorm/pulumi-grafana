@@ -13,11 +13,29 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointWecom
     {
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The templated content of the message to send.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The templated title of the message to send.
+        /// </summary>
         public readonly string? Title;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
+        /// <summary>
+        /// The WeCom webhook URL.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

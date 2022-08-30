@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const _default = new grafana.OncallEscalationChain("default", {}, {
+ *     provider: grafana.oncall,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+ * ```
+ */
 export class OncallEscalationChain extends pulumi.CustomResource {
     /**
      * Get an existing OncallEscalationChain resource's state with the given name, ID, and optional extra

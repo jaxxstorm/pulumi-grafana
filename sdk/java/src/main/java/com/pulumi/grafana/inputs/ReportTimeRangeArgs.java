@@ -15,16 +15,32 @@ public final class ReportTimeRangeArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ReportTimeRangeArgs Empty = new ReportTimeRangeArgs();
 
+    /**
+     * Start of the time range.
+     * 
+     */
     @Import(name="from")
     private @Nullable Output<String> from;
 
+    /**
+     * @return Start of the time range.
+     * 
+     */
     public Optional<Output<String>> from() {
         return Optional.ofNullable(this.from);
     }
 
+    /**
+     * End of the time range.
+     * 
+     */
     @Import(name="to")
     private @Nullable Output<String> to;
 
+    /**
+     * @return End of the time range.
+     * 
+     */
     public Optional<Output<String>> to() {
         return Optional.ofNullable(this.to);
     }
@@ -54,20 +70,44 @@ public final class ReportTimeRangeArgs extends com.pulumi.resources.ResourceArgs
             $ = new ReportTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param from Start of the time range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(@Nullable Output<String> from) {
             $.from = from;
             return this;
         }
 
+        /**
+         * @param from Start of the time range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(String from) {
             return from(Output.of(from));
         }
 
+        /**
+         * @param to End of the time range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(@Nullable Output<String> to) {
             $.to = to;
             return this;
         }
 
+        /**
+         * @param to End of the time range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(String to) {
             return to(Output.of(to));
         }

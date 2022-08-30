@@ -11,6 +11,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			team, err := grafana.NewTeam(ctx, "team", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := grafana.NewUser(ctx, "user", &grafana.UserArgs{
+//				Email: pulumi.String("user.name@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			collection, err := grafana.NewFolder(ctx, "collection", &grafana.FolderArgs{
+//				Title: pulumi.String("Folder Title"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewFolderPermission(ctx, "collectionPermission", &grafana.FolderPermissionArgs{
+//				FolderUid: collection.Uid,
+//				Permissions: FolderPermissionPermissionArray{
+//					&FolderPermissionPermissionArgs{
+//						Role:       pulumi.String("Editor"),
+//						Permission: pulumi.String("Edit"),
+//					},
+//					&FolderPermissionPermissionArgs{
+//						TeamId:     team.ID(),
+//						Permission: pulumi.String("View"),
+//					},
+//					&FolderPermissionPermissionArgs{
+//						UserId:     user.ID(),
+//						Permission: pulumi.String("Admin"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type FolderPermission struct {
 	pulumi.CustomResourceState
 

@@ -13,9 +13,17 @@ public final class OncallRouteSlackArgs extends com.pulumi.resources.ResourceArg
 
     public static final OncallRouteSlackArgs Empty = new OncallRouteSlackArgs();
 
+    /**
+     * Slack channel id. Alerts will be directed to this channel in Slack.
+     * 
+     */
     @Import(name="channelId", required=true)
     private Output<String> channelId;
 
+    /**
+     * @return Slack channel id. Alerts will be directed to this channel in Slack.
+     * 
+     */
     public Output<String> channelId() {
         return this.channelId;
     }
@@ -44,11 +52,23 @@ public final class OncallRouteSlackArgs extends com.pulumi.resources.ResourceArg
             $ = new OncallRouteSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param channelId Slack channel id. Alerts will be directed to this channel in Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(Output<String> channelId) {
             $.channelId = channelId;
             return this;
         }
 
+        /**
+         * @param channelId Slack channel id. Alerts will be directed to this channel in Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(String channelId) {
             return channelId(Output.of(channelId));
         }

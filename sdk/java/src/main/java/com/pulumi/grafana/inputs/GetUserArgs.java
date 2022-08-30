@@ -16,23 +16,47 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserArgs Empty = new GetUserArgs();
 
+    /**
+     * The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * The username for the Grafana user. Defaults to ``.
+     * 
+     */
     @Import(name="login")
     private @Nullable Output<String> login;
 
+    /**
+     * @return The username for the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<Output<String>> login() {
         return Optional.ofNullable(this.login);
     }
 
+    /**
+     * The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
+    /**
+     * @return The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     public Optional<Output<Integer>> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -63,29 +87,65 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email The email address of the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email The email address of the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
+        /**
+         * @param login The username for the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder login(@Nullable Output<String> login) {
             $.login = login;
             return this;
         }
 
+        /**
+         * @param login The username for the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder login(String login) {
             return login(Output.of(login));
         }
 
+        /**
+         * @param userId The numerical ID of the Grafana user. Defaults to `-1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Output<Integer> userId) {
             $.userId = userId;
             return this;
         }
 
+        /**
+         * @param userId The numerical ID of the Grafana user. Defaults to `-1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
         }

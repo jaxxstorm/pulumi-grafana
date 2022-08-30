@@ -38,21 +38,33 @@ class GetFolderResult:
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        The numerical ID of the Grafana folder.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The name of the Grafana folder.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def uid(self) -> str:
+        """
+        The uid of the Grafana folder.
+        """
         return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The full URL of the folder.
+        """
         return pulumi.get(self, "url")
 
 
@@ -71,7 +83,23 @@ class AwaitableGetFolderResult(GetFolderResult):
 def get_folder(title: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFolderResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+    * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test = grafana.Folder("test",
+        title="test-folder",
+        uid="test-ds-folder-uid")
+    from_title = grafana.get_folder_output(title=test.title)
+    ```
+
+
+    :param str title: The name of the Grafana folder.
     """
     __args__ = dict()
     __args__['title'] = title
@@ -89,6 +117,22 @@ def get_folder(title: Optional[str] = None,
 def get_folder_output(title: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+    * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test = grafana.Folder("test",
+        title="test-folder",
+        uid="test-ds-folder-uid")
+    from_title = grafana.get_folder_output(title=test.title)
+    ```
+
+
+    :param str title: The name of the Grafana folder.
     """
     ...

@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test_team = new grafana.Team("test-team", {
+ *     email: "teamemail@example.com",
+ *     members: ["viewer-01@example.com"],
+ * });
+ * ```
+ */
 export class Team extends pulumi.CustomResource {
     /**
      * Get an existing Team resource's state with the given name, ID, and optional extra
@@ -37,8 +53,8 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-     * must already exist in Grafana.
+     * A set of email addresses corresponding to users who should be given membership
+     * to the team. Note: users specified here must already exist in Grafana.
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
@@ -88,8 +104,8 @@ export interface TeamState {
      */
     email?: pulumi.Input<string>;
     /**
-     * A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-     * must already exist in Grafana.
+     * A set of email addresses corresponding to users who should be given membership
+     * to the team. Note: users specified here must already exist in Grafana.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -111,8 +127,8 @@ export interface TeamArgs {
      */
     email?: pulumi.Input<string>;
     /**
-     * A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-     * must already exist in Grafana.
+     * A set of email addresses corresponding to users who should be given membership
+     * to the team. Note: users specified here must already exist in Grafana.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

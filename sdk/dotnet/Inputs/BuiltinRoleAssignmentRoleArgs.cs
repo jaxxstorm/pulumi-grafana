@@ -12,9 +12,15 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class BuiltinRoleAssignmentRoleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// States whether the assignment is available across all organizations or not. Defaults to `false`.
+        /// </summary>
         [Input("global")]
         public Input<bool>? Global { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the role to assign to `builtin_role`.
+        /// </summary>
         [Input("uid", required: true)]
         public Input<string> Uid { get; set; } = null!;
 

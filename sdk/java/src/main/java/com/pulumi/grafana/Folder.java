@@ -13,6 +13,68 @@ import com.pulumi.grafana.inputs.FolderState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Folder;
+ * import com.pulumi.grafana.FolderArgs;
+ * import com.pulumi.grafana.Dashboard;
+ * import com.pulumi.grafana.DashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testFolderFolder = new Folder(&#34;testFolderFolder&#34;, FolderArgs.builder()        
+ *             .title(&#34;Terraform Test Folder&#34;)
+ *             .build());
+ * 
+ *         var testFolderDashboard = new Dashboard(&#34;testFolderDashboard&#34;, DashboardArgs.builder()        
+ *             .folder(testFolderFolder.id())
+ *             .configJson(&#34;&#34;&#34;
+ * {
+ *   &#34;title&#34;: &#34;Dashboard in folder&#34;,
+ *   &#34;uid&#34;: &#34;dashboard-in-folder&#34;
+ * }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var testFolderWithUid = new Folder(&#34;testFolderWithUid&#34;, FolderArgs.builder()        
+ *             .uid(&#34;test-folder-uid&#34;)
+ *             .title(&#34;Terraform Test Folder With UID&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
     /**

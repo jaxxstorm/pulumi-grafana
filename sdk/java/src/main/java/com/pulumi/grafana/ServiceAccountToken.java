@@ -16,6 +16,50 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * **Note:** This resource is available only with Grafana 9.1+.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.ServiceAccountToken;
+ * import com.pulumi.grafana.ServiceAccountTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ServiceAccountToken(&#34;foo&#34;, ServiceAccountTokenArgs.builder()        
+ *             .serviceAccountId(1)
+ *             .build());
+ * 
+ *         var bar = new ServiceAccountToken(&#34;bar&#34;, ServiceAccountTokenArgs.builder()        
+ *             .serviceAccountId(1)
+ *             .secondsToLive(30)
+ *             .build());
+ * 
+ *         ctx.export(&#34;serviceAccountTokenFooKeyOnly&#34;, foo.key());
+ *         ctx.export(&#34;serviceAccountTokenBar&#34;, bar);
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/serviceAccountToken:ServiceAccountToken")
 public class ServiceAccountToken extends com.pulumi.resources.CustomResource {
     @Export(name="expiration", type=String.class, parameters={})

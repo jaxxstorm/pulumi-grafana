@@ -15,237 +15,701 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataSourceJsonData {
+    /**
+     * @return (CloudWatch, Athena) The ARN of the role to be assumed by Grafana when using the CloudWatch or Athena data source.
+     * 
+     */
     private @Nullable String assumeRoleArn;
+    /**
+     * @return (CloudWatch, Athena) The authentication type used to access the data source.
+     * 
+     */
     private @Nullable String authType;
+    /**
+     * @return (Stackdriver) The authentication type: `jwt` or `gce`.
+     * 
+     */
     private @Nullable String authenticationType;
+    /**
+     * @return (Athena) Athena catalog.
+     * 
+     */
     private @Nullable String catalog;
+    /**
+     * @return (Stackdriver) Service account email address.
+     * 
+     */
     private @Nullable String clientEmail;
+    /**
+     * @return (Azure Monitor) The service account client id.
+     * 
+     */
     private @Nullable String clientId;
+    /**
+     * @return (Azure Monitor) The cloud name.
+     * 
+     */
     private @Nullable String cloudName;
+    /**
+     * @return (MySQL, PostgreSQL, and MSSQL) Maximum amount of time in seconds a connection may be reused (Grafana v5.4+).
+     * 
+     */
     private @Nullable Integer connMaxLifetime;
+    /**
+     * @return (CloudWatch) A comma-separated list of custom namespaces to be queried by the CloudWatch data source.
+     * 
+     */
     private @Nullable String customMetricsNamespaces;
+    /**
+     * @return (Athena) Name of the database within the catalog.
+     * 
+     */
     private @Nullable String database;
+    /**
+     * @return (InfluxDB) The default bucket for the data source.
+     * 
+     */
     private @Nullable String defaultBucket;
+    /**
+     * @return (Stackdriver) The default project for the data source.
+     * 
+     */
     private @Nullable String defaultProject;
+    /**
+     * @return (CloudWatch, Athena) The default region for the data source.
+     * 
+     */
     private @Nullable String defaultRegion;
+    /**
+     * @return (Loki) See https://grafana.com/docs/grafana/latest/datasources/loki/#derived-fields
+     * 
+     */
     private @Nullable List<DataSourceJsonDataDerivedField> derivedFields;
+    /**
+     * @return (MSSQL) Connection SSL encryption handling: &#39;disable&#39;, &#39;false&#39; or &#39;true&#39;.
+     * 
+     */
     private @Nullable String encrypt;
+    /**
+     * @return (Elasticsearch) Elasticsearch semantic version (Grafana v8.0+).
+     * 
+     */
     private @Nullable String esVersion;
+    /**
+     * @return (CloudWatch, Athena) If you are assuming a role in another account, that has been created with an external ID, specify the external ID here.
+     * 
+     */
     private @Nullable String externalId;
+    /**
+     * @return (Github) Github URL
+     * 
+     */
     private @Nullable String githubUrl;
+    /**
+     * @return (Graphite) Graphite version.
+     * 
+     */
     private @Nullable String graphiteVersion;
+    /**
+     * @return (Prometheus) HTTP method to use for making requests.
+     * 
+     */
     private @Nullable String httpMethod;
+    /**
+     * @return (Alertmanager) Implementation of Alertmanager. Either &#39;cortex&#39; or &#39;prometheus&#39;
+     * 
+     */
     private @Nullable String implementation;
+    /**
+     * @return (Elasticsearch) Index date time format. nil(No Pattern), &#39;Hourly&#39;, &#39;Daily&#39;, &#39;Weekly&#39;, &#39;Monthly&#39; or &#39;Yearly&#39;.
+     * 
+     */
     private @Nullable String interval;
+    /**
+     * @return (Elasticsearch) Which field should be used to indicate the priority of the log message.
+     * 
+     */
     private @Nullable String logLevelField;
+    /**
+     * @return (Elasticsearch) Which field should be used as the log message.
+     * 
+     */
     private @Nullable String logMessageField;
+    /**
+     * @return (Prometheus) Manage alerts.
+     * 
+     */
     private @Nullable Boolean manageAlerts;
+    /**
+     * @return (Elasticsearch) Maximum number of concurrent shard requests.
+     * 
+     */
     private @Nullable Integer maxConcurrentShardRequests;
+    /**
+     * @return (MySQL, PostgreSQL and MSSQL) Maximum number of connections in the idle connection pool (Grafana v5.4+).
+     * 
+     */
     private @Nullable Integer maxIdleConns;
+    /**
+     * @return (Loki) Upper limit for the number of log lines returned by Loki
+     * 
+     */
     private @Nullable Integer maxLines;
+    /**
+     * @return (MySQL, PostgreSQL and MSSQL) Maximum number of open connections to the database (Grafana v5.4+).
+     * 
+     */
     private @Nullable Integer maxOpenConns;
+    /**
+     * @return (Sentry) Organization slug.
+     * 
+     */
     private @Nullable String orgSlug;
+    /**
+     * @return (InfluxDB) An organization is a workspace for a group of users. All dashboards, tasks, buckets, members, etc., belong to an organization.
+     * 
+     */
     private @Nullable String organization;
+    /**
+     * @return (Athena) AWS S3 bucket to store execution outputs. If not specified, the default query result location from the Workgroup configuration will be used.
+     * 
+     */
     private @Nullable String outputLocation;
+    /**
+     * @return (PostgreSQL) Postgres version as a number (903/904/905/906/1000) meaning v9.3, v9.4, etc.
+     * 
+     */
     private @Nullable Integer postgresVersion;
+    /**
+     * @return (CloudWatch, Athena) The credentials profile name to use when authentication type is set as &#39;Credentials file&#39;.
+     * 
+     */
     private @Nullable String profile;
+    /**
+     * @return (Prometheus) Timeout for queries made to the Prometheus data source in seconds.
+     * 
+     */
     private @Nullable String queryTimeout;
+    /**
+     * @return (Elasticsearch and Prometheus) Specifies the ARN of an IAM role to assume.
+     * 
+     */
     private @Nullable String sigv4AssumeRoleArn;
+    /**
+     * @return (Elasticsearch and Prometheus) Enable usage of SigV4.
+     * 
+     */
     private @Nullable Boolean sigv4Auth;
+    /**
+     * @return (Elasticsearch and Prometheus) The Sigv4 authentication provider to use: &#39;default&#39;, &#39;credentials&#39; or &#39;keys&#39; (AMG: &#39;workspace-iam-role&#39;).
+     * 
+     */
     private @Nullable String sigv4AuthType;
+    /**
+     * @return (Elasticsearch and Prometheus) When assuming a role in another account use this external ID.
+     * 
+     */
     private @Nullable String sigv4ExternalId;
+    /**
+     * @return (Elasticsearch and Prometheus) Credentials profile name, leave blank for default.
+     * 
+     */
     private @Nullable String sigv4Profile;
+    /**
+     * @return (Elasticsearch and Prometheus) AWS region to use for Sigv4.
+     * 
+     */
     private @Nullable String sigv4Region;
+    /**
+     * @return (PostgreSQL) SSLmode. &#39;disable&#39;, &#39;require&#39;, &#39;verify-ca&#39; or &#39;verify-full&#39;.
+     * 
+     */
     private @Nullable String sslMode;
+    /**
+     * @return (Azure Monitor) The subscription id
+     * 
+     */
     private @Nullable String subscriptionId;
+    /**
+     * @return (Azure Monitor) Service account tenant ID.
+     * 
+     */
     private @Nullable String tenantId;
+    /**
+     * @return (Elasticsearch) Which field that should be used as timestamp.
+     * 
+     */
     private @Nullable String timeField;
+    /**
+     * @return (Prometheus, Elasticsearch, InfluxDB, MySQL, PostgreSQL, and MSSQL) Lowest interval/step value that should be used for this data source. Sometimes called &#34;Scrape Interval&#34; in the Grafana UI.
+     * 
+     */
     private @Nullable String timeInterval;
+    /**
+     * @return (PostgreSQL) Enable usage of TimescaleDB extension.
+     * 
+     */
     private @Nullable Boolean timescaledb;
+    /**
+     * @return (All) Enable TLS authentication using client cert configured in secure json data.
+     * 
+     */
     private @Nullable Boolean tlsAuth;
+    /**
+     * @return (All) Enable TLS authentication using CA cert.
+     * 
+     */
     private @Nullable Boolean tlsAuthWithCaCert;
+    /**
+     * @return (All) SSL Certificate configuration, either by ‘file-path’ or ‘file-content’.
+     * 
+     */
     private @Nullable String tlsConfigurationMethod;
+    /**
+     * @return (All) Controls whether a client verifies the server’s certificate chain and host name.
+     * 
+     */
     private @Nullable Boolean tlsSkipVerify;
+    /**
+     * @return (Stackdriver) The token URI used, provided in the service account key.
+     * 
+     */
     private @Nullable String tokenUri;
+    /**
+     * @return (Cloudwatch) The X-Ray datasource uid to associate to this Cloudwatch datasource.
+     * 
+     */
     private @Nullable String tracingDatasourceUid;
+    /**
+     * @return (OpenTSDB) Resolution.
+     * 
+     */
     private @Nullable Integer tsdbResolution;
+    /**
+     * @return (OpenTSDB) Version.
+     * 
+     */
     private @Nullable Integer tsdbVersion;
+    /**
+     * @return (InfluxDB) InfluxQL or Flux.
+     * 
+     */
     private @Nullable String version;
+    /**
+     * @return (Athena) Workgroup to use.
+     * 
+     */
     private @Nullable String workgroup;
+    /**
+     * @return (Elasticsearch) Enable X-Pack support.
+     * 
+     */
     private @Nullable Boolean xpackEnabled;
 
     private DataSourceJsonData() {}
+    /**
+     * @return (CloudWatch, Athena) The ARN of the role to be assumed by Grafana when using the CloudWatch or Athena data source.
+     * 
+     */
     public Optional<String> assumeRoleArn() {
         return Optional.ofNullable(this.assumeRoleArn);
     }
+    /**
+     * @return (CloudWatch, Athena) The authentication type used to access the data source.
+     * 
+     */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
+    /**
+     * @return (Stackdriver) The authentication type: `jwt` or `gce`.
+     * 
+     */
     public Optional<String> authenticationType() {
         return Optional.ofNullable(this.authenticationType);
     }
+    /**
+     * @return (Athena) Athena catalog.
+     * 
+     */
     public Optional<String> catalog() {
         return Optional.ofNullable(this.catalog);
     }
+    /**
+     * @return (Stackdriver) Service account email address.
+     * 
+     */
     public Optional<String> clientEmail() {
         return Optional.ofNullable(this.clientEmail);
     }
+    /**
+     * @return (Azure Monitor) The service account client id.
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return (Azure Monitor) The cloud name.
+     * 
+     */
     public Optional<String> cloudName() {
         return Optional.ofNullable(this.cloudName);
     }
+    /**
+     * @return (MySQL, PostgreSQL, and MSSQL) Maximum amount of time in seconds a connection may be reused (Grafana v5.4+).
+     * 
+     */
     public Optional<Integer> connMaxLifetime() {
         return Optional.ofNullable(this.connMaxLifetime);
     }
+    /**
+     * @return (CloudWatch) A comma-separated list of custom namespaces to be queried by the CloudWatch data source.
+     * 
+     */
     public Optional<String> customMetricsNamespaces() {
         return Optional.ofNullable(this.customMetricsNamespaces);
     }
+    /**
+     * @return (Athena) Name of the database within the catalog.
+     * 
+     */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
+    /**
+     * @return (InfluxDB) The default bucket for the data source.
+     * 
+     */
     public Optional<String> defaultBucket() {
         return Optional.ofNullable(this.defaultBucket);
     }
+    /**
+     * @return (Stackdriver) The default project for the data source.
+     * 
+     */
     public Optional<String> defaultProject() {
         return Optional.ofNullable(this.defaultProject);
     }
+    /**
+     * @return (CloudWatch, Athena) The default region for the data source.
+     * 
+     */
     public Optional<String> defaultRegion() {
         return Optional.ofNullable(this.defaultRegion);
     }
+    /**
+     * @return (Loki) See https://grafana.com/docs/grafana/latest/datasources/loki/#derived-fields
+     * 
+     */
     public List<DataSourceJsonDataDerivedField> derivedFields() {
         return this.derivedFields == null ? List.of() : this.derivedFields;
     }
+    /**
+     * @return (MSSQL) Connection SSL encryption handling: &#39;disable&#39;, &#39;false&#39; or &#39;true&#39;.
+     * 
+     */
     public Optional<String> encrypt() {
         return Optional.ofNullable(this.encrypt);
     }
+    /**
+     * @return (Elasticsearch) Elasticsearch semantic version (Grafana v8.0+).
+     * 
+     */
     public Optional<String> esVersion() {
         return Optional.ofNullable(this.esVersion);
     }
+    /**
+     * @return (CloudWatch, Athena) If you are assuming a role in another account, that has been created with an external ID, specify the external ID here.
+     * 
+     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
+    /**
+     * @return (Github) Github URL
+     * 
+     */
     public Optional<String> githubUrl() {
         return Optional.ofNullable(this.githubUrl);
     }
+    /**
+     * @return (Graphite) Graphite version.
+     * 
+     */
     public Optional<String> graphiteVersion() {
         return Optional.ofNullable(this.graphiteVersion);
     }
+    /**
+     * @return (Prometheus) HTTP method to use for making requests.
+     * 
+     */
     public Optional<String> httpMethod() {
         return Optional.ofNullable(this.httpMethod);
     }
+    /**
+     * @return (Alertmanager) Implementation of Alertmanager. Either &#39;cortex&#39; or &#39;prometheus&#39;
+     * 
+     */
     public Optional<String> implementation() {
         return Optional.ofNullable(this.implementation);
     }
+    /**
+     * @return (Elasticsearch) Index date time format. nil(No Pattern), &#39;Hourly&#39;, &#39;Daily&#39;, &#39;Weekly&#39;, &#39;Monthly&#39; or &#39;Yearly&#39;.
+     * 
+     */
     public Optional<String> interval() {
         return Optional.ofNullable(this.interval);
     }
+    /**
+     * @return (Elasticsearch) Which field should be used to indicate the priority of the log message.
+     * 
+     */
     public Optional<String> logLevelField() {
         return Optional.ofNullable(this.logLevelField);
     }
+    /**
+     * @return (Elasticsearch) Which field should be used as the log message.
+     * 
+     */
     public Optional<String> logMessageField() {
         return Optional.ofNullable(this.logMessageField);
     }
+    /**
+     * @return (Prometheus) Manage alerts.
+     * 
+     */
     public Optional<Boolean> manageAlerts() {
         return Optional.ofNullable(this.manageAlerts);
     }
+    /**
+     * @return (Elasticsearch) Maximum number of concurrent shard requests.
+     * 
+     */
     public Optional<Integer> maxConcurrentShardRequests() {
         return Optional.ofNullable(this.maxConcurrentShardRequests);
     }
+    /**
+     * @return (MySQL, PostgreSQL and MSSQL) Maximum number of connections in the idle connection pool (Grafana v5.4+).
+     * 
+     */
     public Optional<Integer> maxIdleConns() {
         return Optional.ofNullable(this.maxIdleConns);
     }
+    /**
+     * @return (Loki) Upper limit for the number of log lines returned by Loki
+     * 
+     */
     public Optional<Integer> maxLines() {
         return Optional.ofNullable(this.maxLines);
     }
+    /**
+     * @return (MySQL, PostgreSQL and MSSQL) Maximum number of open connections to the database (Grafana v5.4+).
+     * 
+     */
     public Optional<Integer> maxOpenConns() {
         return Optional.ofNullable(this.maxOpenConns);
     }
+    /**
+     * @return (Sentry) Organization slug.
+     * 
+     */
     public Optional<String> orgSlug() {
         return Optional.ofNullable(this.orgSlug);
     }
+    /**
+     * @return (InfluxDB) An organization is a workspace for a group of users. All dashboards, tasks, buckets, members, etc., belong to an organization.
+     * 
+     */
     public Optional<String> organization() {
         return Optional.ofNullable(this.organization);
     }
+    /**
+     * @return (Athena) AWS S3 bucket to store execution outputs. If not specified, the default query result location from the Workgroup configuration will be used.
+     * 
+     */
     public Optional<String> outputLocation() {
         return Optional.ofNullable(this.outputLocation);
     }
+    /**
+     * @return (PostgreSQL) Postgres version as a number (903/904/905/906/1000) meaning v9.3, v9.4, etc.
+     * 
+     */
     public Optional<Integer> postgresVersion() {
         return Optional.ofNullable(this.postgresVersion);
     }
+    /**
+     * @return (CloudWatch, Athena) The credentials profile name to use when authentication type is set as &#39;Credentials file&#39;.
+     * 
+     */
     public Optional<String> profile() {
         return Optional.ofNullable(this.profile);
     }
+    /**
+     * @return (Prometheus) Timeout for queries made to the Prometheus data source in seconds.
+     * 
+     */
     public Optional<String> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) Specifies the ARN of an IAM role to assume.
+     * 
+     */
     public Optional<String> sigv4AssumeRoleArn() {
         return Optional.ofNullable(this.sigv4AssumeRoleArn);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) Enable usage of SigV4.
+     * 
+     */
     public Optional<Boolean> sigv4Auth() {
         return Optional.ofNullable(this.sigv4Auth);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) The Sigv4 authentication provider to use: &#39;default&#39;, &#39;credentials&#39; or &#39;keys&#39; (AMG: &#39;workspace-iam-role&#39;).
+     * 
+     */
     public Optional<String> sigv4AuthType() {
         return Optional.ofNullable(this.sigv4AuthType);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) When assuming a role in another account use this external ID.
+     * 
+     */
     public Optional<String> sigv4ExternalId() {
         return Optional.ofNullable(this.sigv4ExternalId);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) Credentials profile name, leave blank for default.
+     * 
+     */
     public Optional<String> sigv4Profile() {
         return Optional.ofNullable(this.sigv4Profile);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) AWS region to use for Sigv4.
+     * 
+     */
     public Optional<String> sigv4Region() {
         return Optional.ofNullable(this.sigv4Region);
     }
+    /**
+     * @return (PostgreSQL) SSLmode. &#39;disable&#39;, &#39;require&#39;, &#39;verify-ca&#39; or &#39;verify-full&#39;.
+     * 
+     */
     public Optional<String> sslMode() {
         return Optional.ofNullable(this.sslMode);
     }
+    /**
+     * @return (Azure Monitor) The subscription id
+     * 
+     */
     public Optional<String> subscriptionId() {
         return Optional.ofNullable(this.subscriptionId);
     }
+    /**
+     * @return (Azure Monitor) Service account tenant ID.
+     * 
+     */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
+    /**
+     * @return (Elasticsearch) Which field that should be used as timestamp.
+     * 
+     */
     public Optional<String> timeField() {
         return Optional.ofNullable(this.timeField);
     }
+    /**
+     * @return (Prometheus, Elasticsearch, InfluxDB, MySQL, PostgreSQL, and MSSQL) Lowest interval/step value that should be used for this data source. Sometimes called &#34;Scrape Interval&#34; in the Grafana UI.
+     * 
+     */
     public Optional<String> timeInterval() {
         return Optional.ofNullable(this.timeInterval);
     }
+    /**
+     * @return (PostgreSQL) Enable usage of TimescaleDB extension.
+     * 
+     */
     public Optional<Boolean> timescaledb() {
         return Optional.ofNullable(this.timescaledb);
     }
+    /**
+     * @return (All) Enable TLS authentication using client cert configured in secure json data.
+     * 
+     */
     public Optional<Boolean> tlsAuth() {
         return Optional.ofNullable(this.tlsAuth);
     }
+    /**
+     * @return (All) Enable TLS authentication using CA cert.
+     * 
+     */
     public Optional<Boolean> tlsAuthWithCaCert() {
         return Optional.ofNullable(this.tlsAuthWithCaCert);
     }
+    /**
+     * @return (All) SSL Certificate configuration, either by ‘file-path’ or ‘file-content’.
+     * 
+     */
     public Optional<String> tlsConfigurationMethod() {
         return Optional.ofNullable(this.tlsConfigurationMethod);
     }
+    /**
+     * @return (All) Controls whether a client verifies the server’s certificate chain and host name.
+     * 
+     */
     public Optional<Boolean> tlsSkipVerify() {
         return Optional.ofNullable(this.tlsSkipVerify);
     }
+    /**
+     * @return (Stackdriver) The token URI used, provided in the service account key.
+     * 
+     */
     public Optional<String> tokenUri() {
         return Optional.ofNullable(this.tokenUri);
     }
+    /**
+     * @return (Cloudwatch) The X-Ray datasource uid to associate to this Cloudwatch datasource.
+     * 
+     */
     public Optional<String> tracingDatasourceUid() {
         return Optional.ofNullable(this.tracingDatasourceUid);
     }
+    /**
+     * @return (OpenTSDB) Resolution.
+     * 
+     */
     public Optional<Integer> tsdbResolution() {
         return Optional.ofNullable(this.tsdbResolution);
     }
+    /**
+     * @return (OpenTSDB) Version.
+     * 
+     */
     public Optional<Integer> tsdbVersion() {
         return Optional.ofNullable(this.tsdbVersion);
     }
+    /**
+     * @return (InfluxDB) InfluxQL or Flux.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
+    /**
+     * @return (Athena) Workgroup to use.
+     * 
+     */
     public Optional<String> workgroup() {
         return Optional.ofNullable(this.workgroup);
     }
+    /**
+     * @return (Elasticsearch) Enable X-Pack support.
+     * 
+     */
     public Optional<Boolean> xpackEnabled() {
         return Optional.ofNullable(this.xpackEnabled);
     }

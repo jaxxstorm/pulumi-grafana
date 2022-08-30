@@ -13,11 +13,29 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointTelegram
     {
+        /// <summary>
+        /// The chat ID to send messages to.
+        /// </summary>
         public readonly string ChatId;
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The templated content of the message.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The Telegram bot token.
+        /// </summary>
         public readonly string Token;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
 
         [OutputConstructor]

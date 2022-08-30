@@ -16,23 +16,47 @@ public final class DataSourcePermissionPermissionArgs extends com.pulumi.resourc
 
     public static final DataSourcePermissionPermissionArgs Empty = new DataSourcePermissionPermissionArgs();
 
+    /**
+     * Permission to associate with item. Must be `Query`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permission to associate with item. Must be `Query`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
 
+    /**
+     * ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     @Import(name="teamId")
     private @Nullable Output<Integer> teamId;
 
+    /**
+     * @return ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Output<Integer>> teamId() {
         return Optional.ofNullable(this.teamId);
     }
 
+    /**
+     * ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
+    /**
+     * @return ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Output<Integer>> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -63,29 +87,65 @@ public final class DataSourcePermissionPermissionArgs extends com.pulumi.resourc
             $ = new DataSourcePermissionPermissionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission Permission to associate with item. Must be `Query`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to associate with item. Must be `Query`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param teamId ID of the team to manage permissions for. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(@Nullable Output<Integer> teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param teamId ID of the team to manage permissions for. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(Integer teamId) {
             return teamId(Output.of(teamId));
         }
 
+        /**
+         * @param userId ID of the user to manage permissions for. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Output<Integer> userId) {
             $.userId = userId;
             return this;
         }
 
+        /**
+         * @param userId ID of the user to manage permissions for. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(Integer userId) {
             return userId(Output.of(userId));
         }

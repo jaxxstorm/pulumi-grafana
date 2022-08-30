@@ -100,7 +100,32 @@ class BuiltinRoleAssignment(pulumi.CustomResource):
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuiltinRoleAssignmentRoleArgs']]]]] = None,
                  __props__=None):
         """
-        Create a BuiltinRoleAssignment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        viewer = grafana.BuiltinRoleAssignment("viewer",
+            builtin_role="Viewer",
+            roles=[
+                grafana.BuiltinRoleAssignmentRoleArgs(
+                    global_=False,
+                    uid="firstuid",
+                ),
+                grafana.BuiltinRoleAssignmentRoleArgs(
+                    global_=True,
+                    uid="seconduid",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] builtin_role: Organization roles (`Viewer`, `Editor`, `Admin`) or `Grafana Admin` to assign the roles to.
@@ -113,7 +138,32 @@ class BuiltinRoleAssignment(pulumi.CustomResource):
                  args: BuiltinRoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a BuiltinRoleAssignment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        viewer = grafana.BuiltinRoleAssignment("viewer",
+            builtin_role="Viewer",
+            roles=[
+                grafana.BuiltinRoleAssignmentRoleArgs(
+                    global_=False,
+                    uid="firstuid",
+                ),
+                grafana.BuiltinRoleAssignmentRoleArgs(
+                    global_=True,
+                    uid="seconduid",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param BuiltinRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

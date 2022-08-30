@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-server-users/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/user/)
+    /// 
+    /// This resource uses Grafana's admin APIs for creating and updating users which
+    /// does not currently work with API Tokens. You must use basic auth.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var staff = new Grafana.User("staff", new()
+    ///     {
+    ///         Email = "staff.name@example.com",
+    ///         IsAdmin = false,
+    ///         Login = "staff",
+    ///         Password = "my-password",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/user:User user_name {{user_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
@@ -19,7 +52,7 @@ namespace Pulumi.Grafana
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to make user an admin.
+        /// Whether to make user an admin. Defaults to `false`.
         /// </summary>
         [Output("isAdmin")]
         public Output<bool?> IsAdmin { get; private set; } = null!;
@@ -102,7 +135,7 @@ namespace Pulumi.Grafana
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Whether to make user an admin.
+        /// Whether to make user an admin. Defaults to `false`.
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
@@ -140,7 +173,7 @@ namespace Pulumi.Grafana
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Whether to make user an admin.
+        /// Whether to make user an admin. Defaults to `false`.
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }

@@ -11,6 +11,57 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **Note:** This resource is available only with Grafana Enterprise 8.+.
+//
+// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewRole(ctx, "superUser", &grafana.RoleArgs{
+//				Description: pulumi.String("My Super User description"),
+//				Global:      pulumi.Bool(true),
+//				Permissions: RolePermissionArray{
+//					&RolePermissionArgs{
+//						Action: pulumi.String("users:create"),
+//					},
+//					&RolePermissionArgs{
+//						Action: pulumi.String("users:read"),
+//						Scope:  pulumi.String("global:users:*"),
+//					},
+//				},
+//				Uid:     pulumi.String("superuseruid"),
+//				Version: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/role:Role role_name {{uid}}
+//
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 
@@ -18,11 +69,11 @@ type Role struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the role. Available with Grafana 8.5+.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Boolean to state whether the role is available across all organizations or not.
+	// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 	Global pulumi.BoolPtrOutput `pulumi:"global"`
 	// Group of the role. Available with Grafana 8.5+.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
 	// Name of the role
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -71,11 +122,11 @@ type roleState struct {
 	Description *string `pulumi:"description"`
 	// Display name of the role. Available with Grafana 8.5+.
 	DisplayName *string `pulumi:"displayName"`
-	// Boolean to state whether the role is available across all organizations or not.
+	// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 	Global *bool `pulumi:"global"`
 	// Group of the role. Available with Grafana 8.5+.
 	Group *string `pulumi:"group"`
-	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 	Hidden *bool `pulumi:"hidden"`
 	// Name of the role
 	Name *string `pulumi:"name"`
@@ -92,11 +143,11 @@ type RoleState struct {
 	Description pulumi.StringPtrInput
 	// Display name of the role. Available with Grafana 8.5+.
 	DisplayName pulumi.StringPtrInput
-	// Boolean to state whether the role is available across all organizations or not.
+	// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 	Global pulumi.BoolPtrInput
 	// Group of the role. Available with Grafana 8.5+.
 	Group pulumi.StringPtrInput
-	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 	Hidden pulumi.BoolPtrInput
 	// Name of the role
 	Name pulumi.StringPtrInput
@@ -117,11 +168,11 @@ type roleArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of the role. Available with Grafana 8.5+.
 	DisplayName *string `pulumi:"displayName"`
-	// Boolean to state whether the role is available across all organizations or not.
+	// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 	Global *bool `pulumi:"global"`
 	// Group of the role. Available with Grafana 8.5+.
 	Group *string `pulumi:"group"`
-	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 	Hidden *bool `pulumi:"hidden"`
 	// Name of the role
 	Name *string `pulumi:"name"`
@@ -139,11 +190,11 @@ type RoleArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of the role. Available with Grafana 8.5+.
 	DisplayName pulumi.StringPtrInput
-	// Boolean to state whether the role is available across all organizations or not.
+	// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 	Global pulumi.BoolPtrInput
 	// Group of the role. Available with Grafana 8.5+.
 	Group pulumi.StringPtrInput
-	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+	// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 	Hidden pulumi.BoolPtrInput
 	// Name of the role
 	Name pulumi.StringPtrInput
@@ -252,7 +303,7 @@ func (o RoleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Boolean to state whether the role is available across all organizations or not.
+// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
 func (o RoleOutput) Global() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Global }).(pulumi.BoolPtrOutput)
 }
@@ -262,7 +313,7 @@ func (o RoleOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
 func (o RoleOutput) Hidden() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
 }

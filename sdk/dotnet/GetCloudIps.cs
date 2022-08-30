@@ -11,6 +11,27 @@ namespace Pulumi.Grafana
 {
     public static class GetCloudIps
     {
+        /// <summary>
+        /// Data source for retrieving sets of cloud IPs. See https://grafana.com/docs/grafana-cloud/reference/allow-list/ for more info
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Grafana.GetCloudIps.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetCloudIpsResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCloudIpsResult>("grafana:index/getCloudIps:getCloudIps", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -19,10 +40,25 @@ namespace Pulumi.Grafana
     [OutputType]
     public sealed class GetCloudIpsResult
     {
+        /// <summary>
+        /// Set of IP addresses that are used for hosted alerts.
+        /// </summary>
         public readonly ImmutableArray<string> HostedAlerts;
+        /// <summary>
+        /// Set of IP addresses that are used for hosted Grafana.
+        /// </summary>
         public readonly ImmutableArray<string> HostedGrafanas;
+        /// <summary>
+        /// Set of IP addresses that are used for hosted logs.
+        /// </summary>
         public readonly ImmutableArray<string> HostedLogs;
+        /// <summary>
+        /// Set of IP addresses that are used for hosted metrics.
+        /// </summary>
         public readonly ImmutableArray<string> HostedMetrics;
+        /// <summary>
+        /// Set of IP addresses that are used for hosted traces.
+        /// </summary>
         public readonly ImmutableArray<string> HostedTraces;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -9,6 +9,58 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var team = new Grafana.Team("team");
+    /// 
+    ///     var user = new Grafana.User("user", new()
+    ///     {
+    ///         Email = "user.name@example.com",
+    ///     });
+    /// 
+    ///     var metrics = new Grafana.Dashboard("metrics", new()
+    ///     {
+    ///         ConfigJson = File.ReadAllText("grafana-dashboard.json"),
+    ///     });
+    /// 
+    ///     var collectionPermission = new Grafana.DashboardPermission("collectionPermission", new()
+    ///     {
+    ///         DashboardId = metrics.DashboardId,
+    ///         Permissions = new[]
+    ///         {
+    ///             new Grafana.Inputs.DashboardPermissionPermissionArgs
+    ///             {
+    ///                 Role = "Editor",
+    ///                 Permission = "Edit",
+    ///             },
+    ///             new Grafana.Inputs.DashboardPermissionPermissionArgs
+    ///             {
+    ///                 TeamId = team.Id,
+    ///                 Permission = "View",
+    ///             },
+    ///             new Grafana.Inputs.DashboardPermissionPermissionArgs
+    ///             {
+    ///                 UserId = user.Id,
+    ///                 Permission = "Admin",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/dashboardPermission:DashboardPermission")]
     public partial class DashboardPermission : global::Pulumi.CustomResource
     {

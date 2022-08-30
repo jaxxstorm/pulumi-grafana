@@ -9,6 +9,43 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var viewer = new Grafana.BuiltinRoleAssignment("viewer", new()
+    ///     {
+    ///         BuiltinRole = "Viewer",
+    ///         Roles = new[]
+    ///         {
+    ///             new Grafana.Inputs.BuiltinRoleAssignmentRoleArgs
+    ///             {
+    ///                 Global = false,
+    ///                 Uid = "firstuid",
+    ///             },
+    ///             new Grafana.Inputs.BuiltinRoleAssignmentRoleArgs
+    ///             {
+    ///                 Global = true,
+    ///                 Uid = "seconduid",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/builtinRoleAssignment:BuiltinRoleAssignment")]
     public partial class BuiltinRoleAssignment : global::Pulumi.CustomResource
     {

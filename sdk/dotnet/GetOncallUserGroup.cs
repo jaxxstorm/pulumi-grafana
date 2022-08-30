@@ -11,9 +11,57 @@ namespace Pulumi.Grafana
 {
     public static class GetOncallUserGroup
     {
+        /// <summary>
+        /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUserGroup = Grafana.GetOncallUserGroup.Invoke(new()
+        ///     {
+        ///         SlackHandle = "example_slack_handle",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetOncallUserGroupResult> InvokeAsync(GetOncallUserGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOncallUserGroupResult>("grafana:index/getOncallUserGroup:getOncallUserGroup", args ?? new GetOncallUserGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUserGroup = Grafana.GetOncallUserGroup.Invoke(new()
+        ///     {
+        ///         SlackHandle = "example_slack_handle",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetOncallUserGroupResult> Invoke(GetOncallUserGroupInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetOncallUserGroupResult>("grafana:index/getOncallUserGroup:getOncallUserGroup", args ?? new GetOncallUserGroupInvokeArgs(), options.WithDefaults());
     }

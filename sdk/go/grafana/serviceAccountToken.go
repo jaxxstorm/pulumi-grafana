@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **Note:** This resource is available only with Grafana 9.1+.
+//
+// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := grafana.NewServiceAccountToken(ctx, "foo", &grafana.ServiceAccountTokenArgs{
+//				ServiceAccountId: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := grafana.NewServiceAccountToken(ctx, "bar", &grafana.ServiceAccountTokenArgs{
+//				ServiceAccountId: pulumi.Int(1),
+//				SecondsToLive:    pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("serviceAccountTokenFooKeyOnly", foo.Key)
+//			ctx.Export("serviceAccountTokenBar", bar)
+//			return nil
+//		})
+//	}
+//
+// ```
 type ServiceAccountToken struct {
 	pulumi.CustomResourceState
 

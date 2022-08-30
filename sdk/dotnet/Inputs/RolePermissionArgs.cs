@@ -12,9 +12,15 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class RolePermissionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        /// <summary>
+        /// Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 

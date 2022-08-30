@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPermissionPermission {
+    /**
+     * @return Permission to associate with item. Must be one of `View`, `Edit`, or `Admin`.
+     * 
+     */
     private String permission;
+    /**
+     * @return Manage permissions for `Viewer` or `Editor` roles.
+     * 
+     */
     private @Nullable String role;
+    /**
+     * @return ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     private @Nullable Integer teamId;
+    /**
+     * @return ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     private @Nullable Integer userId;
 
     private DashboardPermissionPermission() {}
+    /**
+     * @return Permission to associate with item. Must be one of `View`, `Edit`, or `Admin`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Manage permissions for `Viewer` or `Editor` roles.
+     * 
+     */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }
+    /**
+     * @return ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Integer> teamId() {
         return Optional.ofNullable(this.teamId);
     }
+    /**
+     * @return ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Integer> userId() {
         return Optional.ofNullable(this.userId);
     }

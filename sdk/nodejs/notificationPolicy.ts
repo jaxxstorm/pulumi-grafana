@@ -5,6 +5,75 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#notification-policies)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const aContactPoint = new grafana.ContactPoint("aContactPoint", {emails: [{
+ *     addresses: [
+ *         "one@company.org",
+ *         "two@company.org",
+ *     ],
+ *     message: "{{ len .Alerts.Firing }} firing.",
+ * }]});
+ * const aMuteTiming = new grafana.MuteTiming("aMuteTiming", {intervals: [{
+ *     weekdays: ["monday"],
+ * }]});
+ * const myNotificationPolicy = new grafana.NotificationPolicy("myNotificationPolicy", {
+ *     groupBies: ["..."],
+ *     contactPoint: aContactPoint.name,
+ *     groupWait: "45s",
+ *     groupInterval: "6m",
+ *     repeatInterval: "3h",
+ *     policies: [
+ *         {
+ *             matchers: [{
+ *                 label: "mylabel",
+ *                 match: "=",
+ *                 value: "myvalue",
+ *             }],
+ *             contactPoint: aContactPoint.name,
+ *             groupBies: ["alertname"],
+ *             "continue": true,
+ *             muteTimings: [aMuteTiming.name],
+ *             groupWait: "45s",
+ *             groupInterval: "6m",
+ *             repeatInterval: "3h",
+ *             policies: [{
+ *                 matchers: [{
+ *                     label: "sublabel",
+ *                     match: "=",
+ *                     value: "subvalue",
+ *                 }],
+ *                 contactPoint: aContactPoint.name,
+ *                 groupBies: ["..."],
+ *             }],
+ *         },
+ *         {
+ *             matchers: [{
+ *                 label: "anotherlabel",
+ *                 match: "=~",
+ *                 value: "another value.*",
+ *             }],
+ *             contactPoint: aContactPoint.name,
+ *             groupBies: ["..."],
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/notificationPolicy:NotificationPolicy notification_policy_name {{notification_policy_name}}
+ * ```
+ */
 export class NotificationPolicy extends pulumi.CustomResource {
     /**
      * Get an existing NotificationPolicy resource's state with the given name, ID, and optional extra
@@ -38,8 +107,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly contactPoint!: pulumi.Output<string>;
     /**
-     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      */
     public readonly groupBies!: pulumi.Output<string[]>;
     /**
@@ -107,8 +175,7 @@ export interface NotificationPolicyState {
      */
     contactPoint?: pulumi.Input<string>;
     /**
-     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      */
     groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -138,8 +205,7 @@ export interface NotificationPolicyArgs {
      */
     contactPoint: pulumi.Input<string>;
     /**
-     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      */
     groupBies: pulumi.Input<pulumi.Input<string>[]>;
     /**

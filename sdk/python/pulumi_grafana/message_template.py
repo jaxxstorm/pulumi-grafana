@@ -99,7 +99,27 @@ class MessageTemplate(pulumi.CustomResource):
                  template: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a MessageTemplate resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+        * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        my_template = grafana.MessageTemplate("myTemplate", template=\"\"\"{{define "My Reusable Template" }}
+         template content
+        {{ end }}
+        \"\"\")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the message template.
@@ -112,7 +132,27 @@ class MessageTemplate(pulumi.CustomResource):
                  args: MessageTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MessageTemplate resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+        * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        my_template = grafana.MessageTemplate("myTemplate", template=\"\"\"{{define "My Reusable Template" }}
+         template content
+        {{ end }}
+        \"\"\")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param MessageTemplateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

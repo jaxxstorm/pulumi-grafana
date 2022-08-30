@@ -30,11 +30,10 @@ class MachineLearningJobArgs:
         :param pulumi.Input[str] metric: The metric used to query the job results.
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
         :param pulumi.Input[str] description: A description of the job.
-        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-               for the full list of available hyperparameters.
-        :param pulumi.Input[int] interval: The data interval in seconds to train the data on.
+        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
+        :param pulumi.Input[int] interval: The data interval in seconds to train the data on. Defaults to `300`.
         :param pulumi.Input[str] name: The name of the job.
-        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on.
+        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         pulumi.set(__self__, "datasource_id", datasource_id)
         pulumi.set(__self__, "datasource_type", datasource_type)
@@ -115,8 +114,7 @@ class MachineLearningJobArgs:
     @pulumi.getter(name="hyperParams")
     def hyper_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        for the full list of available hyperparameters.
+        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         """
         return pulumi.get(self, "hyper_params")
 
@@ -128,7 +126,7 @@ class MachineLearningJobArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `300`.
         """
         return pulumi.get(self, "interval")
 
@@ -152,7 +150,7 @@ class MachineLearningJobArgs:
     @pulumi.getter(name="trainingWindow")
     def training_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         return pulumi.get(self, "training_window")
 
@@ -178,13 +176,12 @@ class _MachineLearningJobState:
         :param pulumi.Input[int] datasource_id: The id of the datasource to query.
         :param pulumi.Input[str] datasource_type: The type of datasource being queried. Currently allowed values are prometheus, graphite, loki, postgres, and datadog.
         :param pulumi.Input[str] description: A description of the job.
-        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-               for the full list of available hyperparameters.
-        :param pulumi.Input[int] interval: The data interval in seconds to train the data on.
+        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
+        :param pulumi.Input[int] interval: The data interval in seconds to train the data on. Defaults to `300`.
         :param pulumi.Input[str] metric: The metric used to query the job results.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
-        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on.
+        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         if datasource_id is not None:
             pulumi.set(__self__, "datasource_id", datasource_id)
@@ -245,8 +242,7 @@ class _MachineLearningJobState:
     @pulumi.getter(name="hyperParams")
     def hyper_params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        for the full list of available hyperparameters.
+        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         """
         return pulumi.get(self, "hyper_params")
 
@@ -258,7 +254,7 @@ class _MachineLearningJobState:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `300`.
         """
         return pulumi.get(self, "interval")
 
@@ -306,7 +302,7 @@ class _MachineLearningJobState:
     @pulumi.getter(name="trainingWindow")
     def training_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         return pulumi.get(self, "training_window")
 
@@ -331,19 +327,19 @@ class MachineLearningJob(pulumi.CustomResource):
                  training_window: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a MachineLearningJob resource with the given unique name, props, and options.
+        A job defines the queries and model parameters for a machine learning task.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] datasource_id: The id of the datasource to query.
         :param pulumi.Input[str] datasource_type: The type of datasource being queried. Currently allowed values are prometheus, graphite, loki, postgres, and datadog.
         :param pulumi.Input[str] description: A description of the job.
-        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-               for the full list of available hyperparameters.
-        :param pulumi.Input[int] interval: The data interval in seconds to train the data on.
+        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
+        :param pulumi.Input[int] interval: The data interval in seconds to train the data on. Defaults to `300`.
         :param pulumi.Input[str] metric: The metric used to query the job results.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
-        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on.
+        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         ...
     @overload
@@ -352,7 +348,8 @@ class MachineLearningJob(pulumi.CustomResource):
                  args: MachineLearningJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MachineLearningJob resource with the given unique name, props, and options.
+        A job defines the queries and model parameters for a machine learning task.
+
         :param str resource_name: The name of the resource.
         :param MachineLearningJobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -432,13 +429,12 @@ class MachineLearningJob(pulumi.CustomResource):
         :param pulumi.Input[int] datasource_id: The id of the datasource to query.
         :param pulumi.Input[str] datasource_type: The type of datasource being queried. Currently allowed values are prometheus, graphite, loki, postgres, and datadog.
         :param pulumi.Input[str] description: A description of the job.
-        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-               for the full list of available hyperparameters.
-        :param pulumi.Input[int] interval: The data interval in seconds to train the data on.
+        :param pulumi.Input[Mapping[str, Any]] hyper_params: The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
+        :param pulumi.Input[int] interval: The data interval in seconds to train the data on. Defaults to `300`.
         :param pulumi.Input[str] metric: The metric used to query the job results.
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
-        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on.
+        :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,8 +479,7 @@ class MachineLearningJob(pulumi.CustomResource):
     @pulumi.getter(name="hyperParams")
     def hyper_params(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-        for the full list of available hyperparameters.
+        The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
         """
         return pulumi.get(self, "hyper_params")
 
@@ -492,7 +487,7 @@ class MachineLearningJob(pulumi.CustomResource):
     @pulumi.getter
     def interval(self) -> pulumi.Output[Optional[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `300`.
         """
         return pulumi.get(self, "interval")
 
@@ -524,7 +519,7 @@ class MachineLearningJob(pulumi.CustomResource):
     @pulumi.getter(name="trainingWindow")
     def training_window(self) -> pulumi.Output[Optional[int]]:
         """
-        The data interval in seconds to train the data on.
+        The data interval in seconds to train the data on. Defaults to `7776000`.
         """
         return pulumi.get(self, "training_window")
 

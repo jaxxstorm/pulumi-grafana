@@ -11,12 +11,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+// Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+// This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+//
+// * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+// * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smStackCloudStack, err := grafana.NewCloudStack(ctx, "smStackCloudStack", &grafana.CloudStackArgs{
+//				Slug:       pulumi.String("<stack-slug>"),
+//				RegionSlug: pulumi.String("us"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			metricsPublish, err := grafana.NewCloudApiKey(ctx, "metricsPublish", &grafana.CloudApiKeyArgs{
+//				Role:         pulumi.String("MetricsPublisher"),
+//				CloudOrgSlug: pulumi.String("<org-slug>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewSyntheticMonitoringInstallation(ctx, "smStackSyntheticMonitoringInstallation", &grafana.SyntheticMonitoringInstallationArgs{
+//				StackId:             smStackCloudStack.ID(),
+//				MetricsInstanceId:   smStackCloudStack.PrometheusUserId,
+//				LogsInstanceId:      smStackCloudStack.LogsUserId,
+//				MetricsPublisherKey: metricsPublish.Key,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type SyntheticMonitoringInstallation struct {
 	pulumi.CustomResourceState
 
-	// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+	// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 	LogsInstanceId pulumi.IntOutput `pulumi:"logsInstanceId"`
-	// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+	// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 	MetricsInstanceId pulumi.IntOutput `pulumi:"metricsInstanceId"`
 	// The Cloud API Key with the `MetricsPublisher` role used to publish metrics to the SM API
 	MetricsPublisherKey pulumi.StringOutput `pulumi:"metricsPublisherKey"`
@@ -68,9 +117,9 @@ func GetSyntheticMonitoringInstallation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SyntheticMonitoringInstallation resources.
 type syntheticMonitoringInstallationState struct {
-	// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+	// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 	LogsInstanceId *int `pulumi:"logsInstanceId"`
-	// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+	// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 	MetricsInstanceId *int `pulumi:"metricsInstanceId"`
 	// The Cloud API Key with the `MetricsPublisher` role used to publish metrics to the SM API
 	MetricsPublisherKey *string `pulumi:"metricsPublisherKey"`
@@ -81,9 +130,9 @@ type syntheticMonitoringInstallationState struct {
 }
 
 type SyntheticMonitoringInstallationState struct {
-	// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+	// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 	LogsInstanceId pulumi.IntPtrInput
-	// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+	// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 	MetricsInstanceId pulumi.IntPtrInput
 	// The Cloud API Key with the `MetricsPublisher` role used to publish metrics to the SM API
 	MetricsPublisherKey pulumi.StringPtrInput
@@ -98,9 +147,9 @@ func (SyntheticMonitoringInstallationState) ElementType() reflect.Type {
 }
 
 type syntheticMonitoringInstallationArgs struct {
-	// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+	// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 	LogsInstanceId int `pulumi:"logsInstanceId"`
-	// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+	// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 	MetricsInstanceId int `pulumi:"metricsInstanceId"`
 	// The Cloud API Key with the `MetricsPublisher` role used to publish metrics to the SM API
 	MetricsPublisherKey string `pulumi:"metricsPublisherKey"`
@@ -110,9 +159,9 @@ type syntheticMonitoringInstallationArgs struct {
 
 // The set of arguments for constructing a SyntheticMonitoringInstallation resource.
 type SyntheticMonitoringInstallationArgs struct {
-	// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+	// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 	LogsInstanceId pulumi.IntInput
-	// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+	// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 	MetricsInstanceId pulumi.IntInput
 	// The Cloud API Key with the `MetricsPublisher` role used to publish metrics to the SM API
 	MetricsPublisherKey pulumi.StringInput
@@ -207,12 +256,12 @@ func (o SyntheticMonitoringInstallationOutput) ToSyntheticMonitoringInstallation
 	return o
 }
 
-// The ID of the logs instance to install SM on (stack's `logs_user_id` attribute).
+// The ID of the logs instance to install SM on (stack's `logsUserId` attribute).
 func (o SyntheticMonitoringInstallationOutput) LogsInstanceId() pulumi.IntOutput {
 	return o.ApplyT(func(v *SyntheticMonitoringInstallation) pulumi.IntOutput { return v.LogsInstanceId }).(pulumi.IntOutput)
 }
 
-// The ID of the metrics instance to install SM on (stack's `prometheus_user_id` attribute).
+// The ID of the metrics instance to install SM on (stack's `prometheusUserId` attribute).
 func (o SyntheticMonitoringInstallationOutput) MetricsInstanceId() pulumi.IntOutput {
 	return o.ApplyT(func(v *SyntheticMonitoringInstallation) pulumi.IntOutput { return v.MetricsInstanceId }).(pulumi.IntOutput)
 }

@@ -16,6 +16,65 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.MuteTiming;
+ * import com.pulumi.grafana.MuteTimingArgs;
+ * import com.pulumi.grafana.inputs.MuteTimingIntervalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myMuteTiming = new MuteTiming(&#34;myMuteTiming&#34;, MuteTimingArgs.builder()        
+ *             .intervals(MuteTimingIntervalArgs.builder()
+ *                 .daysOfMonths(                
+ *                     &#34;1:7&#34;,
+ *                     &#34;-1&#34;)
+ *                 .months(                
+ *                     &#34;1:3&#34;,
+ *                     &#34;december&#34;)
+ *                 .times(MuteTimingIntervalTimeArgs.builder()
+ *                     .end(&#34;14:17&#34;)
+ *                     .start(&#34;04:56&#34;)
+ *                     .build())
+ *                 .weekdays(                
+ *                     &#34;monday&#34;,
+ *                     &#34;tuesday:thursday&#34;)
+ *                 .years(                
+ *                     &#34;2030&#34;,
+ *                     &#34;2025:2026&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/muteTiming:MuteTiming")
 public class MuteTiming extends com.pulumi.resources.CustomResource {
     /**

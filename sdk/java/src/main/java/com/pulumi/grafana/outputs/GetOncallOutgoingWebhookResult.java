@@ -14,6 +14,10 @@ public final class GetOncallOutgoingWebhookResult {
      * 
      */
     private String id;
+    /**
+     * @return The outgoing webhook name.
+     * 
+     */
     private String name;
 
     private GetOncallOutgoingWebhookResult() {}
@@ -24,6 +28,10 @@ public final class GetOncallOutgoingWebhookResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The outgoing webhook name.
+     * 
+     */
     public String name() {
         return this.name;
     }

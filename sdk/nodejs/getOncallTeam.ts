@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleTeam = pulumi.output(grafana.getOncallTeam({
+ *     name: "example_team",
+ * }));
+ * ```
+ */
 export function getOncallTeam(args: GetOncallTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallTeamResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +31,9 @@ export function getOncallTeam(args: GetOncallTeamArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getOncallTeam.
  */
 export interface GetOncallTeamArgs {
+    /**
+     * The team name.
+     */
     name: string;
 }
 
@@ -32,6 +47,9 @@ export interface GetOncallTeamResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The team name.
+     */
     readonly name: string;
 }
 
@@ -43,5 +61,8 @@ export function getOncallTeamOutput(args: GetOncallTeamOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getOncallTeam.
  */
 export interface GetOncallTeamOutputArgs {
+    /**
+     * The team name.
+     */
     name: pulumi.Input<string>;
 }

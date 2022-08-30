@@ -13,11 +13,29 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointThreema
     {
+        /// <summary>
+        /// The Threema API key.
+        /// </summary>
         public readonly string ApiSecret;
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The Threema gateway ID.
+        /// </summary>
         public readonly string GatewayId;
+        /// <summary>
+        /// The ID of the recipient of the message.
+        /// </summary>
         public readonly string RecipientId;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
 
         [OutputConstructor]

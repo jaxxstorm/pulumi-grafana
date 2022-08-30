@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const myMuteTiming = new grafana.MuteTiming("my_mute_timing", {
+ *     intervals: [{
+ *         daysOfMonths: [
+ *             "1:7",
+ *             "-1",
+ *         ],
+ *         months: [
+ *             "1:3",
+ *             "december",
+ *         ],
+ *         times: [{
+ *             end: "14:17",
+ *             start: "04:56",
+ *         }],
+ *         weekdays: [
+ *             "monday",
+ *             "tuesday:thursday",
+ *         ],
+ *         years: [
+ *             "2030",
+ *             "2025:2026",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+ * ```
+ */
 export class MuteTiming extends pulumi.CustomResource {
     /**
      * Get an existing MuteTiming resource's state with the given name, ID, and optional extra

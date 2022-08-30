@@ -12,18 +12,33 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class SyntheticMonitoringCheckSettingsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+        /// </summary>
         [Input("dns")]
         public Input<Inputs.SyntheticMonitoringCheckSettingsDnsArgs>? Dns { get; set; }
 
+        /// <summary>
+        /// Settings for HTTP check. The target must be a URL (http or https).
+        /// </summary>
         [Input("http")]
         public Input<Inputs.SyntheticMonitoringCheckSettingsHttpArgs>? Http { get; set; }
 
+        /// <summary>
+        /// Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+        /// </summary>
         [Input("ping")]
         public Input<Inputs.SyntheticMonitoringCheckSettingsPingArgs>? Ping { get; set; }
 
+        /// <summary>
+        /// Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+        /// </summary>
         [Input("tcp")]
         public Input<Inputs.SyntheticMonitoringCheckSettingsTcpArgs>? Tcp { get; set; }
 
+        /// <summary>
+        /// Settings for traceroute check. The target must be a valid hostname or IP address
+        /// </summary>
         [Input("traceroute")]
         public Input<Inputs.SyntheticMonitoringCheckSettingsTracerouteArgs>? Traceroute { get; set; }
 

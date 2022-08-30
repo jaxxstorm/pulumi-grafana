@@ -15,6 +15,70 @@ import java.lang.Integer;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Team;
+ * import com.pulumi.grafana.User;
+ * import com.pulumi.grafana.UserArgs;
+ * import com.pulumi.grafana.Dashboard;
+ * import com.pulumi.grafana.DashboardArgs;
+ * import com.pulumi.grafana.DashboardPermission;
+ * import com.pulumi.grafana.DashboardPermissionArgs;
+ * import com.pulumi.grafana.inputs.DashboardPermissionPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var team = new Team(&#34;team&#34;);
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .email(&#34;user.name@example.com&#34;)
+ *             .build());
+ * 
+ *         var metrics = new Dashboard(&#34;metrics&#34;, DashboardArgs.builder()        
+ *             .configJson(Files.readString(Paths.get(&#34;grafana-dashboard.json&#34;)))
+ *             .build());
+ * 
+ *         var collectionPermission = new DashboardPermission(&#34;collectionPermission&#34;, DashboardPermissionArgs.builder()        
+ *             .dashboardId(metrics.dashboardId())
+ *             .permissions(            
+ *                 DashboardPermissionPermissionArgs.builder()
+ *                     .role(&#34;Editor&#34;)
+ *                     .permission(&#34;Edit&#34;)
+ *                     .build(),
+ *                 DashboardPermissionPermissionArgs.builder()
+ *                     .teamId(team.id())
+ *                     .permission(&#34;View&#34;)
+ *                     .build(),
+ *                 DashboardPermissionPermissionArgs.builder()
+ *                     .userId(user.id())
+ *                     .permission(&#34;Admin&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/dashboardPermission:DashboardPermission")
 public class DashboardPermission extends com.pulumi.resources.CustomResource {
     /**

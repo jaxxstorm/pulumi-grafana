@@ -13,41 +13,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointPagerduty {
+    /**
+     * @return The class or type of event, for example `ping failure`.
+     * 
+     */
     private @Nullable String class_;
+    /**
+     * @return The component being affected by the event.
+     * 
+     */
     private @Nullable String component;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The group to which the provided component belongs to.
+     * 
+     */
     private @Nullable String group;
+    /**
+     * @return The PagerDuty API key.
+     * 
+     */
     private String integrationKey;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The PagerDuty event severity level. Default is `critical`.
+     * 
+     */
     private @Nullable String severity;
+    /**
+     * @return The templated summary message of the event.
+     * 
+     */
     private @Nullable String summary;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
 
     private ContactPointPagerduty() {}
+    /**
+     * @return The class or type of event, for example `ping failure`.
+     * 
+     */
     public Optional<String> class_() {
         return Optional.ofNullable(this.class_);
     }
+    /**
+     * @return The component being affected by the event.
+     * 
+     */
     public Optional<String> component() {
         return Optional.ofNullable(this.component);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The group to which the provided component belongs to.
+     * 
+     */
     public Optional<String> group() {
         return Optional.ofNullable(this.group);
     }
+    /**
+     * @return The PagerDuty API key.
+     * 
+     */
     public String integrationKey() {
         return this.integrationKey;
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The PagerDuty event severity level. Default is `critical`.
+     * 
+     */
     public Optional<String> severity() {
         return Optional.ofNullable(this.severity);
     }
+    /**
+     * @return The templated summary message of the event.
+     * 
+     */
     public Optional<String> summary() {
         return Optional.ofNullable(this.summary);
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

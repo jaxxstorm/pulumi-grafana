@@ -9,6 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// Sets up Synthetic Monitoring on a Grafana cloud stack and generates a token.
+    /// Once a Grafana Cloud stack is created, a user can either use this resource or go into the UI to install synthetic monitoring.
+    /// This resource cannot be imported but it can be used on an existing Synthetic Monitoring installation without issues.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/installation/)
+    /// * [API documentation](https://github.com/grafana/synthetic-monitoring-api-go-client/blob/main/docs/API.md#apiv1registerinstall)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var smStackCloudStack = new Grafana.CloudStack("smStackCloudStack", new()
+    ///     {
+    ///         Slug = "&lt;stack-slug&gt;",
+    ///         RegionSlug = "us",
+    ///     });
+    /// 
+    ///     var metricsPublish = new Grafana.CloudApiKey("metricsPublish", new()
+    ///     {
+    ///         Role = "MetricsPublisher",
+    ///         CloudOrgSlug = "&lt;org-slug&gt;",
+    ///     });
+    /// 
+    ///     var smStackSyntheticMonitoringInstallation = new Grafana.SyntheticMonitoringInstallation("smStackSyntheticMonitoringInstallation", new()
+    ///     {
+    ///         StackId = smStackCloudStack.Id,
+    ///         MetricsInstanceId = smStackCloudStack.PrometheusUserId,
+    ///         LogsInstanceId = smStackCloudStack.LogsUserId,
+    ///         MetricsPublisherKey = metricsPublish.Key,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/syntheticMonitoringInstallation:SyntheticMonitoringInstallation")]
     public partial class SyntheticMonitoringInstallation : global::Pulumi.CustomResource
     {

@@ -16,6 +16,41 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/annotations/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/annotations/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Annotation;
+ * import com.pulumi.grafana.AnnotationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Annotation(&#34;test&#34;, AnnotationArgs.builder()        
+ *             .text(&#34;basic text&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/annotation:Annotation")
 public class Annotation extends com.pulumi.resources.CustomResource {
     /**

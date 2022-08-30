@@ -13,6 +13,9 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class PlaylistItem
     {
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly string? Id;
         public readonly int Order;
         public readonly string Title;

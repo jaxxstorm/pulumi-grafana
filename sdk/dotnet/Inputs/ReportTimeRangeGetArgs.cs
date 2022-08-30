@@ -12,9 +12,15 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class ReportTimeRangeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Start of the time range.
+        /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
 
+        /// <summary>
+        /// End of the time range.
+        /// </summary>
         [Input("to")]
         public Input<string>? To { get; set; }
 

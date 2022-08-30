@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages Grafana dashboards.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const metrics = new grafana.Dashboard("metrics", {configJson: fs.readFileSync("grafana-dashboard.json")});
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/dashboard:Dashboard dashboard_name {{dashboard_uid}}
+ * ```
+ */
 export class Dashboard extends pulumi.CustomResource {
     /**
      * Get an existing Dashboard resource's state with the given name, ID, and optional extra
@@ -49,8 +71,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly message!: pulumi.Output<string | undefined>;
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      */
     public readonly overwrite!: pulumi.Output<boolean | undefined>;
     /**
@@ -60,9 +81,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public /*out*/ readonly slug!: pulumi.Output<string>;
     /**
-     * The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -70,8 +89,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
@@ -138,8 +156,7 @@ export interface DashboardState {
      */
     message?: pulumi.Input<string>;
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      */
     overwrite?: pulumi.Input<boolean>;
     /**
@@ -149,9 +166,7 @@ export interface DashboardState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * The unique identifier of a dashboard. This is used to construct its URL. It's automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      */
     uid?: pulumi.Input<string>;
     /**
@@ -159,8 +174,7 @@ export interface DashboardState {
      */
     url?: pulumi.Input<string>;
     /**
-     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      */
     version?: pulumi.Input<number>;
 }
@@ -182,8 +196,7 @@ export interface DashboardArgs {
      */
     message?: pulumi.Input<string>;
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      */
     overwrite?: pulumi.Input<boolean>;
 }

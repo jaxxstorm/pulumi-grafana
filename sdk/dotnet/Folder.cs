@@ -9,6 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testFolderFolder = new Grafana.Folder("testFolderFolder", new()
+    ///     {
+    ///         Title = "Terraform Test Folder",
+    ///     });
+    /// 
+    ///     var testFolderDashboard = new Grafana.Dashboard("testFolderDashboard", new()
+    ///     {
+    ///         Folder = testFolderFolder.Id,
+    ///         ConfigJson = @"{
+    ///   ""title"": ""Dashboard in folder"",
+    ///   ""uid"": ""dashboard-in-folder""
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var testFolderWithUid = new Grafana.Folder("testFolderWithUid", new()
+    ///     {
+    ///         Uid = "test-folder-uid",
+    ///         Title = "Terraform Test Folder With UID",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/folder:Folder")]
     public partial class Folder : global::Pulumi.CustomResource
     {

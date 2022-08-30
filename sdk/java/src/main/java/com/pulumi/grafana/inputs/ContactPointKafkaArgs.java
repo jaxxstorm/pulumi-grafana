@@ -17,37 +17,77 @@ public final class ContactPointKafkaArgs extends com.pulumi.resources.ResourceAr
 
     public static final ContactPointKafkaArgs Empty = new ContactPointKafkaArgs();
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * The URL of the Kafka REST proxy to send requests to.
+     * 
+     */
     @Import(name="restProxyUrl", required=true)
     private Output<String> restProxyUrl;
 
+    /**
+     * @return The URL of the Kafka REST proxy to send requests to.
+     * 
+     */
     public Output<String> restProxyUrl() {
         return this.restProxyUrl;
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The name of the Kafka topic to publish to.
+     * 
+     */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
+    /**
+     * @return The name of the Kafka topic to publish to.
+     * 
+     */
     public Output<String> topic() {
         return this.topic;
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -80,47 +120,107 @@ public final class ContactPointKafkaArgs extends com.pulumi.resources.ResourceAr
             $ = new ContactPointKafkaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param restProxyUrl The URL of the Kafka REST proxy to send requests to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restProxyUrl(Output<String> restProxyUrl) {
             $.restProxyUrl = restProxyUrl;
             return this;
         }
 
+        /**
+         * @param restProxyUrl The URL of the Kafka REST proxy to send requests to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder restProxyUrl(String restProxyUrl) {
             return restProxyUrl(Output.of(restProxyUrl));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param topic The name of the Kafka topic to publish to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(Output<String> topic) {
             $.topic = topic;
             return this;
         }
 
+        /**
+         * @param topic The name of the Kafka topic to publish to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder topic(String topic) {
             return topic(Output.of(topic));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

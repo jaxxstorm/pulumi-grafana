@@ -33,16 +33,14 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      * 
      */
     @Import(name="groupBies", required=true)
     private Output<List<String>> groupBies;
 
     /**
-     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      * 
      */
     public Output<List<String>> groupBies() {
@@ -160,8 +158,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-         * effectively disabling grouping.
+         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
          * 
          * @return builder
          * 
@@ -172,8 +169,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-         * effectively disabling grouping.
+         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
          * 
          * @return builder
          * 
@@ -183,8 +179,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-         * effectively disabling grouping.
+         * @param groupBies A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
          * 
          * @return builder
          * 

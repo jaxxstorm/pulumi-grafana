@@ -21,16 +21,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     public static final SyntheticMonitoringCheckState Empty = new SyntheticMonitoringCheckState();
 
     /**
-     * Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-     * levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+     * Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
      * 
      */
     @Import(name="alertSensitivity")
     private @Nullable Output<String> alertSensitivity;
 
     /**
-     * @return Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-     * levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+     * @return Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
      * 
      */
     public Optional<Output<String>> alertSensitivity() {
@@ -38,16 +36,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     }
 
     /**
-     * Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of
-     * metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+     * Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
      * 
      */
     @Import(name="basicMetricsOnly")
     private @Nullable Output<Boolean> basicMetricsOnly;
 
     /**
-     * @return Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of
-     * metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+     * @return Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> basicMetricsOnly() {
@@ -55,14 +51,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to enable the check.
+     * Whether to enable the check. Defaults to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the check.
+     * @return Whether to enable the check. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -70,16 +66,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     }
 
     /**
-     * How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable
-     * value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+     * How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
      * 
      */
     @Import(name="frequency")
     private @Nullable Output<Integer> frequency;
 
     /**
-     * @return How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable
-     * value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+     * @return How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
      * 
      */
     public Optional<Output<Integer>> frequency() {
@@ -102,18 +96,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     }
 
     /**
-     * Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-     * check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-     * the labels cannot be empty, and the maximum length is 32 bytes.
+     * Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-     * check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-     * the labels cannot be empty, and the maximum length is 32 bytes.
+     * @return Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -181,16 +171,14 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-     * and the maximum 10 seconds (10000 ms).
+     * Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-     * and the maximum 10 seconds (10000 ms).
+     * @return Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -232,8 +220,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param alertSensitivity Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-         * levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+         * @param alertSensitivity Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
          * 
          * @return builder
          * 
@@ -244,8 +231,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param alertSensitivity Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert
-         * levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).
+         * @param alertSensitivity Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert levels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/). Defaults to `none`.
          * 
          * @return builder
          * 
@@ -255,8 +241,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param basicMetricsOnly Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of
-         * metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+         * @param basicMetricsOnly Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -267,8 +252,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param basicMetricsOnly Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of
-         * metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.
+         * @param basicMetricsOnly Metrics are reduced by default. Set this to `false` if you&#39;d like to publish all metrics. We maintain a [full list of metrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -278,7 +262,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether to enable the check.
+         * @param enabled Whether to enable the check. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -289,7 +273,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Whether to enable the check.
+         * @param enabled Whether to enable the check. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -299,8 +283,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param frequency How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable
-         * value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+         * @param frequency How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
          * 
          * @return builder
          * 
@@ -311,8 +294,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param frequency How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable
-         * value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).
+         * @param frequency How often the check runs in milliseconds (the value is not truly a &#34;frequency&#34; but a &#34;period&#34;). The minimum acceptable value is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms). Defaults to `60000`.
          * 
          * @return builder
          * 
@@ -343,9 +325,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-         * check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-         * the labels cannot be empty, and the maximum length is 32 bytes.
+         * @param labels Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
          * 
          * @return builder
          * 
@@ -356,9 +336,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per
-         * check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of
-         * the labels cannot be empty, and the maximum length is 32 bytes.
+         * @param labels Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
          * 
          * @return builder
          * 
@@ -462,8 +440,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeout Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-         * and the maximum 10 seconds (10000 ms).
+         * @param timeout Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
          * 
          * @return builder
          * 
@@ -474,8 +451,7 @@ public final class SyntheticMonitoringCheckState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeout Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),
-         * and the maximum 10 seconds (10000 ms).
+         * @param timeout Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
          * 
          * @return builder
          * 

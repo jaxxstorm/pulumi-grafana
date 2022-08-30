@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BuiltinRoleAssignmentRole {
+    /**
+     * @return States whether the assignment is available across all organizations or not. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean global;
+    /**
+     * @return Unique identifier of the role to assign to `builtin_role`.
+     * 
+     */
     private String uid;
 
     private BuiltinRoleAssignmentRole() {}
+    /**
+     * @return States whether the assignment is available across all organizations or not. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> global() {
         return Optional.ofNullable(this.global);
     }
+    /**
+     * @return Unique identifier of the role to assign to `builtin_role`.
+     * 
+     */
     public String uid() {
         return this.uid;
     }

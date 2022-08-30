@@ -9,6 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// **Note:** This resource is available only with Grafana 9.1+.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Grafana.ServiceAccountToken("foo", new()
+    ///     {
+    ///         ServiceAccountId = 1,
+    ///     });
+    /// 
+    ///     var bar = new Grafana.ServiceAccountToken("bar", new()
+    ///     {
+    ///         ServiceAccountId = 1,
+    ///         SecondsToLive = 30,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["serviceAccountTokenFooKeyOnly"] = foo.Key,
+    ///         ["serviceAccountTokenBar"] = bar,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/serviceAccountToken:ServiceAccountToken")]
     public partial class ServiceAccountToken : global::Pulumi.CustomResource
     {

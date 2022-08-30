@@ -65,7 +65,16 @@ class AwaitableGetOncallUserGroupResult(GetOncallUserGroupResult):
 def get_oncall_user_group(slack_handle: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOncallUserGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    example_user_group = grafana.get_oncall_user_group(slack_handle="example_slack_handle")
+    ```
     """
     __args__ = dict()
     __args__['slackHandle'] = slack_handle
@@ -82,6 +91,15 @@ def get_oncall_user_group(slack_handle: Optional[str] = None,
 def get_oncall_user_group_output(slack_handle: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOncallUserGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    example_user_group = grafana.get_oncall_user_group(slack_handle="example_slack_handle")
+    ```
     """
     ...

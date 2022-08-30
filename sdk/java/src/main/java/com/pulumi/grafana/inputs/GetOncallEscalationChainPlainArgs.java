@@ -12,9 +12,17 @@ public final class GetOncallEscalationChainPlainArgs extends com.pulumi.resource
 
     public static final GetOncallEscalationChainPlainArgs Empty = new GetOncallEscalationChainPlainArgs();
 
+    /**
+     * The escalation chain name.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The escalation chain name.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetOncallEscalationChainPlainArgs extends com.pulumi.resource
             $ = new GetOncallEscalationChainPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The escalation chain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

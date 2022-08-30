@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFolderResult {
+    /**
+     * @return The numerical ID of the Grafana folder.
+     * 
+     */
     private Integer id;
+    /**
+     * @return The name of the Grafana folder.
+     * 
+     */
     private String title;
+    /**
+     * @return The uid of the Grafana folder.
+     * 
+     */
     private String uid;
+    /**
+     * @return The full URL of the folder.
+     * 
+     */
     private String url;
 
     private GetFolderResult() {}
+    /**
+     * @return The numerical ID of the Grafana folder.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return The name of the Grafana folder.
+     * 
+     */
     public String title() {
         return this.title;
     }
+    /**
+     * @return The uid of the Grafana folder.
+     * 
+     */
     public String uid() {
         return this.uid;
     }
+    /**
+     * @return The full URL of the folder.
+     * 
+     */
     public String url() {
         return this.url;
     }

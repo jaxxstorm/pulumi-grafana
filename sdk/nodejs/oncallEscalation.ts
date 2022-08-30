@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/oncall/escalation-policies/)
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_policies/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const _default = new grafana.OncallEscalationChain("default", {}, {
+ *     provider: grafana.oncall,
+ * });
+ * const alex = grafana.getOncallUser({
+ *     username: "alex",
+ * });
+ * // Notify step
+ * const exampleNotifyStepOncallEscalation = new grafana.OncallEscalation("exampleNotifyStepOncallEscalation", {
+ *     escalationChainId: _default.id,
+ *     type: "notify_persons",
+ *     personsToNotifies: [alex.then(alex => alex.id)],
+ *     position: 0,
+ * });
+ * // Wait step
+ * const exampleNotifyStepIndex_oncallEscalationOncallEscalation = new grafana.OncallEscalation("exampleNotifyStepIndex/oncallEscalationOncallEscalation", {
+ *     escalationChainId: _default.id,
+ *     type: "wait",
+ *     duration: 300,
+ *     position: 1,
+ * });
+ * // Important step
+ * const exampleNotifyStepGrafanaIndex_oncallEscalationOncallEscalation = new grafana.OncallEscalation("exampleNotifyStepGrafanaIndex/oncallEscalationOncallEscalation", {
+ *     escalationChainId: _default.id,
+ *     type: "notify_persons",
+ *     important: true,
+ *     personsToNotifies: [alex.then(alex => alex.id)],
+ *     position: 0,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/oncallEscalation:OncallEscalation escalation_name {{escalation_id}}
+ * ```
+ */
 export class OncallEscalation extends pulumi.CustomResource {
     /**
      * Get an existing OncallEscalation resource's state with the given name, ID, and optional extra
@@ -33,7 +79,7 @@ export class OncallEscalation extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of an Action for trigger_action type step.
+     * The ID of an Action for triggerAction type step.
      */
     public readonly actionToTrigger!: pulumi.Output<string | undefined>;
     /**
@@ -45,32 +91,31 @@ export class OncallEscalation extends pulumi.CustomResource {
      */
     public readonly escalationChainId!: pulumi.Output<string>;
     /**
-     * The ID of a User Group for notify_user_group type step.
+     * The ID of a User Group for notify*user*group type step.
      */
     public readonly groupToNotify!: pulumi.Output<string | undefined>;
     /**
-     * Will activate "important" personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * Will activate "important" personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      */
     public readonly important!: pulumi.Output<boolean | undefined>;
     /**
-     * The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      */
     public readonly notifyIfTimeFrom!: pulumi.Output<string | undefined>;
     /**
-     * The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      */
     public readonly notifyIfTimeTo!: pulumi.Output<string | undefined>;
     /**
-     * ID of a Schedule for notify_on_call_from_schedule type step.
+     * ID of a Schedule for notify*on*call*from*schedule type step.
      */
     public readonly notifyOnCallFromSchedule!: pulumi.Output<string | undefined>;
     /**
-     * The list of ID's of users for notify_persons type step.
+     * The list of ID's of users for notifyPersons type step.
      */
     public readonly personsToNotifies!: pulumi.Output<string[] | undefined>;
     /**
-     * The list of ID's of users for notify_person_next_each_time type step.
+     * The list of ID's of users for notify*person*next*each*time type step.
      */
     public readonly personsToNotifyNextEachTimes!: pulumi.Output<string[] | undefined>;
     /**
@@ -78,8 +123,7 @@ export class OncallEscalation extends pulumi.CustomResource {
      */
     public readonly position!: pulumi.Output<number>;
     /**
-     * The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -139,7 +183,7 @@ export class OncallEscalation extends pulumi.CustomResource {
  */
 export interface OncallEscalationState {
     /**
-     * The ID of an Action for trigger_action type step.
+     * The ID of an Action for triggerAction type step.
      */
     actionToTrigger?: pulumi.Input<string>;
     /**
@@ -151,32 +195,31 @@ export interface OncallEscalationState {
      */
     escalationChainId?: pulumi.Input<string>;
     /**
-     * The ID of a User Group for notify_user_group type step.
+     * The ID of a User Group for notify*user*group type step.
      */
     groupToNotify?: pulumi.Input<string>;
     /**
-     * Will activate "important" personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * Will activate "important" personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      */
     important?: pulumi.Input<boolean>;
     /**
-     * The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      */
     notifyIfTimeFrom?: pulumi.Input<string>;
     /**
-     * The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      */
     notifyIfTimeTo?: pulumi.Input<string>;
     /**
-     * ID of a Schedule for notify_on_call_from_schedule type step.
+     * ID of a Schedule for notify*on*call*from*schedule type step.
      */
     notifyOnCallFromSchedule?: pulumi.Input<string>;
     /**
-     * The list of ID's of users for notify_persons type step.
+     * The list of ID's of users for notifyPersons type step.
      */
     personsToNotifies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of ID's of users for notify_person_next_each_time type step.
+     * The list of ID's of users for notify*person*next*each*time type step.
      */
     personsToNotifyNextEachTimes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -184,8 +227,7 @@ export interface OncallEscalationState {
      */
     position?: pulumi.Input<number>;
     /**
-     * The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      */
     type?: pulumi.Input<string>;
 }
@@ -195,7 +237,7 @@ export interface OncallEscalationState {
  */
 export interface OncallEscalationArgs {
     /**
-     * The ID of an Action for trigger_action type step.
+     * The ID of an Action for triggerAction type step.
      */
     actionToTrigger?: pulumi.Input<string>;
     /**
@@ -207,32 +249,31 @@ export interface OncallEscalationArgs {
      */
     escalationChainId: pulumi.Input<string>;
     /**
-     * The ID of a User Group for notify_user_group type step.
+     * The ID of a User Group for notify*user*group type step.
      */
     groupToNotify?: pulumi.Input<string>;
     /**
-     * Will activate "important" personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * Will activate "important" personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      */
     important?: pulumi.Input<boolean>;
     /**
-     * The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      */
     notifyIfTimeFrom?: pulumi.Input<string>;
     /**
-     * The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      */
     notifyIfTimeTo?: pulumi.Input<string>;
     /**
-     * ID of a Schedule for notify_on_call_from_schedule type step.
+     * ID of a Schedule for notify*on*call*from*schedule type step.
      */
     notifyOnCallFromSchedule?: pulumi.Input<string>;
     /**
-     * The list of ID's of users for notify_persons type step.
+     * The list of ID's of users for notifyPersons type step.
      */
     personsToNotifies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of ID's of users for notify_person_next_each_time type step.
+     * The list of ID's of users for notify*person*next*each*time type step.
      */
     personsToNotifyNextEachTimes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -240,8 +281,7 @@ export interface OncallEscalationArgs {
      */
     position: pulumi.Input<number>;
     /**
-     * The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      */
     type?: pulumi.Input<string>;
 }

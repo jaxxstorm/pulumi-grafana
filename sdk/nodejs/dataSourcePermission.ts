@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/datasource_permissions/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const team = new grafana.Team("team", {});
+ * const foo = new grafana.DataSource("foo", {
+ *     type: "cloudwatch",
+ *     jsonDatas: [{
+ *         defaultRegion: "us-east-1",
+ *         authType: "keys",
+ *     }],
+ *     secureJsonDatas: [{
+ *         accessKey: "123",
+ *         secretKey: "456",
+ *     }],
+ * });
+ * const fooPermissions = new grafana.DataSourcePermission("fooPermissions", {
+ *     datasourceId: foo.id,
+ *     permissions: [
+ *         {
+ *             teamId: team.id,
+ *             permission: "Query",
+ *         },
+ *         {
+ *             userId: 3,
+ *             permission: "Query",
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class DataSourcePermission extends pulumi.CustomResource {
     /**
      * Get an existing DataSourcePermission resource's state with the given name, ID, and optional extra

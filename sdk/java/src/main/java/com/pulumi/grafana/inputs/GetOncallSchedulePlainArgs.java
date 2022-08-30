@@ -12,9 +12,17 @@ public final class GetOncallSchedulePlainArgs extends com.pulumi.resources.Invok
 
     public static final GetOncallSchedulePlainArgs Empty = new GetOncallSchedulePlainArgs();
 
+    /**
+     * The schedule name.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The schedule name.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetOncallSchedulePlainArgs extends com.pulumi.resources.Invok
             $ = new GetOncallSchedulePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The schedule name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

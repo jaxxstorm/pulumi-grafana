@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var team = new Grafana.Team("team");
+    /// 
+    ///     var user = new Grafana.User("user", new()
+    ///     {
+    ///         Email = "user.name@example.com",
+    ///     });
+    /// 
+    ///     var collection = new Grafana.Folder("collection", new()
+    ///     {
+    ///         Title = "Folder Title",
+    ///     });
+    /// 
+    ///     var collectionPermission = new Grafana.FolderPermission("collectionPermission", new()
+    ///     {
+    ///         FolderUid = collection.Uid,
+    ///         Permissions = new[]
+    ///         {
+    ///             new Grafana.Inputs.FolderPermissionPermissionArgs
+    ///             {
+    ///                 Role = "Editor",
+    ///                 Permission = "Edit",
+    ///             },
+    ///             new Grafana.Inputs.FolderPermissionPermissionArgs
+    ///             {
+    ///                 TeamId = team.Id,
+    ///                 Permission = "View",
+    ///             },
+    ///             new Grafana.Inputs.FolderPermissionPermissionArgs
+    ///             {
+    ///                 UserId = user.Id,
+    ///                 Permission = "Admin",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/folderPermission:FolderPermission")]
     public partial class FolderPermission : global::Pulumi.CustomResource
     {

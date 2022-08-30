@@ -16,16 +16,32 @@ public final class BuiltinRoleAssignmentRoleArgs extends com.pulumi.resources.Re
 
     public static final BuiltinRoleAssignmentRoleArgs Empty = new BuiltinRoleAssignmentRoleArgs();
 
+    /**
+     * States whether the assignment is available across all organizations or not. Defaults to `false`.
+     * 
+     */
     @Import(name="global")
     private @Nullable Output<Boolean> global;
 
+    /**
+     * @return States whether the assignment is available across all organizations or not. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> global() {
         return Optional.ofNullable(this.global);
     }
 
+    /**
+     * Unique identifier of the role to assign to `builtin_role`.
+     * 
+     */
     @Import(name="uid", required=true)
     private Output<String> uid;
 
+    /**
+     * @return Unique identifier of the role to assign to `builtin_role`.
+     * 
+     */
     public Output<String> uid() {
         return this.uid;
     }
@@ -55,20 +71,44 @@ public final class BuiltinRoleAssignmentRoleArgs extends com.pulumi.resources.Re
             $ = new BuiltinRoleAssignmentRoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param global States whether the assignment is available across all organizations or not. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(@Nullable Output<Boolean> global) {
             $.global = global;
             return this;
         }
 
+        /**
+         * @param global States whether the assignment is available across all organizations or not. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder global(Boolean global) {
             return global(Output.of(global));
         }
 
+        /**
+         * @param uid Unique identifier of the role to assign to `builtin_role`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid Unique identifier of the role to assign to `builtin_role`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

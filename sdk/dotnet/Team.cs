@@ -9,6 +9,31 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_team = new Grafana.Team("test-team", new()
+    ///     {
+    ///         Email = "teamemail@example.com",
+    ///         Members = new[]
+    ///         {
+    ///             "viewer-01@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/team:Team")]
     public partial class Team : global::Pulumi.CustomResource
     {
@@ -19,8 +44,8 @@ namespace Pulumi.Grafana
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        /// must already exist in Grafana.
+        /// A set of email addresses corresponding to users who should be given membership
+        /// to the team. Note: users specified here must already exist in Grafana.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -94,8 +119,8 @@ namespace Pulumi.Grafana
         private InputList<string>? _members;
 
         /// <summary>
-        /// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        /// must already exist in Grafana.
+        /// A set of email addresses corresponding to users who should be given membership
+        /// to the team. Note: users specified here must already exist in Grafana.
         /// </summary>
         public InputList<string> Members
         {
@@ -127,8 +152,8 @@ namespace Pulumi.Grafana
         private InputList<string>? _members;
 
         /// <summary>
-        /// A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        /// must already exist in Grafana.
+        /// A set of email addresses corresponding to users who should be given membership
+        /// to the team. Note: users specified here must already exist in Grafana.
         /// </summary>
         public InputList<string> Members
         {

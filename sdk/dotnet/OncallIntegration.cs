@@ -9,6 +9,37 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana-cloud/oncall/integrations/)
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_acc_integration = new Grafana.OncallIntegration("test-acc-integration", new()
+    ///     {
+    ///         Type = "grafana",
+    ///         DefaultRoute = ,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = grafana.Oncall,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/oncallIntegration:OncallIntegration integration_name {{integration_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/oncallIntegration:OncallIntegration")]
     public partial class OncallIntegration : global::Pulumi.CustomResource
     {
@@ -43,9 +74,7 @@ namespace Pulumi.Grafana
         public Output<Outputs.OncallIntegrationTemplates?> Templates { get; private set; } = null!;
 
         /// <summary>
-        /// The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-        /// pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-        /// uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+        /// The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -122,9 +151,7 @@ namespace Pulumi.Grafana
         public Input<Inputs.OncallIntegrationTemplatesArgs>? Templates { get; set; }
 
         /// <summary>
-        /// The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-        /// pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-        /// uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+        /// The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -168,9 +195,7 @@ namespace Pulumi.Grafana
         public Input<Inputs.OncallIntegrationTemplatesGetArgs>? Templates { get; set; }
 
         /// <summary>
-        /// The type of integration. Can be grafana, grafana_alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog,
-        /// pagerduty, pingdom, elastalert, amazon_sns, curler, sentry, formatted_webhook, heartbeat, demo, manual, stackdriver,
-        /// uptimerobot, sentry_platform, zabbix, prtg, slack_channel, inbound_email.
+        /// The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

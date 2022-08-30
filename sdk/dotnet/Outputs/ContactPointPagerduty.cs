@@ -13,14 +13,41 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointPagerduty
     {
+        /// <summary>
+        /// The class or type of event, for example `ping failure`.
+        /// </summary>
         public readonly string? Class;
+        /// <summary>
+        /// The component being affected by the event.
+        /// </summary>
         public readonly string? Component;
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The group to which the provided component belongs to.
+        /// </summary>
         public readonly string? Group;
+        /// <summary>
+        /// The PagerDuty API key.
+        /// </summary>
         public readonly string IntegrationKey;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The PagerDuty event severity level. Default is `critical`.
+        /// </summary>
         public readonly string? Severity;
+        /// <summary>
+        /// The templated summary message of the event.
+        /// </summary>
         public readonly string? Summary;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
 
         [OutputConstructor]

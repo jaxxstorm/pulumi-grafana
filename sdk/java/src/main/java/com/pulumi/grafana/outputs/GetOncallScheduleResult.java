@@ -14,7 +14,15 @@ public final class GetOncallScheduleResult {
      * 
      */
     private String id;
+    /**
+     * @return The schedule name.
+     * 
+     */
     private String name;
+    /**
+     * @return The schedule type.
+     * 
+     */
     private String type;
 
     private GetOncallScheduleResult() {}
@@ -25,9 +33,17 @@ public final class GetOncallScheduleResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The schedule name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The schedule type.
+     * 
+     */
     public String type() {
         return this.type;
     }

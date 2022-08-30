@@ -17,51 +17,107 @@ public final class ContactPointTeamArgs extends com.pulumi.resources.ResourceArg
 
     public static final ContactPointTeamArgs Empty = new ContactPointTeamArgs();
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * The templated message content to send.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return The templated message content to send.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * The templated subtitle for each message section.
+     * 
+     */
     @Import(name="sectionTitle")
     private @Nullable Output<String> sectionTitle;
 
+    /**
+     * @return The templated subtitle for each message section.
+     * 
+     */
     public Optional<Output<String>> sectionTitle() {
         return Optional.ofNullable(this.sectionTitle);
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The templated title of the message.
+     * 
+     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
+    /**
+     * @return The templated title of the message.
+     * 
+     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * A Teams webhook URL.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return A Teams webhook URL.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -96,65 +152,149 @@ public final class ContactPointTeamArgs extends com.pulumi.resources.ResourceArg
             $ = new ContactPointTeamArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param message The templated message content to send.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message The templated message content to send.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param sectionTitle The templated subtitle for each message section.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sectionTitle(@Nullable Output<String> sectionTitle) {
             $.sectionTitle = sectionTitle;
             return this;
         }
 
+        /**
+         * @param sectionTitle The templated subtitle for each message section.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sectionTitle(String sectionTitle) {
             return sectionTitle(Output.of(sectionTitle));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param title The templated title of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
+        /**
+         * @param title The templated title of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(String title) {
             return title(Output.of(title));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }
 
+        /**
+         * @param url A Teams webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url A Teams webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

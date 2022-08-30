@@ -29,16 +29,32 @@ public final class DataSourceJsonDataDerivedFieldArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.matcherRegex);
     }
 
+    /**
+     * A unique name for the data source.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return A unique name for the data source.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The URL for the data source. The type of URL required varies depending on the chosen data source type.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return The URL for the data source. The type of URL required varies depending on the chosen data source type.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -88,20 +104,44 @@ public final class DataSourceJsonDataDerivedFieldArgs extends com.pulumi.resourc
             return matcherRegex(Output.of(matcherRegex));
         }
 
+        /**
+         * @param name A unique name for the data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name A unique name for the data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param url The URL for the data source. The type of URL required varies depending on the chosen data source type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The URL for the data source. The type of URL required varies depending on the chosen data source type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

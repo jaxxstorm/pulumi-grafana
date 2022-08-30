@@ -32,6 +32,58 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana Alerting contact points.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#contact-points)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.ContactPoint;
+ * import com.pulumi.grafana.ContactPointArgs;
+ * import com.pulumi.grafana.inputs.ContactPointEmailArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myContactPoint = new ContactPoint(&#34;myContactPoint&#34;, ContactPointArgs.builder()        
+ *             .emails(ContactPointEmailArgs.builder()
+ *                 .addresses(                
+ *                     &#34;one@company.org&#34;,
+ *                     &#34;two@company.org&#34;)
+ *                 .disableResolveMessage(false)
+ *                 .message(&#34;{{ len .Alerts.Firing }} firing.&#34;)
+ *                 .singleEmail(true)
+ *                 .subject(&#34;{{ template \&#34;default.title\&#34; .}}&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/contactPoint:ContactPoint contact_point_name {{contact_point_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/contactPoint:ContactPoint")
 public class ContactPoint extends com.pulumi.resources.CustomResource {
     /**
@@ -259,16 +311,14 @@ public class ContactPoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.victorops);
     }
     /**
-     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      * 
      */
     @Export(name="webhooks", type=List.class, parameters={ContactPointWebhook.class})
     private Output</* @Nullable */ List<ContactPointWebhook>> webhooks;
 
     /**
-     * @return A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * @return A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      * 
      */
     public Output<Optional<List<ContactPointWebhook>>> webhooks() {

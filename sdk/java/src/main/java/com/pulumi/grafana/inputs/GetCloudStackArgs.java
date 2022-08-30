@@ -13,9 +13,19 @@ public final class GetCloudStackArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCloudStackArgs Empty = new GetCloudStackArgs();
 
+    /**
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
+     * 
+     */
     @Import(name="slug", required=true)
     private Output<String> slug;
 
+    /**
+     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
+     * 
+     */
     public Output<String> slug() {
         return this.slug;
     }
@@ -44,11 +54,25 @@ public final class GetCloudStackArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetCloudStackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+         * available at “https://\n\n.grafana.net&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slug(Output<String> slug) {
             $.slug = slug;
             return this;
         }
 
+        /**
+         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+         * available at “https://\n\n.grafana.net&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slug(String slug) {
             return slug(Output.of(slug));
         }

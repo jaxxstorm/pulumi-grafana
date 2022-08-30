@@ -16,6 +16,49 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana dashboards.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Dashboard;
+ * import com.pulumi.grafana.DashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var metrics = new Dashboard(&#34;metrics&#34;, DashboardArgs.builder()        
+ *             .configJson(Files.readString(Paths.get(&#34;grafana-dashboard.json&#34;)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/dashboard:Dashboard dashboard_name {{dashboard_uid}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
     /**
@@ -75,16 +118,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.message);
     }
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     @Export(name="overwrite", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> overwrite;
 
     /**
-     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     public Output<Optional<Boolean>> overwrite() {
@@ -109,18 +150,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.slug;
     }
     /**
-     * The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided
-     * when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards
-     * between multiple Grafana installs.
+     * @return The unique identifier of a dashboard. This is used to construct its URL. It&#39;s automatically generated if not provided when creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards between multiple Grafana installs.
      * 
      */
     public Output<String> uid() {
@@ -141,16 +178,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      * 
      */
     @Export(name="version", type=Integer.class, parameters={})
     private Output<Integer> version;
 
     /**
-     * @return Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your
-     * dashboard are not lost.
+     * @return Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
      * 
      */
     public Output<Integer> version() {

@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages Grafana API Keys.
+ *
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const foo = new grafana.ApiKey("foo", {role: "Viewer"});
+ * const bar = new grafana.ApiKey("bar", {
+ *     role: "Admin",
+ *     secondsToLive: 30,
+ * });
+ * export const apiKeyFooKeyOnly = foo.key;
+ * export const apiKeyBar = bar;
+ * ```
+ */
 export class ApiKey extends pulumi.CustomResource {
     /**
      * Get an existing ApiKey resource's state with the given name, ID, and optional extra
@@ -33,8 +53,7 @@ export class ApiKey extends pulumi.CustomResource {
     }
 
     /**
-     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      */
     public readonly cloudStackSlug!: pulumi.Output<string | undefined>;
     public /*out*/ readonly expiration!: pulumi.Output<string>;
@@ -84,8 +103,7 @@ export class ApiKey extends pulumi.CustomResource {
  */
 export interface ApiKeyState {
     /**
-     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      */
     cloudStackSlug?: pulumi.Input<string>;
     expiration?: pulumi.Input<string>;
@@ -100,8 +118,7 @@ export interface ApiKeyState {
  */
 export interface ApiKeyArgs {
     /**
-     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      */
     cloudStackSlug?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

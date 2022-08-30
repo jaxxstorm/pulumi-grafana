@@ -13,8 +13,17 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class OncallIntegrationTemplates
     {
+        /// <summary>
+        /// Template for the key by which alerts are grouped.
+        /// </summary>
         public readonly string? GroupingKey;
+        /// <summary>
+        /// Template for sending a signal to resolve the Incident.
+        /// </summary>
         public readonly string? ResolveSignal;
+        /// <summary>
+        /// Templates for Slack.
+        /// </summary>
         public readonly Outputs.OncallIntegrationTemplatesSlack? Slack;
 
         [OutputConstructor]

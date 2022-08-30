@@ -13,6 +13,50 @@ import com.pulumi.grafana.inputs.CloudPluginInstallationState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana Cloud Plugin Installations.
+ * 
+ * * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.CloudPluginInstallation;
+ * import com.pulumi.grafana.CloudPluginInstallationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new CloudPluginInstallation(&#34;test&#34;, CloudPluginInstallationArgs.builder()        
+ *             .slug(&#34;some-plugin&#34;)
+ *             .stackSlug(&#34;stackname&#34;)
+ *             .version(&#34;1.2.3&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/cloudPluginInstallation:CloudPluginInstallation")
 public class CloudPluginInstallation extends com.pulumi.resources.CustomResource {
     /**

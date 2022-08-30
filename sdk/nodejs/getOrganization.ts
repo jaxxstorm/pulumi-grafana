@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-organizations/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/org/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.Organization("test", {
+ *     adminUser: "admin",
+ *     createUsers: true,
+ *     viewers: [
+ *         "viewer-01@example.com",
+ *         "viewer-02@example.com",
+ *     ],
+ * });
+ * const fromName = grafana.getOrganizationOutput({
+ *     name: test.name,
+ * });
+ * ```
+ */
 export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +42,9 @@ export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getOrganization.
  */
 export interface GetOrganizationArgs {
+    /**
+     * The name of the Organization.
+     */
     name: string;
 }
 
@@ -26,13 +52,25 @@ export interface GetOrganizationArgs {
  * A collection of values returned by getOrganization.
  */
 export interface GetOrganizationResult {
+    /**
+     * A list of email addresses corresponding to users given admin access to the organization.
+     */
     readonly admins: string[];
+    /**
+     * A list of email addresses corresponding to users given editor access to the organization.
+     */
     readonly editors: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the Organization.
+     */
     readonly name: string;
+    /**
+     * A list of email addresses corresponding to users given viewer access to the organization.
+     */
     readonly viewers: string[];
 }
 
@@ -44,5 +82,8 @@ export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pu
  * A collection of arguments for invoking getOrganization.
  */
 export interface GetOrganizationOutputArgs {
+    /**
+     * The name of the Organization.
+     */
     name: pulumi.Input<string>;
 }

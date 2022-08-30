@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointVictorop {
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The VictorOps alert state - typically either `CRITICAL` or `RECOVERY`.
+     * 
+     */
     private @Nullable String messageType;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The VictorOps webhook URL.
+     * 
+     */
     private String url;
 
     private ContactPointVictorop() {}
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The VictorOps alert state - typically either `CRITICAL` or `RECOVERY`.
+     * 
+     */
     public Optional<String> messageType() {
         return Optional.ofNullable(this.messageType);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The VictorOps webhook URL.
+     * 
+     */
     public String url() {
         return this.url;
     }

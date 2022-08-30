@@ -14,6 +14,47 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.OncallEscalationChain;
+ * import com.pulumi.grafana.OncallEscalationChainArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new OncallEscalationChain(&#34;default&#34;, OncallEscalationChainArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(grafana.oncall())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallEscalationChain:OncallEscalationChain")
 public class OncallEscalationChain extends com.pulumi.resources.CustomResource {
     /**

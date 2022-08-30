@@ -183,18 +183,14 @@ public final class LibraryPanelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-     * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-     * accessing library panels and when syncing library panels between multiple Grafana installs.
+     * The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-     * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-     * accessing library panels and when syncing library panels between multiple Grafana installs.
+     * @return The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -510,9 +506,7 @@ public final class LibraryPanelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-         * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-         * accessing library panels and when syncing library panels between multiple Grafana installs.
+         * @param uid The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
          * 
          * @return builder
          * 
@@ -523,9 +517,7 @@ public final class LibraryPanelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-         * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-         * accessing library panels and when syncing library panels between multiple Grafana installs.
+         * @param uid The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
          * 
          * @return builder
          * 

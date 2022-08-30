@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#stacks/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.CloudStack("test", {
+ *     description: "Test Grafana Cloud Stack",
+ *     regionSlug: "eu",
+ *     slug: "gcloudstacktest",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/cloudStack:CloudStack stack_name {{stack_id}}
+ * ```
+ */
 export class CloudStack extends pulumi.CustomResource {
     /**
      * Get an existing CloudStack resource's state with the given name, ID, and optional extra
@@ -57,7 +79,7 @@ export class CloudStack extends pulumi.CustomResource {
     public /*out*/ readonly logsUrl!: pulumi.Output<string>;
     public /*out*/ readonly logsUserId!: pulumi.Output<number>;
     /**
-     * Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -97,13 +119,13 @@ export class CloudStack extends pulumi.CustomResource {
      */
     public /*out*/ readonly prometheusUserId!: pulumi.Output<number>;
     /**
-     * Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      */
     public readonly regionSlug!: pulumi.Output<string | undefined>;
     /**
-     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-     * available at “https://<stack_slug>.grafana.net".
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
      */
     public readonly slug!: pulumi.Output<string>;
     /**
@@ -115,12 +137,11 @@ export class CloudStack extends pulumi.CustomResource {
      */
     public readonly url!: pulumi.Output<string>;
     /**
-     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      */
     public readonly waitForReadiness!: pulumi.Output<boolean | undefined>;
     /**
-     * How long to wait for readiness (if enabled).
+     * How long to wait for readiness (if enabled). Defaults to `5m0s`.
      */
     public readonly waitForReadinessTimeout!: pulumi.Output<string | undefined>;
 
@@ -227,7 +248,7 @@ export interface CloudStackState {
     logsUrl?: pulumi.Input<string>;
     logsUserId?: pulumi.Input<number>;
     /**
-     * Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      */
     name?: pulumi.Input<string>;
     /**
@@ -267,13 +288,13 @@ export interface CloudStackState {
      */
     prometheusUserId?: pulumi.Input<number>;
     /**
-     * Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      */
     regionSlug?: pulumi.Input<string>;
     /**
-     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-     * available at “https://<stack_slug>.grafana.net".
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
      */
     slug?: pulumi.Input<string>;
     /**
@@ -285,12 +306,11 @@ export interface CloudStackState {
      */
     url?: pulumi.Input<string>;
     /**
-     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      */
     waitForReadiness?: pulumi.Input<boolean>;
     /**
-     * How long to wait for readiness (if enabled).
+     * How long to wait for readiness (if enabled). Defaults to `5m0s`.
      */
     waitForReadinessTimeout?: pulumi.Input<string>;
 }
@@ -304,17 +324,17 @@ export interface CloudStackArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      */
     name?: pulumi.Input<string>;
     /**
-     * Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      */
     regionSlug?: pulumi.Input<string>;
     /**
-     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-     * available at “https://<stack_slug>.grafana.net".
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
      */
     slug: pulumi.Input<string>;
     /**
@@ -322,12 +342,11 @@ export interface CloudStackArgs {
      */
     url?: pulumi.Input<string>;
     /**
-     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      */
     waitForReadiness?: pulumi.Input<boolean>;
     /**
-     * How long to wait for readiness (if enabled).
+     * How long to wait for readiness (if enabled). Defaults to `5m0s`.
      */
     waitForReadinessTimeout?: pulumi.Input<string>;
 }

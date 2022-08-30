@@ -15,6 +15,50 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.ExternalGroup;
+ * import com.pulumi.grafana.ExternalGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test_team_group = new ExternalGroup(&#34;test-team-group&#34;, ExternalGroupArgs.builder()        
+ *             .groups(            
+ *                 &#34;test-group-1&#34;,
+ *                 &#34;test-group-2&#34;)
+ *             .teamId(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/externalGroup:ExternalGroup")
 public class ExternalGroup extends com.pulumi.resources.CustomResource {
     /**

@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a single API key on the Grafana Cloud portal (on the organization level)
+ * * [API documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#api-keys)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.CloudApiKey("test", {
+ *     cloudOrgSlug: "myorg",
+ *     role: "Admin",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/cloudApiKey:CloudApiKey resource_name "{{org-name}}-{{api_key_name}}"
+ * ```
+ */
 export class CloudApiKey extends pulumi.CustomResource {
     /**
      * Get an existing CloudApiKey resource's state with the given name, ID, and optional extra
@@ -45,8 +67,7 @@ export class CloudApiKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -102,8 +123,7 @@ export interface CloudApiKeyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      */
     role?: pulumi.Input<string>;
 }
@@ -121,8 +141,7 @@ export interface CloudApiKeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      */
     role: pulumi.Input<string>;
 }

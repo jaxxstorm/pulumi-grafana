@@ -4,6 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * **Note:** This data source is going to be deprecated, please use outgoing webhook data source instead.
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+ */
 export function getOncallAction(args: GetOncallActionArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallActionResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +23,9 @@ export function getOncallAction(args: GetOncallActionArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getOncallAction.
  */
 export interface GetOncallActionArgs {
+    /**
+     * The action name.
+     */
     name: string;
 }
 
@@ -30,6 +37,9 @@ export interface GetOncallActionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The action name.
+     */
     readonly name: string;
 }
 
@@ -41,5 +51,8 @@ export function getOncallActionOutput(args: GetOncallActionOutputArgs, opts?: pu
  * A collection of arguments for invoking getOncallAction.
  */
 export interface GetOncallActionOutputArgs {
+    /**
+     * The action name.
+     */
     name: pulumi.Input<string>;
 }

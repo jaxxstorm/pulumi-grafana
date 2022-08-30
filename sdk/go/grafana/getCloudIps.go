@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for retrieving sets of cloud IPs. See https://grafana.com/docs/grafana-cloud/reference/allow-list/ for more info
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.GetCloudIps(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCloudIps(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCloudIpsResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetCloudIpsResult
@@ -19,11 +44,16 @@ func GetCloudIps(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCloudIps
 
 // A collection of values returned by getCloudIps.
 type GetCloudIpsResult struct {
-	HostedAlerts   []string `pulumi:"hostedAlerts"`
+	// Set of IP addresses that are used for hosted alerts.
+	HostedAlerts []string `pulumi:"hostedAlerts"`
+	// Set of IP addresses that are used for hosted Grafana.
 	HostedGrafanas []string `pulumi:"hostedGrafanas"`
-	HostedLogs     []string `pulumi:"hostedLogs"`
-	HostedMetrics  []string `pulumi:"hostedMetrics"`
-	HostedTraces   []string `pulumi:"hostedTraces"`
+	// Set of IP addresses that are used for hosted logs.
+	HostedLogs []string `pulumi:"hostedLogs"`
+	// Set of IP addresses that are used for hosted metrics.
+	HostedMetrics []string `pulumi:"hostedMetrics"`
+	// Set of IP addresses that are used for hosted traces.
+	HostedTraces []string `pulumi:"hostedTraces"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }

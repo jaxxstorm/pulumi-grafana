@@ -12,6 +12,9 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class PlaylistItemArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

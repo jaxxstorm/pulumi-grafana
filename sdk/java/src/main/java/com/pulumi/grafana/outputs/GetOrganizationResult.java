@@ -10,20 +10,44 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationResult {
+    /**
+     * @return A list of email addresses corresponding to users given admin access to the organization.
+     * 
+     */
     private List<String> admins;
+    /**
+     * @return A list of email addresses corresponding to users given editor access to the organization.
+     * 
+     */
     private List<String> editors;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The name of the Organization.
+     * 
+     */
     private String name;
+    /**
+     * @return A list of email addresses corresponding to users given viewer access to the organization.
+     * 
+     */
     private List<String> viewers;
 
     private GetOrganizationResult() {}
+    /**
+     * @return A list of email addresses corresponding to users given admin access to the organization.
+     * 
+     */
     public List<String> admins() {
         return this.admins;
     }
+    /**
+     * @return A list of email addresses corresponding to users given editor access to the organization.
+     * 
+     */
     public List<String> editors() {
         return this.editors;
     }
@@ -34,9 +58,17 @@ public final class GetOrganizationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the Organization.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return A list of email addresses corresponding to users given viewer access to the organization.
+     * 
+     */
     public List<String> viewers() {
         return this.viewers;
     }

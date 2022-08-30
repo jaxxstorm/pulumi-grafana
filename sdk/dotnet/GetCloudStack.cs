@@ -11,9 +11,15 @@ namespace Pulumi.Grafana
 {
     public static class GetCloudStack
     {
+        /// <summary>
+        /// Data source for Grafana Stack
+        /// </summary>
         public static Task<GetCloudStackResult> InvokeAsync(GetCloudStackArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCloudStackResult>("grafana:index/getCloudStack:getCloudStack", args ?? new GetCloudStackArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Grafana Stack
+        /// </summary>
         public static Output<GetCloudStackResult> Invoke(GetCloudStackInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetCloudStackResult>("grafana:index/getCloudStack:getCloudStack", args ?? new GetCloudStackInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +27,10 @@ namespace Pulumi.Grafana
 
     public sealed class GetCloudStackArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
+        /// </summary>
         [Input("slug", required: true)]
         public string Slug { get; set; } = null!;
 
@@ -32,6 +42,10 @@ namespace Pulumi.Grafana
 
     public sealed class GetCloudStackInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
+        /// </summary>
         [Input("slug", required: true)]
         public Input<string> Slug { get; set; } = null!;
 
@@ -45,29 +59,90 @@ namespace Pulumi.Grafana
     [OutputType]
     public sealed class GetCloudStackResult
     {
+        /// <summary>
+        /// Name of the Alertmanager instance configured for this stack.
+        /// </summary>
         public readonly string AlertmanagerName;
+        /// <summary>
+        /// Status of the Alertmanager instance configured for this stack.
+        /// </summary>
         public readonly string AlertmanagerStatus;
+        /// <summary>
+        /// Base URL of the Alertmanager instance configured for this stack.
+        /// </summary>
         public readonly string AlertmanagerUrl;
+        /// <summary>
+        /// User ID of the Alertmanager instance configured for this stack.
+        /// </summary>
         public readonly int AlertmanagerUserId;
+        /// <summary>
+        /// Description of stack.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The stack id assigned to this stack by Grafana.
+        /// </summary>
         public readonly string Id;
         public readonly string LogsName;
         public readonly string LogsStatus;
         public readonly string LogsUrl;
         public readonly int LogsUserId;
+        /// <summary>
+        /// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Organization id to assign to this stack.
+        /// </summary>
         public readonly int OrgId;
+        /// <summary>
+        /// Organization name to assign to this stack.
+        /// </summary>
         public readonly string OrgName;
+        /// <summary>
+        /// Organization slug to assign to this stack.
+        /// </summary>
         public readonly string OrgSlug;
+        /// <summary>
+        /// Prometheus name for this instance.
+        /// </summary>
         public readonly string PrometheusName;
+        /// <summary>
+        /// Use this URL to query hosted metrics data e.g. Prometheus data source in Grafana
+        /// </summary>
         public readonly string PrometheusRemoteEndpoint;
+        /// <summary>
+        /// Use this URL to send prometheus metrics to Grafana cloud
+        /// </summary>
         public readonly string PrometheusRemoteWriteEndpoint;
+        /// <summary>
+        /// Prometheus status for this instance.
+        /// </summary>
         public readonly string PrometheusStatus;
+        /// <summary>
+        /// Prometheus url for this instance.
+        /// </summary>
         public readonly string PrometheusUrl;
+        /// <summary>
+        /// Promehteus user ID. Used for e.g. remote_write.
+        /// </summary>
         public readonly int PrometheusUserId;
+        /// <summary>
+        /// The region this stack is deployed to.
+        /// </summary>
         public readonly string RegionSlug;
+        /// <summary>
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
+        /// </summary>
         public readonly string Slug;
+        /// <summary>
+        /// Status of the stack.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

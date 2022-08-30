@@ -15,16 +15,32 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final RolePermissionArgs Empty = new RolePermissionArgs();
 
+    /**
+     * Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+     * 
+     */
     @Import(name="action", required=true)
     private Output<String> action;
 
+    /**
+     * @return Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+     * 
+     */
     public Output<String> action() {
         return this.action;
     }
 
+    /**
+     * Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+     * 
+     */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
+    /**
+     * @return Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+     * 
+     */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
@@ -54,20 +70,44 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
             $ = new RolePermissionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action Specific action users granted with the role will be allowed to perform (for example: `users:read`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param scope Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
+        /**
+         * @param scope Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }

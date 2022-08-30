@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointAlertmanager {
+    /**
+     * @return The password component of the basic auth credentials to use.
+     * 
+     */
     private @Nullable String basicAuthPassword;
+    /**
+     * @return The username component of the basic auth credentials to use.
+     * 
+     */
     private @Nullable String basicAuthUser;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The URL of the Alertmanager instance.
+     * 
+     */
     private String url;
 
     private ContactPointAlertmanager() {}
+    /**
+     * @return The password component of the basic auth credentials to use.
+     * 
+     */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
+    /**
+     * @return The username component of the basic auth credentials to use.
+     * 
+     */
     public Optional<String> basicAuthUser() {
         return Optional.ofNullable(this.basicAuthUser);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The URL of the Alertmanager instance.
+     * 
+     */
     public String url() {
         return this.url;
     }

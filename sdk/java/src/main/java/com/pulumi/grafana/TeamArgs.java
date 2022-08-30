@@ -32,16 +32,16 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-     * must already exist in Grafana.
+     * A set of email addresses corresponding to users who should be given membership
+     * to the team. Note: users specified here must already exist in Grafana.
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-     * must already exist in Grafana.
+     * @return A set of email addresses corresponding to users who should be given membership
+     * to the team. Note: users specified here must already exist in Grafana.
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -111,8 +111,8 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-         * must already exist in Grafana.
+         * @param members A set of email addresses corresponding to users who should be given membership
+         * to the team. Note: users specified here must already exist in Grafana.
          * 
          * @return builder
          * 
@@ -123,8 +123,8 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-         * must already exist in Grafana.
+         * @param members A set of email addresses corresponding to users who should be given membership
+         * to the team. Note: users specified here must already exist in Grafana.
          * 
          * @return builder
          * 
@@ -134,8 +134,8 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-         * must already exist in Grafana.
+         * @param members A set of email addresses corresponding to users who should be given membership
+         * to the team. Note: users specified here must already exist in Grafana.
          * 
          * @return builder
          * 

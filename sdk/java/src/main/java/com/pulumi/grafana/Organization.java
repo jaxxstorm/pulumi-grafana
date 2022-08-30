@@ -17,6 +17,55 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-organizations/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/org/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Organization;
+ * import com.pulumi.grafana.OrganizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Organization(&#34;test&#34;, OrganizationArgs.builder()        
+ *             .adminUser(&#34;admin&#34;)
+ *             .admins(&#34;admin@example.com&#34;)
+ *             .createUsers(true)
+ *             .editors(            
+ *                 &#34;editor-01@example.com&#34;,
+ *                 &#34;editor-02@example.com&#34;)
+ *             .viewers(            
+ *                 &#34;viewer-01@example.com&#34;,
+ *                 &#34;viewer-02@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/organization:Organization org_name {{org_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {
     /**
@@ -38,52 +87,62 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.adminUser);
     }
     /**
-     * A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Export(name="admins", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> admins;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Output<Optional<List<String>>> admins() {
         return Codegen.optional(this.admins);
     }
     /**
-     * Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * Whether or not to create Grafana users specified in the organization&#39;s
+     * membership if they don&#39;t already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      * 
      */
     @Export(name="createUsers", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> createUsers;
 
     /**
-     * @return Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * @return Whether or not to create Grafana users specified in the organization&#39;s
+     * membership if they don&#39;t already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> createUsers() {
         return Codegen.optional(this.createUsers);
     }
     /**
-     * A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Export(name="editors", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> editors;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Output<Optional<List<String>>> editors() {
@@ -118,16 +177,18 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Export(name="viewers", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> viewers;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Output<Optional<List<String>>> viewers() {

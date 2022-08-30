@@ -19,6 +19,60 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * **Note:** This resource is available only with Grafana Enterprise 7.+.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/reporting/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/reporting/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Dashboard;
+ * import com.pulumi.grafana.DashboardArgs;
+ * import com.pulumi.grafana.Report;
+ * import com.pulumi.grafana.ReportArgs;
+ * import com.pulumi.grafana.inputs.ReportScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testDashboard = new Dashboard(&#34;testDashboard&#34;, DashboardArgs.builder()        
+ *             .configJson(&#34;&#34;&#34;
+ * {
+ *   &#34;title&#34;: &#34;Dashboard for report&#34;,
+ *   &#34;uid&#34;: &#34;report&#34;
+ * }
+ *             &#34;&#34;&#34;)
+ *             .message(&#34;inital commit.&#34;)
+ *             .build());
+ * 
+ *         var testReport = new Report(&#34;testReport&#34;, ReportArgs.builder()        
+ *             .dashboardId(testDashboard.dashboardId())
+ *             .recipients(&#34;some@email.com&#34;)
+ *             .schedule(ReportScheduleArgs.builder()
+ *                 .frequency(&#34;hourly&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/report:Report")
 public class Report extends com.pulumi.resources.CustomResource {
     /**
@@ -36,42 +90,42 @@ public class Report extends com.pulumi.resources.CustomResource {
         return this.dashboardId;
     }
     /**
-     * Whether to include a link to the dashboard in the report.
+     * Whether to include a link to the dashboard in the report. Defaults to `true`.
      * 
      */
     @Export(name="includeDashboardLink", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> includeDashboardLink;
 
     /**
-     * @return Whether to include a link to the dashboard in the report.
+     * @return Whether to include a link to the dashboard in the report. Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> includeDashboardLink() {
         return Codegen.optional(this.includeDashboardLink);
     }
     /**
-     * Whether to include a CSV file of table panel data.
+     * Whether to include a CSV file of table panel data. Defaults to `false`.
      * 
      */
     @Export(name="includeTableCsv", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> includeTableCsv;
 
     /**
-     * @return Whether to include a CSV file of table panel data.
+     * @return Whether to include a CSV file of table panel data. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> includeTableCsv() {
         return Codegen.optional(this.includeTableCsv);
     }
     /**
-     * Layout of the report. `simple` or `grid`
+     * Layout of the report. `simple` or `grid` Defaults to `grid`.
      * 
      */
     @Export(name="layout", type=String.class, parameters={})
     private Output</* @Nullable */ String> layout;
 
     /**
-     * @return Layout of the report. `simple` or `grid`
+     * @return Layout of the report. `simple` or `grid` Defaults to `grid`.
      * 
      */
     public Output<Optional<String>> layout() {
@@ -106,14 +160,14 @@ public class Report extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Orientation of the report. `landscape` or `portrait`
+     * Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      * 
      */
     @Export(name="orientation", type=String.class, parameters={})
     private Output</* @Nullable */ String> orientation;
 
     /**
-     * @return Orientation of the report. `landscape` or `portrait`
+     * @return Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      * 
      */
     public Output<Optional<String>> orientation() {

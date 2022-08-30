@@ -11,12 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-server-users/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/user/)
+//
+// This resource uses Grafana's admin APIs for creating and updating users which
+// does not currently work with API Tokens. You must use basic auth.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewUser(ctx, "staff", &grafana.UserArgs{
+//				Email:    pulumi.String("staff.name@example.com"),
+//				IsAdmin:  pulumi.Bool(false),
+//				Login:    pulumi.String("staff"),
+//				Password: pulumi.String("my-password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/user:User user_name {{user_id}}
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
 	// The email address of the Grafana user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Whether to make user an admin.
+	// Whether to make user an admin. Defaults to `false`.
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
 	// The username for the Grafana user.
 	Login pulumi.StringPtrOutput `pulumi:"login"`
@@ -66,7 +108,7 @@ func GetUser(ctx *pulumi.Context,
 type userState struct {
 	// The email address of the Grafana user.
 	Email *string `pulumi:"email"`
-	// Whether to make user an admin.
+	// Whether to make user an admin. Defaults to `false`.
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// The username for the Grafana user.
 	Login *string `pulumi:"login"`
@@ -81,7 +123,7 @@ type userState struct {
 type UserState struct {
 	// The email address of the Grafana user.
 	Email pulumi.StringPtrInput
-	// Whether to make user an admin.
+	// Whether to make user an admin. Defaults to `false`.
 	IsAdmin pulumi.BoolPtrInput
 	// The username for the Grafana user.
 	Login pulumi.StringPtrInput
@@ -100,7 +142,7 @@ func (UserState) ElementType() reflect.Type {
 type userArgs struct {
 	// The email address of the Grafana user.
 	Email string `pulumi:"email"`
-	// Whether to make user an admin.
+	// Whether to make user an admin. Defaults to `false`.
 	IsAdmin *bool `pulumi:"isAdmin"`
 	// The username for the Grafana user.
 	Login *string `pulumi:"login"`
@@ -114,7 +156,7 @@ type userArgs struct {
 type UserArgs struct {
 	// The email address of the Grafana user.
 	Email pulumi.StringInput
-	// Whether to make user an admin.
+	// Whether to make user an admin. Defaults to `false`.
 	IsAdmin pulumi.BoolPtrInput
 	// The username for the Grafana user.
 	Login pulumi.StringPtrInput
@@ -216,7 +258,7 @@ func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Whether to make user an admin.
+// Whether to make user an admin. Defaults to `false`.
 func (o UserOutput) IsAdmin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsAdmin }).(pulumi.BoolPtrOutput)
 }

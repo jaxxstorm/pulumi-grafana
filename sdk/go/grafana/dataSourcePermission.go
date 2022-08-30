@@ -11,6 +11,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/datasource_permissions/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			team, err := grafana.NewTeam(ctx, "team", nil)
+//			if err != nil {
+//				return err
+//			}
+//			foo, err := grafana.NewDataSource(ctx, "foo", &grafana.DataSourceArgs{
+//				Type: pulumi.String("cloudwatch"),
+//				JsonDatas: DataSourceJsonDataArray{
+//					&DataSourceJsonDataArgs{
+//						DefaultRegion: pulumi.String("us-east-1"),
+//						AuthType:      pulumi.String("keys"),
+//					},
+//				},
+//				SecureJsonDatas: DataSourceSecureJsonDataArray{
+//					&DataSourceSecureJsonDataArgs{
+//						AccessKey: pulumi.String("123"),
+//						SecretKey: pulumi.String("456"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewDataSourcePermission(ctx, "fooPermissions", &grafana.DataSourcePermissionArgs{
+//				DatasourceId: foo.ID(),
+//				Permissions: DataSourcePermissionPermissionArray{
+//					&DataSourcePermissionPermissionArgs{
+//						TeamId:     team.ID(),
+//						Permission: pulumi.String("Query"),
+//					},
+//					&DataSourcePermissionPermissionArgs{
+//						UserId:     pulumi.Int(3),
+//						Permission: pulumi.String("Query"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DataSourcePermission struct {
 	pulumi.CustomResourceState
 

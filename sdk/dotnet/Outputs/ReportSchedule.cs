@@ -13,10 +13,26 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ReportSchedule
     {
+        /// <summary>
+        /// Custom interval of the report.
+        /// **Note:** This field is only available when frequency is set to `custom`.
+        /// </summary>
         public readonly string? CustomInterval;
+        /// <summary>
+        /// End time of the report. If empty, the report will be sent indefinitely (according to frequency). Note that times will be saved as UTC in Grafana.
+        /// </summary>
         public readonly string? EndTime;
+        /// <summary>
+        /// Frequency of the report. One of `never`, `once`, `hourly`, `daily`, `weekly`, `monthly` or `custom`.
+        /// </summary>
         public readonly string Frequency;
+        /// <summary>
+        /// Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
+        /// </summary>
         public readonly string? StartTime;
+        /// <summary>
+        /// Whether to send the report only on work days. Defaults to `false`.
+        /// </summary>
         public readonly bool? WorkdaysOnly;
 
         [OutputConstructor]

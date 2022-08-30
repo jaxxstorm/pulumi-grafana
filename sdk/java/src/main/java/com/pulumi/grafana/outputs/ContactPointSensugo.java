@@ -13,45 +13,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointSensugo {
+    /**
+     * @return The SensuGo API key.
+     * 
+     */
     private String apiKey;
+    /**
+     * @return The SensuGo check to which the event should be routed.
+     * 
+     */
     private @Nullable String check;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The entity being monitored.
+     * 
+     */
     private @Nullable String entity;
+    /**
+     * @return A custom handler to execute in addition to the check.
+     * 
+     */
     private @Nullable String handler;
+    /**
+     * @return Templated message content describing the alert.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return The namespace in which the check resides.
+     * 
+     */
     private @Nullable String namespace;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The SensuGo URL to send requests to.
+     * 
+     */
     private String url;
 
     private ContactPointSensugo() {}
+    /**
+     * @return The SensuGo API key.
+     * 
+     */
     public String apiKey() {
         return this.apiKey;
     }
+    /**
+     * @return The SensuGo check to which the event should be routed.
+     * 
+     */
     public Optional<String> check() {
         return Optional.ofNullable(this.check);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The entity being monitored.
+     * 
+     */
     public Optional<String> entity() {
         return Optional.ofNullable(this.entity);
     }
+    /**
+     * @return A custom handler to execute in addition to the check.
+     * 
+     */
     public Optional<String> handler() {
         return Optional.ofNullable(this.handler);
     }
+    /**
+     * @return Templated message content describing the alert.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return The namespace in which the check resides.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The SensuGo URL to send requests to.
+     * 
+     */
     public String url() {
         return this.url;
     }

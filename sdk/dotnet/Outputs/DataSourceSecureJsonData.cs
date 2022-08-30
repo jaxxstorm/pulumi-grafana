@@ -13,18 +13,57 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class DataSourceSecureJsonData
     {
+        /// <summary>
+        /// (CloudWatch, Athena) The access key used to access the data source.
+        /// </summary>
         public readonly string? AccessKey;
+        /// <summary>
+        /// (Github) The access token used to access the data source.
+        /// </summary>
         public readonly string? AccessToken;
+        /// <summary>
+        /// (Sentry) Authorization token.
+        /// </summary>
         public readonly string? AuthToken;
+        /// <summary>
+        /// (All) Password to use for basic authentication.
+        /// </summary>
         public readonly string? BasicAuthPassword;
+        /// <summary>
+        /// (Azure Monitor) Client secret for authentication.
+        /// </summary>
         public readonly string? ClientSecret;
+        /// <summary>
+        /// (All) Password to use for authentication.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// (Stackdriver) The service account key `private_key` to use to access the data source.
+        /// </summary>
         public readonly string? PrivateKey;
+        /// <summary>
+        /// (CloudWatch, Athena) The secret key to use to access the data source.
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// (Elasticsearch and Prometheus) SigV4 access key. Required when using 'keys' auth provider.
+        /// </summary>
         public readonly string? Sigv4AccessKey;
+        /// <summary>
+        /// (Elasticsearch and Prometheus) SigV4 secret key. Required when using 'keys' auth provider.
+        /// </summary>
         public readonly string? Sigv4SecretKey;
+        /// <summary>
+        /// (All) CA cert for out going requests.
+        /// </summary>
         public readonly string? TlsCaCert;
+        /// <summary>
+        /// (All) TLS Client cert for outgoing requests.
+        /// </summary>
         public readonly string? TlsClientCert;
+        /// <summary>
+        /// (All) TLS Client key for outgoing requests.
+        /// </summary>
         public readonly string? TlsClientKey;
 
         [OutputConstructor]

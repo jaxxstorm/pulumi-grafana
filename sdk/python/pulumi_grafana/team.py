@@ -20,8 +20,8 @@ class TeamArgs:
         """
         The set of arguments for constructing a Team resource.
         :param pulumi.Input[str] email: An email address for the team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-               must already exist in Grafana.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership
+               to the team. Note: users specified here must already exist in Grafana.
         :param pulumi.Input[str] name: The display name for the Grafana team created.
         """
         if email is not None:
@@ -47,8 +47,8 @@ class TeamArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        must already exist in Grafana.
+        A set of email addresses corresponding to users who should be given membership
+        to the team. Note: users specified here must already exist in Grafana.
         """
         return pulumi.get(self, "members")
 
@@ -79,8 +79,8 @@ class _TeamState:
         """
         Input properties used for looking up and filtering Team resources.
         :param pulumi.Input[str] email: An email address for the team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-               must already exist in Grafana.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership
+               to the team. Note: users specified here must already exist in Grafana.
         :param pulumi.Input[str] name: The display name for the Grafana team created.
         :param pulumi.Input[int] team_id: The team id assigned to this team by Grafana.
         """
@@ -109,8 +109,8 @@ class _TeamState:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        must already exist in Grafana.
+        A set of email addresses corresponding to users who should be given membership
+        to the team. Note: users specified here must already exist in Grafana.
         """
         return pulumi.get(self, "members")
 
@@ -153,12 +153,25 @@ class Team(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Team resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_team = grafana.Team("test-team",
+            email="teamemail@example.com",
+            members=["viewer-01@example.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: An email address for the team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-               must already exist in Grafana.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership
+               to the team. Note: users specified here must already exist in Grafana.
         :param pulumi.Input[str] name: The display name for the Grafana team created.
         """
         ...
@@ -168,7 +181,20 @@ class Team(pulumi.CustomResource):
                  args: Optional[TeamArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Team resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_team = grafana.Team("test-team",
+            email="teamemail@example.com",
+            members=["viewer-01@example.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,8 +248,8 @@ class Team(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: An email address for the team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-               must already exist in Grafana.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of email addresses corresponding to users who should be given membership
+               to the team. Note: users specified here must already exist in Grafana.
         :param pulumi.Input[str] name: The display name for the Grafana team created.
         :param pulumi.Input[int] team_id: The team id assigned to this team by Grafana.
         """
@@ -249,8 +275,8 @@ class Team(pulumi.CustomResource):
     @pulumi.getter
     def members(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A set of email addresses corresponding to users who should be given membership to the team. Note: users specified here
-        must already exist in Grafana.
+        A set of email addresses corresponding to users who should be given membership
+        to the team. Note: users specified here must already exist in Grafana.
         """
         return pulumi.get(self, "members")
 

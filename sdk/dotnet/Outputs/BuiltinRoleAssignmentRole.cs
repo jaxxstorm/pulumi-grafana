@@ -13,7 +13,13 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class BuiltinRoleAssignmentRole
     {
+        /// <summary>
+        /// States whether the assignment is available across all organizations or not. Defaults to `false`.
+        /// </summary>
         public readonly bool? Global;
+        /// <summary>
+        /// Unique identifier of the role to assign to `builtin_role`.
+        /// </summary>
         public readonly string Uid;
 
         [OutputConstructor]

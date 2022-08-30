@@ -13,9 +13,17 @@ public final class GetOncallTeamArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOncallTeamArgs Empty = new GetOncallTeamArgs();
 
+    /**
+     * The team name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The team name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -44,11 +52,23 @@ public final class GetOncallTeamArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetOncallTeamArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The team name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The team name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

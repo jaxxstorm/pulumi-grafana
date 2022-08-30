@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/annotations/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/annotations/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.Annotation("test", {
+ *     text: "basic text",
+ * });
+ * ```
+ */
 export class Annotation extends pulumi.CustomResource {
     /**
      * Get an existing Annotation resource's state with the given name, ID, and optional extra

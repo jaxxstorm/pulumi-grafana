@@ -9,6 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// **Note:** This resource is available only with Grafana Enterprise 8.+.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var superUser = new Grafana.Role("superUser", new()
+    ///     {
+    ///         Description = "My Super User description",
+    ///         Global = true,
+    ///         Permissions = new[]
+    ///         {
+    ///             new Grafana.Inputs.RolePermissionArgs
+    ///             {
+    ///                 Action = "users:create",
+    ///             },
+    ///             new Grafana.Inputs.RolePermissionArgs
+    ///             {
+    ///                 Action = "users:read",
+    ///                 Scope = "global:users:*",
+    ///             },
+    ///         },
+    ///         Uid = "superuseruid",
+    ///         Version = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/role:Role role_name {{uid}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
@@ -25,7 +69,7 @@ namespace Pulumi.Grafana
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean to state whether the role is available across all organizations or not.
+        /// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         /// </summary>
         [Output("global")]
         public Output<bool?> Global { get; private set; } = null!;
@@ -37,7 +81,7 @@ namespace Pulumi.Grafana
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         /// </summary>
         [Output("hidden")]
         public Output<bool?> Hidden { get; private set; } = null!;
@@ -126,7 +170,7 @@ namespace Pulumi.Grafana
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Boolean to state whether the role is available across all organizations or not.
+        /// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         /// </summary>
         [Input("global")]
         public Input<bool>? Global { get; set; }
@@ -138,7 +182,7 @@ namespace Pulumi.Grafana
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -194,7 +238,7 @@ namespace Pulumi.Grafana
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Boolean to state whether the role is available across all organizations or not.
+        /// Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         /// </summary>
         [Input("global")]
         public Input<bool>? Global { get; set; }
@@ -206,7 +250,7 @@ namespace Pulumi.Grafana
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        /// Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }

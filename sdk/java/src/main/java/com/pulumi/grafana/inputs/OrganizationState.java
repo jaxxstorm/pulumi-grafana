@@ -38,16 +38,18 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Import(name="admins")
     private @Nullable Output<List<String>> admins;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Optional<Output<List<String>>> admins() {
@@ -55,20 +57,26 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * Whether or not to create Grafana users specified in the organization&#39;s
+     * membership if they don&#39;t already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      * 
      */
     @Import(name="createUsers")
     private @Nullable Output<Boolean> createUsers;
 
     /**
-     * @return Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * @return Whether or not to create Grafana users specified in the organization&#39;s
+     * membership if they don&#39;t already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> createUsers() {
@@ -76,16 +84,18 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Import(name="editors")
     private @Nullable Output<List<String>> editors;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Optional<Output<List<String>>> editors() {
@@ -123,16 +133,18 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     @Import(name="viewers")
     private @Nullable Output<List<String>> viewers;
 
     /**
-     * @return A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+     * @return A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless &#39;create_users&#39; is set to true.
      * 
      */
     public Optional<Output<List<String>>> viewers() {
@@ -195,8 +207,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admins A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param admins A list of email addresses corresponding to users who should be given admin
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -207,8 +220,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admins A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param admins A list of email addresses corresponding to users who should be given admin
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -218,8 +232,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admins A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param admins A list of email addresses corresponding to users who should be given admin
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -229,10 +244,13 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createUsers Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-         * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-         * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-         * users that do not already exist in Grafana.
+         * @param createUsers Whether or not to create Grafana users specified in the organization&#39;s
+         * membership if they don&#39;t already exist in Grafana. If unspecified, this
+         * parameter defaults to true, creating placeholder users with the name, login,
+         * and email set to the email of the user, and a random password. Setting this
+         * option to false will cause an error to be thrown for any users that do not
+         * already exist in Grafana.
+         * Defaults to `true`.
          * 
          * @return builder
          * 
@@ -243,10 +261,13 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createUsers Whether or not to create Grafana users specified in the organization&#39;s membership if they don&#39;t already exist in
-         * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-         * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-         * users that do not already exist in Grafana.
+         * @param createUsers Whether or not to create Grafana users specified in the organization&#39;s
+         * membership if they don&#39;t already exist in Grafana. If unspecified, this
+         * parameter defaults to true, creating placeholder users with the name, login,
+         * and email set to the email of the user, and a random password. Setting this
+         * option to false will cause an error to be thrown for any users that do not
+         * already exist in Grafana.
+         * Defaults to `true`.
          * 
          * @return builder
          * 
@@ -256,8 +277,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param editors A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param editors A list of email addresses corresponding to users who should be given editor
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -268,8 +290,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param editors A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param editors A list of email addresses corresponding to users who should be given editor
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -279,8 +302,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param editors A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param editors A list of email addresses corresponding to users who should be given editor
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -332,8 +356,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param viewers A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param viewers A list of email addresses corresponding to users who should be given viewer
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -344,8 +369,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param viewers A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param viewers A list of email addresses corresponding to users who should be given viewer
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 
@@ -355,8 +381,9 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param viewers A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-         * specified here must already exist in Grafana unless &#39;create_users&#39; is set to true.
+         * @param viewers A list of email addresses corresponding to users who should be given viewer
+         * access to the organization. Note: users specified here must already exist in
+         * Grafana unless &#39;create_users&#39; is set to true.
          * 
          * @return builder
          * 

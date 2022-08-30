@@ -14,41 +14,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleGroupRule {
+    /**
+     * @return Key-value pairs of metadata to attach to the alert rule that may add user-defined context, but cannot be used for matching, grouping, or routing. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> annotations;
+    /**
+     * @return The `ref_id` of the query node in the `data` field to use as the alert condition.
+     * 
+     */
     private String condition;
+    /**
+     * @return A sequence of stages that describe the contents of the rule.
+     * 
+     */
     private List<RuleGroupRuleData> datas;
+    /**
+     * @return Describes what state to enter when the rule&#39;s query is invalid and the rule cannot be executed. Options are OK, Error, and Alerting. Defaults to `Alerting`.
+     * 
+     */
     private @Nullable String execErrState;
+    /**
+     * @return The amount of time for which the rule must be breached for the rule to be considered to be Firing. Before this time has elapsed, the rule is only considered to be Pending. Defaults to `0`.
+     * 
+     */
     private @Nullable String for_;
+    /**
+     * @return Key-value pairs to attach to the alert rule that can be used in matching, grouping, and routing. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> labels;
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     private String name;
+    /**
+     * @return Describes what state to enter when the rule&#39;s query returns No Data. Options are OK, NoData, and Alerting. Defaults to `NoData`.
+     * 
+     */
     private @Nullable String noDataState;
+    /**
+     * @return The unique identifier of the alert rule.
+     * 
+     */
     private @Nullable String uid;
 
     private RuleGroupRule() {}
+    /**
+     * @return Key-value pairs of metadata to attach to the alert rule that may add user-defined context, but cannot be used for matching, grouping, or routing. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return The `ref_id` of the query node in the `data` field to use as the alert condition.
+     * 
+     */
     public String condition() {
         return this.condition;
     }
+    /**
+     * @return A sequence of stages that describe the contents of the rule.
+     * 
+     */
     public List<RuleGroupRuleData> datas() {
         return this.datas;
     }
+    /**
+     * @return Describes what state to enter when the rule&#39;s query is invalid and the rule cannot be executed. Options are OK, Error, and Alerting. Defaults to `Alerting`.
+     * 
+     */
     public Optional<String> execErrState() {
         return Optional.ofNullable(this.execErrState);
     }
+    /**
+     * @return The amount of time for which the rule must be breached for the rule to be considered to be Firing. Before this time has elapsed, the rule is only considered to be Pending. Defaults to `0`.
+     * 
+     */
     public Optional<String> for_() {
         return Optional.ofNullable(this.for_);
     }
+    /**
+     * @return Key-value pairs to attach to the alert rule that can be used in matching, grouping, and routing. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Describes what state to enter when the rule&#39;s query returns No Data. Options are OK, NoData, and Alerting. Defaults to `NoData`.
+     * 
+     */
     public Optional<String> noDataState() {
         return Optional.ofNullable(this.noDataState);
     }
+    /**
+     * @return The unique identifier of the alert rule.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleUserGroup = pulumi.output(grafana.getOncallUserGroup({
+ *     slackHandle: "example_slack_handle",
+ * }));
+ * ```
+ */
 export function getOncallUserGroup(args: GetOncallUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallUserGroupResult> {
     if (!opts) {
         opts = {}

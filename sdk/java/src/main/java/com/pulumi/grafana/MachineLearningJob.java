@@ -17,6 +17,10 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * A job defines the queries and model parameters for a machine learning task.
+ * 
+ */
 @ResourceType(type="grafana:index/machineLearningJob:MachineLearningJob")
 public class MachineLearningJob extends com.pulumi.resources.CustomResource {
     /**
@@ -62,30 +66,28 @@ public class MachineLearningJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-     * for the full list of available hyperparameters.
+     * The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
      * 
      */
     @Export(name="hyperParams", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> hyperParams;
 
     /**
-     * @return The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-     * for the full list of available hyperparameters.
+     * @return The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
      * 
      */
     public Output<Optional<Map<String,Object>>> hyperParams() {
         return Codegen.optional(this.hyperParams);
     }
     /**
-     * The data interval in seconds to train the data on.
+     * The data interval in seconds to train the data on. Defaults to `300`.
      * 
      */
     @Export(name="interval", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> interval;
 
     /**
-     * @return The data interval in seconds to train the data on.
+     * @return The data interval in seconds to train the data on. Defaults to `300`.
      * 
      */
     public Output<Optional<Integer>> interval() {
@@ -134,14 +136,14 @@ public class MachineLearningJob extends com.pulumi.resources.CustomResource {
         return this.queryParams;
     }
     /**
-     * The data interval in seconds to train the data on.
+     * The data interval in seconds to train the data on. Defaults to `7776000`.
      * 
      */
     @Export(name="trainingWindow", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> trainingWindow;
 
     /**
-     * @return The data interval in seconds to train the data on.
+     * @return The data interval in seconds to train the data on. Defaults to `7776000`.
      * 
      */
     public Output<Optional<Integer>> trainingWindow() {

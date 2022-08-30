@@ -16,23 +16,47 @@ public final class OncallIntegrationTemplatesArgs extends com.pulumi.resources.R
 
     public static final OncallIntegrationTemplatesArgs Empty = new OncallIntegrationTemplatesArgs();
 
+    /**
+     * Template for the key by which alerts are grouped.
+     * 
+     */
     @Import(name="groupingKey")
     private @Nullable Output<String> groupingKey;
 
+    /**
+     * @return Template for the key by which alerts are grouped.
+     * 
+     */
     public Optional<Output<String>> groupingKey() {
         return Optional.ofNullable(this.groupingKey);
     }
 
+    /**
+     * Template for sending a signal to resolve the Incident.
+     * 
+     */
     @Import(name="resolveSignal")
     private @Nullable Output<String> resolveSignal;
 
+    /**
+     * @return Template for sending a signal to resolve the Incident.
+     * 
+     */
     public Optional<Output<String>> resolveSignal() {
         return Optional.ofNullable(this.resolveSignal);
     }
 
+    /**
+     * Templates for Slack.
+     * 
+     */
     @Import(name="slack")
     private @Nullable Output<OncallIntegrationTemplatesSlackArgs> slack;
 
+    /**
+     * @return Templates for Slack.
+     * 
+     */
     public Optional<Output<OncallIntegrationTemplatesSlackArgs>> slack() {
         return Optional.ofNullable(this.slack);
     }
@@ -63,29 +87,65 @@ public final class OncallIntegrationTemplatesArgs extends com.pulumi.resources.R
             $ = new OncallIntegrationTemplatesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupingKey Template for the key by which alerts are grouped.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupingKey(@Nullable Output<String> groupingKey) {
             $.groupingKey = groupingKey;
             return this;
         }
 
+        /**
+         * @param groupingKey Template for the key by which alerts are grouped.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupingKey(String groupingKey) {
             return groupingKey(Output.of(groupingKey));
         }
 
+        /**
+         * @param resolveSignal Template for sending a signal to resolve the Incident.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolveSignal(@Nullable Output<String> resolveSignal) {
             $.resolveSignal = resolveSignal;
             return this;
         }
 
+        /**
+         * @param resolveSignal Template for sending a signal to resolve the Incident.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolveSignal(String resolveSignal) {
             return resolveSignal(Output.of(resolveSignal));
         }
 
+        /**
+         * @param slack Templates for Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slack(@Nullable Output<OncallIntegrationTemplatesSlackArgs> slack) {
             $.slack = slack;
             return this;
         }
 
+        /**
+         * @param slack Templates for Slack.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slack(OncallIntegrationTemplatesSlackArgs slack) {
             return slack(Output.of(slack));
         }

@@ -9,12 +9,44 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// Manages Grafana API Keys.
+    /// 
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Grafana.ApiKey("foo", new()
+    ///     {
+    ///         Role = "Viewer",
+    ///     });
+    /// 
+    ///     var bar = new Grafana.ApiKey("bar", new()
+    ///     {
+    ///         Role = "Admin",
+    ///         SecondsToLive = 30,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["apiKeyFooKeyOnly"] = foo.Key,
+    ///         ["apiKeyBar"] = bar,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/apiKey:ApiKey")]
     public partial class ApiKey : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        /// new stack. **Note**: This requires a cloud token to be configured.
+        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         /// </summary>
         [Output("cloudStackSlug")]
         public Output<string?> CloudStackSlug { get; private set; } = null!;
@@ -82,8 +114,7 @@ namespace Pulumi.Grafana
     public sealed class ApiKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        /// new stack. **Note**: This requires a cloud token to be configured.
+        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         /// </summary>
         [Input("cloudStackSlug")]
         public Input<string>? CloudStackSlug { get; set; }
@@ -106,8 +137,7 @@ namespace Pulumi.Grafana
     public sealed class ApiKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        /// new stack. **Note**: This requires a cloud token to be configured.
+        /// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         /// </summary>
         [Input("cloudStackSlug")]
         public Input<string>? CloudStackSlug { get; set; }

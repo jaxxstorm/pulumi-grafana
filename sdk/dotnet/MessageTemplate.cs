@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myTemplate = new Grafana.MessageTemplate("myTemplate", new()
+    ///     {
+    ///         Template = @"{{define ""My Reusable Template"" }}
+    ///  template content
+    /// {{ end }}
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/messageTemplate:MessageTemplate")]
     public partial class MessageTemplate : global::Pulumi.CustomResource
     {

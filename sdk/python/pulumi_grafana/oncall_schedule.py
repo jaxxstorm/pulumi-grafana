@@ -299,7 +299,39 @@ class OncallSchedule(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a OncallSchedule resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        example_slack_channel = grafana.get_oncall_slack_channel(name="example_slack_channel")
+        example_user_group = grafana.get_oncall_user_group(slack_handle="example_slack_handle")
+        # ICal based schedule
+        example_schedule_oncall_schedule = grafana.OncallSchedule("exampleScheduleOncallSchedule",
+            type="ical",
+            ical_url_primary="https://example.com/example_ical.ics",
+            ical_url_overrides="https://example.com/example_overrides_ical.ics",
+            slack=grafana.OncallScheduleSlackArgs(
+                channel_id=example_slack_channel.slack_id,
+                user_group_id=example_user_group.slack_id,
+            ))
+        # Shift based schedule
+        example_schedule_index_oncall_schedule_oncall_schedule = grafana.OncallSchedule("exampleScheduleIndex/oncallScheduleOncallSchedule",
+            type="calendar",
+            time_zone="America/New_York",
+            shifts=[],
+            ical_url_overrides="https://example.com/example_overrides_ical.ics")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ical_url_overrides: The URL of external iCal calendar which override primary events.
@@ -318,7 +350,39 @@ class OncallSchedule(pulumi.CustomResource):
                  args: OncallScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OncallSchedule resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        example_slack_channel = grafana.get_oncall_slack_channel(name="example_slack_channel")
+        example_user_group = grafana.get_oncall_user_group(slack_handle="example_slack_handle")
+        # ICal based schedule
+        example_schedule_oncall_schedule = grafana.OncallSchedule("exampleScheduleOncallSchedule",
+            type="ical",
+            ical_url_primary="https://example.com/example_ical.ics",
+            ical_url_overrides="https://example.com/example_overrides_ical.ics",
+            slack=grafana.OncallScheduleSlackArgs(
+                channel_id=example_slack_channel.slack_id,
+                user_group_id=example_user_group.slack_id,
+            ))
+        # Shift based schedule
+        example_schedule_index_oncall_schedule_oncall_schedule = grafana.OncallSchedule("exampleScheduleIndex/oncallScheduleOncallSchedule",
+            type="calendar",
+            time_zone="America/New_York",
+            shifts=[],
+            ical_url_overrides="https://example.com/example_overrides_ical.ics")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param OncallScheduleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

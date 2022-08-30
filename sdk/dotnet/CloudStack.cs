@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#stacks/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Grafana.CloudStack("test", new()
+    ///     {
+    ///         Description = "Test Grafana Cloud Stack",
+    ///         RegionSlug = "eu",
+    ///         Slug = "gcloudstacktest",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/cloudStack:CloudStack stack_name {{stack_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/cloudStack:CloudStack")]
     public partial class CloudStack : global::Pulumi.CustomResource
     {
@@ -55,7 +83,7 @@ namespace Pulumi.Grafana
         public Output<int> LogsUserId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+        /// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,15 +143,15 @@ namespace Pulumi.Grafana
         public Output<int> PrometheusUserId { get; private set; } = null!;
 
         /// <summary>
-        /// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-        /// region
+        /// Region slug to assign to this stack.
+        /// Changing region will destroy the existing stack and create a new one in the desired region
         /// </summary>
         [Output("regionSlug")]
         public Output<string?> RegionSlug { get; private set; } = null!;
 
         /// <summary>
-        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-        /// available at “https://&lt;stack_slug&gt;.grafana.net".
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
         /// </summary>
         [Output("slug")]
         public Output<string> Slug { get; private set; } = null!;
@@ -141,14 +169,13 @@ namespace Pulumi.Grafana
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-        /// instance).
+        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
         /// </summary>
         [Output("waitForReadiness")]
         public Output<bool?> WaitForReadiness { get; private set; } = null!;
 
         /// <summary>
-        /// How long to wait for readiness (if enabled).
+        /// How long to wait for readiness (if enabled). Defaults to `5m0s`.
         /// </summary>
         [Output("waitForReadinessTimeout")]
         public Output<string?> WaitForReadinessTimeout { get; private set; } = null!;
@@ -207,21 +234,21 @@ namespace Pulumi.Grafana
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+        /// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-        /// region
+        /// Region slug to assign to this stack.
+        /// Changing region will destroy the existing stack and create a new one in the desired region
         /// </summary>
         [Input("regionSlug")]
         public Input<string>? RegionSlug { get; set; }
 
         /// <summary>
-        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-        /// available at “https://&lt;stack_slug&gt;.grafana.net".
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
         /// </summary>
         [Input("slug", required: true)]
         public Input<string> Slug { get; set; } = null!;
@@ -233,14 +260,13 @@ namespace Pulumi.Grafana
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-        /// instance).
+        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
         /// </summary>
         [Input("waitForReadiness")]
         public Input<bool>? WaitForReadiness { get; set; }
 
         /// <summary>
-        /// How long to wait for readiness (if enabled).
+        /// How long to wait for readiness (if enabled). Defaults to `5m0s`.
         /// </summary>
         [Input("waitForReadinessTimeout")]
         public Input<string>? WaitForReadinessTimeout { get; set; }
@@ -296,7 +322,7 @@ namespace Pulumi.Grafana
         public Input<int>? LogsUserId { get; set; }
 
         /// <summary>
-        /// Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+        /// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -356,15 +382,15 @@ namespace Pulumi.Grafana
         public Input<int>? PrometheusUserId { get; set; }
 
         /// <summary>
-        /// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-        /// region
+        /// Region slug to assign to this stack.
+        /// Changing region will destroy the existing stack and create a new one in the desired region
         /// </summary>
         [Input("regionSlug")]
         public Input<string>? RegionSlug { get; set; }
 
         /// <summary>
-        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-        /// available at “https://&lt;stack_slug&gt;.grafana.net".
+        /// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+        /// available at “https://\n\n.grafana.net".
         /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }
@@ -382,14 +408,13 @@ namespace Pulumi.Grafana
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-        /// instance).
+        /// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
         /// </summary>
         [Input("waitForReadiness")]
         public Input<bool>? WaitForReadiness { get; set; }
 
         /// <summary>
-        /// How long to wait for readiness (if enabled).
+        /// How long to wait for readiness (if enabled). Defaults to `5m0s`.
         /// </summary>
         [Input("waitForReadinessTimeout")]
         public Input<string>? WaitForReadinessTimeout { get; set; }

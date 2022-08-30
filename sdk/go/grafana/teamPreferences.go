@@ -11,6 +11,57 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			metrics, err := grafana.NewDashboard(ctx, "metrics", &grafana.DashboardArgs{
+//				ConfigJson: readFileOrPanic("grafana-dashboard.json"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			team, err := grafana.NewTeam(ctx, "team", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewTeamPreferences(ctx, "teamPreferences", &grafana.TeamPreferencesArgs{
+//				TeamId:          team.ID(),
+//				Theme:           pulumi.String("dark"),
+//				Timezone:        pulumi.String("browser"),
+//				HomeDashboardId: metrics.DashboardId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TeamPreferences struct {
 	pulumi.CustomResourceState
 

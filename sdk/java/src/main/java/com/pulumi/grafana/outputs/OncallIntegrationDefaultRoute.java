@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OncallIntegrationDefaultRoute {
+    /**
+     * @return The ID of the escalation chain.
+     * 
+     */
     private @Nullable String escalationChainId;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return Slack-specific settings for a route.
+     * 
+     */
     private @Nullable OncallIntegrationDefaultRouteSlack slack;
 
     private OncallIntegrationDefaultRoute() {}
+    /**
+     * @return The ID of the escalation chain.
+     * 
+     */
     public Optional<String> escalationChainId() {
         return Optional.ofNullable(this.escalationChainId);
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Slack-specific settings for a route.
+     * 
+     */
     public Optional<OncallIntegrationDefaultRouteSlack> slack() {
         return Optional.ofNullable(this.slack);
     }

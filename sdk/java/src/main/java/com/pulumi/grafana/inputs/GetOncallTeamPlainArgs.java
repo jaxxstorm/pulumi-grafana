@@ -12,9 +12,17 @@ public final class GetOncallTeamPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetOncallTeamPlainArgs Empty = new GetOncallTeamPlainArgs();
 
+    /**
+     * The team name.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The team name.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetOncallTeamPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetOncallTeamPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The team name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

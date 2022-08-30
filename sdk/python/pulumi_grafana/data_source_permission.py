@@ -100,7 +100,39 @@ class DataSourcePermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourcePermissionPermissionArgs']]]]] = None,
                  __props__=None):
         """
-        Create a DataSourcePermission resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/datasource_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        foo = grafana.DataSource("foo",
+            type="cloudwatch",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                default_region="us-east-1",
+                auth_type="keys",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                access_key="123",
+                secret_key="456",
+            )])
+        foo_permissions = grafana.DataSourcePermission("fooPermissions",
+            datasource_id=foo.id,
+            permissions=[
+                grafana.DataSourcePermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="Query",
+                ),
+                grafana.DataSourcePermissionPermissionArgs(
+                    user_id=3,
+                    permission="Query",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] datasource_id: ID of the datasource to apply permissions to.
@@ -113,7 +145,39 @@ class DataSourcePermission(pulumi.CustomResource):
                  args: DataSourcePermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DataSourcePermission resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/datasource_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        foo = grafana.DataSource("foo",
+            type="cloudwatch",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                default_region="us-east-1",
+                auth_type="keys",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                access_key="123",
+                secret_key="456",
+            )])
+        foo_permissions = grafana.DataSourcePermission("fooPermissions",
+            datasource_id=foo.id,
+            permissions=[
+                grafana.DataSourcePermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="Query",
+                ),
+                grafana.DataSourcePermissionPermissionArgs(
+                    user_id=3,
+                    permission="Query",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param DataSourcePermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

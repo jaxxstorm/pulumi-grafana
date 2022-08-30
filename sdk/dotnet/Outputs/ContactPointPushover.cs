@@ -13,18 +13,57 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointPushover
     {
+        /// <summary>
+        /// The Pushover API token.
+        /// </summary>
         public readonly string ApiToken;
+        /// <summary>
+        /// Comma-separated list of devices to which the event is associated.
+        /// </summary>
         public readonly string? Device;
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// How many seconds for which the notification will continue to be retried by Pushover.
+        /// </summary>
         public readonly int? Expire;
+        /// <summary>
+        /// The templated notification message content.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// The priority level of the resolved event.
+        /// </summary>
         public readonly int? OkPriority;
+        /// <summary>
+        /// The sound associated with the resolved notification.
+        /// </summary>
         public readonly string? OkSound;
+        /// <summary>
+        /// The priority level of the event.
+        /// </summary>
         public readonly int? Priority;
+        /// <summary>
+        /// How often, in seconds, the Pushover servers will send the same notification to the user.
+        /// </summary>
         public readonly int? Retry;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The sound associated with the notification.
+        /// </summary>
         public readonly string? Sound;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
+        /// <summary>
+        /// The Pushover user key.
+        /// </summary>
         public readonly string UserKey;
 
         [OutputConstructor]

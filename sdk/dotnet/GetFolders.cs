@@ -11,6 +11,40 @@ namespace Pulumi.Grafana
 {
     public static class GetFolders
     {
+        /// <summary>
+        /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+        /// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/folder/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testA = new Grafana.Folder("testA", new()
+        ///     {
+        ///         Title = "test-folder-a",
+        ///         Uid = "test-ds-folder-uid-a",
+        ///     });
+        /// 
+        ///     var testB = new Grafana.Folder("testB", new()
+        ///     {
+        ///         Title = "test-folder-b",
+        ///         Uid = "test-ds-folder-uid-b",
+        ///     });
+        /// 
+        ///     var test = Grafana.GetFolders.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("grafana:index/getFolders:getFolders", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -19,6 +53,9 @@ namespace Pulumi.Grafana
     [OutputType]
     public sealed class GetFoldersResult
     {
+        /// <summary>
+        /// The Grafana instance's folders.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFoldersFolderResult> Folders;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

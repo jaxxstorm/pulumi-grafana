@@ -10,6 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **Note:** This data source is going to be deprecated, please use outgoing webhook data source instead.
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
 func GetOncallAction(ctx *pulumi.Context, args *GetOncallActionArgs, opts ...pulumi.InvokeOption) (*GetOncallActionResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetOncallActionResult
@@ -22,13 +24,15 @@ func GetOncallAction(ctx *pulumi.Context, args *GetOncallActionArgs, opts ...pul
 
 // A collection of arguments for invoking getOncallAction.
 type GetOncallActionArgs struct {
+	// The action name.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getOncallAction.
 type GetOncallActionResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The action name.
 	Name string `pulumi:"name"`
 }
 
@@ -47,6 +51,7 @@ func GetOncallActionOutput(ctx *pulumi.Context, args GetOncallActionOutputArgs, 
 
 // A collection of arguments for invoking getOncallAction.
 type GetOncallActionOutputArgs struct {
+	// The action name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -74,6 +79,7 @@ func (o GetOncallActionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallActionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The action name.
 func (o GetOncallActionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallActionResult) string { return v.Name }).(pulumi.StringOutput)
 }

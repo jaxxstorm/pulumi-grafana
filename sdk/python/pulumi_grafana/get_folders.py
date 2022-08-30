@@ -32,6 +32,9 @@ class GetFoldersResult:
     @property
     @pulumi.getter
     def folders(self) -> Sequence['outputs.GetFoldersFolderResult']:
+        """
+        The Grafana instance's folders.
+        """
         return pulumi.get(self, "folders")
 
     @property
@@ -55,7 +58,23 @@ class AwaitableGetFoldersResult(GetFoldersResult):
 
 def get_folders(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFoldersResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+    * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/folder/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test_a = grafana.Folder("testA",
+        title="test-folder-a",
+        uid="test-ds-folder-uid-a")
+    test_b = grafana.Folder("testB",
+        title="test-folder-b",
+        uid="test-ds-folder-uid-b")
+    test = grafana.get_folders()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -12,9 +12,17 @@ public final class GetTeamPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetTeamPlainArgs Empty = new GetTeamPlainArgs();
 
+    /**
+     * The name of the Grafana team.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the Grafana team.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetTeamPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetTeamPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the Grafana team.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

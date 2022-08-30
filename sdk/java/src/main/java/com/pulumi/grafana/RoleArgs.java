@@ -50,14 +50,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean to state whether the role is available across all organizations or not.
+     * Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      * 
      */
     @Import(name="global")
     private @Nullable Output<Boolean> global;
 
     /**
-     * @return Boolean to state whether the role is available across all organizations or not.
+     * @return Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> global() {
@@ -80,14 +80,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      * 
      */
     @Import(name="hidden")
     private @Nullable Output<Boolean> hidden;
 
     /**
-     * @return Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * @return Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> hidden() {
@@ -229,7 +229,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param global Boolean to state whether the role is available across all organizations or not.
+         * @param global Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param global Boolean to state whether the role is available across all organizations or not.
+         * @param global Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hidden Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+         * @param hidden Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hidden Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+         * @param hidden Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
          * 
          * @return builder
          * 

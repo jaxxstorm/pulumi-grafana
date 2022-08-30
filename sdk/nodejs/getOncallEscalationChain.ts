@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const defaultOncallEscalationChain = pulumi.output(grafana.getOncallEscalationChain({
+ *     name: "default",
+ * }));
+ * ```
+ */
 export function getOncallEscalationChain(args: GetOncallEscalationChainArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallEscalationChainResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +33,9 @@ export function getOncallEscalationChain(args: GetOncallEscalationChainArgs, opt
  * A collection of arguments for invoking getOncallEscalationChain.
  */
 export interface GetOncallEscalationChainArgs {
+    /**
+     * The escalation chain name.
+     */
     name: string;
 }
 
@@ -30,6 +47,9 @@ export interface GetOncallEscalationChainResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The escalation chain name.
+     */
     readonly name: string;
 }
 
@@ -41,5 +61,8 @@ export function getOncallEscalationChainOutput(args: GetOncallEscalationChainOut
  * A collection of arguments for invoking getOncallEscalationChain.
  */
 export interface GetOncallEscalationChainOutputArgs {
+    /**
+     * The escalation chain name.
+     */
     name: pulumi.Input<string>;
 }

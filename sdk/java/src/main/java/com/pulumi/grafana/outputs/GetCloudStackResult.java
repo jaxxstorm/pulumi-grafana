@@ -10,47 +10,152 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCloudStackResult {
+    /**
+     * @return Name of the Alertmanager instance configured for this stack.
+     * 
+     */
     private String alertmanagerName;
+    /**
+     * @return Status of the Alertmanager instance configured for this stack.
+     * 
+     */
     private String alertmanagerStatus;
+    /**
+     * @return Base URL of the Alertmanager instance configured for this stack.
+     * 
+     */
     private String alertmanagerUrl;
+    /**
+     * @return User ID of the Alertmanager instance configured for this stack.
+     * 
+     */
     private Integer alertmanagerUserId;
+    /**
+     * @return Description of stack.
+     * 
+     */
     private String description;
+    /**
+     * @return The stack id assigned to this stack by Grafana.
+     * 
+     */
     private String id;
     private String logsName;
     private String logsStatus;
     private String logsUrl;
     private Integer logsUserId;
+    /**
+     * @return Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
+     * 
+     */
     private String name;
+    /**
+     * @return Organization id to assign to this stack.
+     * 
+     */
     private Integer orgId;
+    /**
+     * @return Organization name to assign to this stack.
+     * 
+     */
     private String orgName;
+    /**
+     * @return Organization slug to assign to this stack.
+     * 
+     */
     private String orgSlug;
+    /**
+     * @return Prometheus name for this instance.
+     * 
+     */
     private String prometheusName;
+    /**
+     * @return Use this URL to query hosted metrics data e.g. Prometheus data source in Grafana
+     * 
+     */
     private String prometheusRemoteEndpoint;
+    /**
+     * @return Use this URL to send prometheus metrics to Grafana cloud
+     * 
+     */
     private String prometheusRemoteWriteEndpoint;
+    /**
+     * @return Prometheus status for this instance.
+     * 
+     */
     private String prometheusStatus;
+    /**
+     * @return Prometheus url for this instance.
+     * 
+     */
     private String prometheusUrl;
+    /**
+     * @return Promehteus user ID. Used for e.g. remote_write.
+     * 
+     */
     private Integer prometheusUserId;
+    /**
+     * @return The region this stack is deployed to.
+     * 
+     */
     private String regionSlug;
+    /**
+     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
+     * 
+     */
     private String slug;
+    /**
+     * @return Status of the stack.
+     * 
+     */
     private String status;
+    /**
+     * @return Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
+     * 
+     */
     private String url;
 
     private GetCloudStackResult() {}
+    /**
+     * @return Name of the Alertmanager instance configured for this stack.
+     * 
+     */
     public String alertmanagerName() {
         return this.alertmanagerName;
     }
+    /**
+     * @return Status of the Alertmanager instance configured for this stack.
+     * 
+     */
     public String alertmanagerStatus() {
         return this.alertmanagerStatus;
     }
+    /**
+     * @return Base URL of the Alertmanager instance configured for this stack.
+     * 
+     */
     public String alertmanagerUrl() {
         return this.alertmanagerUrl;
     }
+    /**
+     * @return User ID of the Alertmanager instance configured for this stack.
+     * 
+     */
     public Integer alertmanagerUserId() {
         return this.alertmanagerUserId;
     }
+    /**
+     * @return Description of stack.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The stack id assigned to this stack by Grafana.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -66,45 +171,102 @@ public final class GetCloudStackResult {
     public Integer logsUserId() {
         return this.logsUserId;
     }
+    /**
+     * @return Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Organization id to assign to this stack.
+     * 
+     */
     public Integer orgId() {
         return this.orgId;
     }
+    /**
+     * @return Organization name to assign to this stack.
+     * 
+     */
     public String orgName() {
         return this.orgName;
     }
+    /**
+     * @return Organization slug to assign to this stack.
+     * 
+     */
     public String orgSlug() {
         return this.orgSlug;
     }
+    /**
+     * @return Prometheus name for this instance.
+     * 
+     */
     public String prometheusName() {
         return this.prometheusName;
     }
+    /**
+     * @return Use this URL to query hosted metrics data e.g. Prometheus data source in Grafana
+     * 
+     */
     public String prometheusRemoteEndpoint() {
         return this.prometheusRemoteEndpoint;
     }
+    /**
+     * @return Use this URL to send prometheus metrics to Grafana cloud
+     * 
+     */
     public String prometheusRemoteWriteEndpoint() {
         return this.prometheusRemoteWriteEndpoint;
     }
+    /**
+     * @return Prometheus status for this instance.
+     * 
+     */
     public String prometheusStatus() {
         return this.prometheusStatus;
     }
+    /**
+     * @return Prometheus url for this instance.
+     * 
+     */
     public String prometheusUrl() {
         return this.prometheusUrl;
     }
+    /**
+     * @return Promehteus user ID. Used for e.g. remote_write.
+     * 
+     */
     public Integer prometheusUserId() {
         return this.prometheusUserId;
     }
+    /**
+     * @return The region this stack is deployed to.
+     * 
+     */
     public String regionSlug() {
         return this.regionSlug;
     }
+    /**
+     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
+     * 
+     */
     public String slug() {
         return this.slug;
     }
+    /**
+     * @return Status of the stack.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
+     * 
+     */
     public String url() {
         return this.url;
     }

@@ -16,6 +16,55 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana library panels.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/panels/panel-library/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/library_element/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.LibraryPanel;
+ * import com.pulumi.grafana.LibraryPanelArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new LibraryPanel(&#34;test&#34;, LibraryPanelArgs.builder()        
+ *             .modelJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;title&#34;, &#34;updated name&#34;),
+ *                     jsonProperty(&#34;id&#34;, 12),
+ *                     jsonProperty(&#34;version&#34;, 35)
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/libraryPanel:LibraryPanel panel_name {{library_panel_slug}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/libraryPanel:LibraryPanel")
 public class LibraryPanel extends com.pulumi.resources.CustomResource {
     /**
@@ -173,18 +222,14 @@ public class LibraryPanel extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-     * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-     * accessing library panels and when syncing library panels between multiple Grafana installs.
+     * The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-     * It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-     * accessing library panels and when syncing library panels between multiple Grafana installs.
+     * @return The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
      * 
      */
     public Output<String> uid() {

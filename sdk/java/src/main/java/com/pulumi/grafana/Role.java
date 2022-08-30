@@ -18,6 +18,61 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * **Note:** This resource is available only with Grafana Enterprise 8.+.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Role;
+ * import com.pulumi.grafana.RoleArgs;
+ * import com.pulumi.grafana.inputs.RolePermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var superUser = new Role(&#34;superUser&#34;, RoleArgs.builder()        
+ *             .description(&#34;My Super User description&#34;)
+ *             .global(true)
+ *             .permissions(            
+ *                 RolePermissionArgs.builder()
+ *                     .action(&#34;users:create&#34;)
+ *                     .build(),
+ *                 RolePermissionArgs.builder()
+ *                     .action(&#34;users:read&#34;)
+ *                     .scope(&#34;global:users:*&#34;)
+ *                     .build())
+ *             .uid(&#34;superuseruid&#34;)
+ *             .version(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/role:Role role_name {{uid}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**
@@ -49,14 +104,14 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Boolean to state whether the role is available across all organizations or not.
+     * Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      * 
      */
     @Export(name="global", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> global;
 
     /**
-     * @return Boolean to state whether the role is available across all organizations or not.
+     * @return Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> global() {
@@ -77,14 +132,14 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.group);
     }
     /**
-     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      * 
      */
     @Export(name="hidden", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> hidden;
 
     /**
-     * @return Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * @return Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> hidden() {

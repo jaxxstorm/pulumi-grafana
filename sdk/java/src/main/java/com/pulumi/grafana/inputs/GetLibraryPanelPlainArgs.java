@@ -14,16 +14,32 @@ public final class GetLibraryPanelPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetLibraryPanelPlainArgs Empty = new GetLibraryPanelPlainArgs();
 
+    /**
+     * Name of the library panel.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of the library panel.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The unique identifier (UID) of the library panel.
+     * 
+     */
     @Import(name="uid")
     private @Nullable String uid;
 
+    /**
+     * @return The unique identifier (UID) of the library panel.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -53,11 +69,23 @@ public final class GetLibraryPanelPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetLibraryPanelPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param uid The unique identifier (UID) of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable String uid) {
             $.uid = uid;
             return this;

@@ -5,6 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const team = new grafana.Team("team", {});
+ * const user = new grafana.User("user", {email: "user.name@example.com"});
+ * const metrics = new grafana.Dashboard("metrics", {configJson: fs.readFileSync("grafana-dashboard.json")});
+ * const collectionPermission = new grafana.DashboardPermission("collectionPermission", {
+ *     dashboardId: metrics.dashboardId,
+ *     permissions: [
+ *         {
+ *             role: "Editor",
+ *             permission: "Edit",
+ *         },
+ *         {
+ *             teamId: team.id,
+ *             permission: "View",
+ *         },
+ *         {
+ *             userId: user.id,
+ *             permission: "Admin",
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class DashboardPermission extends pulumi.CustomResource {
     /**
      * Get an existing DashboardPermission resource's state with the given name, ID, and optional extra

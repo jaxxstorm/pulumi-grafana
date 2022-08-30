@@ -13,6 +13,51 @@ import com.pulumi.grafana.inputs.MessageTemplateState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.MessageTemplate;
+ * import com.pulumi.grafana.MessageTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myTemplate = new MessageTemplate(&#34;myTemplate&#34;, MessageTemplateArgs.builder()        
+ *             .template(&#34;&#34;&#34;
+ * {{define &#34;My Reusable Template&#34; }}
+ *  template content
+ * {{ end }}
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/messageTemplate:MessageTemplate")
 public class MessageTemplate extends com.pulumi.resources.CustomResource {
     /**

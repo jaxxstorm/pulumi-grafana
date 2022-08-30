@@ -34,16 +34,14 @@ public final class RuleGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      * 
      */
     @Import(name="intervalSeconds")
     private @Nullable Output<Integer> intervalSeconds;
 
     /**
-     * @return The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * @return The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      * 
      */
     public Optional<Output<Integer>> intervalSeconds() {
@@ -145,8 +143,7 @@ public final class RuleGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param intervalSeconds The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-         * evaluated sequentially.
+         * @param intervalSeconds The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
          * 
          * @return builder
          * 
@@ -157,8 +154,7 @@ public final class RuleGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param intervalSeconds The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-         * evaluated sequentially.
+         * @param intervalSeconds The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
          * 
          * @return builder
          * 

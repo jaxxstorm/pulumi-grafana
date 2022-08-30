@@ -15,41 +15,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationPolicyPolicyPolicyPolicy {
+    /**
+     * @return The contact point to route notifications that match this rule to.
+     * 
+     */
     private String contactPoint;
+    /**
+     * @return Whether to continue matching subsequent rules if an alert matches the current rule. Otherwise, the rule will be &#39;consumed&#39; by the first policy to match it.
+     * 
+     */
     private @Nullable Boolean continue_;
+    /**
+     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
+     * 
+     */
     private List<String> groupBies;
+    /**
+     * @return Minimum time interval between two notifications for the same group. Default is 5 minutes.
+     * 
+     */
     private @Nullable String groupInterval;
+    /**
+     * @return Time to wait to buffer alerts of the same group before sending a notification. Default is 30 seconds.
+     * 
+     */
     private @Nullable String groupWait;
+    /**
+     * @return Describes which labels this rule should match. When multiple matchers are supplied, an alert must match ALL matchers to be accepted by this policy. When no matchers are supplied, the rule will match all alert instances.
+     * 
+     */
     private @Nullable List<NotificationPolicyPolicyPolicyPolicyMatcher> matchers;
+    /**
+     * @return A list of mute timing names to apply to alerts that match this policy.
+     * 
+     */
     private @Nullable List<String> muteTimings;
+    /**
+     * @return Routing rules for specific label sets.
+     * 
+     */
     private @Nullable List<NotificationPolicyPolicyPolicyPolicyPolicy> policies;
+    /**
+     * @return Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
+     * 
+     */
     private @Nullable String repeatInterval;
 
     private NotificationPolicyPolicyPolicyPolicy() {}
+    /**
+     * @return The contact point to route notifications that match this rule to.
+     * 
+     */
     public String contactPoint() {
         return this.contactPoint;
     }
+    /**
+     * @return Whether to continue matching subsequent rules if an alert matches the current rule. Otherwise, the rule will be &#39;consumed&#39; by the first policy to match it.
+     * 
+     */
     public Optional<Boolean> continue_() {
         return Optional.ofNullable(this.continue_);
     }
+    /**
+     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
+     * 
+     */
     public List<String> groupBies() {
         return this.groupBies;
     }
+    /**
+     * @return Minimum time interval between two notifications for the same group. Default is 5 minutes.
+     * 
+     */
     public Optional<String> groupInterval() {
         return Optional.ofNullable(this.groupInterval);
     }
+    /**
+     * @return Time to wait to buffer alerts of the same group before sending a notification. Default is 30 seconds.
+     * 
+     */
     public Optional<String> groupWait() {
         return Optional.ofNullable(this.groupWait);
     }
+    /**
+     * @return Describes which labels this rule should match. When multiple matchers are supplied, an alert must match ALL matchers to be accepted by this policy. When no matchers are supplied, the rule will match all alert instances.
+     * 
+     */
     public List<NotificationPolicyPolicyPolicyPolicyMatcher> matchers() {
         return this.matchers == null ? List.of() : this.matchers;
     }
+    /**
+     * @return A list of mute timing names to apply to alerts that match this policy.
+     * 
+     */
     public List<String> muteTimings() {
         return this.muteTimings == null ? List.of() : this.muteTimings;
     }
+    /**
+     * @return Routing rules for specific label sets.
+     * 
+     */
     public List<NotificationPolicyPolicyPolicyPolicyPolicy> policies() {
         return this.policies == null ? List.of() : this.policies;
     }
+    /**
+     * @return Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
+     * 
+     */
     public Optional<String> repeatInterval() {
         return Optional.ofNullable(this.repeatInterval);
     }

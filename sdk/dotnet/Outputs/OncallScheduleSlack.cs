@@ -13,7 +13,13 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class OncallScheduleSlack
     {
+        /// <summary>
+        /// Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+        /// </summary>
         public readonly string? ChannelId;
+        /// <summary>
+        /// Slack user group id. Members of user group will be updated when on-call users change.
+        /// </summary>
         public readonly string? UserGroupId;
 
         [OutputConstructor]

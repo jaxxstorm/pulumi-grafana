@@ -16,23 +16,47 @@ public final class GetDashboardsPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetDashboardsPlainArgs Empty = new GetDashboardsPlainArgs();
 
+    /**
+     * Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+     * 
+     */
     @Import(name="folderIds")
     private @Nullable List<Integer> folderIds;
 
+    /**
+     * @return Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+     * 
+     */
     public Optional<List<Integer>> folderIds() {
         return Optional.ofNullable(this.folderIds);
     }
 
+    /**
+     * Maximum number of dashboard search results to return. Defaults to `5000`.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Integer limit;
 
+    /**
+     * @return Maximum number of dashboard search results to return. Defaults to `5000`.
+     * 
+     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
 
+    /**
+     * List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<String> tags;
 
+    /**
+     * @return List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+     * 
+     */
     public Optional<List<String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -63,25 +87,55 @@ public final class GetDashboardsPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetDashboardsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param folderIds Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+         * 
+         * @return builder
+         * 
+         */
         public Builder folderIds(@Nullable List<Integer> folderIds) {
             $.folderIds = folderIds;
             return this;
         }
 
+        /**
+         * @param folderIds Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+         * 
+         * @return builder
+         * 
+         */
         public Builder folderIds(Integer... folderIds) {
             return folderIds(List.of(folderIds));
         }
 
+        /**
+         * @param limit Maximum number of dashboard search results to return. Defaults to `5000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
         }
 
+        /**
+         * @param tags List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<String> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

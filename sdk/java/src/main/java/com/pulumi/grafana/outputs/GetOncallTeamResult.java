@@ -16,6 +16,10 @@ public final class GetOncallTeamResult {
      * 
      */
     private String id;
+    /**
+     * @return The team name.
+     * 
+     */
     private String name;
 
     private GetOncallTeamResult() {}
@@ -32,6 +36,10 @@ public final class GetOncallTeamResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The team name.
+     * 
+     */
     public String name() {
         return this.name;
     }

@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Grafana.OncallEscalationChain("default", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = grafana.Oncall,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/oncallEscalationChain:OncallEscalationChain")]
     public partial class OncallEscalationChain : global::Pulumi.CustomResource
     {

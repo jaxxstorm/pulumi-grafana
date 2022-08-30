@@ -5,6 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * **Note:** This resource is available only with Grafana Enterprise 7.+.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/reporting/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/reporting/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const testDashboard = new grafana.Dashboard("testDashboard", {
+ *     configJson: `{
+ *   "title": "Dashboard for report",
+ *   "uid": "report"
+ * }
+ * `,
+ *     message: "inital commit.",
+ * });
+ * const testReport = new grafana.Report("testReport", {
+ *     dashboardId: testDashboard.dashboardId,
+ *     recipients: ["some@email.com"],
+ *     schedule: {
+ *         frequency: "hourly",
+ *     },
+ * });
+ * ```
+ */
 export class Report extends pulumi.CustomResource {
     /**
      * Get an existing Report resource's state with the given name, ID, and optional extra
@@ -38,15 +67,15 @@ export class Report extends pulumi.CustomResource {
      */
     public readonly dashboardId!: pulumi.Output<number>;
     /**
-     * Whether to include a link to the dashboard in the report.
+     * Whether to include a link to the dashboard in the report. Defaults to `true`.
      */
     public readonly includeDashboardLink!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to include a CSV file of table panel data.
+     * Whether to include a CSV file of table panel data. Defaults to `false`.
      */
     public readonly includeTableCsv!: pulumi.Output<boolean | undefined>;
     /**
-     * Layout of the report. `simple` or `grid`
+     * Layout of the report. `simple` or `grid` Defaults to `grid`.
      */
     public readonly layout!: pulumi.Output<string | undefined>;
     /**
@@ -58,7 +87,7 @@ export class Report extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Orientation of the report. `landscape` or `portrait`
+     * Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      */
     public readonly orientation!: pulumi.Output<string | undefined>;
     /**
@@ -139,15 +168,15 @@ export interface ReportState {
      */
     dashboardId?: pulumi.Input<number>;
     /**
-     * Whether to include a link to the dashboard in the report.
+     * Whether to include a link to the dashboard in the report. Defaults to `true`.
      */
     includeDashboardLink?: pulumi.Input<boolean>;
     /**
-     * Whether to include a CSV file of table panel data.
+     * Whether to include a CSV file of table panel data. Defaults to `false`.
      */
     includeTableCsv?: pulumi.Input<boolean>;
     /**
-     * Layout of the report. `simple` or `grid`
+     * Layout of the report. `simple` or `grid` Defaults to `grid`.
      */
     layout?: pulumi.Input<string>;
     /**
@@ -159,7 +188,7 @@ export interface ReportState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Orientation of the report. `landscape` or `portrait`
+     * Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      */
     orientation?: pulumi.Input<string>;
     /**
@@ -189,15 +218,15 @@ export interface ReportArgs {
      */
     dashboardId: pulumi.Input<number>;
     /**
-     * Whether to include a link to the dashboard in the report.
+     * Whether to include a link to the dashboard in the report. Defaults to `true`.
      */
     includeDashboardLink?: pulumi.Input<boolean>;
     /**
-     * Whether to include a CSV file of table panel data.
+     * Whether to include a CSV file of table panel data. Defaults to `false`.
      */
     includeTableCsv?: pulumi.Input<boolean>;
     /**
-     * Layout of the report. `simple` or `grid`
+     * Layout of the report. `simple` or `grid` Defaults to `grid`.
      */
     layout?: pulumi.Input<string>;
     /**
@@ -209,7 +238,7 @@ export interface ReportArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Orientation of the report. `landscape` or `portrait`
+     * Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
      */
     orientation?: pulumi.Input<string>;
     /**

@@ -297,7 +297,24 @@ class OutgoingWebhook(pulumi.CustomResource):
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a OutgoingWebhook resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_acc_outgoing_webhook = grafana.OutgoingWebhook("test-acc-outgoingWebhook", url="https://example.com/",
+        opts=pulumi.ResourceOptions(provider=grafana["oncall"]))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/outgoingWebhook:OutgoingWebhook outgoing_webhook_name {{outgoing_webhook_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_header: The auth data of the webhook. Used in Authorization header instead of user/password auth.
@@ -316,7 +333,24 @@ class OutgoingWebhook(pulumi.CustomResource):
                  args: OutgoingWebhookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OutgoingWebhook resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_acc_outgoing_webhook = grafana.OutgoingWebhook("test-acc-outgoingWebhook", url="https://example.com/",
+        opts=pulumi.ResourceOptions(provider=grafana["oncall"]))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/outgoingWebhook:OutgoingWebhook outgoing_webhook_name {{outgoing_webhook_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param OutgoingWebhookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

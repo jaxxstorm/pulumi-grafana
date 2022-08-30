@@ -7,6 +7,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/folder/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewFolder(ctx, "testA", &grafana.FolderArgs{
+//				Title: pulumi.String("test-folder-a"),
+//				Uid:   pulumi.String("test-ds-folder-uid-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewFolder(ctx, "testB", &grafana.FolderArgs{
+//				Title: pulumi.String("test-folder-b"),
+//				Uid:   pulumi.String("test-ds-folder-uid-b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.GetFolders(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFolders(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult
@@ -19,6 +59,7 @@ func GetFolders(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetFoldersRe
 
 // A collection of values returned by getFolders.
 type GetFoldersResult struct {
+	// The Grafana instance's folders.
 	Folders []GetFoldersFolder `pulumi:"folders"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`

@@ -9,6 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// Manages Grafana Cloud Plugin Installations.
+    /// 
+    /// * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Grafana.CloudPluginInstallation("test", new()
+    ///     {
+    ///         Slug = "some-plugin",
+    ///         StackSlug = "stackname",
+    ///         Version = "1.2.3",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/cloudPluginInstallation:CloudPluginInstallation")]
     public partial class CloudPluginInstallation : global::Pulumi.CustomResource
     {

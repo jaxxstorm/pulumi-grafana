@@ -13,10 +13,25 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointKafka
     {
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The URL of the Kafka REST proxy to send requests to.
+        /// </summary>
         public readonly string RestProxyUrl;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The name of the Kafka topic to publish to.
+        /// </summary>
         public readonly string Topic;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
 
         [OutputConstructor]

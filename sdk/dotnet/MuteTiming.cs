@@ -9,6 +9,66 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/notifications/mute-timings/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#mute-timings)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myMuteTiming = new Grafana.MuteTiming("myMuteTiming", new()
+    ///     {
+    ///         Intervals = new[]
+    ///         {
+    ///             new Grafana.Inputs.MuteTimingIntervalArgs
+    ///             {
+    ///                 DaysOfMonths = new[]
+    ///                 {
+    ///                     "1:7",
+    ///                     "-1",
+    ///                 },
+    ///                 Months = new[]
+    ///                 {
+    ///                     "1:3",
+    ///                     "december",
+    ///                 },
+    ///                 Times = new[]
+    ///                 {
+    ///                     new Grafana.Inputs.MuteTimingIntervalTimeArgs
+    ///                     {
+    ///                         End = "14:17",
+    ///                         Start = "04:56",
+    ///                     },
+    ///                 },
+    ///                 Weekdays = new[]
+    ///                 {
+    ///                     "monday",
+    ///                     "tuesday:thursday",
+    ///                 },
+    ///                 Years = new[]
+    ///                 {
+    ///                     "2030",
+    ///                     "2025:2026",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/muteTiming:MuteTiming mute_timing_name {{mute_timing_name}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/muteTiming:MuteTiming")]
     public partial class MuteTiming : global::Pulumi.CustomResource
     {

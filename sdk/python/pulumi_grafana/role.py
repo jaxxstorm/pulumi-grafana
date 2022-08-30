@@ -30,9 +30,9 @@ class RoleArgs:
         :param pulumi.Input[int] version: Version of the role. A role is updated only on version increase.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] display_name: Display name of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not.
+        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         :param pulumi.Input[str] group: Group of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the role
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Specific set of actions granted by the role.
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
@@ -95,7 +95,7 @@ class RoleArgs:
     @pulumi.getter(name="global")
     def global_(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean to state whether the role is available across all organizations or not.
+        Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         """
         return pulumi.get(self, "global_")
 
@@ -119,7 +119,7 @@ class RoleArgs:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         """
         return pulumi.get(self, "hidden")
 
@@ -180,9 +180,9 @@ class _RoleState:
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] display_name: Display name of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not.
+        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         :param pulumi.Input[str] group: Group of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the role
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Specific set of actions granted by the role.
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
@@ -235,7 +235,7 @@ class _RoleState:
     @pulumi.getter(name="global")
     def global_(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean to state whether the role is available across all organizations or not.
+        Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         """
         return pulumi.get(self, "global_")
 
@@ -259,7 +259,7 @@ class _RoleState:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         """
         return pulumi.get(self, "hidden")
 
@@ -332,14 +332,46 @@ class Role(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        **Note:** This resource is available only with Grafana Enterprise 8.+.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        super_user = grafana.Role("superUser",
+            description="My Super User description",
+            global_=True,
+            permissions=[
+                grafana.RolePermissionArgs(
+                    action="users:create",
+                ),
+                grafana.RolePermissionArgs(
+                    action="users:read",
+                    scope="global:users:*",
+                ),
+            ],
+            uid="superuseruid",
+            version=1)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/role:Role role_name {{uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] display_name: Display name of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not.
+        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         :param pulumi.Input[str] group: Group of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the role
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Specific set of actions granted by the role.
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
@@ -352,7 +384,39 @@ class Role(pulumi.CustomResource):
                  args: RoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        **Note:** This resource is available only with Grafana Enterprise 8.+.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        super_user = grafana.Role("superUser",
+            description="My Super User description",
+            global_=True,
+            permissions=[
+                grafana.RolePermissionArgs(
+                    action="users:create",
+                ),
+                grafana.RolePermissionArgs(
+                    action="users:read",
+                    scope="global:users:*",
+                ),
+            ],
+            uid="superuseruid",
+            version=1)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/role:Role role_name {{uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -425,9 +489,9 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] display_name: Display name of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not.
+        :param pulumi.Input[bool] global_: Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         :param pulumi.Input[str] group: Group of the role. Available with Grafana 8.5+.
-        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        :param pulumi.Input[bool] hidden: Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the role
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Specific set of actions granted by the role.
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
@@ -468,7 +532,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter(name="global")
     def global_(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean to state whether the role is available across all organizations or not.
+        Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
         """
         return pulumi.get(self, "global_")
 
@@ -484,7 +548,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def hidden(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+        Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
         """
         return pulumi.get(self, "hidden")
 

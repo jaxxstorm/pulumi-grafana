@@ -165,7 +165,24 @@ class TeamPreferences(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a TeamPreferences resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        metrics = grafana.Dashboard("metrics", config_json=(lambda path: open(path).read())("grafana-dashboard.json"))
+        team = grafana.Team("team")
+        team_preferences = grafana.TeamPreferences("teamPreferences",
+            team_id=team.id,
+            theme="dark",
+            timezone="browser",
+            home_dashboard_id=metrics.dashboard_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] home_dashboard_id: The numeric ID of the dashboard to display when a team member logs in.
@@ -180,7 +197,24 @@ class TeamPreferences(pulumi.CustomResource):
                  args: TeamPreferencesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a TeamPreferences resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        metrics = grafana.Dashboard("metrics", config_json=(lambda path: open(path).read())("grafana-dashboard.json"))
+        team = grafana.Team("team")
+        team_preferences = grafana.TeamPreferences("teamPreferences",
+            team_id=team.id,
+            theme="dark",
+            timezone="browser",
+            home_dashboard_id=metrics.dashboard_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param TeamPreferencesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

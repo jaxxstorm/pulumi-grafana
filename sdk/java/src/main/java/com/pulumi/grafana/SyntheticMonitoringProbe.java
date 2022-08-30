@@ -18,6 +18,58 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Besides the public probes run by Grafana Labs, you can also install your
+ * own private probes. These are only accessible to you and only write data to
+ * your Grafana Cloud account. Private probes are instances of the open source
+ * Grafana Synthetic Monitoring Agent.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/private-probes/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.SyntheticMonitoringProbe;
+ * import com.pulumi.grafana.SyntheticMonitoringProbeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new SyntheticMonitoringProbe(&#34;main&#34;, SyntheticMonitoringProbeArgs.builder()        
+ *             .labels(Map.of(&#34;type&#34;, &#34;mountain&#34;))
+ *             .latitude(27.98606)
+ *             .longitude(86.92262)
+ *             .region(&#34;APAC&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/syntheticMonitoringProbe:SyntheticMonitoringProbe probe {{probe-id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/syntheticMonitoringProbe:SyntheticMonitoringProbe probe {{probe-id}}:{{auth_token}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/syntheticMonitoringProbe:SyntheticMonitoringProbe")
 public class SyntheticMonitoringProbe extends com.pulumi.resources.CustomResource {
     /**
@@ -91,16 +143,14 @@ public class SyntheticMonitoringProbe extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-     * to `true`.
+     * Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
      * 
      */
     @Export(name="public", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> public_;
 
     /**
-     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set
-     * to `true`.
+     * @return Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> public_() {

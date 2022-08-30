@@ -274,16 +274,14 @@ public final class ContactPointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      * 
      */
     @Import(name="webhooks")
     private @Nullable Output<List<ContactPointWebhookArgs>> webhooks;
 
     /**
-     * @return A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * @return A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      * 
      */
     public Optional<Output<List<ContactPointWebhookArgs>>> webhooks() {
@@ -833,8 +831,7 @@ public final class ContactPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-         * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
          * 
          * @return builder
          * 
@@ -845,8 +842,7 @@ public final class ContactPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-         * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
          * 
          * @return builder
          * 
@@ -856,8 +852,7 @@ public final class ContactPointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-         * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+         * @param webhooks A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
          * 
          * @return builder
          * 

@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const metrics = new grafana.Dashboard("metrics", {configJson: fs.readFileSync("grafana-dashboard.json")});
+ * const team = new grafana.Team("team", {});
+ * const teamPreferences = new grafana.TeamPreferences("teamPreferences", {
+ *     teamId: team.id,
+ *     theme: "dark",
+ *     timezone: "browser",
+ *     homeDashboardId: metrics.dashboardId,
+ * });
+ * ```
+ */
 export class TeamPreferences extends pulumi.CustomResource {
     /**
      * Get an existing TeamPreferences resource's state with the given name, ID, and optional extra

@@ -17,16 +17,14 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApiKeyArgs Empty = new ApiKeyArgs();
 
     /**
-     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      * 
      */
     @Import(name="cloudStackSlug")
     private @Nullable Output<String> cloudStackSlug;
 
     /**
-     * @return If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * @return If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      * 
      */
     public Optional<Output<String>> cloudStackSlug() {
@@ -82,8 +80,7 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStackSlug If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-         * new stack. **Note**: This requires a cloud token to be configured.
+         * @param cloudStackSlug If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
          * 
          * @return builder
          * 
@@ -94,8 +91,7 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStackSlug If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-         * new stack. **Note**: This requires a cloud token to be configured.
+         * @param cloudStackSlug If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
          * 
          * @return builder
          * 

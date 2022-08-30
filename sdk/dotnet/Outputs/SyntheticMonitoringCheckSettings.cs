@@ -13,10 +13,25 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class SyntheticMonitoringCheckSettings
     {
+        /// <summary>
+        /// Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+        /// </summary>
         public readonly Outputs.SyntheticMonitoringCheckSettingsDns? Dns;
+        /// <summary>
+        /// Settings for HTTP check. The target must be a URL (http or https).
+        /// </summary>
         public readonly Outputs.SyntheticMonitoringCheckSettingsHttp? Http;
+        /// <summary>
+        /// Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+        /// </summary>
         public readonly Outputs.SyntheticMonitoringCheckSettingsPing? Ping;
+        /// <summary>
+        /// Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+        /// </summary>
         public readonly Outputs.SyntheticMonitoringCheckSettingsTcp? Tcp;
+        /// <summary>
+        /// Settings for traceroute check. The target must be a valid hostname or IP address
+        /// </summary>
         public readonly Outputs.SyntheticMonitoringCheckSettingsTraceroute? Traceroute;
 
         [OutputConstructor]

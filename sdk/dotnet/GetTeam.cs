@@ -11,9 +11,69 @@ namespace Pulumi.Grafana
 {
     public static class GetTeam
     {
+        /// <summary>
+        /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+        /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = new Grafana.Team("test", new()
+        ///     {
+        ///         Email = "test-team-email@test.com",
+        ///     });
+        /// 
+        ///     var fromName = Grafana.GetTeam.Invoke(new()
+        ///     {
+        ///         Name = test.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetTeamResult> InvokeAsync(GetTeamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTeamResult>("grafana:index/getTeam:getTeam", args ?? new GetTeamArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+        /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = new Grafana.Team("test", new()
+        ///     {
+        ///         Email = "test-team-email@test.com",
+        ///     });
+        /// 
+        ///     var fromName = Grafana.GetTeam.Invoke(new()
+        ///     {
+        ///         Name = test.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetTeamResult> Invoke(GetTeamInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetTeamResult>("grafana:index/getTeam:getTeam", args ?? new GetTeamInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +81,9 @@ namespace Pulumi.Grafana
 
     public sealed class GetTeamArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Grafana team.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -32,6 +95,9 @@ namespace Pulumi.Grafana
 
     public sealed class GetTeamInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Grafana team.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -49,6 +115,9 @@ namespace Pulumi.Grafana
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the Grafana team.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

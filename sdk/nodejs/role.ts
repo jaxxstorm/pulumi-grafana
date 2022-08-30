@@ -5,6 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * **Note:** This resource is available only with Grafana Enterprise 8.+.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/access-control/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/access_control/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const superUser = new grafana.Role("super_user", {
+ *     description: "My Super User description",
+ *     global: true,
+ *     permissions: [
+ *         {
+ *             action: "users:create",
+ *         },
+ *         {
+ *             action: "users:read",
+ *             scope: "global:users:*",
+ *         },
+ *     ],
+ *     uid: "superuseruid",
+ *     version: 1,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/role:Role role_name {{uid}}
+ * ```
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra
@@ -42,7 +77,7 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Boolean to state whether the role is available across all organizations or not.
+     * Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      */
     public readonly global!: pulumi.Output<boolean | undefined>;
     /**
@@ -50,7 +85,7 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      */
     public readonly hidden!: pulumi.Output<boolean | undefined>;
     /**
@@ -125,7 +160,7 @@ export interface RoleState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Boolean to state whether the role is available across all organizations or not.
+     * Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      */
     global?: pulumi.Input<boolean>;
     /**
@@ -133,7 +168,7 @@ export interface RoleState {
      */
     group?: pulumi.Input<string>;
     /**
-     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      */
     hidden?: pulumi.Input<boolean>;
     /**
@@ -167,7 +202,7 @@ export interface RoleArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Boolean to state whether the role is available across all organizations or not.
+     * Boolean to state whether the role is available across all organizations or not. Defaults to `false`.
      */
     global?: pulumi.Input<boolean>;
     /**
@@ -175,7 +210,7 @@ export interface RoleArgs {
      */
     group?: pulumi.Input<string>;
     /**
-     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+.
+     * Boolean to state whether the role should be visible in the Grafana UI or not. Available with Grafana 8.5+. Defaults to `false`.
      */
     hidden?: pulumi.Input<boolean>;
     /**

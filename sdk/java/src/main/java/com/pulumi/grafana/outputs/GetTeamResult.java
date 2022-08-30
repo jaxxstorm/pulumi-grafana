@@ -14,6 +14,10 @@ public final class GetTeamResult {
      * 
      */
     private String id;
+    /**
+     * @return The name of the Grafana team.
+     * 
+     */
     private String name;
 
     private GetTeamResult() {}
@@ -24,6 +28,10 @@ public final class GetTeamResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the Grafana team.
+     * 
+     */
     public String name() {
         return this.name;
     }

@@ -11,57 +11,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataSourceSecureJsonData {
+    /**
+     * @return (CloudWatch, Athena) The access key used to access the data source.
+     * 
+     */
     private @Nullable String accessKey;
+    /**
+     * @return (Github) The access token used to access the data source.
+     * 
+     */
     private @Nullable String accessToken;
+    /**
+     * @return (Sentry) Authorization token.
+     * 
+     */
     private @Nullable String authToken;
+    /**
+     * @return (All) Password to use for basic authentication.
+     * 
+     */
     private @Nullable String basicAuthPassword;
+    /**
+     * @return (Azure Monitor) Client secret for authentication.
+     * 
+     */
     private @Nullable String clientSecret;
+    /**
+     * @return (All) Password to use for authentication.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return (Stackdriver) The service account key `private_key` to use to access the data source.
+     * 
+     */
     private @Nullable String privateKey;
+    /**
+     * @return (CloudWatch, Athena) The secret key to use to access the data source.
+     * 
+     */
     private @Nullable String secretKey;
+    /**
+     * @return (Elasticsearch and Prometheus) SigV4 access key. Required when using &#39;keys&#39; auth provider.
+     * 
+     */
     private @Nullable String sigv4AccessKey;
+    /**
+     * @return (Elasticsearch and Prometheus) SigV4 secret key. Required when using &#39;keys&#39; auth provider.
+     * 
+     */
     private @Nullable String sigv4SecretKey;
+    /**
+     * @return (All) CA cert for out going requests.
+     * 
+     */
     private @Nullable String tlsCaCert;
+    /**
+     * @return (All) TLS Client cert for outgoing requests.
+     * 
+     */
     private @Nullable String tlsClientCert;
+    /**
+     * @return (All) TLS Client key for outgoing requests.
+     * 
+     */
     private @Nullable String tlsClientKey;
 
     private DataSourceSecureJsonData() {}
+    /**
+     * @return (CloudWatch, Athena) The access key used to access the data source.
+     * 
+     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
+    /**
+     * @return (Github) The access token used to access the data source.
+     * 
+     */
     public Optional<String> accessToken() {
         return Optional.ofNullable(this.accessToken);
     }
+    /**
+     * @return (Sentry) Authorization token.
+     * 
+     */
     public Optional<String> authToken() {
         return Optional.ofNullable(this.authToken);
     }
+    /**
+     * @return (All) Password to use for basic authentication.
+     * 
+     */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
+    /**
+     * @return (Azure Monitor) Client secret for authentication.
+     * 
+     */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
+    /**
+     * @return (All) Password to use for authentication.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return (Stackdriver) The service account key `private_key` to use to access the data source.
+     * 
+     */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
+    /**
+     * @return (CloudWatch, Athena) The secret key to use to access the data source.
+     * 
+     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) SigV4 access key. Required when using &#39;keys&#39; auth provider.
+     * 
+     */
     public Optional<String> sigv4AccessKey() {
         return Optional.ofNullable(this.sigv4AccessKey);
     }
+    /**
+     * @return (Elasticsearch and Prometheus) SigV4 secret key. Required when using &#39;keys&#39; auth provider.
+     * 
+     */
     public Optional<String> sigv4SecretKey() {
         return Optional.ofNullable(this.sigv4SecretKey);
     }
+    /**
+     * @return (All) CA cert for out going requests.
+     * 
+     */
     public Optional<String> tlsCaCert() {
         return Optional.ofNullable(this.tlsCaCert);
     }
+    /**
+     * @return (All) TLS Client cert for outgoing requests.
+     * 
+     */
     public Optional<String> tlsClientCert() {
         return Optional.ofNullable(this.tlsClientCert);
     }
+    /**
+     * @return (All) TLS Client key for outgoing requests.
+     * 
+     */
     public Optional<String> tlsClientKey() {
         return Optional.ofNullable(this.tlsClientKey);
     }

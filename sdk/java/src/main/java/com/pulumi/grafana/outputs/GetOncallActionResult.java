@@ -14,6 +14,10 @@ public final class GetOncallActionResult {
      * 
      */
     private String id;
+    /**
+     * @return The action name.
+     * 
+     */
     private String name;
 
     private GetOncallActionResult() {}
@@ -24,6 +28,10 @@ public final class GetOncallActionResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The action name.
+     * 
+     */
     public String name() {
         return this.name;
     }

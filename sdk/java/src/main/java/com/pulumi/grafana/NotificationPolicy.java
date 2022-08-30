@@ -16,6 +16,106 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#notification-policies)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.ContactPoint;
+ * import com.pulumi.grafana.ContactPointArgs;
+ * import com.pulumi.grafana.inputs.ContactPointEmailArgs;
+ * import com.pulumi.grafana.MuteTiming;
+ * import com.pulumi.grafana.MuteTimingArgs;
+ * import com.pulumi.grafana.inputs.MuteTimingIntervalArgs;
+ * import com.pulumi.grafana.NotificationPolicy;
+ * import com.pulumi.grafana.NotificationPolicyArgs;
+ * import com.pulumi.grafana.inputs.NotificationPolicyPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var aContactPoint = new ContactPoint(&#34;aContactPoint&#34;, ContactPointArgs.builder()        
+ *             .emails(ContactPointEmailArgs.builder()
+ *                 .addresses(                
+ *                     &#34;one@company.org&#34;,
+ *                     &#34;two@company.org&#34;)
+ *                 .message(&#34;{{ len .Alerts.Firing }} firing.&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var aMuteTiming = new MuteTiming(&#34;aMuteTiming&#34;, MuteTimingArgs.builder()        
+ *             .intervals(MuteTimingIntervalArgs.builder()
+ *                 .weekdays(&#34;monday&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var myNotificationPolicy = new NotificationPolicy(&#34;myNotificationPolicy&#34;, NotificationPolicyArgs.builder()        
+ *             .groupBies(&#34;...&#34;)
+ *             .contactPoint(aContactPoint.name())
+ *             .groupWait(&#34;45s&#34;)
+ *             .groupInterval(&#34;6m&#34;)
+ *             .repeatInterval(&#34;3h&#34;)
+ *             .policies(            
+ *                 NotificationPolicyPolicyArgs.builder()
+ *                     .matchers(NotificationPolicyPolicyMatcherArgs.builder()
+ *                         .label(&#34;mylabel&#34;)
+ *                         .match(&#34;=&#34;)
+ *                         .value(&#34;myvalue&#34;)
+ *                         .build())
+ *                     .contactPoint(aContactPoint.name())
+ *                     .groupBies(&#34;alertname&#34;)
+ *                     .continue_(true)
+ *                     .muteTimings(aMuteTiming.name())
+ *                     .groupWait(&#34;45s&#34;)
+ *                     .groupInterval(&#34;6m&#34;)
+ *                     .repeatInterval(&#34;3h&#34;)
+ *                     .policies(NotificationPolicyPolicyPolicyArgs.builder()
+ *                         .matchers(NotificationPolicyPolicyPolicyMatcherArgs.builder()
+ *                             .label(&#34;sublabel&#34;)
+ *                             .match(&#34;=&#34;)
+ *                             .value(&#34;subvalue&#34;)
+ *                             .build())
+ *                         .contactPoint(aContactPoint.name())
+ *                         .groupBies(&#34;...&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 NotificationPolicyPolicyArgs.builder()
+ *                     .matchers(NotificationPolicyPolicyMatcherArgs.builder()
+ *                         .label(&#34;anotherlabel&#34;)
+ *                         .match(&#34;=~&#34;)
+ *                         .value(&#34;another value.*&#34;)
+ *                         .build())
+ *                     .contactPoint(aContactPoint.name())
+ *                     .groupBies(&#34;...&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/notificationPolicy:NotificationPolicy notification_policy_name {{notification_policy_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/notificationPolicy:NotificationPolicy")
 public class NotificationPolicy extends com.pulumi.resources.CustomResource {
     /**
@@ -33,16 +133,14 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
         return this.contactPoint;
     }
     /**
-     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      * 
      */
     @Export(name="groupBies", type=List.class, parameters={String.class})
     private Output<List<String>> groupBies;
 
     /**
-     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-     * effectively disabling grouping.
+     * @return A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
      * 
      */
     public Output<List<String>> groupBies() {

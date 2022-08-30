@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointTeam {
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated message content to send.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return The templated subtitle for each message section.
+     * 
+     */
     private @Nullable String sectionTitle;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The templated title of the message.
+     * 
+     */
     private @Nullable String title;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return A Teams webhook URL.
+     * 
+     */
     private String url;
 
     private ContactPointTeam() {}
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated message content to send.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return The templated subtitle for each message section.
+     * 
+     */
     public Optional<String> sectionTitle() {
         return Optional.ofNullable(this.sectionTitle);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The templated title of the message.
+     * 
+     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return A Teams webhook URL.
+     * 
+     */
     public String url() {
         return this.url;
     }

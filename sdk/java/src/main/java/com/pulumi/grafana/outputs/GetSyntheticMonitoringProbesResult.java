@@ -14,15 +14,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSyntheticMonitoringProbesResult {
+    /**
+     * @return If true, only probes that are not deprecated will be returned. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean filterDeprecated;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Map of probes with their names as keys and IDs as values.
+     * 
+     */
     private Map<String,Integer> probes;
 
     private GetSyntheticMonitoringProbesResult() {}
+    /**
+     * @return If true, only probes that are not deprecated will be returned. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> filterDeprecated() {
         return Optional.ofNullable(this.filterDeprecated);
     }
@@ -33,6 +45,10 @@ public final class GetSyntheticMonitoringProbesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Map of probes with their names as keys and IDs as values.
+     * 
+     */
     public Map<String,Integer> probes() {
         return this.probes;
     }

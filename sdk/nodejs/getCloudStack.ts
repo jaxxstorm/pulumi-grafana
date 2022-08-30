@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Data source for Grafana Stack
+ */
 export function getCloudStack(args: GetCloudStackArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudStackResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +22,10 @@ export function getCloudStack(args: GetCloudStackArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getCloudStack.
  */
 export interface GetCloudStackArgs {
+    /**
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
+     */
     slug: string;
 }
 
@@ -26,29 +33,90 @@ export interface GetCloudStackArgs {
  * A collection of values returned by getCloudStack.
  */
 export interface GetCloudStackResult {
+    /**
+     * Name of the Alertmanager instance configured for this stack.
+     */
     readonly alertmanagerName: string;
+    /**
+     * Status of the Alertmanager instance configured for this stack.
+     */
     readonly alertmanagerStatus: string;
+    /**
+     * Base URL of the Alertmanager instance configured for this stack.
+     */
     readonly alertmanagerUrl: string;
+    /**
+     * User ID of the Alertmanager instance configured for this stack.
+     */
     readonly alertmanagerUserId: number;
+    /**
+     * Description of stack.
+     */
     readonly description: string;
+    /**
+     * The stack id assigned to this stack by Grafana.
+     */
     readonly id: string;
     readonly logsName: string;
     readonly logsStatus: string;
     readonly logsUrl: string;
     readonly logsUserId: number;
+    /**
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
+     */
     readonly name: string;
+    /**
+     * Organization id to assign to this stack.
+     */
     readonly orgId: number;
+    /**
+     * Organization name to assign to this stack.
+     */
     readonly orgName: string;
+    /**
+     * Organization slug to assign to this stack.
+     */
     readonly orgSlug: string;
+    /**
+     * Prometheus name for this instance.
+     */
     readonly prometheusName: string;
+    /**
+     * Use this URL to query hosted metrics data e.g. Prometheus data source in Grafana
+     */
     readonly prometheusRemoteEndpoint: string;
+    /**
+     * Use this URL to send prometheus metrics to Grafana cloud
+     */
     readonly prometheusRemoteWriteEndpoint: string;
+    /**
+     * Prometheus status for this instance.
+     */
     readonly prometheusStatus: string;
+    /**
+     * Prometheus url for this instance.
+     */
     readonly prometheusUrl: string;
+    /**
+     * Promehteus user ID. Used for e.g. remote_write.
+     */
     readonly prometheusUserId: number;
+    /**
+     * The region this stack is deployed to.
+     */
     readonly regionSlug: string;
+    /**
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
+     */
     readonly slug: string;
+    /**
+     * Status of the stack.
+     */
     readonly status: string;
+    /**
+     * Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
+     */
     readonly url: string;
 }
 
@@ -60,5 +128,9 @@ export function getCloudStackOutput(args: GetCloudStackOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getCloudStack.
  */
 export interface GetCloudStackOutputArgs {
+    /**
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net".
+     */
     slug: pulumi.Input<string>;
 }

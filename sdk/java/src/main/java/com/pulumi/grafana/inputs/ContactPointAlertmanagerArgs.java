@@ -17,44 +17,92 @@ public final class ContactPointAlertmanagerArgs extends com.pulumi.resources.Res
 
     public static final ContactPointAlertmanagerArgs Empty = new ContactPointAlertmanagerArgs();
 
+    /**
+     * The password component of the basic auth credentials to use.
+     * 
+     */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
+    /**
+     * @return The password component of the basic auth credentials to use.
+     * 
+     */
     public Optional<Output<String>> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
 
+    /**
+     * The username component of the basic auth credentials to use.
+     * 
+     */
     @Import(name="basicAuthUser")
     private @Nullable Output<String> basicAuthUser;
 
+    /**
+     * @return The username component of the basic auth credentials to use.
+     * 
+     */
     public Optional<Output<String>> basicAuthUser() {
         return Optional.ofNullable(this.basicAuthUser);
     }
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * The URL of the Alertmanager instance.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return The URL of the Alertmanager instance.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -88,56 +136,128 @@ public final class ContactPointAlertmanagerArgs extends com.pulumi.resources.Res
             $ = new ContactPointAlertmanagerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param basicAuthPassword The password component of the basic auth credentials to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(@Nullable Output<String> basicAuthPassword) {
             $.basicAuthPassword = basicAuthPassword;
             return this;
         }
 
+        /**
+         * @param basicAuthPassword The password component of the basic auth credentials to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthPassword(String basicAuthPassword) {
             return basicAuthPassword(Output.of(basicAuthPassword));
         }
 
+        /**
+         * @param basicAuthUser The username component of the basic auth credentials to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUser(@Nullable Output<String> basicAuthUser) {
             $.basicAuthUser = basicAuthUser;
             return this;
         }
 
+        /**
+         * @param basicAuthUser The username component of the basic auth credentials to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuthUser(String basicAuthUser) {
             return basicAuthUser(Output.of(basicAuthUser));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }
 
+        /**
+         * @param url The URL of the Alertmanager instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The URL of the Alertmanager instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

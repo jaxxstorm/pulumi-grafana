@@ -15,17 +15,24 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * **Note:** This resource is available only with Grafana 9.1+.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+ * 
+ */
 @ResourceType(type="grafana:index/serviceAccount:ServiceAccount")
 public class ServiceAccount extends com.pulumi.resources.CustomResource {
     /**
-     * The disabled status for the service account.
+     * The disabled status for the service account. Defaults to `false`.
      * 
      */
     @Export(name="isDisabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDisabled;
 
     /**
-     * @return The disabled status for the service account.
+     * @return The disabled status for the service account. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> isDisabled() {

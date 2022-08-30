@@ -129,7 +129,9 @@ class Playlist(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Playlist resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/playlist/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/playlist/)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the playlist.
@@ -141,7 +143,9 @@ class Playlist(pulumi.CustomResource):
                  args: PlaylistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Playlist resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/playlist/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/playlist/)
+
         :param str resource_name: The name of the resource.
         :param PlaylistArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataSourcePermissionPermission {
+    /**
+     * @return Permission to associate with item. Must be `Query`.
+     * 
+     */
     private String permission;
+    /**
+     * @return ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     private @Nullable Integer teamId;
+    /**
+     * @return ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     private @Nullable Integer userId;
 
     private DataSourcePermissionPermission() {}
+    /**
+     * @return Permission to associate with item. Must be `Query`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return ID of the team to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Integer> teamId() {
         return Optional.ofNullable(this.teamId);
     }
+    /**
+     * @return ID of the user to manage permissions for. Defaults to `0`.
+     * 
+     */
     public Optional<Integer> userId() {
         return Optional.ofNullable(this.userId);
     }

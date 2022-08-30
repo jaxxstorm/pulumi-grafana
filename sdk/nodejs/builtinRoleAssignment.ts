@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const viewer = new grafana.BuiltinRoleAssignment("viewer", {
+ *     builtinRole: "Viewer",
+ *     roles: [
+ *         {
+ *             global: false,
+ *             uid: "firstuid",
+ *         },
+ *         {
+ *             global: true,
+ *             uid: "seconduid",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+ * ```
+ */
 export class BuiltinRoleAssignment extends pulumi.CustomResource {
     /**
      * Get an existing BuiltinRoleAssignment resource's state with the given name, ID, and optional extra

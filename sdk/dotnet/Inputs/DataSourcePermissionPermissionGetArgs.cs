@@ -12,12 +12,21 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class DataSourcePermissionPermissionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Permission to associate with item. Must be `Query`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the team to manage permissions for. Defaults to `0`.
+        /// </summary>
         [Input("teamId")]
         public Input<int>? TeamId { get; set; }
 
+        /// <summary>
+        /// ID of the user to manage permissions for. Defaults to `0`.
+        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 

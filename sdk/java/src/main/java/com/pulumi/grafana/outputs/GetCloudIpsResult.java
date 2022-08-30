@@ -10,10 +10,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCloudIpsResult {
+    /**
+     * @return Set of IP addresses that are used for hosted alerts.
+     * 
+     */
     private List<String> hostedAlerts;
+    /**
+     * @return Set of IP addresses that are used for hosted Grafana.
+     * 
+     */
     private List<String> hostedGrafanas;
+    /**
+     * @return Set of IP addresses that are used for hosted logs.
+     * 
+     */
     private List<String> hostedLogs;
+    /**
+     * @return Set of IP addresses that are used for hosted metrics.
+     * 
+     */
     private List<String> hostedMetrics;
+    /**
+     * @return Set of IP addresses that are used for hosted traces.
+     * 
+     */
     private List<String> hostedTraces;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,18 +42,38 @@ public final class GetCloudIpsResult {
     private String id;
 
     private GetCloudIpsResult() {}
+    /**
+     * @return Set of IP addresses that are used for hosted alerts.
+     * 
+     */
     public List<String> hostedAlerts() {
         return this.hostedAlerts;
     }
+    /**
+     * @return Set of IP addresses that are used for hosted Grafana.
+     * 
+     */
     public List<String> hostedGrafanas() {
         return this.hostedGrafanas;
     }
+    /**
+     * @return Set of IP addresses that are used for hosted logs.
+     * 
+     */
     public List<String> hostedLogs() {
         return this.hostedLogs;
     }
+    /**
+     * @return Set of IP addresses that are used for hosted metrics.
+     * 
+     */
     public List<String> hostedMetrics() {
         return this.hostedMetrics;
     }
+    /**
+     * @return Set of IP addresses that are used for hosted traces.
+     * 
+     */
     public List<String> hostedTraces() {
         return this.hostedTraces;
     }

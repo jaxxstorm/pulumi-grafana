@@ -15,6 +15,54 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.BuiltinRoleAssignment;
+ * import com.pulumi.grafana.BuiltinRoleAssignmentArgs;
+ * import com.pulumi.grafana.inputs.BuiltinRoleAssignmentRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var viewer = new BuiltinRoleAssignment(&#34;viewer&#34;, BuiltinRoleAssignmentArgs.builder()        
+ *             .builtinRole(&#34;Viewer&#34;)
+ *             .roles(            
+ *                 BuiltinRoleAssignmentRoleArgs.builder()
+ *                     .global(false)
+ *                     .uid(&#34;firstuid&#34;)
+ *                     .build(),
+ *                 BuiltinRoleAssignmentRoleArgs.builder()
+ *                     .global(true)
+ *                     .uid(&#34;seconduid&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/builtinRoleAssignment:BuiltinRoleAssignment")
 public class BuiltinRoleAssignment extends com.pulumi.resources.CustomResource {
     /**

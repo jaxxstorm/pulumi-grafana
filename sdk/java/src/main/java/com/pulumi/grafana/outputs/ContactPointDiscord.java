@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointDiscord {
+    /**
+     * @return The URL of a custom avatar image to use. Defaults to ``.
+     * 
+     */
     private @Nullable String avatarUrl;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated content of the message. Defaults to ``.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The discord webhook URL.
+     * 
+     */
     private String url;
+    /**
+     * @return Whether to use the bot account&#39;s plain username instead of &#34;Grafana.&#34; Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean useDiscordUsername;
 
     private ContactPointDiscord() {}
+    /**
+     * @return The URL of a custom avatar image to use. Defaults to ``.
+     * 
+     */
     public Optional<String> avatarUrl() {
         return Optional.ofNullable(this.avatarUrl);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated content of the message. Defaults to ``.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The discord webhook URL.
+     * 
+     */
     public String url() {
         return this.url;
     }
+    /**
+     * @return Whether to use the bot account&#39;s plain username instead of &#34;Grafana.&#34; Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> useDiscordUsername() {
         return Optional.ofNullable(this.useDiscordUsername);
     }

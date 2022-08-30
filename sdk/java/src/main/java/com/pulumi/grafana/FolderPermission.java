@@ -15,6 +15,70 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Team;
+ * import com.pulumi.grafana.User;
+ * import com.pulumi.grafana.UserArgs;
+ * import com.pulumi.grafana.Folder;
+ * import com.pulumi.grafana.FolderArgs;
+ * import com.pulumi.grafana.FolderPermission;
+ * import com.pulumi.grafana.FolderPermissionArgs;
+ * import com.pulumi.grafana.inputs.FolderPermissionPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var team = new Team(&#34;team&#34;);
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .email(&#34;user.name@example.com&#34;)
+ *             .build());
+ * 
+ *         var collection = new Folder(&#34;collection&#34;, FolderArgs.builder()        
+ *             .title(&#34;Folder Title&#34;)
+ *             .build());
+ * 
+ *         var collectionPermission = new FolderPermission(&#34;collectionPermission&#34;, FolderPermissionArgs.builder()        
+ *             .folderUid(collection.uid())
+ *             .permissions(            
+ *                 FolderPermissionPermissionArgs.builder()
+ *                     .role(&#34;Editor&#34;)
+ *                     .permission(&#34;Edit&#34;)
+ *                     .build(),
+ *                 FolderPermissionPermissionArgs.builder()
+ *                     .teamId(team.id())
+ *                     .permission(&#34;View&#34;)
+ *                     .build(),
+ *                 FolderPermissionPermissionArgs.builder()
+ *                     .userId(user.id())
+ *                     .permission(&#34;Admin&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/folderPermission:FolderPermission")
 public class FolderPermission extends com.pulumi.resources.CustomResource {
     /**

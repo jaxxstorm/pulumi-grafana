@@ -13,45 +13,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointOpsgeny {
+    /**
+     * @return The OpsGenie API key to use.
+     * 
+     */
     private String apiKey;
+    /**
+     * @return Whether to auto-close alerts in OpsGenie when they resolve in the Alertmanager.
+     * 
+     */
     private @Nullable Boolean autoClose;
+    /**
+     * @return A templated high-level description to use for the alert.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Whether to allow the alert priority to be configured via the value of the `og_priority` annotation on the alert.
+     * 
+     */
     private @Nullable Boolean overridePriority;
+    /**
+     * @return Whether to send annotations to OpsGenie as Tags, Details, or both. Supported values are `tags`, `details`, `both`, or empty to use the default behavior of Tags.
+     * 
+     */
     private @Nullable String sendTagsAs;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return Allows customization of the OpsGenie API URL.
+     * 
+     */
     private @Nullable String url;
 
     private ContactPointOpsgeny() {}
+    /**
+     * @return The OpsGenie API key to use.
+     * 
+     */
     public String apiKey() {
         return this.apiKey;
     }
+    /**
+     * @return Whether to auto-close alerts in OpsGenie when they resolve in the Alertmanager.
+     * 
+     */
     public Optional<Boolean> autoClose() {
         return Optional.ofNullable(this.autoClose);
     }
+    /**
+     * @return A templated high-level description to use for the alert.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated content of the message.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Whether to allow the alert priority to be configured via the value of the `og_priority` annotation on the alert.
+     * 
+     */
     public Optional<Boolean> overridePriority() {
         return Optional.ofNullable(this.overridePriority);
     }
+    /**
+     * @return Whether to send annotations to OpsGenie as Tags, Details, or both. Supported values are `tags`, `details`, `both`, or empty to use the default behavior of Tags.
+     * 
+     */
     public Optional<String> sendTagsAs() {
         return Optional.ofNullable(this.sendTagsAs);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return Allows customization of the OpsGenie API URL.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

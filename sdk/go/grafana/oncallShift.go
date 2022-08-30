@@ -11,12 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/on_call_shifts/)
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/oncallShift:OncallShift on_call_shift_name {{on_call_shift_id}}
+//
+// ```
 type OncallShift struct {
 	pulumi.CustomResourceState
 
 	// This parameter takes a list of days in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	ByDays pulumi.StringArrayOutput `pulumi:"byDays"`
-	// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+	// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 	ByMonthdays pulumi.IntArrayOutput `pulumi:"byMonthdays"`
 	// This parameter takes a list of months. Valid values are 1 to 12
 	ByMonths pulumi.IntArrayOutput `pulumi:"byMonths"`
@@ -30,20 +39,19 @@ type OncallShift struct {
 	Level pulumi.IntPtrOutput `pulumi:"level"`
 	// The shift's name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of lists with on-call users (for rolling_users event type)
+	// The list of lists with on-call users (for rollingUsers event type)
 	RollingUsers pulumi.StringArrayArrayOutput `pulumi:"rollingUsers"`
-	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-	// "2020-09-05T08:00:00")
+	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 	Start pulumi.StringOutput `pulumi:"start"`
 	// The index of the list of users in rolling_users, from which on-call rotation starts.
 	StartRotationFromUserIndex pulumi.IntPtrOutput `pulumi:"startRotationFromUserIndex"`
 	// The ID of the team.
 	TeamId pulumi.StringPtrOutput `pulumi:"teamId"`
-	// The shift's timezone. Overrides schedule's timezone.
+	// The shift's timezone.  Overrides schedule's timezone.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
-	// The shift's type. Can be rolling_users, recurrent_event, single_event
+	// The shift's type. Can be rolling*users, recurrent*event, single_event
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The list of on-call users (for single_event and recurrent_event event type).
+	// The list of on-call users (for single*event and recurrent*event event type).
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 	// Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	WeekStart pulumi.StringPtrOutput `pulumi:"weekStart"`
@@ -90,7 +98,7 @@ func GetOncallShift(ctx *pulumi.Context,
 type oncallShiftState struct {
 	// This parameter takes a list of days in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	ByDays []string `pulumi:"byDays"`
-	// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+	// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 	ByMonthdays []int `pulumi:"byMonthdays"`
 	// This parameter takes a list of months. Valid values are 1 to 12
 	ByMonths []int `pulumi:"byMonths"`
@@ -104,20 +112,19 @@ type oncallShiftState struct {
 	Level *int `pulumi:"level"`
 	// The shift's name.
 	Name *string `pulumi:"name"`
-	// The list of lists with on-call users (for rolling_users event type)
+	// The list of lists with on-call users (for rollingUsers event type)
 	RollingUsers [][]string `pulumi:"rollingUsers"`
-	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-	// "2020-09-05T08:00:00")
+	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 	Start *string `pulumi:"start"`
 	// The index of the list of users in rolling_users, from which on-call rotation starts.
 	StartRotationFromUserIndex *int `pulumi:"startRotationFromUserIndex"`
 	// The ID of the team.
 	TeamId *string `pulumi:"teamId"`
-	// The shift's timezone. Overrides schedule's timezone.
+	// The shift's timezone.  Overrides schedule's timezone.
 	TimeZone *string `pulumi:"timeZone"`
-	// The shift's type. Can be rolling_users, recurrent_event, single_event
+	// The shift's type. Can be rolling*users, recurrent*event, single_event
 	Type *string `pulumi:"type"`
-	// The list of on-call users (for single_event and recurrent_event event type).
+	// The list of on-call users (for single*event and recurrent*event event type).
 	Users []string `pulumi:"users"`
 	// Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	WeekStart *string `pulumi:"weekStart"`
@@ -126,7 +133,7 @@ type oncallShiftState struct {
 type OncallShiftState struct {
 	// This parameter takes a list of days in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	ByDays pulumi.StringArrayInput
-	// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+	// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 	ByMonthdays pulumi.IntArrayInput
 	// This parameter takes a list of months. Valid values are 1 to 12
 	ByMonths pulumi.IntArrayInput
@@ -140,20 +147,19 @@ type OncallShiftState struct {
 	Level pulumi.IntPtrInput
 	// The shift's name.
 	Name pulumi.StringPtrInput
-	// The list of lists with on-call users (for rolling_users event type)
+	// The list of lists with on-call users (for rollingUsers event type)
 	RollingUsers pulumi.StringArrayArrayInput
-	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-	// "2020-09-05T08:00:00")
+	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 	Start pulumi.StringPtrInput
 	// The index of the list of users in rolling_users, from which on-call rotation starts.
 	StartRotationFromUserIndex pulumi.IntPtrInput
 	// The ID of the team.
 	TeamId pulumi.StringPtrInput
-	// The shift's timezone. Overrides schedule's timezone.
+	// The shift's timezone.  Overrides schedule's timezone.
 	TimeZone pulumi.StringPtrInput
-	// The shift's type. Can be rolling_users, recurrent_event, single_event
+	// The shift's type. Can be rolling*users, recurrent*event, single_event
 	Type pulumi.StringPtrInput
-	// The list of on-call users (for single_event and recurrent_event event type).
+	// The list of on-call users (for single*event and recurrent*event event type).
 	Users pulumi.StringArrayInput
 	// Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	WeekStart pulumi.StringPtrInput
@@ -166,7 +172,7 @@ func (OncallShiftState) ElementType() reflect.Type {
 type oncallShiftArgs struct {
 	// This parameter takes a list of days in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	ByDays []string `pulumi:"byDays"`
-	// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+	// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 	ByMonthdays []int `pulumi:"byMonthdays"`
 	// This parameter takes a list of months. Valid values are 1 to 12
 	ByMonths []int `pulumi:"byMonths"`
@@ -180,20 +186,19 @@ type oncallShiftArgs struct {
 	Level *int `pulumi:"level"`
 	// The shift's name.
 	Name *string `pulumi:"name"`
-	// The list of lists with on-call users (for rolling_users event type)
+	// The list of lists with on-call users (for rollingUsers event type)
 	RollingUsers [][]string `pulumi:"rollingUsers"`
-	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-	// "2020-09-05T08:00:00")
+	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 	Start string `pulumi:"start"`
 	// The index of the list of users in rolling_users, from which on-call rotation starts.
 	StartRotationFromUserIndex *int `pulumi:"startRotationFromUserIndex"`
 	// The ID of the team.
 	TeamId *string `pulumi:"teamId"`
-	// The shift's timezone. Overrides schedule's timezone.
+	// The shift's timezone.  Overrides schedule's timezone.
 	TimeZone *string `pulumi:"timeZone"`
-	// The shift's type. Can be rolling_users, recurrent_event, single_event
+	// The shift's type. Can be rolling*users, recurrent*event, single_event
 	Type string `pulumi:"type"`
-	// The list of on-call users (for single_event and recurrent_event event type).
+	// The list of on-call users (for single*event and recurrent*event event type).
 	Users []string `pulumi:"users"`
 	// Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	WeekStart *string `pulumi:"weekStart"`
@@ -203,7 +208,7 @@ type oncallShiftArgs struct {
 type OncallShiftArgs struct {
 	// This parameter takes a list of days in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	ByDays pulumi.StringArrayInput
-	// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+	// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 	ByMonthdays pulumi.IntArrayInput
 	// This parameter takes a list of months. Valid values are 1 to 12
 	ByMonths pulumi.IntArrayInput
@@ -217,20 +222,19 @@ type OncallShiftArgs struct {
 	Level pulumi.IntPtrInput
 	// The shift's name.
 	Name pulumi.StringPtrInput
-	// The list of lists with on-call users (for rolling_users event type)
+	// The list of lists with on-call users (for rollingUsers event type)
 	RollingUsers pulumi.StringArrayArrayInput
-	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-	// "2020-09-05T08:00:00")
+	// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 	Start pulumi.StringInput
 	// The index of the list of users in rolling_users, from which on-call rotation starts.
 	StartRotationFromUserIndex pulumi.IntPtrInput
 	// The ID of the team.
 	TeamId pulumi.StringPtrInput
-	// The shift's timezone. Overrides schedule's timezone.
+	// The shift's timezone.  Overrides schedule's timezone.
 	TimeZone pulumi.StringPtrInput
-	// The shift's type. Can be rolling_users, recurrent_event, single_event
+	// The shift's type. Can be rolling*users, recurrent*event, single_event
 	Type pulumi.StringInput
-	// The list of on-call users (for single_event and recurrent_event event type).
+	// The list of on-call users (for single*event and recurrent*event event type).
 	Users pulumi.StringArrayInput
 	// Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
 	WeekStart pulumi.StringPtrInput
@@ -328,7 +332,7 @@ func (o OncallShiftOutput) ByDays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringArrayOutput { return v.ByDays }).(pulumi.StringArrayOutput)
 }
 
-// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
 func (o OncallShiftOutput) ByMonthdays() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.IntArrayOutput { return v.ByMonthdays }).(pulumi.IntArrayOutput)
 }
@@ -363,13 +367,12 @@ func (o OncallShiftOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of lists with on-call users (for rolling_users event type)
+// The list of lists with on-call users (for rollingUsers event type)
 func (o OncallShiftOutput) RollingUsers() pulumi.StringArrayArrayOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringArrayArrayOutput { return v.RollingUsers }).(pulumi.StringArrayArrayOutput)
 }
 
-// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-// "2020-09-05T08:00:00")
+// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
 func (o OncallShiftOutput) Start() pulumi.StringOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringOutput { return v.Start }).(pulumi.StringOutput)
 }
@@ -384,17 +387,17 @@ func (o OncallShiftOutput) TeamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringPtrOutput { return v.TeamId }).(pulumi.StringPtrOutput)
 }
 
-// The shift's timezone. Overrides schedule's timezone.
+// The shift's timezone.  Overrides schedule's timezone.
 func (o OncallShiftOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// The shift's type. Can be rolling_users, recurrent_event, single_event
+// The shift's type. Can be rolling*users, recurrent*event, single_event
 func (o OncallShiftOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The list of on-call users (for single_event and recurrent_event event type).
+// The list of on-call users (for single*event and recurrent*event event type).
 func (o OncallShiftOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OncallShift) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }

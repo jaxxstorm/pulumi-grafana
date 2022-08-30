@@ -17,37 +17,77 @@ public final class MuteTimingIntervalArgs extends com.pulumi.resources.ResourceA
 
     public static final MuteTimingIntervalArgs Empty = new MuteTimingIntervalArgs();
 
+    /**
+     * An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+     * 
+     */
     @Import(name="daysOfMonths")
     private @Nullable Output<List<String>> daysOfMonths;
 
+    /**
+     * @return An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+     * 
+     */
     public Optional<Output<List<String>>> daysOfMonths() {
         return Optional.ofNullable(this.daysOfMonths);
     }
 
+    /**
+     * An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+     * 
+     */
     @Import(name="months")
     private @Nullable Output<List<String>> months;
 
+    /**
+     * @return An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+     * 
+     */
     public Optional<Output<List<String>>> months() {
         return Optional.ofNullable(this.months);
     }
 
+    /**
+     * The time ranges, represented in minutes, during which to mute in a given day.
+     * 
+     */
     @Import(name="times")
     private @Nullable Output<List<MuteTimingIntervalTimeArgs>> times;
 
+    /**
+     * @return The time ranges, represented in minutes, during which to mute in a given day.
+     * 
+     */
     public Optional<Output<List<MuteTimingIntervalTimeArgs>>> times() {
         return Optional.ofNullable(this.times);
     }
 
+    /**
+     * An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+     * 
+     */
     @Import(name="weekdays")
     private @Nullable Output<List<String>> weekdays;
 
+    /**
+     * @return An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+     * 
+     */
     public Optional<Output<List<String>>> weekdays() {
         return Optional.ofNullable(this.weekdays);
     }
 
+    /**
+     * A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+     * 
+     */
     @Import(name="years")
     private @Nullable Output<List<String>> years;
 
+    /**
+     * @return A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+     * 
+     */
     public Optional<Output<List<String>>> years() {
         return Optional.ofNullable(this.years);
     }
@@ -80,67 +120,157 @@ public final class MuteTimingIntervalArgs extends com.pulumi.resources.ResourceA
             $ = new MuteTimingIntervalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param daysOfMonths An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder daysOfMonths(@Nullable Output<List<String>> daysOfMonths) {
             $.daysOfMonths = daysOfMonths;
             return this;
         }
 
+        /**
+         * @param daysOfMonths An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder daysOfMonths(List<String> daysOfMonths) {
             return daysOfMonths(Output.of(daysOfMonths));
         }
 
+        /**
+         * @param daysOfMonths An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder daysOfMonths(String... daysOfMonths) {
             return daysOfMonths(List.of(daysOfMonths));
         }
 
+        /**
+         * @param months An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder months(@Nullable Output<List<String>> months) {
             $.months = months;
             return this;
         }
 
+        /**
+         * @param months An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder months(List<String> months) {
             return months(Output.of(months));
         }
 
+        /**
+         * @param months An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder months(String... months) {
             return months(List.of(months));
         }
 
+        /**
+         * @param times The time ranges, represented in minutes, during which to mute in a given day.
+         * 
+         * @return builder
+         * 
+         */
         public Builder times(@Nullable Output<List<MuteTimingIntervalTimeArgs>> times) {
             $.times = times;
             return this;
         }
 
+        /**
+         * @param times The time ranges, represented in minutes, during which to mute in a given day.
+         * 
+         * @return builder
+         * 
+         */
         public Builder times(List<MuteTimingIntervalTimeArgs> times) {
             return times(Output.of(times));
         }
 
+        /**
+         * @param times The time ranges, represented in minutes, during which to mute in a given day.
+         * 
+         * @return builder
+         * 
+         */
         public Builder times(MuteTimingIntervalTimeArgs... times) {
             return times(List.of(times));
         }
 
+        /**
+         * @param weekdays An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekdays(@Nullable Output<List<String>> weekdays) {
             $.weekdays = weekdays;
             return this;
         }
 
+        /**
+         * @param weekdays An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekdays(List<String> weekdays) {
             return weekdays(Output.of(weekdays));
         }
 
+        /**
+         * @param weekdays An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekdays(String... weekdays) {
             return weekdays(List.of(weekdays));
         }
 
+        /**
+         * @param years A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder years(@Nullable Output<List<String>> years) {
             $.years = years;
             return this;
         }
 
+        /**
+         * @param years A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder years(List<String> years) {
             return years(Output.of(years));
         }
 
+        /**
+         * @param years A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder years(String... years) {
             return years(List.of(years));
         }

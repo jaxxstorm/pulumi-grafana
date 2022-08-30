@@ -14,9 +14,17 @@ public final class GetSyntheticMonitoringProbesPlainArgs extends com.pulumi.reso
 
     public static final GetSyntheticMonitoringProbesPlainArgs Empty = new GetSyntheticMonitoringProbesPlainArgs();
 
+    /**
+     * If true, only probes that are not deprecated will be returned. Defaults to `true`.
+     * 
+     */
     @Import(name="filterDeprecated")
     private @Nullable Boolean filterDeprecated;
 
+    /**
+     * @return If true, only probes that are not deprecated will be returned. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> filterDeprecated() {
         return Optional.ofNullable(this.filterDeprecated);
     }
@@ -45,6 +53,12 @@ public final class GetSyntheticMonitoringProbesPlainArgs extends com.pulumi.reso
             $ = new GetSyntheticMonitoringProbesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filterDeprecated If true, only probes that are not deprecated will be returned. Defaults to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filterDeprecated(@Nullable Boolean filterDeprecated) {
             $.filterDeprecated = filterDeprecated;
             return this;

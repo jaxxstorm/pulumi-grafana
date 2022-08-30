@@ -13,18 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserResult {
+    /**
+     * @return The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     private @Nullable String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Whether the user is an admin.
+     * 
+     */
     private Boolean isAdmin;
+    /**
+     * @return The username for the Grafana user. Defaults to ``.
+     * 
+     */
     private @Nullable String login;
+    /**
+     * @return The display name for the Grafana user.
+     * 
+     */
     private String name;
+    /**
+     * @return The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     private @Nullable Integer userId;
 
     private GetUserResult() {}
+    /**
+     * @return The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -35,15 +59,31 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether the user is an admin.
+     * 
+     */
     public Boolean isAdmin() {
         return this.isAdmin;
     }
+    /**
+     * @return The username for the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<String> login() {
         return Optional.ofNullable(this.login);
     }
+    /**
+     * @return The display name for the Grafana user.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     public Optional<Integer> userId() {
         return Optional.ofNullable(this.userId);
     }

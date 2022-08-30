@@ -13,9 +13,17 @@ public final class GetOncallUserArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOncallUserArgs Empty = new GetOncallUserArgs();
 
+    /**
+     * The username of the user.
+     * 
+     */
     @Import(name="username", required=true)
     private Output<String> username;
 
+    /**
+     * @return The username of the user.
+     * 
+     */
     public Output<String> username() {
         return this.username;
     }
@@ -44,11 +52,23 @@ public final class GetOncallUserArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetOncallUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param username The username of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username The username of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

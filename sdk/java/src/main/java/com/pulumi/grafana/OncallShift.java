@@ -16,6 +16,16 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/on_call_shifts/)
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallShift:OncallShift on_call_shift_name {{on_call_shift_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallShift:OncallShift")
 public class OncallShift extends com.pulumi.resources.CustomResource {
     /**
@@ -33,14 +43,14 @@ public class OncallShift extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.byDays);
     }
     /**
-     * This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+     * This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
      * 
      */
     @Export(name="byMonthdays", type=List.class, parameters={Integer.class})
     private Output</* @Nullable */ List<Integer>> byMonthdays;
 
     /**
-     * @return This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+     * @return This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
      * 
      */
     public Output<Optional<List<Integer>>> byMonthdays() {
@@ -145,16 +155,14 @@ public class OncallShift extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rollingUsers);
     }
     /**
-     * The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-     * &#34;2020-09-05T08:00:00&#34;)
+     * The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
      * 
      */
     @Export(name="start", type=String.class, parameters={})
     private Output<String> start;
 
     /**
-     * @return The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-     * &#34;2020-09-05T08:00:00&#34;)
+     * @return The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
      * 
      */
     public Output<String> start() {
@@ -189,42 +197,42 @@ public class OncallShift extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.teamId);
     }
     /**
-     * The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+     * The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
      * 
      */
     @Export(name="timeZone", type=String.class, parameters={})
     private Output</* @Nullable */ String> timeZone;
 
     /**
-     * @return The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+     * @return The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
      * 
      */
     public Output<Optional<String>> timeZone() {
         return Codegen.optional(this.timeZone);
     }
     /**
-     * The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+     * The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+     * @return The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The list of on-call users (for single_event and recurrent_event event type).
+     * The list of on-call users (for single*event and recurrent*event event type).
      * 
      */
     @Export(name="users", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> users;
 
     /**
-     * @return The list of on-call users (for single_event and recurrent_event event type).
+     * @return The list of on-call users (for single*event and recurrent*event event type).
      * 
      */
     public Output<Optional<List<String>>> users() {

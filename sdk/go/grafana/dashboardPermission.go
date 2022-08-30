@@ -11,6 +11,75 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/dashboard_permissions/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			team, err := grafana.NewTeam(ctx, "team", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := grafana.NewUser(ctx, "user", &grafana.UserArgs{
+//				Email: pulumi.String("user.name@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			metrics, err := grafana.NewDashboard(ctx, "metrics", &grafana.DashboardArgs{
+//				ConfigJson: readFileOrPanic("grafana-dashboard.json"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewDashboardPermission(ctx, "collectionPermission", &grafana.DashboardPermissionArgs{
+//				DashboardId: metrics.DashboardId,
+//				Permissions: DashboardPermissionPermissionArray{
+//					&DashboardPermissionPermissionArgs{
+//						Role:       pulumi.String("Editor"),
+//						Permission: pulumi.String("Edit"),
+//					},
+//					&DashboardPermissionPermissionArgs{
+//						TeamId:     team.ID(),
+//						Permission: pulumi.String("View"),
+//					},
+//					&DashboardPermissionPermissionArgs{
+//						UserId:     user.ID(),
+//						Permission: pulumi.String("Admin"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DashboardPermission struct {
 	pulumi.CustomResourceState
 

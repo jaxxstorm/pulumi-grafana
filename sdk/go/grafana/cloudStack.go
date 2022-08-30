@@ -11,6 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#stacks/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewCloudStack(ctx, "test", &grafana.CloudStackArgs{
+//				Description: pulumi.String("Test Grafana Cloud Stack"),
+//				RegionSlug:  pulumi.String("eu"),
+//				Slug:        pulumi.String("gcloudstacktest"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/cloudStack:CloudStack stack_name {{stack_id}}
+//
+// ```
 type CloudStack struct {
 	pulumi.CustomResourceState
 
@@ -28,7 +65,7 @@ type CloudStack struct {
 	LogsStatus  pulumi.StringOutput    `pulumi:"logsStatus"`
 	LogsUrl     pulumi.StringOutput    `pulumi:"logsUrl"`
 	LogsUserId  pulumi.IntOutput       `pulumi:"logsUserId"`
-	// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+	// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Organization id to assign to this stack.
 	OrgId pulumi.IntOutput `pulumi:"orgId"`
@@ -48,20 +85,19 @@ type CloudStack struct {
 	PrometheusUrl pulumi.StringOutput `pulumi:"prometheusUrl"`
 	// Promehteus user ID. Used for e.g. remote_write.
 	PrometheusUserId pulumi.IntOutput `pulumi:"prometheusUserId"`
-	// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-	// region
+	// Region slug to assign to this stack.
+	// Changing region will destroy the existing stack and create a new one in the desired region
 	RegionSlug pulumi.StringPtrOutput `pulumi:"regionSlug"`
-	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-	// available at “https://<stack_slug>.grafana.net".
+	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+	// available at “https://\n\n.grafana.net".
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Status of the stack.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-	// instance).
+	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 	WaitForReadiness pulumi.BoolPtrOutput `pulumi:"waitForReadiness"`
-	// How long to wait for readiness (if enabled).
+	// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 	WaitForReadinessTimeout pulumi.StringPtrOutput `pulumi:"waitForReadinessTimeout"`
 }
 
@@ -112,7 +148,7 @@ type cloudStackState struct {
 	LogsStatus  *string `pulumi:"logsStatus"`
 	LogsUrl     *string `pulumi:"logsUrl"`
 	LogsUserId  *int    `pulumi:"logsUserId"`
-	// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+	// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 	Name *string `pulumi:"name"`
 	// Organization id to assign to this stack.
 	OrgId *int `pulumi:"orgId"`
@@ -132,20 +168,19 @@ type cloudStackState struct {
 	PrometheusUrl *string `pulumi:"prometheusUrl"`
 	// Promehteus user ID. Used for e.g. remote_write.
 	PrometheusUserId *int `pulumi:"prometheusUserId"`
-	// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-	// region
+	// Region slug to assign to this stack.
+	// Changing region will destroy the existing stack and create a new one in the desired region
 	RegionSlug *string `pulumi:"regionSlug"`
-	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-	// available at “https://<stack_slug>.grafana.net".
+	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+	// available at “https://\n\n.grafana.net".
 	Slug *string `pulumi:"slug"`
 	// Status of the stack.
 	Status *string `pulumi:"status"`
 	// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
 	Url *string `pulumi:"url"`
-	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-	// instance).
+	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 	WaitForReadiness *bool `pulumi:"waitForReadiness"`
-	// How long to wait for readiness (if enabled).
+	// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 	WaitForReadinessTimeout *string `pulumi:"waitForReadinessTimeout"`
 }
 
@@ -164,7 +199,7 @@ type CloudStackState struct {
 	LogsStatus  pulumi.StringPtrInput
 	LogsUrl     pulumi.StringPtrInput
 	LogsUserId  pulumi.IntPtrInput
-	// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+	// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 	Name pulumi.StringPtrInput
 	// Organization id to assign to this stack.
 	OrgId pulumi.IntPtrInput
@@ -184,20 +219,19 @@ type CloudStackState struct {
 	PrometheusUrl pulumi.StringPtrInput
 	// Promehteus user ID. Used for e.g. remote_write.
 	PrometheusUserId pulumi.IntPtrInput
-	// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-	// region
+	// Region slug to assign to this stack.
+	// Changing region will destroy the existing stack and create a new one in the desired region
 	RegionSlug pulumi.StringPtrInput
-	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-	// available at “https://<stack_slug>.grafana.net".
+	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+	// available at “https://\n\n.grafana.net".
 	Slug pulumi.StringPtrInput
 	// Status of the stack.
 	Status pulumi.StringPtrInput
 	// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
 	Url pulumi.StringPtrInput
-	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-	// instance).
+	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 	WaitForReadiness pulumi.BoolPtrInput
-	// How long to wait for readiness (if enabled).
+	// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 	WaitForReadinessTimeout pulumi.StringPtrInput
 }
 
@@ -208,20 +242,19 @@ func (CloudStackState) ElementType() reflect.Type {
 type cloudStackArgs struct {
 	// Description of stack.
 	Description *string `pulumi:"description"`
-	// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+	// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 	Name *string `pulumi:"name"`
-	// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-	// region
+	// Region slug to assign to this stack.
+	// Changing region will destroy the existing stack and create a new one in the desired region
 	RegionSlug *string `pulumi:"regionSlug"`
-	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-	// available at “https://<stack_slug>.grafana.net".
+	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+	// available at “https://\n\n.grafana.net".
 	Slug string `pulumi:"slug"`
 	// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
 	Url *string `pulumi:"url"`
-	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-	// instance).
+	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 	WaitForReadiness *bool `pulumi:"waitForReadiness"`
-	// How long to wait for readiness (if enabled).
+	// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 	WaitForReadinessTimeout *string `pulumi:"waitForReadinessTimeout"`
 }
 
@@ -229,20 +262,19 @@ type cloudStackArgs struct {
 type CloudStackArgs struct {
 	// Description of stack.
 	Description pulumi.StringPtrInput
-	// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+	// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 	Name pulumi.StringPtrInput
-	// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-	// region
+	// Region slug to assign to this stack.
+	// Changing region will destroy the existing stack and create a new one in the desired region
 	RegionSlug pulumi.StringPtrInput
-	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-	// available at “https://<stack_slug>.grafana.net".
+	// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+	// available at “https://\n\n.grafana.net".
 	Slug pulumi.StringInput
 	// Custom URL for the Grafana instance. Must have a CNAME setup to point to `.grafana.net` before creating the stack
 	Url pulumi.StringPtrInput
-	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-	// instance).
+	// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 	WaitForReadiness pulumi.BoolPtrInput
-	// How long to wait for readiness (if enabled).
+	// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 	WaitForReadinessTimeout pulumi.StringPtrInput
 }
 
@@ -374,7 +406,7 @@ func (o CloudStackOutput) LogsUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.IntOutput { return v.LogsUserId }).(pulumi.IntOutput)
 }
 
-// Name of stack. Conventionally matches the url of the instance (e.g. “<stack_slug>.grafana.net”).
+// Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
 func (o CloudStackOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -424,14 +456,14 @@ func (o CloudStackOutput) PrometheusUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.IntOutput { return v.PrometheusUserId }).(pulumi.IntOutput)
 }
 
-// Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-// region
+// Region slug to assign to this stack.
+// Changing region will destroy the existing stack and create a new one in the desired region
 func (o CloudStackOutput) RegionSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.StringPtrOutput { return v.RegionSlug }).(pulumi.StringPtrOutput)
 }
 
-// Subdomain that the Grafana instance will be available at (i.e. setting slug to “<stack_slug>” will make the instance
-// available at “https://<stack_slug>.grafana.net".
+// Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+// available at “https://\n\n.grafana.net".
 func (o CloudStackOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
@@ -446,13 +478,12 @@ func (o CloudStackOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-// instance).
+// Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
 func (o CloudStackOutput) WaitForReadiness() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.BoolPtrOutput { return v.WaitForReadiness }).(pulumi.BoolPtrOutput)
 }
 
-// How long to wait for readiness (if enabled).
+// How long to wait for readiness (if enabled). Defaults to `5m0s`.
 func (o CloudStackOutput) WaitForReadinessTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudStack) pulumi.StringPtrOutput { return v.WaitForReadinessTimeout }).(pulumi.StringPtrOutput)
 }

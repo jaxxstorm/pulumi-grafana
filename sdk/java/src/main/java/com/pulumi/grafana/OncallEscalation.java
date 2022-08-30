@@ -17,6 +17,78 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana-cloud/oncall/escalation-policies/)
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_policies/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.OncallEscalationChain;
+ * import com.pulumi.grafana.OncallEscalationChainArgs;
+ * import com.pulumi.grafana.GrafanaFunctions;
+ * import com.pulumi.grafana.inputs.GetOncallUserArgs;
+ * import com.pulumi.grafana.OncallEscalation;
+ * import com.pulumi.grafana.OncallEscalationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new OncallEscalationChain(&#34;default&#34;, OncallEscalationChainArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(grafana.oncall())
+ *             .build());
+ * 
+ *         final var alex = GrafanaFunctions.getOncallUser(GetOncallUserArgs.builder()
+ *             .username(&#34;alex&#34;)
+ *             .build());
+ * 
+ *         var exampleNotifyStepOncallEscalation = new OncallEscalation(&#34;exampleNotifyStepOncallEscalation&#34;, OncallEscalationArgs.builder()        
+ *             .escalationChainId(default_.id())
+ *             .type(&#34;notify_persons&#34;)
+ *             .personsToNotifies(alex.applyValue(getOncallUserResult -&gt; getOncallUserResult.id()))
+ *             .position(0)
+ *             .build());
+ * 
+ *         var exampleNotifyStepIndex_oncallEscalationOncallEscalation = new OncallEscalation(&#34;exampleNotifyStepIndex/oncallEscalationOncallEscalation&#34;, OncallEscalationArgs.builder()        
+ *             .escalationChainId(default_.id())
+ *             .type(&#34;wait&#34;)
+ *             .duration(300)
+ *             .position(1)
+ *             .build());
+ * 
+ *         var exampleNotifyStepGrafanaIndex_oncallEscalationOncallEscalation = new OncallEscalation(&#34;exampleNotifyStepGrafanaIndex/oncallEscalationOncallEscalation&#34;, OncallEscalationArgs.builder()        
+ *             .escalationChainId(default_.id())
+ *             .type(&#34;notify_persons&#34;)
+ *             .important(true)
+ *             .personsToNotifies(alex.applyValue(getOncallUserResult -&gt; getOncallUserResult.id()))
+ *             .position(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallEscalation:OncallEscalation escalation_name {{escalation_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallEscalation:OncallEscalation")
 public class OncallEscalation extends com.pulumi.resources.CustomResource {
     /**
@@ -62,72 +134,70 @@ public class OncallEscalation extends com.pulumi.resources.CustomResource {
         return this.escalationChainId;
     }
     /**
-     * The ID of a User Group for notify_user_group type step.
+     * The ID of a User Group for notify*user*group type step.
      * 
      */
     @Export(name="groupToNotify", type=String.class, parameters={})
     private Output</* @Nullable */ String> groupToNotify;
 
     /**
-     * @return The ID of a User Group for notify_user_group type step.
+     * @return The ID of a User Group for notify*user*group type step.
      * 
      */
     public Output<Optional<String>> groupToNotify() {
         return Codegen.optional(this.groupToNotify);
     }
     /**
-     * Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      * 
      */
     @Export(name="important", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> important;
 
     /**
-     * @return Will activate &#34;important&#34; personal notification rules. Actual for steps: notify_persons, notify_on_call_from_schedule
-     * and notify_user_group
+     * @return Will activate &#34;important&#34; personal notification rules. Actual for steps: notify*persons, notify*on*call*from*schedule and notify*user_group
      * 
      */
     public Output<Optional<Boolean>> important() {
         return Codegen.optional(this.important);
     }
     /**
-     * The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      * 
      */
     @Export(name="notifyIfTimeFrom", type=String.class, parameters={})
     private Output</* @Nullable */ String> notifyIfTimeFrom;
 
     /**
-     * @return The beginning of the time interval for notify_if_time_from_to type step in UTC (for example 08:00:00Z).
+     * @return The beginning of the time interval for notify*if*time*from*to type step in UTC (for example 08:00:00Z).
      * 
      */
     public Output<Optional<String>> notifyIfTimeFrom() {
         return Codegen.optional(this.notifyIfTimeFrom);
     }
     /**
-     * The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      * 
      */
     @Export(name="notifyIfTimeTo", type=String.class, parameters={})
     private Output</* @Nullable */ String> notifyIfTimeTo;
 
     /**
-     * @return The end of the time interval for notify_if_time_from_to type step in UTC (for example 18:00:00Z).
+     * @return The end of the time interval for notify*if*time*from*to type step in UTC (for example 18:00:00Z).
      * 
      */
     public Output<Optional<String>> notifyIfTimeTo() {
         return Codegen.optional(this.notifyIfTimeTo);
     }
     /**
-     * ID of a Schedule for notify_on_call_from_schedule type step.
+     * ID of a Schedule for notify*on*call*from*schedule type step.
      * 
      */
     @Export(name="notifyOnCallFromSchedule", type=String.class, parameters={})
     private Output</* @Nullable */ String> notifyOnCallFromSchedule;
 
     /**
-     * @return ID of a Schedule for notify_on_call_from_schedule type step.
+     * @return ID of a Schedule for notify*on*call*from*schedule type step.
      * 
      */
     public Output<Optional<String>> notifyOnCallFromSchedule() {
@@ -148,14 +218,14 @@ public class OncallEscalation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.personsToNotifies);
     }
     /**
-     * The list of ID&#39;s of users for notify_person_next_each_time type step.
+     * The list of ID&#39;s of users for notify*person*next*each*time type step.
      * 
      */
     @Export(name="personsToNotifyNextEachTimes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> personsToNotifyNextEachTimes;
 
     /**
-     * @return The list of ID&#39;s of users for notify_person_next_each_time type step.
+     * @return The list of ID&#39;s of users for notify*person*next*each*time type step.
      * 
      */
     public Output<Optional<List<String>>> personsToNotifyNextEachTimes() {
@@ -176,16 +246,14 @@ public class OncallEscalation extends com.pulumi.resources.CustomResource {
         return this.position;
     }
     /**
-     * The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of escalation policy. Can be wait, notify_persons, notify_person_next_each_time, notify_on_call_from_schedule,
-     * trigger_action, notify_user_group, resolve, notify_whole_channel, notify_if_time_from_to, repeat_escalation
+     * @return The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
      * 
      */
     public Output<Optional<String>> type() {

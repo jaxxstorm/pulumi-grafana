@@ -17,65 +17,137 @@ public final class ContactPointPagerdutyArgs extends com.pulumi.resources.Resour
 
     public static final ContactPointPagerdutyArgs Empty = new ContactPointPagerdutyArgs();
 
+    /**
+     * The class or type of event, for example `ping failure`.
+     * 
+     */
     @Import(name="class")
     private @Nullable Output<String> class_;
 
+    /**
+     * @return The class or type of event, for example `ping failure`.
+     * 
+     */
     public Optional<Output<String>> class_() {
         return Optional.ofNullable(this.class_);
     }
 
+    /**
+     * The component being affected by the event.
+     * 
+     */
     @Import(name="component")
     private @Nullable Output<String> component;
 
+    /**
+     * @return The component being affected by the event.
+     * 
+     */
     public Optional<Output<String>> component() {
         return Optional.ofNullable(this.component);
     }
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * The group to which the provided component belongs to.
+     * 
+     */
     @Import(name="group")
     private @Nullable Output<String> group;
 
+    /**
+     * @return The group to which the provided component belongs to.
+     * 
+     */
     public Optional<Output<String>> group() {
         return Optional.ofNullable(this.group);
     }
 
+    /**
+     * The PagerDuty API key.
+     * 
+     */
     @Import(name="integrationKey", required=true)
     private Output<String> integrationKey;
 
+    /**
+     * @return The PagerDuty API key.
+     * 
+     */
     public Output<String> integrationKey() {
         return this.integrationKey;
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The PagerDuty event severity level. Default is `critical`.
+     * 
+     */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
+    /**
+     * @return The PagerDuty event severity level. Default is `critical`.
+     * 
+     */
     public Optional<Output<String>> severity() {
         return Optional.ofNullable(this.severity);
     }
 
+    /**
+     * The templated summary message of the event.
+     * 
+     */
     @Import(name="summary")
     private @Nullable Output<String> summary;
 
+    /**
+     * @return The templated summary message of the event.
+     * 
+     */
     public Optional<Output<String>> summary() {
         return Optional.ofNullable(this.summary);
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -112,83 +184,191 @@ public final class ContactPointPagerdutyArgs extends com.pulumi.resources.Resour
             $ = new ContactPointPagerdutyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param class_ The class or type of event, for example `ping failure`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder class_(@Nullable Output<String> class_) {
             $.class_ = class_;
             return this;
         }
 
+        /**
+         * @param class_ The class or type of event, for example `ping failure`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder class_(String class_) {
             return class_(Output.of(class_));
         }
 
+        /**
+         * @param component The component being affected by the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder component(@Nullable Output<String> component) {
             $.component = component;
             return this;
         }
 
+        /**
+         * @param component The component being affected by the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder component(String component) {
             return component(Output.of(component));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param group The group to which the provided component belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder group(@Nullable Output<String> group) {
             $.group = group;
             return this;
         }
 
+        /**
+         * @param group The group to which the provided component belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder group(String group) {
             return group(Output.of(group));
         }
 
+        /**
+         * @param integrationKey The PagerDuty API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationKey(Output<String> integrationKey) {
             $.integrationKey = integrationKey;
             return this;
         }
 
+        /**
+         * @param integrationKey The PagerDuty API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationKey(String integrationKey) {
             return integrationKey(Output.of(integrationKey));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param severity The PagerDuty event severity level. Default is `critical`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(@Nullable Output<String> severity) {
             $.severity = severity;
             return this;
         }
 
+        /**
+         * @param severity The PagerDuty event severity level. Default is `critical`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
         }
 
+        /**
+         * @param summary The templated summary message of the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder summary(@Nullable Output<String> summary) {
             $.summary = summary;
             return this;
         }
 
+        /**
+         * @param summary The templated summary message of the event.
+         * 
+         * @return builder
+         * 
+         */
         public Builder summary(String summary) {
             return summary(Output.of(summary));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

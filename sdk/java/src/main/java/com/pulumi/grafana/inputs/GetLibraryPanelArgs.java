@@ -15,16 +15,32 @@ public final class GetLibraryPanelArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetLibraryPanelArgs Empty = new GetLibraryPanelArgs();
 
+    /**
+     * Name of the library panel.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of the library panel.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The unique identifier (UID) of the library panel.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The unique identifier (UID) of the library panel.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -54,20 +70,44 @@ public final class GetLibraryPanelArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetLibraryPanelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param uid The unique identifier (UID) of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The unique identifier (UID) of the library panel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

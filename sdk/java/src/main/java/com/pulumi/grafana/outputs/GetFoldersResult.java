@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFoldersResult {
+    /**
+     * @return The Grafana instance&#39;s folders.
+     * 
+     */
     private List<GetFoldersFolder> folders;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -19,6 +23,10 @@ public final class GetFoldersResult {
     private String id;
 
     private GetFoldersResult() {}
+    /**
+     * @return The Grafana instance&#39;s folders.
+     * 
+     */
     public List<GetFoldersFolder> folders() {
         return this.folders;
     }

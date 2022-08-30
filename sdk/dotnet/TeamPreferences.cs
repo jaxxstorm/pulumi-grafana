@@ -9,6 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var metrics = new Grafana.Dashboard("metrics", new()
+    ///     {
+    ///         ConfigJson = File.ReadAllText("grafana-dashboard.json"),
+    ///     });
+    /// 
+    ///     var team = new Grafana.Team("team");
+    /// 
+    ///     var teamPreferences = new Grafana.TeamPreferences("teamPreferences", new()
+    ///     {
+    ///         TeamId = team.Id,
+    ///         Theme = "dark",
+    ///         Timezone = "browser",
+    ///         HomeDashboardId = metrics.DashboardId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/teamPreferences:TeamPreferences")]
     public partial class TeamPreferences : global::Pulumi.CustomResource
     {

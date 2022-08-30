@@ -15,23 +15,47 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
 
+    /**
+     * The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     @Import(name="email")
     private @Nullable String email;
 
+    /**
+     * @return The email address of the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * The username for the Grafana user. Defaults to ``.
+     * 
+     */
     @Import(name="login")
     private @Nullable String login;
 
+    /**
+     * @return The username for the Grafana user. Defaults to ``.
+     * 
+     */
     public Optional<String> login() {
         return Optional.ofNullable(this.login);
     }
 
+    /**
+     * The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Integer userId;
 
+    /**
+     * @return The numerical ID of the Grafana user. Defaults to `-1`.
+     * 
+     */
     public Optional<Integer> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -62,16 +86,34 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email The email address of the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable String email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param login The username for the Grafana user. Defaults to ``.
+         * 
+         * @return builder
+         * 
+         */
         public Builder login(@Nullable String login) {
             $.login = login;
             return this;
         }
 
+        /**
+         * @param userId The numerical ID of the Grafana user. Defaults to `-1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Integer userId) {
             $.userId = userId;
             return this;

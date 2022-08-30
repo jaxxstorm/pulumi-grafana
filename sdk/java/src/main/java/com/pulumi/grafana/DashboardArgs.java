@@ -62,16 +62,14 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     @Import(name="overwrite")
     private @Nullable Output<Boolean> overwrite;
 
     /**
-     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-     * dashboard uid.
+     * @return Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -169,8 +167,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-         * dashboard uid.
+         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
          * 
          * @return builder
          * 
@@ -181,8 +178,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same
-         * dashboard uid.
+         * @param overwrite Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
          * 
          * @return builder
          * 

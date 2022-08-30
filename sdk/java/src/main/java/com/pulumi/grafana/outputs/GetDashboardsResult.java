@@ -15,19 +15,35 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDashboardsResult {
     private List<GetDashboardsDashboard> dashboards;
+    /**
+     * @return Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+     * 
+     */
     private @Nullable List<Integer> folderIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Maximum number of dashboard search results to return. Defaults to `5000`.
+     * 
+     */
     private @Nullable Integer limit;
+    /**
+     * @return List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+     * 
+     */
     private @Nullable List<String> tags;
 
     private GetDashboardsResult() {}
     public List<GetDashboardsDashboard> dashboards() {
         return this.dashboards;
     }
+    /**
+     * @return Numerical IDs of Grafana folders containing dashboards. Specify to filter for dashboards by folder (eg. `[0]` for General folder), or leave blank to get all dashboards in all folders.
+     * 
+     */
     public List<Integer> folderIds() {
         return this.folderIds == null ? List.of() : this.folderIds;
     }
@@ -38,9 +54,17 @@ public final class GetDashboardsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Maximum number of dashboard search results to return. Defaults to `5000`.
+     * 
+     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
+    /**
+     * @return List of string Grafana dashboard tags to search for, eg. `[&#34;prod&#34;]`. Used only as search input, i.e., attribute value will remain unchanged.
+     * 
+     */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }

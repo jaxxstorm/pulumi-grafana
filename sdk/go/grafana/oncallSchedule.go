@@ -11,6 +11,69 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/schedules/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleSlackChannel, err := grafana.GetOncallSlackChannel(ctx, &GetOncallSlackChannelArgs{
+//				Name: "example_slack_channel",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleUserGroup, err := grafana.GetOncallUserGroup(ctx, &GetOncallUserGroupArgs{
+//				SlackHandle: "example_slack_handle",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewOncallSchedule(ctx, "exampleScheduleOncallSchedule", &grafana.OncallScheduleArgs{
+//				Type:             pulumi.String("ical"),
+//				IcalUrlPrimary:   pulumi.String("https://example.com/example_ical.ics"),
+//				IcalUrlOverrides: pulumi.String("https://example.com/example_overrides_ical.ics"),
+//				Slack: &OncallScheduleSlackArgs{
+//					ChannelId:   pulumi.String(exampleSlackChannel.SlackId),
+//					UserGroupId: pulumi.String(exampleUserGroup.SlackId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewOncallSchedule(ctx, "exampleScheduleIndex/oncallScheduleOncallSchedule", &grafana.OncallScheduleArgs{
+//				Type:             pulumi.String("calendar"),
+//				TimeZone:         pulumi.String("America/New_York"),
+//				Shifts:           pulumi.StringArray{},
+//				IcalUrlOverrides: pulumi.String("https://example.com/example_overrides_ical.ics"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/oncallSchedule:OncallSchedule schedule_name {{schedule_id}}
+//
+// ```
 type OncallSchedule struct {
 	pulumi.CustomResourceState
 

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ReportTimeRange {
+    /**
+     * @return Start of the time range.
+     * 
+     */
     private @Nullable String from;
+    /**
+     * @return End of the time range.
+     * 
+     */
     private @Nullable String to;
 
     private ReportTimeRange() {}
+    /**
+     * @return Start of the time range.
+     * 
+     */
     public Optional<String> from() {
         return Optional.ofNullable(this.from);
     }
+    /**
+     * @return End of the time range.
+     * 
+     */
     public Optional<String> to() {
         return Optional.ofNullable(this.to);
     }

@@ -33,14 +33,14 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+     * This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
      * 
      */
     @Import(name="byMonthdays")
     private @Nullable Output<List<Integer>> byMonthdays;
 
     /**
-     * @return This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+     * @return This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
      * 
      */
     public Optional<Output<List<Integer>>> byMonthdays() {
@@ -153,16 +153,14 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-     * &#34;2020-09-05T08:00:00&#34;)
+     * The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
      * 
      */
     @Import(name="start", required=true)
     private Output<String> start;
 
     /**
-     * @return The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-     * &#34;2020-09-05T08:00:00&#34;)
+     * @return The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
      * 
      */
     public Output<String> start() {
@@ -200,14 +198,14 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+     * The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+     * @return The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -215,14 +213,14 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+     * The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+     * @return The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
      * 
      */
     public Output<String> type() {
@@ -230,14 +228,14 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of on-call users (for single_event and recurrent_event event type).
+     * The list of on-call users (for single*event and recurrent*event event type).
      * 
      */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
     /**
-     * @return The list of on-call users (for single_event and recurrent_event event type).
+     * @return The list of on-call users (for single*event and recurrent*event event type).
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -330,7 +328,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byMonthdays This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+         * @param byMonthdays This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
          * 
          * @return builder
          * 
@@ -341,7 +339,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byMonthdays This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+         * @param byMonthdays This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
          * 
          * @return builder
          * 
@@ -351,7 +349,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param byMonthdays This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+         * @param byMonthdays This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
          * 
          * @return builder
          * 
@@ -528,8 +526,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param start The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-         * &#34;2020-09-05T08:00:00&#34;)
+         * @param start The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
          * 
          * @return builder
          * 
@@ -540,8 +537,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param start The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example
-         * &#34;2020-09-05T08:00:00&#34;)
+         * @param start The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd&#39;T&#39;HH:mm:ss (for example &#34;2020-09-05T08:00:00&#34;)
          * 
          * @return builder
          * 
@@ -593,7 +589,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+         * @param timeZone The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
          * 
          * @return builder
          * 
@@ -604,7 +600,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeZone The shift&#39;s timezone. Overrides schedule&#39;s timezone.
+         * @param timeZone The shift&#39;s timezone.  Overrides schedule&#39;s timezone.
          * 
          * @return builder
          * 
@@ -614,7 +610,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+         * @param type The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
          * 
          * @return builder
          * 
@@ -625,7 +621,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The shift&#39;s type. Can be rolling_users, recurrent_event, single_event
+         * @param type The shift&#39;s type. Can be rolling*users, recurrent*event, single_event
          * 
          * @return builder
          * 
@@ -635,7 +631,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users The list of on-call users (for single_event and recurrent_event event type).
+         * @param users The list of on-call users (for single*event and recurrent*event event type).
          * 
          * @return builder
          * 
@@ -646,7 +642,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users The list of on-call users (for single_event and recurrent_event event type).
+         * @param users The list of on-call users (for single*event and recurrent*event event type).
          * 
          * @return builder
          * 
@@ -656,7 +652,7 @@ public final class OncallShiftArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users The list of on-call users (for single_event and recurrent_event event type).
+         * @param users The list of on-call users (for single*event and recurrent*event event type).
          * 
          * @return builder
          * 

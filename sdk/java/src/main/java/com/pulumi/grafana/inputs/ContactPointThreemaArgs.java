@@ -17,44 +17,92 @@ public final class ContactPointThreemaArgs extends com.pulumi.resources.Resource
 
     public static final ContactPointThreemaArgs Empty = new ContactPointThreemaArgs();
 
+    /**
+     * The Threema API key.
+     * 
+     */
     @Import(name="apiSecret", required=true)
     private Output<String> apiSecret;
 
+    /**
+     * @return The Threema API key.
+     * 
+     */
     public Output<String> apiSecret() {
         return this.apiSecret;
     }
 
+    /**
+     * Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
 
+    /**
+     * The Threema gateway ID.
+     * 
+     */
     @Import(name="gatewayId", required=true)
     private Output<String> gatewayId;
 
+    /**
+     * @return The Threema gateway ID.
+     * 
+     */
     public Output<String> gatewayId() {
         return this.gatewayId;
     }
 
+    /**
+     * The ID of the recipient of the message.
+     * 
+     */
     @Import(name="recipientId", required=true)
     private Output<String> recipientId;
 
+    /**
+     * @return The ID of the recipient of the message.
+     * 
+     */
     public Output<String> recipientId() {
         return this.recipientId;
     }
 
+    /**
+     * Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     @Import(name="settings")
     private @Nullable Output<Map<String,String>> settings;
 
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Optional<Output<Map<String,String>>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * The UID of the contact point.
+     * 
+     */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<Output<String>> uid() {
         return Optional.ofNullable(this.uid);
     }
@@ -88,56 +136,128 @@ public final class ContactPointThreemaArgs extends com.pulumi.resources.Resource
             $ = new ContactPointThreemaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiSecret The Threema API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiSecret(Output<String> apiSecret) {
             $.apiSecret = apiSecret;
             return this;
         }
 
+        /**
+         * @param apiSecret The Threema API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiSecret(String apiSecret) {
             return apiSecret(Output.of(apiSecret));
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(@Nullable Output<Boolean> disableResolveMessage) {
             $.disableResolveMessage = disableResolveMessage;
             return this;
         }
 
+        /**
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableResolveMessage(Boolean disableResolveMessage) {
             return disableResolveMessage(Output.of(disableResolveMessage));
         }
 
+        /**
+         * @param gatewayId The Threema gateway ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayId(Output<String> gatewayId) {
             $.gatewayId = gatewayId;
             return this;
         }
 
+        /**
+         * @param gatewayId The Threema gateway ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayId(String gatewayId) {
             return gatewayId(Output.of(gatewayId));
         }
 
+        /**
+         * @param recipientId The ID of the recipient of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recipientId(Output<String> recipientId) {
             $.recipientId = recipientId;
             return this;
         }
 
+        /**
+         * @param recipientId The ID of the recipient of the message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recipientId(String recipientId) {
             return recipientId(Output.of(recipientId));
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(@Nullable Output<Map<String,String>> settings) {
             $.settings = settings;
             return this;
         }
 
+        /**
+         * @param settings Additional custom properties to attach to the notifier. Defaults to `map[]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder settings(Map<String,String> settings) {
             return settings(Output.of(settings));
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(@Nullable Output<String> uid) {
             $.uid = uid;
             return this;
         }
 
+        /**
+         * @param uid The UID of the contact point.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
         }

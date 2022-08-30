@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticMonitoringCheckSettings {
+    /**
+     * @return Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+     * 
+     */
     private @Nullable SyntheticMonitoringCheckSettingsDns dns;
+    /**
+     * @return Settings for HTTP check. The target must be a URL (http or https).
+     * 
+     */
     private @Nullable SyntheticMonitoringCheckSettingsHttp http;
+    /**
+     * @return Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+     * 
+     */
     private @Nullable SyntheticMonitoringCheckSettingsPing ping;
+    /**
+     * @return Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+     * 
+     */
     private @Nullable SyntheticMonitoringCheckSettingsTcp tcp;
+    /**
+     * @return Settings for traceroute check. The target must be a valid hostname or IP address
+     * 
+     */
     private @Nullable SyntheticMonitoringCheckSettingsTraceroute traceroute;
 
     private SyntheticMonitoringCheckSettings() {}
+    /**
+     * @return Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+     * 
+     */
     public Optional<SyntheticMonitoringCheckSettingsDns> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return Settings for HTTP check. The target must be a URL (http or https).
+     * 
+     */
     public Optional<SyntheticMonitoringCheckSettingsHttp> http() {
         return Optional.ofNullable(this.http);
     }
+    /**
+     * @return Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+     * 
+     */
     public Optional<SyntheticMonitoringCheckSettingsPing> ping() {
         return Optional.ofNullable(this.ping);
     }
+    /**
+     * @return Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+     * 
+     */
     public Optional<SyntheticMonitoringCheckSettingsTcp> tcp() {
         return Optional.ofNullable(this.tcp);
     }
+    /**
+     * @return Settings for traceroute check. The target must be a valid hostname or IP address
+     * 
+     */
     public Optional<SyntheticMonitoringCheckSettingsTraceroute> traceroute() {
         return Optional.ofNullable(this.traceroute);
     }

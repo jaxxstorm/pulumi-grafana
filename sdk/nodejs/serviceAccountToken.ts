@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * **Note:** This resource is available only with Grafana 9.1+.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const foo = new grafana.ServiceAccountToken("foo", {serviceAccountId: 1});
+ * const bar = new grafana.ServiceAccountToken("bar", {
+ *     serviceAccountId: 1,
+ *     secondsToLive: 30,
+ * });
+ * export const serviceAccountTokenFooKeyOnly = foo.key;
+ * export const serviceAccountTokenBar = bar;
+ * ```
+ */
 export class ServiceAccountToken extends pulumi.CustomResource {
     /**
      * Get an existing ServiceAccountToken resource's state with the given name, ID, and optional extra

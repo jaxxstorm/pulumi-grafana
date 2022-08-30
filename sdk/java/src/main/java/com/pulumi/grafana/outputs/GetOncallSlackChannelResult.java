@@ -14,7 +14,15 @@ public final class GetOncallSlackChannelResult {
      * 
      */
     private String id;
+    /**
+     * @return The Slack channel name.
+     * 
+     */
     private String name;
+    /**
+     * @return The Slack ID of the channel.
+     * 
+     */
     private String slackId;
 
     private GetOncallSlackChannelResult() {}
@@ -25,9 +33,17 @@ public final class GetOncallSlackChannelResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Slack channel name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The Slack ID of the channel.
+     * 
+     */
     public String slackId() {
         return this.slackId;
     }

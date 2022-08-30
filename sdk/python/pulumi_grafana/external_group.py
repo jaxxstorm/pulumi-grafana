@@ -98,7 +98,29 @@ class ExternalGroup(pulumi.CustomResource):
                  team_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a ExternalGroup resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_team_group = grafana.ExternalGroup("test-team-group",
+            groups=[
+                "test-group-1",
+                "test-group-2",
+            ],
+            team_id=1)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The team external groups list
@@ -111,7 +133,29 @@ class ExternalGroup(pulumi.CustomResource):
                  args: ExternalGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ExternalGroup resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/team-sync/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/external_group_sync/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        test_team_group = grafana.ExternalGroup("test-team-group",
+            groups=[
+                "test-group-1",
+                "test-group-2",
+            ],
+            team_id=1)
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/externalGroup:ExternalGroup main {{team_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param ExternalGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

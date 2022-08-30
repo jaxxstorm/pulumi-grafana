@@ -23,9 +23,7 @@ class LibraryPanelArgs:
         :param pulumi.Input[str] model_json: The JSON model for the library panel.
         :param pulumi.Input[int] folder_id: ID of the folder where the library panel is stored.
         :param pulumi.Input[str] name: Name of the library panel.
-        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-               It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-               accessing library panels and when syncing library panels between multiple Grafana installs.
+        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
         pulumi.set(__self__, "model_json", model_json)
         if folder_id is not None:
@@ -75,9 +73,7 @@ class LibraryPanelArgs:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        accessing library panels and when syncing library panels between multiple Grafana installs.
+        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
         return pulumi.get(self, "uid")
 
@@ -116,9 +112,7 @@ class _LibraryPanelState:
         :param pulumi.Input[int] org_id: The numeric ID of the library panel computed by Grafana.
         :param pulumi.Input[int] panel_id: The numeric ID of the library panel computed by Grafana.
         :param pulumi.Input[str] type: Type of the library panel (eg. text).
-        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-               It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-               accessing library panels and when syncing library panels between multiple Grafana installs.
+        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         :param pulumi.Input[str] updated: Timestamp when the library panel was last modified.
         :param pulumi.Input[int] version: Version of the library panel.
         """
@@ -287,9 +281,7 @@ class _LibraryPanelState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        accessing library panels and when syncing library panels between multiple Grafana installs.
+        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
         return pulumi.get(self, "uid")
 
@@ -333,15 +325,37 @@ class LibraryPanel(pulumi.CustomResource):
                  uid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LibraryPanel resource with the given unique name, props, and options.
+        Manages Grafana library panels.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/panels/panel-library/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/library_element/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_grafana as grafana
+
+        test = grafana.LibraryPanel("test", model_json=json.dumps({
+            "title": "updated name",
+            "id": 12,
+            "version": 35,
+        }))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/libraryPanel:LibraryPanel panel_name {{library_panel_slug}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] folder_id: ID of the folder where the library panel is stored.
         :param pulumi.Input[str] model_json: The JSON model for the library panel.
         :param pulumi.Input[str] name: Name of the library panel.
-        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-               It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-               accessing library panels and when syncing library panels between multiple Grafana installs.
+        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
         ...
     @overload
@@ -350,7 +364,31 @@ class LibraryPanel(pulumi.CustomResource):
                  args: LibraryPanelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LibraryPanel resource with the given unique name, props, and options.
+        Manages Grafana library panels.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/panels/panel-library/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/library_element/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_grafana as grafana
+
+        test = grafana.LibraryPanel("test", model_json=json.dumps({
+            "title": "updated name",
+            "id": 12,
+            "version": 35,
+        }))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/libraryPanel:LibraryPanel panel_name {{library_panel_slug}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param LibraryPanelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -437,9 +475,7 @@ class LibraryPanel(pulumi.CustomResource):
         :param pulumi.Input[int] org_id: The numeric ID of the library panel computed by Grafana.
         :param pulumi.Input[int] panel_id: The numeric ID of the library panel computed by Grafana.
         :param pulumi.Input[str] type: Type of the library panel (eg. text).
-        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-               It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-               accessing library panels and when syncing library panels between multiple Grafana installs.
+        :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         :param pulumi.Input[str] updated: Timestamp when the library panel was last modified.
         :param pulumi.Input[int] version: Version of the library panel.
         """
@@ -555,9 +591,7 @@ class LibraryPanel(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs.
-        It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for
-        accessing library panels and when syncing library panels between multiple Grafana installs.
+        The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
         return pulumi.get(self, "uid")
 

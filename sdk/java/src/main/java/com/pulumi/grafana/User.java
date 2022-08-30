@@ -16,6 +16,53 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-server-users/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/user/)
+ * 
+ * This resource uses Grafana&#39;s admin APIs for creating and updating users which
+ * does not currently work with API Tokens. You must use basic auth.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.User;
+ * import com.pulumi.grafana.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var staff = new User(&#34;staff&#34;, UserArgs.builder()        
+ *             .email(&#34;staff.name@example.com&#34;)
+ *             .isAdmin(false)
+ *             .login(&#34;staff&#34;)
+ *             .password(&#34;my-password&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/user:User user_name {{user_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
@@ -33,14 +80,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * Whether to make user an admin.
+     * Whether to make user an admin. Defaults to `false`.
      * 
      */
     @Export(name="isAdmin", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isAdmin;
 
     /**
-     * @return Whether to make user an admin.
+     * @return Whether to make user an admin. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> isAdmin() {

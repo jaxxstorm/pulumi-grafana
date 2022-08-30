@@ -11,6 +11,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+// * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewMessageTemplate(ctx, "myTemplate", &grafana.MessageTemplateArgs{
+//				Template: pulumi.String(fmt.Sprintf("{{define \"My Reusable Template\" }}\n template content\n{{ end }}\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+//
+// ```
 type MessageTemplate struct {
 	pulumi.CustomResourceState
 

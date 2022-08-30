@@ -5,6 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/folder/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const testA = new grafana.Folder("testA", {
+ *     title: "test-folder-a",
+ *     uid: "test-ds-folder-uid-a",
+ * });
+ * const testB = new grafana.Folder("testB", {
+ *     title: "test-folder-b",
+ *     uid: "test-ds-folder-uid-b",
+ * });
+ * const test = grafana.getFolders({});
+ * ```
+ */
 export function getFolders(opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +40,9 @@ export function getFolders(opts?: pulumi.InvokeOptions): Promise<GetFoldersResul
  * A collection of values returned by getFolders.
  */
 export interface GetFoldersResult {
+    /**
+     * The Grafana instance's folders.
+     */
     readonly folders: outputs.GetFoldersFolder[];
     /**
      * The provider-assigned unique ID for this managed resource.

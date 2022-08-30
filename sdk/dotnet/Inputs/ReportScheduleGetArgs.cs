@@ -12,18 +12,34 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class ReportScheduleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom interval of the report.
+        /// **Note:** This field is only available when frequency is set to `custom`.
+        /// </summary>
         [Input("customInterval")]
         public Input<string>? CustomInterval { get; set; }
 
+        /// <summary>
+        /// End time of the report. If empty, the report will be sent indefinitely (according to frequency). Note that times will be saved as UTC in Grafana.
+        /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
+        /// <summary>
+        /// Frequency of the report. One of `never`, `once`, `hourly`, `daily`, `weekly`, `monthly` or `custom`.
+        /// </summary>
         [Input("frequency", required: true)]
         public Input<string> Frequency { get; set; } = null!;
 
+        /// <summary>
+        /// Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
+        /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
+        /// <summary>
+        /// Whether to send the report only on work days. Defaults to `false`.
+        /// </summary>
         [Input("workdaysOnly")]
         public Input<bool>? WorkdaysOnly { get; set; }
 

@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/slack_channels/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleSlackChannel = pulumi.output(grafana.getOncallSlackChannel({
+ *     name: "example_slack_channel",
+ * }));
+ * ```
+ */
 export function getOncallSlackChannel(args: GetOncallSlackChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetOncallSlackChannelResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +33,9 @@ export function getOncallSlackChannel(args: GetOncallSlackChannelArgs, opts?: pu
  * A collection of arguments for invoking getOncallSlackChannel.
  */
 export interface GetOncallSlackChannelArgs {
+    /**
+     * The Slack channel name.
+     */
     name: string;
 }
 
@@ -30,7 +47,13 @@ export interface GetOncallSlackChannelResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The Slack channel name.
+     */
     readonly name: string;
+    /**
+     * The Slack ID of the channel.
+     */
     readonly slackId: string;
 }
 
@@ -42,5 +65,8 @@ export function getOncallSlackChannelOutput(args: GetOncallSlackChannelOutputArg
  * A collection of arguments for invoking getOncallSlackChannel.
  */
 export interface GetOncallSlackChannelOutputArgs {
+    /**
+     * The Slack channel name.
+     */
     name: pulumi.Input<string>;
 }

@@ -20,8 +20,7 @@ class ApiKeyArgs:
                  seconds_to_live: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ApiKey resource.
-        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-               new stack. **Note**: This requires a cloud token to be configured.
+        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         pulumi.set(__self__, "role", role)
         if cloud_stack_slug is not None:
@@ -44,8 +43,7 @@ class ApiKeyArgs:
     @pulumi.getter(name="cloudStackSlug")
     def cloud_stack_slug(self) -> Optional[pulumi.Input[str]]:
         """
-        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        new stack. **Note**: This requires a cloud token to be configured.
+        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         return pulumi.get(self, "cloud_stack_slug")
 
@@ -83,8 +81,7 @@ class _ApiKeyState:
                  seconds_to_live: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
-        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-               new stack. **Note**: This requires a cloud token to be configured.
+        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         if cloud_stack_slug is not None:
             pulumi.set(__self__, "cloud_stack_slug", cloud_stack_slug)
@@ -103,8 +100,7 @@ class _ApiKeyState:
     @pulumi.getter(name="cloudStackSlug")
     def cloud_stack_slug(self) -> Optional[pulumi.Input[str]]:
         """
-        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        new stack. **Note**: This requires a cloud token to be configured.
+        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         return pulumi.get(self, "cloud_stack_slug")
 
@@ -169,11 +165,27 @@ class ApiKey(pulumi.CustomResource):
                  seconds_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a ApiKey resource with the given unique name, props, and options.
+        Manages Grafana API Keys.
+
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        foo = grafana.ApiKey("foo", role="Viewer")
+        bar = grafana.ApiKey("bar",
+            role="Admin",
+            seconds_to_live=30)
+        pulumi.export("apiKeyFooKeyOnly", foo.key)
+        pulumi.export("apiKeyBar", bar)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-               new stack. **Note**: This requires a cloud token to be configured.
+        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         ...
     @overload
@@ -182,7 +194,24 @@ class ApiKey(pulumi.CustomResource):
                  args: ApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApiKey resource with the given unique name, props, and options.
+        Manages Grafana API Keys.
+
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        foo = grafana.ApiKey("foo", role="Viewer")
+        bar = grafana.ApiKey("bar",
+            role="Admin",
+            seconds_to_live=30)
+        pulumi.export("apiKeyFooKeyOnly", foo.key)
+        pulumi.export("apiKeyBar", bar)
+        ```
+
         :param str resource_name: The name of the resource.
         :param ApiKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -242,8 +271,7 @@ class ApiKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-               new stack. **Note**: This requires a cloud token to be configured.
+        :param pulumi.Input[str] cloud_stack_slug: If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -261,8 +289,7 @@ class ApiKey(pulumi.CustomResource):
     @pulumi.getter(name="cloudStackSlug")
     def cloud_stack_slug(self) -> pulumi.Output[Optional[str]]:
         """
-        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-        new stack. **Note**: This requires a cloud token to be configured.
+        If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
         """
         return pulumi.get(self, "cloud_stack_slug")
 

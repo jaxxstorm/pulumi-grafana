@@ -5,6 +5,108 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manages Grafana Alerting rule groups.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/alerting-rules)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#alert-rules)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const ruleFolder = new grafana.Folder("ruleFolder", {title: "My Alert Rule Folder"});
+ * const myAlertRule = new grafana.RuleGroup("myAlertRule", {
+ *     folderUid: ruleFolder.uid,
+ *     intervalSeconds: 240,
+ *     orgId: 1,
+ *     rules: [{
+ *         name: "My Alert Rule 1",
+ *         "for": "2m",
+ *         condition: "B",
+ *         noDataState: "NoData",
+ *         execErrState: "Alerting",
+ *         annotations: {
+ *             a: "b",
+ *             c: "d",
+ *         },
+ *         labels: {
+ *             e: "f",
+ *             g: "h",
+ *         },
+ *         datas: [
+ *             {
+ *                 refId: "A",
+ *                 queryType: "",
+ *                 relativeTimeRange: {
+ *                     from: 600,
+ *                     to: 0,
+ *                 },
+ *                 datasourceUid: "PD8C576611E62080A",
+ *                 model: JSON.stringify({
+ *                     hide: false,
+ *                     intervalMs: 1000,
+ *                     maxDataPoints: 43200,
+ *                     refId: "A",
+ *                 }),
+ *             },
+ *             {
+ *                 refId: "B",
+ *                 queryType: "",
+ *                 relativeTimeRange: {
+ *                     from: 0,
+ *                     to: 0,
+ *                 },
+ *                 datasourceUid: "-100",
+ *                 model: `{
+ *     "conditions": [
+ *         {
+ *         "evaluator": {
+ *             "params": [
+ *             3
+ *             ],
+ *             "type": "gt"
+ *         },
+ *         "operator": {
+ *             "type": "and"
+ *         },
+ *         "query": {
+ *             "params": [
+ *             "A"
+ *             ]
+ *         },
+ *         "reducer": {
+ *             "params": [],
+ *             "type": "last"
+ *         },
+ *         "type": "query"
+ *         }
+ *     ],
+ *     "datasource": {
+ *         "type": "__expr__",
+ *         "uid": "-100"
+ *     },
+ *     "hide": false,
+ *     "intervalMs": 1000,
+ *     "maxDataPoints": 43200,
+ *     "refId": "B",
+ *     "type": "classic_conditions"
+ * }
+ * `,
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/ruleGroup:RuleGroup alert_rule_name {{alert_rule_name}}
+ * ```
+ */
 export class RuleGroup extends pulumi.CustomResource {
     /**
      * Get an existing RuleGroup resource's state with the given name, ID, and optional extra
@@ -38,8 +140,7 @@ export class RuleGroup extends pulumi.CustomResource {
      */
     public readonly folderUid!: pulumi.Output<string>;
     /**
-     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      */
     public readonly intervalSeconds!: pulumi.Output<number>;
     /**
@@ -107,8 +208,7 @@ export interface RuleGroupState {
      */
     folderUid?: pulumi.Input<string>;
     /**
-     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      */
     intervalSeconds?: pulumi.Input<number>;
     /**
@@ -134,8 +234,7 @@ export interface RuleGroupArgs {
      */
     folderUid: pulumi.Input<string>;
     /**
-     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      */
     intervalSeconds: pulumi.Input<number>;
     /**

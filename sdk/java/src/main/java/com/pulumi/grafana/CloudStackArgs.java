@@ -32,14 +32,14 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+     * Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+     * @return Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,16 +47,16 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      * 
      */
     @Import(name="regionSlug")
     private @Nullable Output<String> regionSlug;
 
     /**
-     * @return Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-     * region
+     * @return Region slug to assign to this stack.
+     * Changing region will destroy the existing stack and create a new one in the desired region
      * 
      */
     public Optional<Output<String>> regionSlug() {
@@ -64,16 +64,16 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-     * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+     * Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
      * 
      */
     @Import(name="slug", required=true)
     private Output<String> slug;
 
     /**
-     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-     * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+     * @return Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+     * available at “https://\n\n.grafana.net&#34;.
      * 
      */
     public Output<String> slug() {
@@ -96,16 +96,14 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      * 
      */
     @Import(name="waitForReadiness")
     private @Nullable Output<Boolean> waitForReadiness;
 
     /**
-     * @return Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-     * instance).
+     * @return Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> waitForReadiness() {
@@ -113,14 +111,14 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long to wait for readiness (if enabled).
+     * How long to wait for readiness (if enabled). Defaults to `5m0s`.
      * 
      */
     @Import(name="waitForReadinessTimeout")
     private @Nullable Output<String> waitForReadinessTimeout;
 
     /**
-     * @return How long to wait for readiness (if enabled).
+     * @return How long to wait for readiness (if enabled). Defaults to `5m0s`.
      * 
      */
     public Optional<Output<String>> waitForReadinessTimeout() {
@@ -179,7 +177,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+         * @param name Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
          * 
          * @return builder
          * 
@@ -190,7 +188,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of stack. Conventionally matches the url of the instance (e.g. “&lt;stack_slug&gt;.grafana.net”).
+         * @param name Name of stack. Conventionally matches the url of the instance (e.g. “\n\n.grafana.net”).
          * 
          * @return builder
          * 
@@ -200,8 +198,8 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionSlug Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-         * region
+         * @param regionSlug Region slug to assign to this stack.
+         * Changing region will destroy the existing stack and create a new one in the desired region
          * 
          * @return builder
          * 
@@ -212,8 +210,8 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionSlug Region slug to assign to this stack. Changing region will destroy the existing stack and create a new one in the desired
-         * region
+         * @param regionSlug Region slug to assign to this stack.
+         * Changing region will destroy the existing stack and create a new one in the desired region
          * 
          * @return builder
          * 
@@ -223,8 +221,8 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-         * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+         * available at “https://\n\n.grafana.net&#34;.
          * 
          * @return builder
          * 
@@ -235,8 +233,8 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “&lt;stack_slug&gt;” will make the instance
-         * available at “https://&lt;stack_slug&gt;.grafana.net&#34;.
+         * @param slug Subdomain that the Grafana instance will be available at (i.e. setting slug to “\n\n” will make the instance
+         * available at “https://\n\n.grafana.net&#34;.
          * 
          * @return builder
          * 
@@ -267,8 +265,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReadiness Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-         * instance).
+         * @param waitForReadiness Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -279,8 +276,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReadiness Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana
-         * instance).
+         * @param waitForReadiness Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -290,7 +286,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReadinessTimeout How long to wait for readiness (if enabled).
+         * @param waitForReadinessTimeout How long to wait for readiness (if enabled). Defaults to `5m0s`.
          * 
          * @return builder
          * 
@@ -301,7 +297,7 @@ public final class CloudStackArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param waitForReadinessTimeout How long to wait for readiness (if enabled).
+         * @param waitForReadinessTimeout How long to wait for readiness (if enabled). Defaults to `5m0s`.
          * 
          * @return builder
          * 

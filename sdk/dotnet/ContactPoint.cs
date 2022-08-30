@@ -9,6 +9,49 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// Manages Grafana Alerting contact points.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#contact-points)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myContactPoint = new Grafana.ContactPoint("myContactPoint", new()
+    ///     {
+    ///         Emails = new[]
+    ///         {
+    ///             new Grafana.Inputs.ContactPointEmailArgs
+    ///             {
+    ///                 Addresses = new[]
+    ///                 {
+    ///                     "one@company.org",
+    ///                     "two@company.org",
+    ///                 },
+    ///                 DisableResolveMessage = false,
+    ///                 Message = "{{ len .Alerts.Firing }} firing.",
+    ///                 SingleEmail = true,
+    ///                 Subject = "{{ template \"default.title\" .}}",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/contactPoint:ContactPoint contact_point_name {{contact_point_name}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/contactPoint:ContactPoint")]
     public partial class ContactPoint : global::Pulumi.CustomResource
     {
@@ -109,8 +152,7 @@ namespace Pulumi.Grafana
         public Output<ImmutableArray<Outputs.ContactPointVictorop>> Victorops { get; private set; } = null!;
 
         /// <summary>
-        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-        /// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
         /// </summary>
         [Output("webhooks")]
         public Output<ImmutableArray<Outputs.ContactPointWebhook>> Webhooks { get; private set; } = null!;
@@ -358,8 +400,7 @@ namespace Pulumi.Grafana
         private InputList<Inputs.ContactPointWebhookArgs>? _webhooks;
 
         /// <summary>
-        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-        /// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
         /// </summary>
         public InputList<Inputs.ContactPointWebhookArgs> Webhooks
         {
@@ -577,8 +618,7 @@ namespace Pulumi.Grafana
         private InputList<Inputs.ContactPointWebhookGetArgs>? _webhooks;
 
         /// <summary>
-        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-        /// https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+        /// A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
         /// </summary>
         public InputList<Inputs.ContactPointWebhookGetArgs> Webhooks
         {

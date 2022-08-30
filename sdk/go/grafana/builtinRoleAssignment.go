@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewBuiltinRoleAssignment(ctx, "viewer", &grafana.BuiltinRoleAssignmentArgs{
+//				BuiltinRole: pulumi.String("Viewer"),
+//				Roles: BuiltinRoleAssignmentRoleArray{
+//					&BuiltinRoleAssignmentRoleArgs{
+//						Global: pulumi.Bool(false),
+//						Uid:    pulumi.String("firstuid"),
+//					},
+//					&BuiltinRoleAssignmentRoleArgs{
+//						Global: pulumi.Bool(true),
+//						Uid:    pulumi.String("seconduid"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/builtinRoleAssignment:BuiltinRoleAssignment builtin_role_name {{builtin_role_name}}
+//
+// ```
 type BuiltinRoleAssignment struct {
 	pulumi.CustomResourceState
 

@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointEmail {
+    /**
+     * @return The addresses to send emails to.
+     * 
+     */
     private List<String> addresses;
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The templated content of the email. Defaults to ``.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return Whether to send a single email CC&#39;ing all addresses, rather than a separate email to each address. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean singleEmail;
+    /**
+     * @return The templated subject line of the email. Defaults to ``.
+     * 
+     */
     private @Nullable String subject;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
 
     private ContactPointEmail() {}
+    /**
+     * @return The addresses to send emails to.
+     * 
+     */
     public List<String> addresses() {
         return this.addresses;
     }
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The templated content of the email. Defaults to ``.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return Whether to send a single email CC&#39;ing all addresses, rather than a separate email to each address. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> singleEmail() {
         return Optional.ofNullable(this.singleEmail);
     }
+    /**
+     * @return The templated subject line of the email. Defaults to ``.
+     * 
+     */
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

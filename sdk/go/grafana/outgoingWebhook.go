@@ -11,6 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewOutgoingWebhook(ctx, "test-acc-outgoingWebhook", &grafana.OutgoingWebhookArgs{
+//				Url: pulumi.String("https://example.com/"),
+//			}, pulumi.Provider(grafana.Oncall))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/outgoingWebhook:OutgoingWebhook outgoing_webhook_name {{outgoing_webhook_id}}
+//
+// ```
 type OutgoingWebhook struct {
 	pulumi.CustomResourceState
 

@@ -26,15 +26,13 @@ class AlertNotificationArgs:
         """
         The set of arguments for constructing a AlertNotification resource.
         :param pulumi.Input[str] type: The type of the alert notification channel.
-        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages.
-        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled.
-        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts.
+        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages. Defaults to `false`.
+        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
+        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the alert notification channel.
-        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings
-               documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
-        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts.
-        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API
-               documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         """
         pulumi.set(__self__, "type", type)
@@ -71,7 +69,7 @@ class AlertNotificationArgs:
     @pulumi.getter(name="disableResolveMessage")
     def disable_resolve_message(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to disable sending resolve messages.
+        Whether to disable sending resolve messages. Defaults to `false`.
         """
         return pulumi.get(self, "disable_resolve_message")
 
@@ -83,7 +81,7 @@ class AlertNotificationArgs:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Frequency of alert reminders. Frequency must be set if reminders are enabled.
+        Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
         """
         return pulumi.get(self, "frequency")
 
@@ -95,7 +93,7 @@ class AlertNotificationArgs:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Is this the default channel for all your alerts.
+        Is this the default channel for all your alerts. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -119,8 +117,7 @@ class AlertNotificationArgs:
     @pulumi.getter(name="secureSettings")
     def secure_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Additional secure settings, for full reference lookup [Grafana Supported Settings
-        documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
         """
         return pulumi.get(self, "secure_settings")
 
@@ -132,7 +129,7 @@ class AlertNotificationArgs:
     @pulumi.getter(name="sendReminder")
     def send_reminder(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to send reminders for triggered alerts.
+        Whether to send reminders for triggered alerts. Defaults to `false`.
         """
         return pulumi.get(self, "send_reminder")
 
@@ -144,8 +141,7 @@ class AlertNotificationArgs:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Additional settings, for full reference see [Grafana HTTP API
-        documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         """
         return pulumi.get(self, "settings")
 
@@ -180,15 +176,13 @@ class _AlertNotificationState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AlertNotification resources.
-        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages.
-        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled.
-        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts.
+        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages. Defaults to `false`.
+        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
+        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the alert notification channel.
-        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings
-               documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
-        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts.
-        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API
-               documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         :param pulumi.Input[str] type: The type of the alert notification channel.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         """
@@ -215,7 +209,7 @@ class _AlertNotificationState:
     @pulumi.getter(name="disableResolveMessage")
     def disable_resolve_message(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to disable sending resolve messages.
+        Whether to disable sending resolve messages. Defaults to `false`.
         """
         return pulumi.get(self, "disable_resolve_message")
 
@@ -227,7 +221,7 @@ class _AlertNotificationState:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Frequency of alert reminders. Frequency must be set if reminders are enabled.
+        Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
         """
         return pulumi.get(self, "frequency")
 
@@ -239,7 +233,7 @@ class _AlertNotificationState:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Is this the default channel for all your alerts.
+        Is this the default channel for all your alerts. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -263,8 +257,7 @@ class _AlertNotificationState:
     @pulumi.getter(name="secureSettings")
     def secure_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Additional secure settings, for full reference lookup [Grafana Supported Settings
-        documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
         """
         return pulumi.get(self, "secure_settings")
 
@@ -276,7 +269,7 @@ class _AlertNotificationState:
     @pulumi.getter(name="sendReminder")
     def send_reminder(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to send reminders for triggered alerts.
+        Whether to send reminders for triggered alerts. Defaults to `false`.
         """
         return pulumi.get(self, "send_reminder")
 
@@ -288,8 +281,7 @@ class _AlertNotificationState:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Additional settings, for full reference see [Grafana HTTP API
-        documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         """
         return pulumi.get(self, "settings")
 
@@ -338,18 +330,41 @@ class AlertNotification(pulumi.CustomResource):
                  uid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AlertNotification resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        email_someteam = grafana.AlertNotification("emailSometeam",
+            frequency="24h",
+            is_default=False,
+            send_reminder=True,
+            settings={
+                "addresses": "foo@example.net;bar@example.net",
+                "uploadImage": "false",
+            },
+            type="email")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/alertNotification:AlertNotification alert_notification_name {{alert_notification_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages.
-        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled.
-        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts.
+        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages. Defaults to `false`.
+        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
+        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the alert notification channel.
-        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings
-               documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
-        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts.
-        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API
-               documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         :param pulumi.Input[str] type: The type of the alert notification channel.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         """
@@ -360,7 +375,32 @@ class AlertNotification(pulumi.CustomResource):
                  args: AlertNotificationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AlertNotification resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        email_someteam = grafana.AlertNotification("emailSometeam",
+            frequency="24h",
+            is_default=False,
+            send_reminder=True,
+            settings={
+                "addresses": "foo@example.net;bar@example.net",
+                "uploadImage": "false",
+            },
+            type="email")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/alertNotification:AlertNotification alert_notification_name {{alert_notification_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param AlertNotificationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -431,15 +471,13 @@ class AlertNotification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages.
-        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled.
-        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts.
+        :param pulumi.Input[bool] disable_resolve_message: Whether to disable sending resolve messages. Defaults to `false`.
+        :param pulumi.Input[str] frequency: Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
+        :param pulumi.Input[bool] is_default: Is this the default channel for all your alerts. Defaults to `false`.
         :param pulumi.Input[str] name: The name of the alert notification channel.
-        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings
-               documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
-        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts.
-        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API
-               documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        :param pulumi.Input[Mapping[str, Any]] secure_settings: Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        :param pulumi.Input[bool] send_reminder: Whether to send reminders for triggered alerts. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, Any]] settings: Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         :param pulumi.Input[str] type: The type of the alert notification channel.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         """
@@ -462,7 +500,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter(name="disableResolveMessage")
     def disable_resolve_message(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to disable sending resolve messages.
+        Whether to disable sending resolve messages. Defaults to `false`.
         """
         return pulumi.get(self, "disable_resolve_message")
 
@@ -470,7 +508,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter
     def frequency(self) -> pulumi.Output[Optional[str]]:
         """
-        Frequency of alert reminders. Frequency must be set if reminders are enabled.
+        Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
         """
         return pulumi.get(self, "frequency")
 
@@ -478,7 +516,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[Optional[bool]]:
         """
-        Is this the default channel for all your alerts.
+        Is this the default channel for all your alerts. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -494,8 +532,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter(name="secureSettings")
     def secure_settings(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Additional secure settings, for full reference lookup [Grafana Supported Settings
-        documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+        Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
         """
         return pulumi.get(self, "secure_settings")
 
@@ -503,7 +540,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter(name="sendReminder")
     def send_reminder(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to send reminders for triggered alerts.
+        Whether to send reminders for triggered alerts. Defaults to `false`.
         """
         return pulumi.get(self, "send_reminder")
 
@@ -511,8 +548,7 @@ class AlertNotification(pulumi.CustomResource):
     @pulumi.getter
     def settings(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Additional settings, for full reference see [Grafana HTTP API
-        documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+        Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
         """
         return pulumi.get(self, "settings")
 

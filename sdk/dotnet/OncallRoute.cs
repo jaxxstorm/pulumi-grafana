@@ -9,6 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleSlackChannel = Grafana.GetOncallSlackChannel.Invoke(new()
+    ///     {
+    ///         Name = "example_slack_channel",
+    ///     });
+    /// 
+    ///     var @default = new Grafana.OncallEscalationChain("default");
+    /// 
+    ///     var exampleIntegration = new Grafana.OncallIntegration("exampleIntegration", new()
+    ///     {
+    ///         Type = "grafana",
+    ///     });
+    /// 
+    ///     var exampleRoute = new Grafana.OncallRoute("exampleRoute", new()
+    ///     {
+    ///         IntegrationId = exampleIntegration.Id,
+    ///         EscalationChainId = @default.Id,
+    ///         RoutingRegex = "us-(east|west)",
+    ///         Position = 0,
+    ///         Slack = new Grafana.Inputs.OncallRouteSlackArgs
+    ///         {
+    ///             ChannelId = exampleSlackChannel.Apply(getOncallSlackChannelResult =&gt; getOncallSlackChannelResult.SlackId),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/oncallRoute:OncallRoute")]
     public partial class OncallRoute : global::Pulumi.CustomResource
     {

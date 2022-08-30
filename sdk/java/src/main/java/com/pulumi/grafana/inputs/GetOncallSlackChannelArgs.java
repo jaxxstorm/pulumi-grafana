@@ -13,9 +13,17 @@ public final class GetOncallSlackChannelArgs extends com.pulumi.resources.Invoke
 
     public static final GetOncallSlackChannelArgs Empty = new GetOncallSlackChannelArgs();
 
+    /**
+     * The Slack channel name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The Slack channel name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -44,11 +52,23 @@ public final class GetOncallSlackChannelArgs extends com.pulumi.resources.Invoke
             $ = new GetOncallSlackChannelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The Slack channel name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The Slack channel name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

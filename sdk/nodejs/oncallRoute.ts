@@ -5,6 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const exampleSlackChannel = grafana.getOncallSlackChannel({
+ *     name: "example_slack_channel",
+ * });
+ * const _default = new grafana.OncallEscalationChain("default", {});
+ * const exampleIntegration = new grafana.OncallIntegration("exampleIntegration", {type: "grafana"});
+ * const exampleRoute = new grafana.OncallRoute("exampleRoute", {
+ *     integrationId: exampleIntegration.id,
+ *     escalationChainId: _default.id,
+ *     routingRegex: "us-(east|west)",
+ *     position: 0,
+ *     slack: {
+ *         channelId: exampleSlackChannel.then(exampleSlackChannel => exampleSlackChannel.slackId),
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+ * ```
+ */
 export class OncallRoute extends pulumi.CustomResource {
     /**
      * Get an existing OncallRoute resource's state with the given name, ID, and optional extra

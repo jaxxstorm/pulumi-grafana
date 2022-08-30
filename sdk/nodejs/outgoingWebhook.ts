@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/outgoing_webhooks/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test_acc_outgoingWebhook = new grafana.OutgoingWebhook("test-acc-outgoingWebhook", {url: "https://example.com/"}, {
+ *     provider: grafana.oncall,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/outgoingWebhook:OutgoingWebhook outgoing_webhook_name {{outgoing_webhook_id}}
+ * ```
+ */
 export class OutgoingWebhook extends pulumi.CustomResource {
     /**
      * Get an existing OutgoingWebhook resource's state with the given name, ID, and optional extra

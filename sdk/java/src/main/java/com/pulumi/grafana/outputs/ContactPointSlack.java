@@ -13,65 +13,185 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointSlack {
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return Use this to override the Slack API endpoint URL to send requests to.
+     * 
+     */
     private @Nullable String endpointUrl;
+    /**
+     * @return The name of a Slack workspace emoji to use as the bot icon.
+     * 
+     */
     private @Nullable String iconEmoji;
+    /**
+     * @return A URL of an image to use as the bot icon.
+     * 
+     */
     private @Nullable String iconUrl;
+    /**
+     * @return Describes how to ping the slack channel that messages are being sent to. Options are `here` for an @here ping, `channel` for @channel, or empty for no ping.
+     * 
+     */
     private @Nullable String mentionChannel;
+    /**
+     * @return Comma-separated list of groups to mention in the message.
+     * 
+     */
     private @Nullable String mentionGroups;
+    /**
+     * @return Comma-separated list of users to mention in the message.
+     * 
+     */
     private @Nullable String mentionUsers;
+    /**
+     * @return Channel, private group, or IM channel (can be an encoded ID or a name) to send messages to.
+     * 
+     */
     private @Nullable String recipient;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return Templated content of the message.
+     * 
+     */
     private @Nullable String text;
+    /**
+     * @return Templated title of the message.
+     * 
+     */
     private @Nullable String title;
+    /**
+     * @return A Slack API token,for sending messages directly without the webhook method.
+     * 
+     */
     private @Nullable String token;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return A Slack webhook URL,for sending messages via the webhook method.
+     * 
+     */
     private @Nullable String url;
+    /**
+     * @return Username for the bot to use.
+     * 
+     */
     private @Nullable String username;
 
     private ContactPointSlack() {}
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return Use this to override the Slack API endpoint URL to send requests to.
+     * 
+     */
     public Optional<String> endpointUrl() {
         return Optional.ofNullable(this.endpointUrl);
     }
+    /**
+     * @return The name of a Slack workspace emoji to use as the bot icon.
+     * 
+     */
     public Optional<String> iconEmoji() {
         return Optional.ofNullable(this.iconEmoji);
     }
+    /**
+     * @return A URL of an image to use as the bot icon.
+     * 
+     */
     public Optional<String> iconUrl() {
         return Optional.ofNullable(this.iconUrl);
     }
+    /**
+     * @return Describes how to ping the slack channel that messages are being sent to. Options are `here` for an @here ping, `channel` for @channel, or empty for no ping.
+     * 
+     */
     public Optional<String> mentionChannel() {
         return Optional.ofNullable(this.mentionChannel);
     }
+    /**
+     * @return Comma-separated list of groups to mention in the message.
+     * 
+     */
     public Optional<String> mentionGroups() {
         return Optional.ofNullable(this.mentionGroups);
     }
+    /**
+     * @return Comma-separated list of users to mention in the message.
+     * 
+     */
     public Optional<String> mentionUsers() {
         return Optional.ofNullable(this.mentionUsers);
     }
+    /**
+     * @return Channel, private group, or IM channel (can be an encoded ID or a name) to send messages to.
+     * 
+     */
     public Optional<String> recipient() {
         return Optional.ofNullable(this.recipient);
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return Templated content of the message.
+     * 
+     */
     public Optional<String> text() {
         return Optional.ofNullable(this.text);
     }
+    /**
+     * @return Templated title of the message.
+     * 
+     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }
+    /**
+     * @return A Slack API token,for sending messages directly without the webhook method.
+     * 
+     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return A Slack webhook URL,for sending messages via the webhook method.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    /**
+     * @return Username for the bot to use.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/annotations/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/annotations/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Grafana.Annotation("test", new()
+    ///     {
+    ///         Text = "basic text",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/annotation:Annotation")]
     public partial class Annotation : global::Pulumi.CustomResource
     {

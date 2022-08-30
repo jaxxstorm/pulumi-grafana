@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.Team("test", {email: "test-team-email@test.com"});
+ * const fromName = grafana.getTeamOutput({
+ *     name: test.name,
+ * });
+ * ```
+ */
 export function getTeam(args: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamResult> {
     if (!opts) {
         opts = {}
@@ -19,6 +35,9 @@ export function getTeam(args: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamArgs {
+    /**
+     * The name of the Grafana team.
+     */
     name: string;
 }
 
@@ -30,6 +49,9 @@ export interface GetTeamResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the Grafana team.
+     */
     readonly name: string;
 }
 
@@ -41,5 +63,8 @@ export function getTeamOutput(args: GetTeamOutputArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamOutputArgs {
+    /**
+     * The name of the Grafana team.
+     */
     name: pulumi.Input<string>;
 }

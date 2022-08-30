@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/on_call_shifts/)
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/oncallShift:OncallShift on_call_shift_name {{on_call_shift_id}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/oncallShift:OncallShift")]
     public partial class OncallShift : global::Pulumi.CustomResource
     {
@@ -19,7 +28,7 @@ namespace Pulumi.Grafana
         public Output<ImmutableArray<string>> ByDays { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+        /// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
         /// </summary>
         [Output("byMonthdays")]
         public Output<ImmutableArray<int>> ByMonthdays { get; private set; } = null!;
@@ -67,8 +76,7 @@ namespace Pulumi.Grafana
         public Output<ImmutableArray<ImmutableArray<string>>> RollingUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-        /// "2020-09-05T08:00:00")
+        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
         /// </summary>
         [Output("start")]
         public Output<string> Start { get; private set; } = null!;
@@ -86,19 +94,19 @@ namespace Pulumi.Grafana
         public Output<string?> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// The shift's timezone. Overrides schedule's timezone.
+        /// The shift's timezone.  Overrides schedule's timezone.
         /// </summary>
         [Output("timeZone")]
         public Output<string?> TimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// The shift's type. Can be rolling_users, recurrent_event, single_event
+        /// The shift's type. Can be rolling*users, recurrent*event, single_event
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The list of on-call users (for single_event and recurrent_event event type).
+        /// The list of on-call users (for single*event and recurrent*event event type).
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -172,7 +180,7 @@ namespace Pulumi.Grafana
         private InputList<int>? _byMonthdays;
 
         /// <summary>
-        /// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+        /// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
         /// </summary>
         public InputList<int> ByMonthdays
         {
@@ -235,8 +243,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-        /// "2020-09-05T08:00:00")
+        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
         /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
@@ -254,13 +261,13 @@ namespace Pulumi.Grafana
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// The shift's timezone. Overrides schedule's timezone.
+        /// The shift's timezone.  Overrides schedule's timezone.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// The shift's type. Can be rolling_users, recurrent_event, single_event
+        /// The shift's type. Can be rolling*users, recurrent*event, single_event
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -269,7 +276,7 @@ namespace Pulumi.Grafana
         private InputList<string>? _users;
 
         /// <summary>
-        /// The list of on-call users (for single_event and recurrent_event event type).
+        /// The list of on-call users (for single*event and recurrent*event event type).
         /// </summary>
         public InputList<string> Users
         {
@@ -307,7 +314,7 @@ namespace Pulumi.Grafana
         private InputList<int>? _byMonthdays;
 
         /// <summary>
-        /// This parameter takes a list of days of the month. Valid values are 1 to 31 or -31 to -1
+        /// This parameter takes a list of days of the month.  Valid values are 1 to 31 or -31 to -1
         /// </summary>
         public InputList<int> ByMonthdays
         {
@@ -370,8 +377,7 @@ namespace Pulumi.Grafana
         }
 
         /// <summary>
-        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example
-        /// "2020-09-05T08:00:00")
+        /// The start time of the on-call shift. This parameter takes a date format as yyyy-MM-dd'T'HH:mm:ss (for example "2020-09-05T08:00:00")
         /// </summary>
         [Input("start")]
         public Input<string>? Start { get; set; }
@@ -389,13 +395,13 @@ namespace Pulumi.Grafana
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// The shift's timezone. Overrides schedule's timezone.
+        /// The shift's timezone.  Overrides schedule's timezone.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// The shift's type. Can be rolling_users, recurrent_event, single_event
+        /// The shift's type. Can be rolling*users, recurrent*event, single_event
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -404,7 +410,7 @@ namespace Pulumi.Grafana
         private InputList<string>? _users;
 
         /// <summary>
-        /// The list of on-call users (for single_event and recurrent_event event type).
+        /// The list of on-call users (for single*event and recurrent*event event type).
         /// </summary>
         public InputList<string> Users
         {

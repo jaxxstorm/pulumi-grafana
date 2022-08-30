@@ -13,6 +13,48 @@ import com.pulumi.grafana.inputs.CloudApiKeyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a single API key on the Grafana Cloud portal (on the organization level)
+ * * [API documentation](https://grafana.com/docs/grafana-cloud/reference/cloud-api/#api-keys)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.CloudApiKey;
+ * import com.pulumi.grafana.CloudApiKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new CloudApiKey(&#34;test&#34;, CloudApiKeyArgs.builder()        
+ *             .cloudOrgSlug(&#34;myorg&#34;)
+ *             .role(&#34;Admin&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/cloudApiKey:CloudApiKey resource_name &#34;{{org-name}}-{{api_key_name}}&#34;
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/cloudApiKey:CloudApiKey")
 public class CloudApiKey extends com.pulumi.resources.CustomResource {
     /**
@@ -58,16 +100,14 @@ public class CloudApiKey extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
-     * @return Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * @return Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      * 
      */
     public Output<String> role() {

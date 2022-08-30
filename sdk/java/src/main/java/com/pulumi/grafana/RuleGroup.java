@@ -16,6 +16,136 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana Alerting rule groups.
+ * 
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/alerting-rules)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#alert-rules)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Folder;
+ * import com.pulumi.grafana.FolderArgs;
+ * import com.pulumi.grafana.RuleGroup;
+ * import com.pulumi.grafana.RuleGroupArgs;
+ * import com.pulumi.grafana.inputs.RuleGroupRuleArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ruleFolder = new Folder(&#34;ruleFolder&#34;, FolderArgs.builder()        
+ *             .title(&#34;My Alert Rule Folder&#34;)
+ *             .build());
+ * 
+ *         var myAlertRule = new RuleGroup(&#34;myAlertRule&#34;, RuleGroupArgs.builder()        
+ *             .folderUid(ruleFolder.uid())
+ *             .intervalSeconds(240)
+ *             .orgId(1)
+ *             .rules(RuleGroupRuleArgs.builder()
+ *                 .name(&#34;My Alert Rule 1&#34;)
+ *                 .for_(&#34;2m&#34;)
+ *                 .condition(&#34;B&#34;)
+ *                 .noDataState(&#34;NoData&#34;)
+ *                 .execErrState(&#34;Alerting&#34;)
+ *                 .annotations(Map.ofEntries(
+ *                     Map.entry(&#34;a&#34;, &#34;b&#34;),
+ *                     Map.entry(&#34;c&#34;, &#34;d&#34;)
+ *                 ))
+ *                 .labels(Map.ofEntries(
+ *                     Map.entry(&#34;e&#34;, &#34;f&#34;),
+ *                     Map.entry(&#34;g&#34;, &#34;h&#34;)
+ *                 ))
+ *                 .datas(                
+ *                     RuleGroupRuleDataArgs.builder()
+ *                         .refId(&#34;A&#34;)
+ *                         .queryType(&#34;&#34;)
+ *                         .relativeTimeRange(RuleGroupRuleDataRelativeTimeRangeArgs.builder()
+ *                             .from(600)
+ *                             .to(0)
+ *                             .build())
+ *                         .datasourceUid(&#34;PD8C576611E62080A&#34;)
+ *                         .model(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty(&#34;hide&#34;, false),
+ *                                 jsonProperty(&#34;intervalMs&#34;, 1000),
+ *                                 jsonProperty(&#34;maxDataPoints&#34;, 43200),
+ *                                 jsonProperty(&#34;refId&#34;, &#34;A&#34;)
+ *                             )))
+ *                         .build(),
+ *                     RuleGroupRuleDataArgs.builder()
+ *                         .refId(&#34;B&#34;)
+ *                         .queryType(&#34;&#34;)
+ *                         .relativeTimeRange(RuleGroupRuleDataRelativeTimeRangeArgs.builder()
+ *                             .from(0)
+ *                             .to(0)
+ *                             .build())
+ *                         .datasourceUid(&#34;-100&#34;)
+ *                         .model(&#34;&#34;&#34;
+ * {
+ *     &#34;conditions&#34;: [
+ *         {
+ *         &#34;evaluator&#34;: {
+ *             &#34;params&#34;: [
+ *             3
+ *             ],
+ *             &#34;type&#34;: &#34;gt&#34;
+ *         },
+ *         &#34;operator&#34;: {
+ *             &#34;type&#34;: &#34;and&#34;
+ *         },
+ *         &#34;query&#34;: {
+ *             &#34;params&#34;: [
+ *             &#34;A&#34;
+ *             ]
+ *         },
+ *         &#34;reducer&#34;: {
+ *             &#34;params&#34;: [],
+ *             &#34;type&#34;: &#34;last&#34;
+ *         },
+ *         &#34;type&#34;: &#34;query&#34;
+ *         }
+ *     ],
+ *     &#34;datasource&#34;: {
+ *         &#34;type&#34;: &#34;__expr__&#34;,
+ *         &#34;uid&#34;: &#34;-100&#34;
+ *     },
+ *     &#34;hide&#34;: false,
+ *     &#34;intervalMs&#34;: 1000,
+ *     &#34;maxDataPoints&#34;: 43200,
+ *     &#34;refId&#34;: &#34;B&#34;,
+ *     &#34;type&#34;: &#34;classic_conditions&#34;
+ * }
+ *                         &#34;&#34;&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/ruleGroup:RuleGroup alert_rule_name {{alert_rule_name}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/ruleGroup:RuleGroup")
 public class RuleGroup extends com.pulumi.resources.CustomResource {
     /**
@@ -33,16 +163,14 @@ public class RuleGroup extends com.pulumi.resources.CustomResource {
         return this.folderUid;
     }
     /**
-     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      * 
      */
     @Export(name="intervalSeconds", type=Integer.class, parameters={})
     private Output<Integer> intervalSeconds;
 
     /**
-     * @return The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are
-     * evaluated sequentially.
+     * @return The interval, in seconds, at which all rules in the group are evaluated. If a group contains many rules, the rules are evaluated sequentially.
      * 
      */
     public Output<Integer> intervalSeconds() {

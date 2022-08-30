@@ -11,11 +11,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Grafana API Keys.
+//
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := grafana.NewApiKey(ctx, "foo", &grafana.ApiKeyArgs{
+//				Role: pulumi.String("Viewer"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := grafana.NewApiKey(ctx, "bar", &grafana.ApiKeyArgs{
+//				Role:          pulumi.String("Admin"),
+//				SecondsToLive: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("apiKeyFooKeyOnly", foo.Key)
+//			ctx.Export("apiKeyBar", bar)
+//			return nil
+//		})
+//	}
+//
+// ```
 type ApiKey struct {
 	pulumi.CustomResourceState
 
-	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-	// new stack. **Note**: This requires a cloud token to be configured.
+	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 	CloudStackSlug pulumi.StringPtrOutput `pulumi:"cloudStackSlug"`
 	Expiration     pulumi.StringOutput    `pulumi:"expiration"`
 	Key            pulumi.StringOutput    `pulumi:"key"`
@@ -57,8 +94,7 @@ func GetApiKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiKey resources.
 type apiKeyState struct {
-	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-	// new stack. **Note**: This requires a cloud token to be configured.
+	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 	CloudStackSlug *string `pulumi:"cloudStackSlug"`
 	Expiration     *string `pulumi:"expiration"`
 	Key            *string `pulumi:"key"`
@@ -68,8 +104,7 @@ type apiKeyState struct {
 }
 
 type ApiKeyState struct {
-	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-	// new stack. **Note**: This requires a cloud token to be configured.
+	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 	CloudStackSlug pulumi.StringPtrInput
 	Expiration     pulumi.StringPtrInput
 	Key            pulumi.StringPtrInput
@@ -83,8 +118,7 @@ func (ApiKeyState) ElementType() reflect.Type {
 }
 
 type apiKeyArgs struct {
-	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-	// new stack. **Note**: This requires a cloud token to be configured.
+	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 	CloudStackSlug *string `pulumi:"cloudStackSlug"`
 	Name           *string `pulumi:"name"`
 	Role           string  `pulumi:"role"`
@@ -93,8 +127,7 @@ type apiKeyArgs struct {
 
 // The set of arguments for constructing a ApiKey resource.
 type ApiKeyArgs struct {
-	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-	// new stack. **Note**: This requires a cloud token to be configured.
+	// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 	CloudStackSlug pulumi.StringPtrInput
 	Name           pulumi.StringPtrInput
 	Role           pulumi.StringInput
@@ -188,8 +221,7 @@ func (o ApiKeyOutput) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutpu
 	return o
 }
 
-// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-// new stack. **Note**: This requires a cloud token to be configured.
+// If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
 func (o ApiKeyOutput) CloudStackSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.CloudStackSlug }).(pulumi.StringPtrOutput)
 }

@@ -197,7 +197,33 @@ class OncallRoute(pulumi.CustomResource):
                  slack: Optional[pulumi.Input[pulumi.InputType['OncallRouteSlackArgs']]] = None,
                  __props__=None):
         """
-        Create a OncallRoute resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        example_slack_channel = grafana.get_oncall_slack_channel(name="example_slack_channel")
+        default = grafana.OncallEscalationChain("default")
+        example_integration = grafana.OncallIntegration("exampleIntegration", type="grafana")
+        example_route = grafana.OncallRoute("exampleRoute",
+            integration_id=example_integration.id,
+            escalation_chain_id=default.id,
+            routing_regex="us-(east|west)",
+            position=0,
+            slack=grafana.OncallRouteSlackArgs(
+                channel_id=example_slack_channel.slack_id,
+            ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] escalation_chain_id: The ID of the escalation chain.
@@ -213,7 +239,33 @@ class OncallRoute(pulumi.CustomResource):
                  args: OncallRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OncallRoute resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        example_slack_channel = grafana.get_oncall_slack_channel(name="example_slack_channel")
+        default = grafana.OncallEscalationChain("default")
+        example_integration = grafana.OncallIntegration("exampleIntegration", type="grafana")
+        example_route = grafana.OncallRoute("exampleRoute",
+            integration_id=example_integration.id,
+            escalation_chain_id=default.id,
+            routing_regex="us-(east|west)",
+            position=0,
+            slack=grafana.OncallRouteSlackArgs(
+                channel_id=example_slack_channel.slack_id,
+            ))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param OncallRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

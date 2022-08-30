@@ -34,21 +34,19 @@ class DataSourceArgs:
         """
         The set of arguments for constructing a DataSource resource.
         :param pulumi.Input[str] type: The data source type. Must be one of the supported data source keywords.
-        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`.
-        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source.
-        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-               9.0+.
-        :param pulumi.Input[str] basic_auth_username: Basic auth username.
-        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server.
+        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
+        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source. Defaults to `false`.
+        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
+        :param pulumi.Input[str] basic_auth_username: Basic auth username. Defaults to ``.
+        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: Custom HTTP headers
-        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source.
+        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['DataSourceJsonDataArgs']]] json_datas: (Required by some data source types)
         :param pulumi.Input[str] name: A unique name for the data source.
-        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-               secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
-        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source.
+        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         pulumi.set(__self__, "type", type)
         if access_mode is not None:
@@ -102,7 +100,7 @@ class DataSourceArgs:
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The method by which Grafana will access the data source: `proxy` or `direct`.
+        The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         """
         return pulumi.get(self, "access_mode")
 
@@ -114,7 +112,7 @@ class DataSourceArgs:
     @pulumi.getter(name="basicAuthEnabled")
     def basic_auth_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable basic auth for the data source.
+        Whether to enable basic auth for the data source. Defaults to `false`.
         """
         return pulumi.get(self, "basic_auth_enabled")
 
@@ -126,8 +124,7 @@ class DataSourceArgs:
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        9.0+.
+        Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -139,7 +136,7 @@ class DataSourceArgs:
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic auth username.
+        Basic auth username. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -151,7 +148,7 @@ class DataSourceArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The name of the database to use on the selected data source server.
+        (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         """
         return pulumi.get(self, "database_name")
 
@@ -175,7 +172,7 @@ class DataSourceArgs:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to set the data source as default. This should only be `true` to a single data source.
+        Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -211,8 +208,7 @@ class DataSourceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "password")
 
@@ -257,7 +253,7 @@ class DataSourceArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The username to use to authenticate to the data source.
+        (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         return pulumi.get(self, "username")
 
@@ -286,22 +282,20 @@ class _DataSourceState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DataSource resources.
-        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`.
-        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source.
-        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-               9.0+.
-        :param pulumi.Input[str] basic_auth_username: Basic auth username.
-        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server.
+        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
+        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source. Defaults to `false`.
+        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
+        :param pulumi.Input[str] basic_auth_username: Basic auth username. Defaults to ``.
+        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: Custom HTTP headers
-        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source.
+        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['DataSourceJsonDataArgs']]] json_datas: (Required by some data source types)
         :param pulumi.Input[str] name: A unique name for the data source.
-        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-               secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         :param pulumi.Input[str] type: The data source type. Must be one of the supported data source keywords.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
-        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source.
+        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
@@ -344,7 +338,7 @@ class _DataSourceState:
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The method by which Grafana will access the data source: `proxy` or `direct`.
+        The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         """
         return pulumi.get(self, "access_mode")
 
@@ -356,7 +350,7 @@ class _DataSourceState:
     @pulumi.getter(name="basicAuthEnabled")
     def basic_auth_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable basic auth for the data source.
+        Whether to enable basic auth for the data source. Defaults to `false`.
         """
         return pulumi.get(self, "basic_auth_enabled")
 
@@ -368,8 +362,7 @@ class _DataSourceState:
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        9.0+.
+        Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -381,7 +374,7 @@ class _DataSourceState:
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
         """
-        Basic auth username.
+        Basic auth username. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -393,7 +386,7 @@ class _DataSourceState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The name of the database to use on the selected data source server.
+        (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         """
         return pulumi.get(self, "database_name")
 
@@ -417,7 +410,7 @@ class _DataSourceState:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to set the data source as default. This should only be `true` to a single data source.
+        Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -453,8 +446,7 @@ class _DataSourceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "password")
 
@@ -511,7 +503,7 @@ class _DataSourceState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required by some data source types) The username to use to authenticate to the data source.
+        (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         return pulumi.get(self, "username")
 
@@ -542,25 +534,85 @@ class DataSource(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a DataSource resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/datasources/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/data_source/)
+
+        The required arguments for this resource vary depending on the type of data
+        source selected (via the 'type' argument).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        influxdb = grafana.DataSource("influxdb",
+            type="influxdb",
+            url="http://influxdb.example.net:8086/",
+            username="myapp",
+            password="foobarbaz",
+            database_name=influxdb_database["metrics"]["name"])
+        cloudwatch = grafana.DataSource("cloudwatch",
+            type="cloudwatch",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                default_region="us-east-1",
+                auth_type="keys",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                access_key="123",
+                secret_key="456",
+            )])
+        prometheus = grafana.DataSource("prometheus",
+            type="prometheus",
+            url="https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-1234567890/",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                http_method="POST",
+                sigv4_auth=True,
+                sigv4_auth_type="default",
+                sigv4_region="eu-west-1",
+            )])
+        stackdriver = grafana.DataSource("stackdriver",
+            type="stackdriver",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                token_uri="https://oauth2.googleapis.com/token",
+                authentication_type="jwt",
+                default_project="default-project",
+                client_email="client-email@default-project.iam.gserviceaccount.com",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        private-key
+        -----END PRIVATE KEY-----
+        \"\"\",
+            )])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/dataSource:DataSource by_integer_id {{datasource id}}
+        ```
+
+        ```sh
+         $ pulumi import grafana:index/dataSource:DataSource by_uid {{datasource uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`.
-        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source.
-        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-               9.0+.
-        :param pulumi.Input[str] basic_auth_username: Basic auth username.
-        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server.
+        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
+        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source. Defaults to `false`.
+        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
+        :param pulumi.Input[str] basic_auth_username: Basic auth username. Defaults to ``.
+        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: Custom HTTP headers
-        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source.
+        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourceJsonDataArgs']]]] json_datas: (Required by some data source types)
         :param pulumi.Input[str] name: A unique name for the data source.
-        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-               secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         :param pulumi.Input[str] type: The data source type. Must be one of the supported data source keywords.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
-        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source.
+        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         ...
     @overload
@@ -569,7 +621,69 @@ class DataSource(pulumi.CustomResource):
                  args: DataSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DataSource resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/datasources/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/data_source/)
+
+        The required arguments for this resource vary depending on the type of data
+        source selected (via the 'type' argument).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        influxdb = grafana.DataSource("influxdb",
+            type="influxdb",
+            url="http://influxdb.example.net:8086/",
+            username="myapp",
+            password="foobarbaz",
+            database_name=influxdb_database["metrics"]["name"])
+        cloudwatch = grafana.DataSource("cloudwatch",
+            type="cloudwatch",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                default_region="us-east-1",
+                auth_type="keys",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                access_key="123",
+                secret_key="456",
+            )])
+        prometheus = grafana.DataSource("prometheus",
+            type="prometheus",
+            url="https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-1234567890/",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                http_method="POST",
+                sigv4_auth=True,
+                sigv4_auth_type="default",
+                sigv4_region="eu-west-1",
+            )])
+        stackdriver = grafana.DataSource("stackdriver",
+            type="stackdriver",
+            json_datas=[grafana.DataSourceJsonDataArgs(
+                token_uri="https://oauth2.googleapis.com/token",
+                authentication_type="jwt",
+                default_project="default-project",
+                client_email="client-email@default-project.iam.gserviceaccount.com",
+            )],
+            secure_json_datas=[grafana.DataSourceSecureJsonDataArgs(
+                private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        private-key
+        -----END PRIVATE KEY-----
+        \"\"\",
+            )])
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/dataSource:DataSource by_integer_id {{datasource id}}
+        ```
+
+        ```sh
+         $ pulumi import grafana:index/dataSource:DataSource by_uid {{datasource uid}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param DataSourceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -664,22 +778,20 @@ class DataSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`.
-        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source.
-        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-               9.0+.
-        :param pulumi.Input[str] basic_auth_username: Basic auth username.
-        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server.
+        :param pulumi.Input[str] access_mode: The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
+        :param pulumi.Input[bool] basic_auth_enabled: Whether to enable basic auth for the data source. Defaults to `false`.
+        :param pulumi.Input[str] basic_auth_password: Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
+        :param pulumi.Input[str] basic_auth_username: Basic auth username. Defaults to ``.
+        :param pulumi.Input[str] database_name: (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_headers: Custom HTTP headers
-        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source.
+        :param pulumi.Input[bool] is_default: Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourceJsonDataArgs']]]] json_datas: (Required by some data source types)
         :param pulumi.Input[str] name: A unique name for the data source.
-        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-               secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        :param pulumi.Input[str] password: (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         :param pulumi.Input[str] type: The data source type. Must be one of the supported data source keywords.
         :param pulumi.Input[str] uid: Unique identifier. If unset, this will be automatically generated.
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
-        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source.
+        :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -706,7 +818,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The method by which Grafana will access the data source: `proxy` or `direct`.
+        The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
         """
         return pulumi.get(self, "access_mode")
 
@@ -714,7 +826,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="basicAuthEnabled")
     def basic_auth_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable basic auth for the data source.
+        Whether to enable basic auth for the data source. Defaults to `false`.
         """
         return pulumi.get(self, "basic_auth_enabled")
 
@@ -722,8 +834,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="basicAuthPassword")
     def basic_auth_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-        9.0+.
+        Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_password")
 
@@ -731,7 +842,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="basicAuthUsername")
     def basic_auth_username(self) -> pulumi.Output[Optional[str]]:
         """
-        Basic auth username.
+        Basic auth username. Defaults to ``.
         """
         return pulumi.get(self, "basic_auth_username")
 
@@ -739,7 +850,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[Optional[str]]:
         """
-        (Required by some data source types) The name of the database to use on the selected data source server.
+        (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
         """
         return pulumi.get(self, "database_name")
 
@@ -755,7 +866,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to set the data source as default. This should only be `true` to a single data source.
+        Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
         """
         return pulumi.get(self, "is_default")
 
@@ -779,8 +890,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-        secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+        (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
         """
         return pulumi.get(self, "password")
 
@@ -817,7 +927,7 @@ class DataSource(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
         """
-        (Required by some data source types) The username to use to authenticate to the data source.
+        (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
         return pulumi.get(self, "username")
 

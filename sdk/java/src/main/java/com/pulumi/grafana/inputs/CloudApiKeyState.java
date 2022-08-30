@@ -61,16 +61,14 @@ public final class CloudApiKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-     * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+     * @return Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
      * 
      */
     public Optional<Output<String>> role() {
@@ -168,8 +166,7 @@ public final class CloudApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-         * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+         * @param role Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
          * 
          * @return builder
          * 
@@ -180,8 +177,7 @@ public final class CloudApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See
-         * https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
+         * @param role Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
          * 
          * @return builder
          * 

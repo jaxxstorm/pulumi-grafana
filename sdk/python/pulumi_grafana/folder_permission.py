@@ -100,7 +100,36 @@ class FolderPermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FolderPermissionPermissionArgs']]]]] = None,
                  __props__=None):
         """
-        Create a FolderPermission resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        user = grafana.User("user", email="user.name@example.com")
+        collection = grafana.Folder("collection", title="Folder Title")
+        collection_permission = grafana.FolderPermission("collectionPermission",
+            folder_uid=collection.uid,
+            permissions=[
+                grafana.FolderPermissionPermissionArgs(
+                    role="Editor",
+                    permission="Edit",
+                ),
+                grafana.FolderPermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="View",
+                ),
+                grafana.FolderPermissionPermissionArgs(
+                    user_id=user.id,
+                    permission="Admin",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder_uid: The UID of the folder.
@@ -113,7 +142,36 @@ class FolderPermission(pulumi.CustomResource):
                  args: FolderPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FolderPermission resource with the given unique name, props, and options.
+        * [Official documentation](https://grafana.com/docs/grafana/latest/permissions/dashboard_folder_permissions/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder_permissions/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        team = grafana.Team("team")
+        user = grafana.User("user", email="user.name@example.com")
+        collection = grafana.Folder("collection", title="Folder Title")
+        collection_permission = grafana.FolderPermission("collectionPermission",
+            folder_uid=collection.uid,
+            permissions=[
+                grafana.FolderPermissionPermissionArgs(
+                    role="Editor",
+                    permission="Edit",
+                ),
+                grafana.FolderPermissionPermissionArgs(
+                    team_id=team.id,
+                    permission="View",
+                ),
+                grafana.FolderPermissionPermissionArgs(
+                    user_id=user.id,
+                    permission="Admin",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param FolderPermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

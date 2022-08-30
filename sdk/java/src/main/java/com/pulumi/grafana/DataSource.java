@@ -19,39 +19,132 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/datasources/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/data_source/)
+ * 
+ * The required arguments for this resource vary depending on the type of data
+ * source selected (via the &#39;type&#39; argument).
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.DataSource;
+ * import com.pulumi.grafana.DataSourceArgs;
+ * import com.pulumi.grafana.inputs.DataSourceJsonDataArgs;
+ * import com.pulumi.grafana.inputs.DataSourceSecureJsonDataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var influxdb = new DataSource(&#34;influxdb&#34;, DataSourceArgs.builder()        
+ *             .type(&#34;influxdb&#34;)
+ *             .url(&#34;http://influxdb.example.net:8086/&#34;)
+ *             .username(&#34;myapp&#34;)
+ *             .password(&#34;foobarbaz&#34;)
+ *             .databaseName(influxdb_database.metrics().name())
+ *             .build());
+ * 
+ *         var cloudwatch = new DataSource(&#34;cloudwatch&#34;, DataSourceArgs.builder()        
+ *             .type(&#34;cloudwatch&#34;)
+ *             .jsonDatas(DataSourceJsonDataArgs.builder()
+ *                 .defaultRegion(&#34;us-east-1&#34;)
+ *                 .authType(&#34;keys&#34;)
+ *                 .build())
+ *             .secureJsonDatas(DataSourceSecureJsonDataArgs.builder()
+ *                 .accessKey(&#34;123&#34;)
+ *                 .secretKey(&#34;456&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var prometheus = new DataSource(&#34;prometheus&#34;, DataSourceArgs.builder()        
+ *             .type(&#34;prometheus&#34;)
+ *             .url(&#34;https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-1234567890/&#34;)
+ *             .jsonDatas(DataSourceJsonDataArgs.builder()
+ *                 .httpMethod(&#34;POST&#34;)
+ *                 .sigv4Auth(true)
+ *                 .sigv4AuthType(&#34;default&#34;)
+ *                 .sigv4Region(&#34;eu-west-1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var stackdriver = new DataSource(&#34;stackdriver&#34;, DataSourceArgs.builder()        
+ *             .type(&#34;stackdriver&#34;)
+ *             .jsonDatas(DataSourceJsonDataArgs.builder()
+ *                 .tokenUri(&#34;https://oauth2.googleapis.com/token&#34;)
+ *                 .authenticationType(&#34;jwt&#34;)
+ *                 .defaultProject(&#34;default-project&#34;)
+ *                 .clientEmail(&#34;client-email@default-project.iam.gserviceaccount.com&#34;)
+ *                 .build())
+ *             .secureJsonDatas(DataSourceSecureJsonDataArgs.builder()
+ *                 .privateKey(&#34;&#34;&#34;
+ * -----BEGIN PRIVATE KEY-----
+ * private-key
+ * -----END PRIVATE KEY-----
+ *                 &#34;&#34;&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/dataSource:DataSource by_integer_id {{datasource id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/dataSource:DataSource by_uid {{datasource uid}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/dataSource:DataSource")
 public class DataSource extends com.pulumi.resources.CustomResource {
     /**
-     * The method by which Grafana will access the data source: `proxy` or `direct`.
+     * The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
      * 
      */
     @Export(name="accessMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> accessMode;
 
     /**
-     * @return The method by which Grafana will access the data source: `proxy` or `direct`.
+     * @return The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
      * 
      */
     public Output<Optional<String>> accessMode() {
         return Codegen.optional(this.accessMode);
     }
     /**
-     * Whether to enable basic auth for the data source.
+     * Whether to enable basic auth for the data source. Defaults to `false`.
      * 
      */
     @Export(name="basicAuthEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> basicAuthEnabled;
 
     /**
-     * @return Whether to enable basic auth for the data source.
+     * @return Whether to enable basic auth for the data source. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> basicAuthEnabled() {
         return Codegen.optional(this.basicAuthEnabled);
     }
     /**
-     * Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-     * 9.0+.
+     * Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana 9.0+.
@@ -62,36 +155,35 @@ public class DataSource extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> basicAuthPassword;
 
     /**
-     * @return Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-     * 9.0+.
+     * @return Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      */
     public Output<Optional<String>> basicAuthPassword() {
         return Codegen.optional(this.basicAuthPassword);
     }
     /**
-     * Basic auth username.
+     * Basic auth username. Defaults to ``.
      * 
      */
     @Export(name="basicAuthUsername", type=String.class, parameters={})
     private Output</* @Nullable */ String> basicAuthUsername;
 
     /**
-     * @return Basic auth username.
+     * @return Basic auth username. Defaults to ``.
      * 
      */
     public Output<Optional<String>> basicAuthUsername() {
         return Codegen.optional(this.basicAuthUsername);
     }
     /**
-     * (Required by some data source types) The name of the database to use on the selected data source server.
+     * (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
      * 
      */
     @Export(name="databaseName", type=String.class, parameters={})
     private Output</* @Nullable */ String> databaseName;
 
     /**
-     * @return (Required by some data source types) The name of the database to use on the selected data source server.
+     * @return (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
      * 
      */
     public Output<Optional<String>> databaseName() {
@@ -112,14 +204,14 @@ public class DataSource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.httpHeaders);
     }
     /**
-     * Whether to set the data source as default. This should only be `true` to a single data source.
+     * Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
      * 
      */
     @Export(name="isDefault", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
-     * @return Whether to set the data source as default. This should only be `true` to a single data source.
+     * @return Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> isDefault() {
@@ -154,8 +246,7 @@ public class DataSource extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-     * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+     * (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
@@ -166,8 +257,7 @@ public class DataSource extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-     * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+     * @return (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      */
     public Output<Optional<String>> password() {
@@ -222,14 +312,14 @@ public class DataSource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.url);
     }
     /**
-     * (Required by some data source types) The username to use to authenticate to the data source.
+     * (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return (Required by some data source types) The username to use to authenticate to the data source.
+     * @return (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
      * 
      */
     public Output<Optional<String>> username() {

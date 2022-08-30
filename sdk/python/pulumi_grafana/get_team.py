@@ -40,6 +40,9 @@ class GetTeamResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Grafana team.
+        """
         return pulumi.get(self, "name")
 
 
@@ -56,7 +59,21 @@ class AwaitableGetTeamResult(GetTeamResult):
 def get_team(name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamResult:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+    * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test = grafana.Team("test", email="test-team-email@test.com")
+    from_name = grafana.get_team_output(name=test.name)
+    ```
+
+
+    :param str name: The name of the Grafana team.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -72,6 +89,20 @@ def get_team(name: Optional[str] = None,
 def get_team_output(name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamResult]:
     """
-    Use this data source to access information about an existing resource.
+    * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-users-and-permissions/manage-teams/)
+    * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_grafana as grafana
+
+    test = grafana.Team("test", email="test-team-email@test.com")
+    from_name = grafana.get_team_output(name=test.name)
+    ```
+
+
+    :param str name: The name of the Grafana team.
     """
     ...

@@ -18,9 +18,15 @@ namespace Pulumi.Grafana.Inputs
         [Input("matcherRegex")]
         public Input<string>? MatcherRegex { get; set; }
 
+        /// <summary>
+        /// A unique name for the data source.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The URL for the data source. The type of URL required varies depending on the chosen data source type.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

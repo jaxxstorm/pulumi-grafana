@@ -10,6 +10,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/users/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.GetOncallUser(ctx, &GetOncallUserArgs{
+//				Username: "alex",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOncallUser(ctx *pulumi.Context, args *GetOncallUserArgs, opts ...pulumi.InvokeOption) (*GetOncallUserResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetOncallUserResult
@@ -22,15 +50,19 @@ func GetOncallUser(ctx *pulumi.Context, args *GetOncallUserArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getOncallUser.
 type GetOncallUserArgs struct {
+	// The username of the user.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getOncallUser.
 type GetOncallUserResult struct {
+	// The email of the user.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Role     string `pulumi:"role"`
+	Id string `pulumi:"id"`
+	// The role of the user.
+	Role string `pulumi:"role"`
+	// The username of the user.
 	Username string `pulumi:"username"`
 }
 
@@ -49,6 +81,7 @@ func GetOncallUserOutput(ctx *pulumi.Context, args GetOncallUserOutputArgs, opts
 
 // A collection of arguments for invoking getOncallUser.
 type GetOncallUserOutputArgs struct {
+	// The username of the user.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -71,6 +104,7 @@ func (o GetOncallUserResultOutput) ToGetOncallUserResultOutputWithContext(ctx co
 	return o
 }
 
+// The email of the user.
 func (o GetOncallUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -80,10 +114,12 @@ func (o GetOncallUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The role of the user.
 func (o GetOncallUserResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallUserResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The username of the user.
 func (o GetOncallUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOncallUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

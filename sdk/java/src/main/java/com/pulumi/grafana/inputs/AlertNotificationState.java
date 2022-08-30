@@ -19,14 +19,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     public static final AlertNotificationState Empty = new AlertNotificationState();
 
     /**
-     * Whether to disable sending resolve messages.
+     * Whether to disable sending resolve messages. Defaults to `false`.
      * 
      */
     @Import(name="disableResolveMessage")
     private @Nullable Output<Boolean> disableResolveMessage;
 
     /**
-     * @return Whether to disable sending resolve messages.
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> disableResolveMessage() {
@@ -34,14 +34,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      * 
      */
     @Import(name="frequency")
     private @Nullable Output<String> frequency;
 
     /**
-     * @return Frequency of alert reminders. Frequency must be set if reminders are enabled.
+     * @return Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -49,14 +49,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is this the default channel for all your alerts.
+     * Is this the default channel for all your alerts. Defaults to `false`.
      * 
      */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
-     * @return Is this the default channel for all your alerts.
+     * @return Is this the default channel for all your alerts. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> isDefault() {
@@ -79,16 +79,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      * 
      */
     @Import(name="secureSettings")
     private @Nullable Output<Map<String,Object>> secureSettings;
 
     /**
-     * @return Additional secure settings, for full reference lookup [Grafana Supported Settings
-     * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+     * @return Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
      * 
      */
     public Optional<Output<Map<String,Object>>> secureSettings() {
@@ -96,14 +94,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether to send reminders for triggered alerts.
+     * Whether to send reminders for triggered alerts. Defaults to `false`.
      * 
      */
     @Import(name="sendReminder")
     private @Nullable Output<Boolean> sendReminder;
 
     /**
-     * @return Whether to send reminders for triggered alerts.
+     * @return Whether to send reminders for triggered alerts. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> sendReminder() {
@@ -111,16 +109,14 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      * 
      */
     @Import(name="settings")
     private @Nullable Output<Map<String,Object>> settings;
 
     /**
-     * @return Additional settings, for full reference see [Grafana HTTP API
-     * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+     * @return Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
      * 
      */
     public Optional<Output<Map<String,Object>>> settings() {
@@ -190,7 +186,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableResolveMessage Whether to disable sending resolve messages.
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -201,7 +197,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disableResolveMessage Whether to disable sending resolve messages.
+         * @param disableResolveMessage Whether to disable sending resolve messages. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -211,7 +207,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param frequency Frequency of alert reminders. Frequency must be set if reminders are enabled.
+         * @param frequency Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
          * 
          * @return builder
          * 
@@ -222,7 +218,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param frequency Frequency of alert reminders. Frequency must be set if reminders are enabled.
+         * @param frequency Frequency of alert reminders. Frequency must be set if reminders are enabled. Defaults to ``.
          * 
          * @return builder
          * 
@@ -232,7 +228,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param isDefault Is this the default channel for all your alerts.
+         * @param isDefault Is this the default channel for all your alerts. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -243,7 +239,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param isDefault Is this the default channel for all your alerts.
+         * @param isDefault Is this the default channel for all your alerts. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -274,8 +270,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secureSettings Additional secure settings, for full reference lookup [Grafana Supported Settings
-         * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+         * @param secureSettings Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
          * 
          * @return builder
          * 
@@ -286,8 +281,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secureSettings Additional secure settings, for full reference lookup [Grafana Supported Settings
-         * documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
+         * @param secureSettings Additional secure settings, for full reference lookup [Grafana Supported Settings documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/#supported-settings).
          * 
          * @return builder
          * 
@@ -297,7 +291,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sendReminder Whether to send reminders for triggered alerts.
+         * @param sendReminder Whether to send reminders for triggered alerts. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -308,7 +302,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sendReminder Whether to send reminders for triggered alerts.
+         * @param sendReminder Whether to send reminders for triggered alerts. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -318,8 +312,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param settings Additional settings, for full reference see [Grafana HTTP API
-         * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+         * @param settings Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
          * 
          * @return builder
          * 
@@ -330,8 +323,7 @@ public final class AlertNotificationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param settings Additional settings, for full reference see [Grafana HTTP API
-         * documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
+         * @param settings Additional settings, for full reference see [Grafana HTTP API documentation](https://grafana.com/docs/grafana/latest/http_api/alerting_notification_channels/).
          * 
          * @return builder
          * 

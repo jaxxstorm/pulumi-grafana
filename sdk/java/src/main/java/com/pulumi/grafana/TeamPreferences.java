@@ -15,6 +15,53 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/preferences/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/team/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.Dashboard;
+ * import com.pulumi.grafana.DashboardArgs;
+ * import com.pulumi.grafana.Team;
+ * import com.pulumi.grafana.TeamPreferences;
+ * import com.pulumi.grafana.TeamPreferencesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var metrics = new Dashboard(&#34;metrics&#34;, DashboardArgs.builder()        
+ *             .configJson(Files.readString(Paths.get(&#34;grafana-dashboard.json&#34;)))
+ *             .build());
+ * 
+ *         var team = new Team(&#34;team&#34;);
+ * 
+ *         var teamPreferences = new TeamPreferences(&#34;teamPreferences&#34;, TeamPreferencesArgs.builder()        
+ *             .teamId(team.id())
+ *             .theme(&#34;dark&#34;)
+ *             .timezone(&#34;browser&#34;)
+ *             .homeDashboardId(metrics.dashboardId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/teamPreferences:TeamPreferences")
 public class TeamPreferences extends com.pulumi.resources.CustomResource {
     /**

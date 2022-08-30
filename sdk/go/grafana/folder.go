@@ -11,6 +11,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testFolderFolder, err := grafana.NewFolder(ctx, "testFolderFolder", &grafana.FolderArgs{
+//				Title: pulumi.String("Terraform Test Folder"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewDashboard(ctx, "testFolderDashboard", &grafana.DashboardArgs{
+//				Folder:     testFolderFolder.ID(),
+//				ConfigJson: pulumi.String(fmt.Sprintf("{\n  \"title\": \"Dashboard in folder\",\n  \"uid\": \"dashboard-in-folder\"\n}\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewFolder(ctx, "testFolderWithUid", &grafana.FolderArgs{
+//				Uid:   pulumi.String("test-folder-uid"),
+//				Title: pulumi.String("Terraform Test Folder With UID"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/folder:Folder by_integer_id {{folder_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/folder:Folder by_uid {{folder_uid}}
+//
+// ```
 type Folder struct {
 	pulumi.CustomResourceState
 

@@ -13,9 +13,17 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFolderArgs Empty = new GetFolderArgs();
 
+    /**
+     * The name of the Grafana folder.
+     * 
+     */
     @Import(name="title", required=true)
     private Output<String> title;
 
+    /**
+     * @return The name of the Grafana folder.
+     * 
+     */
     public Output<String> title() {
         return this.title;
     }
@@ -44,11 +52,23 @@ public final class GetFolderArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFolderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param title The name of the Grafana folder.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(Output<String> title) {
             $.title = title;
             return this;
         }
 
+        /**
+         * @param title The name of the Grafana folder.
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

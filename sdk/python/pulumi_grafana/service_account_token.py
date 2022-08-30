@@ -144,7 +144,25 @@ class ServiceAccountToken(pulumi.CustomResource):
                  service_account_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a ServiceAccountToken resource with the given unique name, props, and options.
+        **Note:** This resource is available only with Grafana 9.1+.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        foo = grafana.ServiceAccountToken("foo", service_account_id=1)
+        bar = grafana.ServiceAccountToken("bar",
+            service_account_id=1,
+            seconds_to_live=30)
+        pulumi.export("serviceAccountTokenFooKeyOnly", foo.key)
+        pulumi.export("serviceAccountTokenBar", bar)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -155,7 +173,25 @@ class ServiceAccountToken(pulumi.CustomResource):
                  args: ServiceAccountTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceAccountToken resource with the given unique name, props, and options.
+        **Note:** This resource is available only with Grafana 9.1+.
+
+        * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+        * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        foo = grafana.ServiceAccountToken("foo", service_account_id=1)
+        bar = grafana.ServiceAccountToken("bar",
+            service_account_id=1,
+            seconds_to_live=30)
+        pulumi.export("serviceAccountTokenFooKeyOnly", foo.key)
+        pulumi.export("serviceAccountTokenBar", bar)
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceAccountTokenArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

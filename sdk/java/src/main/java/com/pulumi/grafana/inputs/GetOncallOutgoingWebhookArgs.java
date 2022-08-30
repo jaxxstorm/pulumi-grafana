@@ -13,9 +13,17 @@ public final class GetOncallOutgoingWebhookArgs extends com.pulumi.resources.Inv
 
     public static final GetOncallOutgoingWebhookArgs Empty = new GetOncallOutgoingWebhookArgs();
 
+    /**
+     * The outgoing webhook name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The outgoing webhook name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -44,11 +52,23 @@ public final class GetOncallOutgoingWebhookArgs extends com.pulumi.resources.Inv
             $ = new GetOncallOutgoingWebhookArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The outgoing webhook name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The outgoing webhook name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

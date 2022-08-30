@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OncallScheduleSlack {
+    /**
+     * @return Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+     * 
+     */
     private @Nullable String channelId;
+    /**
+     * @return Slack user group id. Members of user group will be updated when on-call users change.
+     * 
+     */
     private @Nullable String userGroupId;
 
     private OncallScheduleSlack() {}
+    /**
+     * @return Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
+     * 
+     */
     public Optional<String> channelId() {
         return Optional.ofNullable(this.channelId);
     }
+    /**
+     * @return Slack user group id. Members of user group will be updated when on-call users change.
+     * 
+     */
     public Optional<String> userGroupId() {
         return Optional.ofNullable(this.userGroupId);
     }

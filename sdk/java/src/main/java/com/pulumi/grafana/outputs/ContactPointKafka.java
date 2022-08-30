@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContactPointKafka {
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean disableResolveMessage;
+    /**
+     * @return The URL of the Kafka REST proxy to send requests to.
+     * 
+     */
     private String restProxyUrl;
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,String> settings;
+    /**
+     * @return The name of the Kafka topic to publish to.
+     * 
+     */
     private String topic;
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     private @Nullable String uid;
 
     private ContactPointKafka() {}
+    /**
+     * @return Whether to disable sending resolve messages. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> disableResolveMessage() {
         return Optional.ofNullable(this.disableResolveMessage);
     }
+    /**
+     * @return The URL of the Kafka REST proxy to send requests to.
+     * 
+     */
     public String restProxyUrl() {
         return this.restProxyUrl;
     }
+    /**
+     * @return Additional custom properties to attach to the notifier. Defaults to `map[]`.
+     * 
+     */
     public Map<String,String> settings() {
         return this.settings == null ? Map.of() : this.settings;
     }
+    /**
+     * @return The name of the Kafka topic to publish to.
+     * 
+     */
     public String topic() {
         return this.topic;
     }
+    /**
+     * @return The UID of the contact point.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }

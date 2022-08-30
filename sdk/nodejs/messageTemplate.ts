@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points/message-templating/)
+ * * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#templates)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const myTemplate = new grafana.MessageTemplate("my_template", {
+ *     template: `{{define "My Reusable Template" }}
+ *  template content
+ * {{ end }}`,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/messageTemplate:MessageTemplate message_template_name {{message_template_name}}
+ * ```
+ */
 export class MessageTemplate extends pulumi.CustomResource {
     /**
      * Get an existing MessageTemplate resource's state with the given name, ID, and optional extra

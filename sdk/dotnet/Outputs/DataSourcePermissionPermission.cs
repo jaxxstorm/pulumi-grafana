@@ -13,8 +13,17 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class DataSourcePermissionPermission
     {
+        /// <summary>
+        /// Permission to associate with item. Must be `Query`.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// ID of the team to manage permissions for. Defaults to `0`.
+        /// </summary>
         public readonly int? TeamId;
+        /// <summary>
+        /// ID of the user to manage permissions for. Defaults to `0`.
+        /// </summary>
         public readonly int? UserId;
 
         [OutputConstructor]

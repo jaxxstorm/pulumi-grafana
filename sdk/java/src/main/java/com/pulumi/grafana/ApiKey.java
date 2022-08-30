@@ -15,19 +15,60 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages Grafana API Keys.
+ * 
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/auth/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.ApiKey;
+ * import com.pulumi.grafana.ApiKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new ApiKey(&#34;foo&#34;, ApiKeyArgs.builder()        
+ *             .role(&#34;Viewer&#34;)
+ *             .build());
+ * 
+ *         var bar = new ApiKey(&#34;bar&#34;, ApiKeyArgs.builder()        
+ *             .role(&#34;Admin&#34;)
+ *             .secondsToLive(30)
+ *             .build());
+ * 
+ *         ctx.export(&#34;apiKeyFooKeyOnly&#34;, foo.key());
+ *         ctx.export(&#34;apiKeyBar&#34;, bar);
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/apiKey:ApiKey")
 public class ApiKey extends com.pulumi.resources.CustomResource {
     /**
-     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      * 
      */
     @Export(name="cloudStackSlug", type=String.class, parameters={})
     private Output</* @Nullable */ String> cloudStackSlug;
 
     /**
-     * @return If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a
-     * new stack. **Note**: This requires a cloud token to be configured.
+     * @return If set, the API key will be created for the given Cloud stack. This can be used to bootstrap a management API key for a new stack. **Note**: This requires a cloud token to be configured.
      * 
      */
     public Output<Optional<String>> cloudStackSlug() {

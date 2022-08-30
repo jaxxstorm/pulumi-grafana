@@ -13,15 +13,45 @@ namespace Pulumi.Grafana.Outputs
     [OutputType]
     public sealed class ContactPointSensugo
     {
+        /// <summary>
+        /// The SensuGo API key.
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// The SensuGo check to which the event should be routed.
+        /// </summary>
         public readonly string? Check;
+        /// <summary>
+        /// Whether to disable sending resolve messages. Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResolveMessage;
+        /// <summary>
+        /// The entity being monitored.
+        /// </summary>
         public readonly string? Entity;
+        /// <summary>
+        /// A custom handler to execute in addition to the check.
+        /// </summary>
         public readonly string? Handler;
+        /// <summary>
+        /// Templated message content describing the alert.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// The namespace in which the check resides.
+        /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// Additional custom properties to attach to the notifier. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Settings;
+        /// <summary>
+        /// The UID of the contact point.
+        /// </summary>
         public readonly string? Uid;
+        /// <summary>
+        /// The SensuGo URL to send requests to.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

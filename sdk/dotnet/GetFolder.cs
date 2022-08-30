@@ -11,9 +11,71 @@ namespace Pulumi.Grafana
 {
     public static class GetFolder
     {
+        /// <summary>
+        /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+        /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = new Grafana.Folder("test", new()
+        ///     {
+        ///         Title = "test-folder",
+        ///         Uid = "test-ds-folder-uid",
+        ///     });
+        /// 
+        ///     var fromTitle = Grafana.GetFolder.Invoke(new()
+        ///     {
+        ///         Title = test.Title,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("grafana:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/dashboard-folders/)
+        /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/folder/)
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Grafana = Pulumi.Grafana;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = new Grafana.Folder("test", new()
+        ///     {
+        ///         Title = "test-folder",
+        ///         Uid = "test-ds-folder-uid",
+        ///     });
+        /// 
+        ///     var fromTitle = Grafana.GetFolder.Invoke(new()
+        ///     {
+        ///         Title = test.Title,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("grafana:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +83,9 @@ namespace Pulumi.Grafana
 
     public sealed class GetFolderArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Grafana folder.
+        /// </summary>
         [Input("title", required: true)]
         public string Title { get; set; } = null!;
 
@@ -32,6 +97,9 @@ namespace Pulumi.Grafana
 
     public sealed class GetFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the Grafana folder.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -45,9 +113,21 @@ namespace Pulumi.Grafana
     [OutputType]
     public sealed class GetFolderResult
     {
+        /// <summary>
+        /// The numerical ID of the Grafana folder.
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// The name of the Grafana folder.
+        /// </summary>
         public readonly string Title;
+        /// <summary>
+        /// The uid of the Grafana folder.
+        /// </summary>
         public readonly string Uid;
+        /// <summary>
+        /// The full URL of the folder.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

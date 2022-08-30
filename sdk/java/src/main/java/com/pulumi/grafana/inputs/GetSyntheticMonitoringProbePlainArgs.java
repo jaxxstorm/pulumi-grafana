@@ -12,9 +12,17 @@ public final class GetSyntheticMonitoringProbePlainArgs extends com.pulumi.resou
 
     public static final GetSyntheticMonitoringProbePlainArgs Empty = new GetSyntheticMonitoringProbePlainArgs();
 
+    /**
+     * Name of the probe.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Name of the probe.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetSyntheticMonitoringProbePlainArgs extends com.pulumi.resou
             $ = new GetSyntheticMonitoringProbePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the probe.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

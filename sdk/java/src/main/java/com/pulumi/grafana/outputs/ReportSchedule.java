@@ -12,25 +12,67 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ReportSchedule {
+    /**
+     * @return Custom interval of the report.
+     * **Note:** This field is only available when frequency is set to `custom`.
+     * 
+     */
     private @Nullable String customInterval;
+    /**
+     * @return End time of the report. If empty, the report will be sent indefinitely (according to frequency). Note that times will be saved as UTC in Grafana.
+     * 
+     */
     private @Nullable String endTime;
+    /**
+     * @return Frequency of the report. One of `never`, `once`, `hourly`, `daily`, `weekly`, `monthly` or `custom`.
+     * 
+     */
     private String frequency;
+    /**
+     * @return Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
+     * 
+     */
     private @Nullable String startTime;
+    /**
+     * @return Whether to send the report only on work days. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean workdaysOnly;
 
     private ReportSchedule() {}
+    /**
+     * @return Custom interval of the report.
+     * **Note:** This field is only available when frequency is set to `custom`.
+     * 
+     */
     public Optional<String> customInterval() {
         return Optional.ofNullable(this.customInterval);
     }
+    /**
+     * @return End time of the report. If empty, the report will be sent indefinitely (according to frequency). Note that times will be saved as UTC in Grafana.
+     * 
+     */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
+    /**
+     * @return Frequency of the report. One of `never`, `once`, `hourly`, `daily`, `weekly`, `monthly` or `custom`.
+     * 
+     */
     public String frequency() {
         return this.frequency;
     }
+    /**
+     * @return Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
+     * 
+     */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }
+    /**
+     * @return Whether to send the report only on work days. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> workdaysOnly() {
         return Optional.ofNullable(this.workdaysOnly);
     }

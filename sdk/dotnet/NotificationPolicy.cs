@@ -9,6 +9,135 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/alerting/notifications/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/next/developers/http_api/alerting_provisioning/#notification-policies)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var aContactPoint = new Grafana.ContactPoint("aContactPoint", new()
+    ///     {
+    ///         Emails = new[]
+    ///         {
+    ///             new Grafana.Inputs.ContactPointEmailArgs
+    ///             {
+    ///                 Addresses = new[]
+    ///                 {
+    ///                     "one@company.org",
+    ///                     "two@company.org",
+    ///                 },
+    ///                 Message = "{{ len .Alerts.Firing }} firing.",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var aMuteTiming = new Grafana.MuteTiming("aMuteTiming", new()
+    ///     {
+    ///         Intervals = new[]
+    ///         {
+    ///             new Grafana.Inputs.MuteTimingIntervalArgs
+    ///             {
+    ///                 Weekdays = new[]
+    ///                 {
+    ///                     "monday",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myNotificationPolicy = new Grafana.NotificationPolicy("myNotificationPolicy", new()
+    ///     {
+    ///         GroupBies = new[]
+    ///         {
+    ///             "...",
+    ///         },
+    ///         ContactPoint = aContactPoint.Name,
+    ///         GroupWait = "45s",
+    ///         GroupInterval = "6m",
+    ///         RepeatInterval = "3h",
+    ///         Policies = new[]
+    ///         {
+    ///             new Grafana.Inputs.NotificationPolicyPolicyArgs
+    ///             {
+    ///                 Matchers = new[]
+    ///                 {
+    ///                     new Grafana.Inputs.NotificationPolicyPolicyMatcherArgs
+    ///                     {
+    ///                         Label = "mylabel",
+    ///                         Match = "=",
+    ///                         Value = "myvalue",
+    ///                     },
+    ///                 },
+    ///                 ContactPoint = aContactPoint.Name,
+    ///                 GroupBies = new[]
+    ///                 {
+    ///                     "alertname",
+    ///                 },
+    ///                 Continue = true,
+    ///                 MuteTimings = new[]
+    ///                 {
+    ///                     aMuteTiming.Name,
+    ///                 },
+    ///                 GroupWait = "45s",
+    ///                 GroupInterval = "6m",
+    ///                 RepeatInterval = "3h",
+    ///                 Policies = new[]
+    ///                 {
+    ///                     new Grafana.Inputs.NotificationPolicyPolicyPolicyArgs
+    ///                     {
+    ///                         Matchers = new[]
+    ///                         {
+    ///                             new Grafana.Inputs.NotificationPolicyPolicyPolicyMatcherArgs
+    ///                             {
+    ///                                 Label = "sublabel",
+    ///                                 Match = "=",
+    ///                                 Value = "subvalue",
+    ///                             },
+    ///                         },
+    ///                         ContactPoint = aContactPoint.Name,
+    ///                         GroupBies = new[]
+    ///                         {
+    ///                             "...",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Grafana.Inputs.NotificationPolicyPolicyArgs
+    ///             {
+    ///                 Matchers = new[]
+    ///                 {
+    ///                     new Grafana.Inputs.NotificationPolicyPolicyMatcherArgs
+    ///                     {
+    ///                         Label = "anotherlabel",
+    ///                         Match = "=~",
+    ///                         Value = "another value.*",
+    ///                     },
+    ///                 },
+    ///                 ContactPoint = aContactPoint.Name,
+    ///                 GroupBies = new[]
+    ///                 {
+    ///                     "...",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import grafana:index/notificationPolicy:NotificationPolicy notification_policy_name {{notification_policy_name}}
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/notificationPolicy:NotificationPolicy")]
     public partial class NotificationPolicy : global::Pulumi.CustomResource
     {
@@ -19,8 +148,7 @@ namespace Pulumi.Grafana
         public Output<string> ContactPoint { get; private set; } = null!;
 
         /// <summary>
-        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-        /// effectively disabling grouping.
+        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
         /// </summary>
         [Output("groupBies")]
         public Output<ImmutableArray<string>> GroupBies { get; private set; } = null!;
@@ -106,8 +234,7 @@ namespace Pulumi.Grafana
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-        /// effectively disabling grouping.
+        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -163,8 +290,7 @@ namespace Pulumi.Grafana
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels,
-        /// effectively disabling grouping.
+        /// A list of alert labels to group alerts into notifications by. Use the special label `...` to group alerts by all labels, effectively disabling grouping.
         /// </summary>
         public InputList<string> GroupBies
         {

@@ -12,15 +12,27 @@ namespace Pulumi.Grafana.Inputs
 
     public sealed class FolderPermissionPermissionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Permission to associate with item. Must be one of `View`, `Edit`, or `Admin`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Manage permissions for `Viewer` or `Editor` roles.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// ID of the team to manage permissions for. Defaults to `0`.
+        /// </summary>
         [Input("teamId")]
         public Input<int>? TeamId { get; set; }
 
+        /// <summary>
+        /// ID of the user to manage permissions for. Defaults to `0`.
+        /// </summary>
         [Input("userId")]
         public Input<int>? UserId { get; set; }
 

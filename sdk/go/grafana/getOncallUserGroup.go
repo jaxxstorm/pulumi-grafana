@@ -10,6 +10,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/user_groups/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.GetOncallUserGroup(ctx, &GetOncallUserGroupArgs{
+//				SlackHandle: "example_slack_handle",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOncallUserGroup(ctx *pulumi.Context, args *GetOncallUserGroupArgs, opts ...pulumi.InvokeOption) (*GetOncallUserGroupResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetOncallUserGroupResult

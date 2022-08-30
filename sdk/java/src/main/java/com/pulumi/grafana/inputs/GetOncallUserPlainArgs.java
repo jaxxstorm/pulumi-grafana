@@ -12,9 +12,17 @@ public final class GetOncallUserPlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetOncallUserPlainArgs Empty = new GetOncallUserPlainArgs();
 
+    /**
+     * The username of the user.
+     * 
+     */
     @Import(name="username", required=true)
     private String username;
 
+    /**
+     * @return The username of the user.
+     * 
+     */
     public String username() {
         return this.username;
     }
@@ -43,6 +51,12 @@ public final class GetOncallUserPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetOncallUserPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param username The username of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             $.username = username;
             return this;

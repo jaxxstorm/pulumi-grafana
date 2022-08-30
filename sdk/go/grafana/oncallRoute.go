@@ -11,6 +11,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleSlackChannel, err := grafana.GetOncallSlackChannel(ctx, &GetOncallSlackChannelArgs{
+//				Name: "example_slack_channel",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewOncallEscalationChain(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleIntegration, err := grafana.NewOncallIntegration(ctx, "exampleIntegration", &grafana.OncallIntegrationArgs{
+//				Type: pulumi.String("grafana"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = grafana.NewOncallRoute(ctx, "exampleRoute", &grafana.OncallRouteArgs{
+//				IntegrationId:     exampleIntegration.ID(),
+//				EscalationChainId: _default.ID(),
+//				RoutingRegex:      pulumi.String("us-(east|west)"),
+//				Position:          pulumi.Int(0),
+//				Slack: &OncallRouteSlackArgs{
+//					ChannelId: pulumi.String(exampleSlackChannel.SlackId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+//
+// ```
 type OncallRoute struct {
 	pulumi.CustomResourceState
 

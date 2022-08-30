@@ -19,37 +19,77 @@ public final class SyntheticMonitoringCheckSettingsArgs extends com.pulumi.resou
 
     public static final SyntheticMonitoringCheckSettingsArgs Empty = new SyntheticMonitoringCheckSettingsArgs();
 
+    /**
+     * Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<SyntheticMonitoringCheckSettingsDnsArgs> dns;
 
+    /**
+     * @return Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+     * 
+     */
     public Optional<Output<SyntheticMonitoringCheckSettingsDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * Settings for HTTP check. The target must be a URL (http or https).
+     * 
+     */
     @Import(name="http")
     private @Nullable Output<SyntheticMonitoringCheckSettingsHttpArgs> http;
 
+    /**
+     * @return Settings for HTTP check. The target must be a URL (http or https).
+     * 
+     */
     public Optional<Output<SyntheticMonitoringCheckSettingsHttpArgs>> http() {
         return Optional.ofNullable(this.http);
     }
 
+    /**
+     * Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+     * 
+     */
     @Import(name="ping")
     private @Nullable Output<SyntheticMonitoringCheckSettingsPingArgs> ping;
 
+    /**
+     * @return Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+     * 
+     */
     public Optional<Output<SyntheticMonitoringCheckSettingsPingArgs>> ping() {
         return Optional.ofNullable(this.ping);
     }
 
+    /**
+     * Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+     * 
+     */
     @Import(name="tcp")
     private @Nullable Output<SyntheticMonitoringCheckSettingsTcpArgs> tcp;
 
+    /**
+     * @return Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+     * 
+     */
     public Optional<Output<SyntheticMonitoringCheckSettingsTcpArgs>> tcp() {
         return Optional.ofNullable(this.tcp);
     }
 
+    /**
+     * Settings for traceroute check. The target must be a valid hostname or IP address
+     * 
+     */
     @Import(name="traceroute")
     private @Nullable Output<SyntheticMonitoringCheckSettingsTracerouteArgs> traceroute;
 
+    /**
+     * @return Settings for traceroute check. The target must be a valid hostname or IP address
+     * 
+     */
     public Optional<Output<SyntheticMonitoringCheckSettingsTracerouteArgs>> traceroute() {
         return Optional.ofNullable(this.traceroute);
     }
@@ -82,47 +122,107 @@ public final class SyntheticMonitoringCheckSettingsArgs extends com.pulumi.resou
             $ = new SyntheticMonitoringCheckSettingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dns Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<SyntheticMonitoringCheckSettingsDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns Settings for DNS check. The target must be a valid hostname (or IP address for `PTR` records).
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(SyntheticMonitoringCheckSettingsDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param http Settings for HTTP check. The target must be a URL (http or https).
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(@Nullable Output<SyntheticMonitoringCheckSettingsHttpArgs> http) {
             $.http = http;
             return this;
         }
 
+        /**
+         * @param http Settings for HTTP check. The target must be a URL (http or https).
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(SyntheticMonitoringCheckSettingsHttpArgs http) {
             return http(Output.of(http));
         }
 
+        /**
+         * @param ping Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ping(@Nullable Output<SyntheticMonitoringCheckSettingsPingArgs> ping) {
             $.ping = ping;
             return this;
         }
 
+        /**
+         * @param ping Settings for ping (ICMP) check. The target must be a valid hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ping(SyntheticMonitoringCheckSettingsPingArgs ping) {
             return ping(Output.of(ping));
         }
 
+        /**
+         * @param tcp Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tcp(@Nullable Output<SyntheticMonitoringCheckSettingsTcpArgs> tcp) {
             $.tcp = tcp;
             return this;
         }
 
+        /**
+         * @param tcp Settings for TCP check. The target must be of the form `&lt;host&gt;:&lt;port&gt;`, where the host portion must be a valid hostname or IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tcp(SyntheticMonitoringCheckSettingsTcpArgs tcp) {
             return tcp(Output.of(tcp));
         }
 
+        /**
+         * @param traceroute Settings for traceroute check. The target must be a valid hostname or IP address
+         * 
+         * @return builder
+         * 
+         */
         public Builder traceroute(@Nullable Output<SyntheticMonitoringCheckSettingsTracerouteArgs> traceroute) {
             $.traceroute = traceroute;
             return this;
         }
 
+        /**
+         * @param traceroute Settings for traceroute check. The target must be a valid hostname or IP address
+         * 
+         * @return builder
+         * 
+         */
         public Builder traceroute(SyntheticMonitoringCheckSettingsTracerouteArgs traceroute) {
             return traceroute(Output.of(traceroute));
         }

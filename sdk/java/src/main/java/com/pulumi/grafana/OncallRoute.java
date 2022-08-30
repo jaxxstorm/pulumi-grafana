@@ -16,6 +16,68 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/routes/)
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.grafana.GrafanaFunctions;
+ * import com.pulumi.grafana.inputs.GetOncallSlackChannelArgs;
+ * import com.pulumi.grafana.OncallEscalationChain;
+ * import com.pulumi.grafana.OncallIntegration;
+ * import com.pulumi.grafana.OncallIntegrationArgs;
+ * import com.pulumi.grafana.OncallRoute;
+ * import com.pulumi.grafana.OncallRouteArgs;
+ * import com.pulumi.grafana.inputs.OncallRouteSlackArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleSlackChannel = GrafanaFunctions.getOncallSlackChannel(GetOncallSlackChannelArgs.builder()
+ *             .name(&#34;example_slack_channel&#34;)
+ *             .build());
+ * 
+ *         var default_ = new OncallEscalationChain(&#34;default&#34;);
+ * 
+ *         var exampleIntegration = new OncallIntegration(&#34;exampleIntegration&#34;, OncallIntegrationArgs.builder()        
+ *             .type(&#34;grafana&#34;)
+ *             .build());
+ * 
+ *         var exampleRoute = new OncallRoute(&#34;exampleRoute&#34;, OncallRouteArgs.builder()        
+ *             .integrationId(exampleIntegration.id())
+ *             .escalationChainId(default_.id())
+ *             .routingRegex(&#34;us-(east|west)&#34;)
+ *             .position(0)
+ *             .slack(OncallRouteSlackArgs.builder()
+ *                 .channelId(exampleSlackChannel.applyValue(getOncallSlackChannelResult -&gt; getOncallSlackChannelResult.slackId()))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import grafana:index/oncallRoute:OncallRoute route_name {{route_id}}
+ * ```
+ * 
+ */
 @ResourceType(type="grafana:index/oncallRoute:OncallRoute")
 public class OncallRoute extends com.pulumi.resources.CustomResource {
     /**

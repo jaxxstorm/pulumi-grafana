@@ -9,6 +9,10 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/dashboards/playlist/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/playlist/)
+    /// </summary>
     [GrafanaResourceType("grafana:index/playlist:Playlist")]
     public partial class Playlist : global::Pulumi.CustomResource
     {

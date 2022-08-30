@@ -4,6 +4,37 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * * [Official documentation](https://grafana.com/docs/grafana/latest/administration/manage-organizations/)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/org/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const test = new grafana.Organization("test", {
+ *     adminUser: "admin",
+ *     admins: ["admin@example.com"],
+ *     createUsers: true,
+ *     editors: [
+ *         "editor-01@example.com",
+ *         "editor-02@example.com",
+ *     ],
+ *     viewers: [
+ *         "viewer-01@example.com",
+ *         "viewer-02@example.com",
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/organization:Organization org_name {{org_id}}
+ * ```
+ */
 export class Organization extends pulumi.CustomResource {
     /**
      * Get an existing Organization resource's state with the given name, ID, and optional extra
@@ -39,20 +70,25 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly adminUser!: pulumi.Output<string | undefined>;
     /**
-     * A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     public readonly admins!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether or not to create Grafana users specified in the organization's membership if they don't already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * Whether or not to create Grafana users specified in the organization's
+     * membership if they don't already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      */
     public readonly createUsers!: pulumi.Output<boolean | undefined>;
     /**
-     * A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     public readonly editors!: pulumi.Output<string[] | undefined>;
     /**
@@ -64,8 +100,9 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly orgId!: pulumi.Output<number>;
     /**
-     * A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     public readonly viewers!: pulumi.Output<string[] | undefined>;
 
@@ -115,20 +152,25 @@ export interface OrganizationState {
      */
     adminUser?: pulumi.Input<string>;
     /**
-     * A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     admins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not to create Grafana users specified in the organization's membership if they don't already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * Whether or not to create Grafana users specified in the organization's
+     * membership if they don't already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      */
     createUsers?: pulumi.Input<boolean>;
     /**
-     * A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     editors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -140,8 +182,9 @@ export interface OrganizationState {
      */
     orgId?: pulumi.Input<number>;
     /**
-     * A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     viewers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -157,20 +200,25 @@ export interface OrganizationArgs {
      */
     adminUser?: pulumi.Input<string>;
     /**
-     * A list of email addresses corresponding to users who should be given admin access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given admin
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     admins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not to create Grafana users specified in the organization's membership if they don't already exist in
-     * Grafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set
-     * to the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any
-     * users that do not already exist in Grafana.
+     * Whether or not to create Grafana users specified in the organization's
+     * membership if they don't already exist in Grafana. If unspecified, this
+     * parameter defaults to true, creating placeholder users with the name, login,
+     * and email set to the email of the user, and a random password. Setting this
+     * option to false will cause an error to be thrown for any users that do not
+     * already exist in Grafana.
+     * Defaults to `true`.
      */
     createUsers?: pulumi.Input<boolean>;
     /**
-     * A list of email addresses corresponding to users who should be given editor access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given editor
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     editors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -178,8 +226,9 @@ export interface OrganizationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users
-     * specified here must already exist in Grafana unless 'create_users' is set to true.
+     * A list of email addresses corresponding to users who should be given viewer
+     * access to the organization. Note: users specified here must already exist in
+     * Grafana unless 'create_users' is set to true.
      */
     viewers?: pulumi.Input<pulumi.Input<string>[]>;
 }

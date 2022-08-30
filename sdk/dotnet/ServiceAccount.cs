@@ -9,11 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// **Note:** This resource is available only with Grafana 9.1+.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/administration/service-accounts/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/serviceaccount/#service-account-api)
+    /// </summary>
     [GrafanaResourceType("grafana:index/serviceAccount:ServiceAccount")]
     public partial class ServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The disabled status for the service account.
+        /// The disabled status for the service account. Defaults to `false`.
         /// </summary>
         [Output("isDisabled")]
         public Output<bool?> IsDisabled { get; private set; } = null!;
@@ -78,7 +84,7 @@ namespace Pulumi.Grafana
     public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The disabled status for the service account.
+        /// The disabled status for the service account. Defaults to `false`.
         /// </summary>
         [Input("isDisabled")]
         public Input<bool>? IsDisabled { get; set; }
@@ -104,7 +110,7 @@ namespace Pulumi.Grafana
     public sealed class ServiceAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The disabled status for the service account.
+        /// The disabled status for the service account. Defaults to `false`.
         /// </summary>
         [Input("isDisabled")]
         public Input<bool>? IsDisabled { get; set; }

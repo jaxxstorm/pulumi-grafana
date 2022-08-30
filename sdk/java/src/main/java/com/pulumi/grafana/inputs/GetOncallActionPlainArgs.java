@@ -12,9 +12,17 @@ public final class GetOncallActionPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetOncallActionPlainArgs Empty = new GetOncallActionPlainArgs();
 
+    /**
+     * The action name.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The action name.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,6 +51,12 @@ public final class GetOncallActionPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetOncallActionPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The action name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

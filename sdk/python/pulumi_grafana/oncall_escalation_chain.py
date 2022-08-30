@@ -100,7 +100,23 @@ class OncallEscalationChain(pulumi.CustomResource):
                  team_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a OncallEscalationChain resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        default = grafana.OncallEscalationChain("default", opts=pulumi.ResourceOptions(provider=grafana["oncall"]))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the escalation chain.
@@ -113,7 +129,23 @@ class OncallEscalationChain(pulumi.CustomResource):
                  args: Optional[OncallEscalationChainArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OncallEscalationChain resource with the given unique name, props, and options.
+        * [HTTP API](https://grafana.com/docs/grafana-cloud/oncall/oncall-api-reference/escalation_chains/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_grafana as grafana
+
+        default = grafana.OncallEscalationChain("default", opts=pulumi.ResourceOptions(provider=grafana["oncall"]))
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import grafana:index/oncallEscalationChain:OncallEscalationChain escalation_chain_name {{escalation_chain_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param OncallEscalationChainArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

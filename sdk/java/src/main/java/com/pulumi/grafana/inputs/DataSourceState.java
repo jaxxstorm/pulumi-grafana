@@ -21,14 +21,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     public static final DataSourceState Empty = new DataSourceState();
 
     /**
-     * The method by which Grafana will access the data source: `proxy` or `direct`.
+     * The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
      * 
      */
     @Import(name="accessMode")
     private @Nullable Output<String> accessMode;
 
     /**
-     * @return The method by which Grafana will access the data source: `proxy` or `direct`.
+     * @return The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
      * 
      */
     public Optional<Output<String>> accessMode() {
@@ -36,14 +36,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable basic auth for the data source.
+     * Whether to enable basic auth for the data source. Defaults to `false`.
      * 
      */
     @Import(name="basicAuthEnabled")
     private @Nullable Output<Boolean> basicAuthEnabled;
 
     /**
-     * @return Whether to enable basic auth for the data source.
+     * @return Whether to enable basic auth for the data source. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> basicAuthEnabled() {
@@ -51,8 +51,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-     * 9.0+.
+     * Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana 9.0+.
@@ -63,8 +62,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> basicAuthPassword;
 
     /**
-     * @return Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-     * 9.0+.
+     * @return Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana 9.0+.
@@ -76,14 +74,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Basic auth username.
+     * Basic auth username. Defaults to ``.
      * 
      */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
     /**
-     * @return Basic auth username.
+     * @return Basic auth username. Defaults to ``.
      * 
      */
     public Optional<Output<String>> basicAuthUsername() {
@@ -91,14 +89,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required by some data source types) The name of the database to use on the selected data source server.
+     * (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return (Required by some data source types) The name of the database to use on the selected data source server.
+     * @return (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -121,14 +119,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to set the data source as default. This should only be `true` to a single data source.
+     * Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
      * 
      */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
-     * @return Whether to set the data source as default. This should only be `true` to a single data source.
+     * @return Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> isDefault() {
@@ -166,8 +164,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-     * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+     * (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
@@ -178,8 +175,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> password;
 
     /**
-     * @return (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-     * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+     * @return (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
      * 
      * @deprecated
      * Use secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
@@ -243,14 +239,14 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required by some data source types) The username to use to authenticate to the data source.
+     * (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return (Required by some data source types) The username to use to authenticate to the data source.
+     * @return (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
      * 
      */
     public Optional<Output<String>> username() {
@@ -296,7 +292,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The method by which Grafana will access the data source: `proxy` or `direct`.
+         * @param accessMode The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
          * 
          * @return builder
          * 
@@ -307,7 +303,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessMode The method by which Grafana will access the data source: `proxy` or `direct`.
+         * @param accessMode The method by which Grafana will access the data source: `proxy` or `direct`. Defaults to `proxy`.
          * 
          * @return builder
          * 
@@ -317,7 +313,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthEnabled Whether to enable basic auth for the data source.
+         * @param basicAuthEnabled Whether to enable basic auth for the data source. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -328,7 +324,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthEnabled Whether to enable basic auth for the data source.
+         * @param basicAuthEnabled Whether to enable basic auth for the data source. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -338,8 +334,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthPassword Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-         * 9.0+.
+         * @param basicAuthPassword Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
          * 
          * @return builder
          * 
@@ -354,8 +349,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthPassword Basic auth password. Deprecated: Use secure_json_data.basic_auth_password instead. This attribute is removed in Grafana
-         * 9.0+.
+         * @param basicAuthPassword Basic auth password. Deprecated: Use secure*json*data.basic*auth*password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
          * 
          * @return builder
          * 
@@ -369,7 +363,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthUsername Basic auth username.
+         * @param basicAuthUsername Basic auth username. Defaults to ``.
          * 
          * @return builder
          * 
@@ -380,7 +374,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basicAuthUsername Basic auth username.
+         * @param basicAuthUsername Basic auth username. Defaults to ``.
          * 
          * @return builder
          * 
@@ -390,7 +384,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName (Required by some data source types) The name of the database to use on the selected data source server.
+         * @param databaseName (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
          * 
          * @return builder
          * 
@@ -401,7 +395,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName (Required by some data source types) The name of the database to use on the selected data source server.
+         * @param databaseName (Required by some data source types) The name of the database to use on the selected data source server. Defaults to ``.
          * 
          * @return builder
          * 
@@ -432,7 +426,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isDefault Whether to set the data source as default. This should only be `true` to a single data source.
+         * @param isDefault Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -443,7 +437,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isDefault Whether to set the data source as default. This should only be `true` to a single data source.
+         * @param isDefault Whether to set the data source as default. This should only be `true` to a single data source. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -505,8 +499,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-         * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+         * @param password (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
          * 
          * @return builder
          * 
@@ -521,8 +514,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use
-         * secure_json_data.password instead. This attribute is removed in Grafana 9.0+.
+         * @param password (Required by some data source types) The password to use to authenticate to the data source. Deprecated: Use secure*json*data.password instead. This attribute is removed in Grafana 9.0+. Defaults to ``.
          * 
          * @return builder
          * 
@@ -612,7 +604,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username (Required by some data source types) The username to use to authenticate to the data source.
+         * @param username (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
          * 
          * @return builder
          * 
@@ -623,7 +615,7 @@ public final class DataSourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username (Required by some data source types) The username to use to authenticate to the data source.
+         * @param username (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
          * 
          * @return builder
          * 

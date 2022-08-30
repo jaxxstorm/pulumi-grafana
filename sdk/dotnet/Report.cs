@@ -9,6 +9,47 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Grafana
 {
+    /// <summary>
+    /// **Note:** This resource is available only with Grafana Enterprise 7.+.
+    /// 
+    /// * [Official documentation](https://grafana.com/docs/grafana/latest/enterprise/reporting/)
+    /// * [HTTP API](https://grafana.com/docs/grafana/latest/http_api/reporting/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Grafana = Pulumi.Grafana;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testDashboard = new Grafana.Dashboard("testDashboard", new()
+    ///     {
+    ///         ConfigJson = @"{
+    ///   ""title"": ""Dashboard for report"",
+    ///   ""uid"": ""report""
+    /// }
+    /// ",
+    ///         Message = "inital commit.",
+    ///     });
+    /// 
+    ///     var testReport = new Grafana.Report("testReport", new()
+    ///     {
+    ///         DashboardId = testDashboard.DashboardId,
+    ///         Recipients = new[]
+    ///         {
+    ///             "some@email.com",
+    ///         },
+    ///         Schedule = new Grafana.Inputs.ReportScheduleArgs
+    ///         {
+    ///             Frequency = "hourly",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [GrafanaResourceType("grafana:index/report:Report")]
     public partial class Report : global::Pulumi.CustomResource
     {
@@ -19,19 +60,19 @@ namespace Pulumi.Grafana
         public Output<int> DashboardId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to include a link to the dashboard in the report.
+        /// Whether to include a link to the dashboard in the report. Defaults to `true`.
         /// </summary>
         [Output("includeDashboardLink")]
         public Output<bool?> IncludeDashboardLink { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to include a CSV file of table panel data.
+        /// Whether to include a CSV file of table panel data. Defaults to `false`.
         /// </summary>
         [Output("includeTableCsv")]
         public Output<bool?> IncludeTableCsv { get; private set; } = null!;
 
         /// <summary>
-        /// Layout of the report. `simple` or `grid`
+        /// Layout of the report. `simple` or `grid` Defaults to `grid`.
         /// </summary>
         [Output("layout")]
         public Output<string?> Layout { get; private set; } = null!;
@@ -49,7 +90,7 @@ namespace Pulumi.Grafana
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Orientation of the report. `landscape` or `portrait`
+        /// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
         /// </summary>
         [Output("orientation")]
         public Output<string?> Orientation { get; private set; } = null!;
@@ -132,19 +173,19 @@ namespace Pulumi.Grafana
         public Input<int> DashboardId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to include a link to the dashboard in the report.
+        /// Whether to include a link to the dashboard in the report. Defaults to `true`.
         /// </summary>
         [Input("includeDashboardLink")]
         public Input<bool>? IncludeDashboardLink { get; set; }
 
         /// <summary>
-        /// Whether to include a CSV file of table panel data.
+        /// Whether to include a CSV file of table panel data. Defaults to `false`.
         /// </summary>
         [Input("includeTableCsv")]
         public Input<bool>? IncludeTableCsv { get; set; }
 
         /// <summary>
-        /// Layout of the report. `simple` or `grid`
+        /// Layout of the report. `simple` or `grid` Defaults to `grid`.
         /// </summary>
         [Input("layout")]
         public Input<string>? Layout { get; set; }
@@ -162,7 +203,7 @@ namespace Pulumi.Grafana
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Orientation of the report. `landscape` or `portrait`
+        /// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -212,19 +253,19 @@ namespace Pulumi.Grafana
         public Input<int>? DashboardId { get; set; }
 
         /// <summary>
-        /// Whether to include a link to the dashboard in the report.
+        /// Whether to include a link to the dashboard in the report. Defaults to `true`.
         /// </summary>
         [Input("includeDashboardLink")]
         public Input<bool>? IncludeDashboardLink { get; set; }
 
         /// <summary>
-        /// Whether to include a CSV file of table panel data.
+        /// Whether to include a CSV file of table panel data. Defaults to `false`.
         /// </summary>
         [Input("includeTableCsv")]
         public Input<bool>? IncludeTableCsv { get; set; }
 
         /// <summary>
-        /// Layout of the report. `simple` or `grid`
+        /// Layout of the report. `simple` or `grid` Defaults to `grid`.
         /// </summary>
         [Input("layout")]
         public Input<string>? Layout { get; set; }
@@ -242,7 +283,7 @@ namespace Pulumi.Grafana
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Orientation of the report. `landscape` or `portrait`
+        /// Orientation of the report. `landscape` or `portrait` Defaults to `landscape`.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }

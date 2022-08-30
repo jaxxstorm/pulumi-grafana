@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Manages Grafana Alerting contact points.
+ *
+ * * [Official documentation](https://grafana.com/docs/grafana/next/alerting/contact-points)
+ * * [HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/alerting_provisioning/#contact-points)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as grafana from "@pulumi/grafana";
+ *
+ * const myContactPoint = new grafana.ContactPoint("my_contact_point", {
+ *     emails: [{
+ *         addresses: [
+ *             "one@company.org",
+ *             "two@company.org",
+ *         ],
+ *         disableResolveMessage: false,
+ *         message: "{{ len .Alerts.Firing }} firing.",
+ *         singleEmail: true,
+ *         subject: "{{ template \"default.title\" .}}",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import grafana:index/contactPoint:ContactPoint contact_point_name {{contact_point_name}}
+ * ```
+ */
 export class ContactPoint extends pulumi.CustomResource {
     /**
      * Get an existing ContactPoint resource's state with the given name, ID, and optional extra
@@ -98,8 +130,7 @@ export class ContactPoint extends pulumi.CustomResource {
      */
     public readonly victorops!: pulumi.Output<outputs.ContactPointVictorop[] | undefined>;
     /**
-     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      */
     public readonly webhooks!: pulumi.Output<outputs.ContactPointWebhook[] | undefined>;
     /**
@@ -233,8 +264,7 @@ export interface ContactPointState {
      */
     victorops?: pulumi.Input<pulumi.Input<inputs.ContactPointVictorop>[]>;
     /**
-     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      */
     webhooks?: pulumi.Input<pulumi.Input<inputs.ContactPointWebhook>[]>;
     /**
@@ -312,8 +342,7 @@ export interface ContactPointArgs {
      */
     victorops?: pulumi.Input<pulumi.Input<inputs.ContactPointVictorop>[]>;
     /**
-     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here:
-     * https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+     * A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
      */
     webhooks?: pulumi.Input<pulumi.Input<inputs.ContactPointWebhook>[]>;
     /**

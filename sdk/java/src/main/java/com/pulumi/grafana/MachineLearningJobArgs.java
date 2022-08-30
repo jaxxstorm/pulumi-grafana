@@ -64,16 +64,14 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-     * for the full list of available hyperparameters.
+     * The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
      * 
      */
     @Import(name="hyperParams")
     private @Nullable Output<Map<String,Object>> hyperParams;
 
     /**
-     * @return The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-     * for the full list of available hyperparameters.
+     * @return The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
      * 
      */
     public Optional<Output<Map<String,Object>>> hyperParams() {
@@ -81,14 +79,14 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The data interval in seconds to train the data on.
+     * The data interval in seconds to train the data on. Defaults to `300`.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The data interval in seconds to train the data on.
+     * @return The data interval in seconds to train the data on. Defaults to `300`.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -141,14 +139,14 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The data interval in seconds to train the data on.
+     * The data interval in seconds to train the data on. Defaults to `7776000`.
      * 
      */
     @Import(name="trainingWindow")
     private @Nullable Output<Integer> trainingWindow;
 
     /**
-     * @return The data interval in seconds to train the data on.
+     * @return The data interval in seconds to train the data on. Defaults to `7776000`.
      * 
      */
     public Optional<Output<Integer>> trainingWindow() {
@@ -251,8 +249,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hyperParams The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-         * for the full list of available hyperparameters.
+         * @param hyperParams The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
          * 
          * @return builder
          * 
@@ -263,8 +260,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hyperParams The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/
-         * for the full list of available hyperparameters.
+         * @param hyperParams The hyperparameters used to fine tune the algorithm. See https://grafana.com/docs/grafana-cloud/machine-learning/models/ for the full list of available hyperparameters. Defaults to `map[]`.
          * 
          * @return builder
          * 
@@ -274,7 +270,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interval The data interval in seconds to train the data on.
+         * @param interval The data interval in seconds to train the data on. Defaults to `300`.
          * 
          * @return builder
          * 
@@ -285,7 +281,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interval The data interval in seconds to train the data on.
+         * @param interval The data interval in seconds to train the data on. Defaults to `300`.
          * 
          * @return builder
          * 
@@ -358,7 +354,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param trainingWindow The data interval in seconds to train the data on.
+         * @param trainingWindow The data interval in seconds to train the data on. Defaults to `7776000`.
          * 
          * @return builder
          * 
@@ -369,7 +365,7 @@ public final class MachineLearningJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param trainingWindow The data interval in seconds to train the data on.
+         * @param trainingWindow The data interval in seconds to train the data on. Defaults to `7776000`.
          * 
          * @return builder
          * 

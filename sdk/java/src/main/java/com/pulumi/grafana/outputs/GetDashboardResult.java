@@ -13,28 +13,76 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDashboardResult {
+    /**
+     * @return The complete dashboard model JSON.
+     * 
+     */
     private String configJson;
+    /**
+     * @return The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+     * 
+     */
     private @Nullable Integer dashboardId;
+    /**
+     * @return The numerical ID of the folder where the Grafana dashboard is found.
+     * 
+     */
     private Integer folder;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Whether or not the Grafana dashboard is starred. Starred Dashboards will show up on your own Home Dashboard by default, and are a convenient way to mark Dashboards that you’re interested in.
+     * 
+     */
     private Boolean isStarred;
+    /**
+     * @return URL slug of the dashboard (deprecated).
+     * 
+     */
     private String slug;
+    /**
+     * @return The title of the Grafana dashboard.
+     * 
+     */
     private String title;
+    /**
+     * @return The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+     * 
+     */
     private @Nullable String uid;
+    /**
+     * @return The full URL of the dashboard.
+     * 
+     */
     private String url;
+    /**
+     * @return The numerical version of the Grafana dashboard.
+     * 
+     */
     private Integer version;
 
     private GetDashboardResult() {}
+    /**
+     * @return The complete dashboard model JSON.
+     * 
+     */
     public String configJson() {
         return this.configJson;
     }
+    /**
+     * @return The numerical ID of the Grafana dashboard. Specify either this or `uid`. Defaults to `-1`.
+     * 
+     */
     public Optional<Integer> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
+    /**
+     * @return The numerical ID of the folder where the Grafana dashboard is found.
+     * 
+     */
     public Integer folder() {
         return this.folder;
     }
@@ -45,21 +93,45 @@ public final class GetDashboardResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether or not the Grafana dashboard is starred. Starred Dashboards will show up on your own Home Dashboard by default, and are a convenient way to mark Dashboards that you’re interested in.
+     * 
+     */
     public Boolean isStarred() {
         return this.isStarred;
     }
+    /**
+     * @return URL slug of the dashboard (deprecated).
+     * 
+     */
     public String slug() {
         return this.slug;
     }
+    /**
+     * @return The title of the Grafana dashboard.
+     * 
+     */
     public String title() {
         return this.title;
     }
+    /**
+     * @return The uid of the Grafana dashboard. Specify either this or `dashboard_id`. Defaults to ``.
+     * 
+     */
     public Optional<String> uid() {
         return Optional.ofNullable(this.uid);
     }
+    /**
+     * @return The full URL of the dashboard.
+     * 
+     */
     public String url() {
         return this.url;
     }
+    /**
+     * @return The numerical version of the Grafana dashboard.
+     * 
+     */
     public Integer version() {
         return this.version;
     }

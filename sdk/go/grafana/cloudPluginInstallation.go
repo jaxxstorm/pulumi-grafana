@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages Grafana Cloud Plugin Installations.
+//
+// * [Plugin Catalog](https://grafana.com/grafana/plugins/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-grafana/sdk/go/grafana"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := grafana.NewCloudPluginInstallation(ctx, "test", &grafana.CloudPluginInstallationArgs{
+//				Slug:      pulumi.String("some-plugin"),
+//				StackSlug: pulumi.String("stackname"),
+//				Version:   pulumi.String("1.2.3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import grafana:index/cloudPluginInstallation:CloudPluginInstallation plugin_name {{stack_slug}}_{{plugin_slug}}
+//
+// ```
 type CloudPluginInstallation struct {
 	pulumi.CustomResourceState
 

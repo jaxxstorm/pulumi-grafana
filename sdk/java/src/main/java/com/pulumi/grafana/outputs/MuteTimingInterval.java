@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MuteTimingInterval {
+    /**
+     * @return An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+     * 
+     */
     private @Nullable List<String> daysOfMonths;
+    /**
+     * @return An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+     * 
+     */
     private @Nullable List<String> months;
+    /**
+     * @return The time ranges, represented in minutes, during which to mute in a given day.
+     * 
+     */
     private @Nullable List<MuteTimingIntervalTime> times;
+    /**
+     * @return An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+     * 
+     */
     private @Nullable List<String> weekdays;
+    /**
+     * @return A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+     * 
+     */
     private @Nullable List<String> years;
 
     private MuteTimingInterval() {}
+    /**
+     * @return An inclusive range of days, 1-31, within a month, e.g. &#34;1&#34; or &#34;14:16&#34;. Negative values can be used to represent days counting from the end of a month, e.g. &#34;-1&#34;.
+     * 
+     */
     public List<String> daysOfMonths() {
         return this.daysOfMonths == null ? List.of() : this.daysOfMonths;
     }
+    /**
+     * @return An inclusive range of months, either numerical or full calendar month, e.g. &#34;1:3&#34;, &#34;december&#34;, or &#34;may:august&#34;.
+     * 
+     */
     public List<String> months() {
         return this.months == null ? List.of() : this.months;
     }
+    /**
+     * @return The time ranges, represented in minutes, during which to mute in a given day.
+     * 
+     */
     public List<MuteTimingIntervalTime> times() {
         return this.times == null ? List.of() : this.times;
     }
+    /**
+     * @return An inclusive range of weekdays, e.g. &#34;monday&#34; or &#34;tuesday:thursday&#34;.
+     * 
+     */
     public List<String> weekdays() {
         return this.weekdays == null ? List.of() : this.weekdays;
     }
+    /**
+     * @return A positive inclusive range of years, e.g. &#34;2030&#34; or &#34;2025:2026&#34;.
+     * 
+     */
     public List<String> years() {
         return this.years == null ? List.of() : this.years;
     }
