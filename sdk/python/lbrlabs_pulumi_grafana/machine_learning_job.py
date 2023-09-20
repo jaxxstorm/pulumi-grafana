@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MachineLearningJobArgs', 'MachineLearningJob']
@@ -41,27 +41,58 @@ class MachineLearningJobArgs:
         :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
-        pulumi.set(__self__, "datasource_type", datasource_type)
-        pulumi.set(__self__, "metric", metric)
-        pulumi.set(__self__, "query_params", query_params)
+        MachineLearningJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datasource_type=datasource_type,
+            metric=metric,
+            query_params=query_params,
+            custom_labels=custom_labels,
+            datasource_id=datasource_id,
+            datasource_uid=datasource_uid,
+            description=description,
+            holidays=holidays,
+            hyper_params=hyper_params,
+            interval=interval,
+            name=name,
+            training_window=training_window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datasource_type: pulumi.Input[str],
+             metric: pulumi.Input[str],
+             query_params: pulumi.Input[Mapping[str, Any]],
+             custom_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             datasource_id: Optional[pulumi.Input[int]] = None,
+             datasource_uid: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             holidays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             hyper_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             training_window: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datasource_type", datasource_type)
+        _setter("metric", metric)
+        _setter("query_params", query_params)
         if custom_labels is not None:
-            pulumi.set(__self__, "custom_labels", custom_labels)
+            _setter("custom_labels", custom_labels)
         if datasource_id is not None:
-            pulumi.set(__self__, "datasource_id", datasource_id)
+            _setter("datasource_id", datasource_id)
         if datasource_uid is not None:
-            pulumi.set(__self__, "datasource_uid", datasource_uid)
+            _setter("datasource_uid", datasource_uid)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if holidays is not None:
-            pulumi.set(__self__, "holidays", holidays)
+            _setter("holidays", holidays)
         if hyper_params is not None:
-            pulumi.set(__self__, "hyper_params", hyper_params)
+            _setter("hyper_params", hyper_params)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if training_window is not None:
-            pulumi.set(__self__, "training_window", training_window)
+            _setter("training_window", training_window)
 
     @property
     @pulumi.getter(name="datasourceType")
@@ -238,30 +269,61 @@ class _MachineLearningJobState:
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
         :param pulumi.Input[int] training_window: The data interval in seconds to train the data on. Defaults to `7776000`.
         """
+        _MachineLearningJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_labels=custom_labels,
+            datasource_id=datasource_id,
+            datasource_type=datasource_type,
+            datasource_uid=datasource_uid,
+            description=description,
+            holidays=holidays,
+            hyper_params=hyper_params,
+            interval=interval,
+            metric=metric,
+            name=name,
+            query_params=query_params,
+            training_window=training_window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             datasource_id: Optional[pulumi.Input[int]] = None,
+             datasource_type: Optional[pulumi.Input[str]] = None,
+             datasource_uid: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             holidays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             hyper_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             query_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             training_window: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_labels is not None:
-            pulumi.set(__self__, "custom_labels", custom_labels)
+            _setter("custom_labels", custom_labels)
         if datasource_id is not None:
-            pulumi.set(__self__, "datasource_id", datasource_id)
+            _setter("datasource_id", datasource_id)
         if datasource_type is not None:
-            pulumi.set(__self__, "datasource_type", datasource_type)
+            _setter("datasource_type", datasource_type)
         if datasource_uid is not None:
-            pulumi.set(__self__, "datasource_uid", datasource_uid)
+            _setter("datasource_uid", datasource_uid)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if holidays is not None:
-            pulumi.set(__self__, "holidays", holidays)
+            _setter("holidays", holidays)
         if hyper_params is not None:
-            pulumi.set(__self__, "hyper_params", hyper_params)
+            _setter("hyper_params", hyper_params)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+            _setter("metric", metric)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if query_params is not None:
-            pulumi.set(__self__, "query_params", query_params)
+            _setter("query_params", query_params)
         if training_window is not None:
-            pulumi.set(__self__, "training_window", training_window)
+            _setter("training_window", training_window)
 
     @property
     @pulumi.getter(name="customLabels")
@@ -463,6 +525,10 @@ class MachineLearningJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MachineLearningJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

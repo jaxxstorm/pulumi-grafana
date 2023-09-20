@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
@@ -25,13 +25,28 @@ class FolderArgs:
         :param pulumi.Input[bool] prevent_destroy_if_not_empty: Prevent deletion of the folder if it is not empty (contains dashboards or alert rules). Defaults to `false`.
         :param pulumi.Input[str] uid: Unique identifier.
         """
-        pulumi.set(__self__, "title", title)
+        FolderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+            org_id=org_id,
+            prevent_destroy_if_not_empty=prevent_destroy_if_not_empty,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: pulumi.Input[str],
+             org_id: Optional[pulumi.Input[str]] = None,
+             prevent_destroy_if_not_empty: Optional[pulumi.Input[bool]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("title", title)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if prevent_destroy_if_not_empty is not None:
-            pulumi.set(__self__, "prevent_destroy_if_not_empty", prevent_destroy_if_not_empty)
+            _setter("prevent_destroy_if_not_empty", prevent_destroy_if_not_empty)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -98,16 +113,33 @@ class _FolderState:
         :param pulumi.Input[str] uid: Unique identifier.
         :param pulumi.Input[str] url: The full URL of the folder.
         """
+        _FolderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org_id=org_id,
+            prevent_destroy_if_not_empty=prevent_destroy_if_not_empty,
+            title=title,
+            uid=uid,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org_id: Optional[pulumi.Input[str]] = None,
+             prevent_destroy_if_not_empty: Optional[pulumi.Input[bool]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if prevent_destroy_if_not_empty is not None:
-            pulumi.set(__self__, "prevent_destroy_if_not_empty", prevent_destroy_if_not_empty)
+            _setter("prevent_destroy_if_not_empty", prevent_destroy_if_not_empty)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="orgId")
@@ -269,6 +301,10 @@ class Folder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudStackApiKeyArgs', 'CloudStackApiKey']
@@ -21,12 +21,27 @@ class CloudStackApiKeyArgs:
         """
         The set of arguments for constructing a CloudStackApiKey resource.
         """
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "stack_slug", stack_slug)
+        CloudStackApiKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            stack_slug=stack_slug,
+            name=name,
+            seconds_to_live=seconds_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: pulumi.Input[str],
+             stack_slug: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role", role)
+        _setter("stack_slug", stack_slug)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
 
     @property
     @pulumi.getter
@@ -77,18 +92,37 @@ class _CloudStackApiKeyState:
         """
         Input properties used for looking up and filtering CloudStackApiKey resources.
         """
+        _CloudStackApiKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expiration=expiration,
+            key=key,
+            name=name,
+            role=role,
+            seconds_to_live=seconds_to_live,
+            stack_slug=stack_slug,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expiration: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             stack_slug: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
         if stack_slug is not None:
-            pulumi.set(__self__, "stack_slug", stack_slug)
+            _setter("stack_slug", stack_slug)
 
     @property
     @pulumi.getter
@@ -178,6 +212,10 @@ class CloudStackApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudStackApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

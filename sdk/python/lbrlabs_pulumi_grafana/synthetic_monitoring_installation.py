@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SyntheticMonitoringInstallationArgs', 'SyntheticMonitoringInstallation']
@@ -23,10 +23,23 @@ class SyntheticMonitoringInstallationArgs:
         :param pulumi.Input[str] stack_id: The ID or slug of the stack to install SM on.
         :param pulumi.Input[str] stack_sm_api_url: The URL of the SM API to install SM on. This depends on the stack region, find the list of API URLs here: https://grafana.com/docs/grafana-cloud/synthetic-monitoring/private-probes/#probe-api-server-url. A static mapping exists in the provider but it may not contain all the regions. If it does contain the stack's region, this field is computed automatically and readable.
         """
-        pulumi.set(__self__, "metrics_publisher_key", metrics_publisher_key)
-        pulumi.set(__self__, "stack_id", stack_id)
+        SyntheticMonitoringInstallationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metrics_publisher_key=metrics_publisher_key,
+            stack_id=stack_id,
+            stack_sm_api_url=stack_sm_api_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metrics_publisher_key: pulumi.Input[str],
+             stack_id: pulumi.Input[str],
+             stack_sm_api_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metrics_publisher_key", metrics_publisher_key)
+        _setter("stack_id", stack_id)
         if stack_sm_api_url is not None:
-            pulumi.set(__self__, "stack_sm_api_url", stack_sm_api_url)
+            _setter("stack_sm_api_url", stack_sm_api_url)
 
     @property
     @pulumi.getter(name="metricsPublisherKey")
@@ -79,14 +92,29 @@ class _SyntheticMonitoringInstallationState:
         :param pulumi.Input[str] stack_id: The ID or slug of the stack to install SM on.
         :param pulumi.Input[str] stack_sm_api_url: The URL of the SM API to install SM on. This depends on the stack region, find the list of API URLs here: https://grafana.com/docs/grafana-cloud/synthetic-monitoring/private-probes/#probe-api-server-url. A static mapping exists in the provider but it may not contain all the regions. If it does contain the stack's region, this field is computed automatically and readable.
         """
+        _SyntheticMonitoringInstallationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metrics_publisher_key=metrics_publisher_key,
+            sm_access_token=sm_access_token,
+            stack_id=stack_id,
+            stack_sm_api_url=stack_sm_api_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metrics_publisher_key: Optional[pulumi.Input[str]] = None,
+             sm_access_token: Optional[pulumi.Input[str]] = None,
+             stack_id: Optional[pulumi.Input[str]] = None,
+             stack_sm_api_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if metrics_publisher_key is not None:
-            pulumi.set(__self__, "metrics_publisher_key", metrics_publisher_key)
+            _setter("metrics_publisher_key", metrics_publisher_key)
         if sm_access_token is not None:
-            pulumi.set(__self__, "sm_access_token", sm_access_token)
+            _setter("sm_access_token", sm_access_token)
         if stack_id is not None:
-            pulumi.set(__self__, "stack_id", stack_id)
+            _setter("stack_id", stack_id)
         if stack_sm_api_url is not None:
-            pulumi.set(__self__, "stack_sm_api_url", stack_sm_api_url)
+            _setter("stack_sm_api_url", stack_sm_api_url)
 
     @property
     @pulumi.getter(name="metricsPublisherKey")
@@ -226,6 +254,10 @@ class SyntheticMonitoringInstallation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SyntheticMonitoringInstallationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

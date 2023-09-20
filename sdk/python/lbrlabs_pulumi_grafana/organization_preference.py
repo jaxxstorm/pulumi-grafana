@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OrganizationPreferenceArgs', 'OrganizationPreference']
@@ -29,18 +29,37 @@ class OrganizationPreferenceArgs:
         :param pulumi.Input[str] timezone: The Organization timezone. Available values are `utc`, `browser`, or an empty string for the default.
         :param pulumi.Input[str] week_start: The Organization week start.
         """
+        OrganizationPreferenceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            home_dashboard_id=home_dashboard_id,
+            home_dashboard_uid=home_dashboard_uid,
+            org_id=org_id,
+            theme=theme,
+            timezone=timezone,
+            week_start=week_start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             home_dashboard_id: Optional[pulumi.Input[int]] = None,
+             home_dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             theme: Optional[pulumi.Input[str]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             week_start: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if home_dashboard_id is not None:
-            pulumi.set(__self__, "home_dashboard_id", home_dashboard_id)
+            _setter("home_dashboard_id", home_dashboard_id)
         if home_dashboard_uid is not None:
-            pulumi.set(__self__, "home_dashboard_uid", home_dashboard_uid)
+            _setter("home_dashboard_uid", home_dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if week_start is not None:
-            pulumi.set(__self__, "week_start", week_start)
+            _setter("week_start", week_start)
 
     @property
     @pulumi.getter(name="homeDashboardId")
@@ -133,18 +152,37 @@ class _OrganizationPreferenceState:
         :param pulumi.Input[str] timezone: The Organization timezone. Available values are `utc`, `browser`, or an empty string for the default.
         :param pulumi.Input[str] week_start: The Organization week start.
         """
+        _OrganizationPreferenceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            home_dashboard_id=home_dashboard_id,
+            home_dashboard_uid=home_dashboard_uid,
+            org_id=org_id,
+            theme=theme,
+            timezone=timezone,
+            week_start=week_start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             home_dashboard_id: Optional[pulumi.Input[int]] = None,
+             home_dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             theme: Optional[pulumi.Input[str]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             week_start: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if home_dashboard_id is not None:
-            pulumi.set(__self__, "home_dashboard_id", home_dashboard_id)
+            _setter("home_dashboard_id", home_dashboard_id)
         if home_dashboard_uid is not None:
-            pulumi.set(__self__, "home_dashboard_uid", home_dashboard_uid)
+            _setter("home_dashboard_uid", home_dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if week_start is not None:
-            pulumi.set(__self__, "week_start", week_start)
+            _setter("week_start", week_start)
 
     @property
     @pulumi.getter(name="homeDashboardId")
@@ -288,6 +326,10 @@ class OrganizationPreference(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationPreferenceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

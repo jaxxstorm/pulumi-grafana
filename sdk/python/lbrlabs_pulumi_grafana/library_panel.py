@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LibraryPanelArgs', 'LibraryPanel']
@@ -27,15 +27,32 @@ class LibraryPanelArgs:
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         :param pulumi.Input[str] uid: The unique identifier (UID) of a library panel uniquely identifies library panels between multiple Grafana installs. It’s automatically generated unless you specify it during library panel creation.The UID provides consistent URLs for accessing library panels and when syncing library panels between multiple Grafana installs.
         """
-        pulumi.set(__self__, "model_json", model_json)
+        LibraryPanelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            model_json=model_json,
+            folder_id=folder_id,
+            name=name,
+            org_id=org_id,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             model_json: pulumi.Input[str],
+             folder_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("model_json", model_json)
         if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
+            _setter("folder_id", folder_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="modelJson")
@@ -132,34 +149,69 @@ class _LibraryPanelState:
         :param pulumi.Input[str] updated: Timestamp when the library panel was last modified.
         :param pulumi.Input[int] version: Version of the library panel.
         """
+        _LibraryPanelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            dashboard_ids=dashboard_ids,
+            description=description,
+            folder_id=folder_id,
+            folder_name=folder_name,
+            folder_uid=folder_uid,
+            model_json=model_json,
+            name=name,
+            org_id=org_id,
+            panel_id=panel_id,
+            type=type,
+            uid=uid,
+            updated=updated,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             dashboard_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             folder_id: Optional[pulumi.Input[str]] = None,
+             folder_name: Optional[pulumi.Input[str]] = None,
+             folder_uid: Optional[pulumi.Input[str]] = None,
+             model_json: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             panel_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if dashboard_ids is not None:
-            pulumi.set(__self__, "dashboard_ids", dashboard_ids)
+            _setter("dashboard_ids", dashboard_ids)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
+            _setter("folder_id", folder_id)
         if folder_name is not None:
-            pulumi.set(__self__, "folder_name", folder_name)
+            _setter("folder_name", folder_name)
         if folder_uid is not None:
-            pulumi.set(__self__, "folder_uid", folder_uid)
+            _setter("folder_uid", folder_uid)
         if model_json is not None:
-            pulumi.set(__self__, "model_json", model_json)
+            _setter("model_json", model_json)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if panel_id is not None:
-            pulumi.set(__self__, "panel_id", panel_id)
+            _setter("panel_id", panel_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -417,6 +469,10 @@ class LibraryPanel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LibraryPanelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

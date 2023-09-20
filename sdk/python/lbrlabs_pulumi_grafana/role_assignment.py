@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RoleAssignmentArgs', 'RoleAssignment']
@@ -25,13 +25,28 @@ class RoleAssignmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: IDs of teams that the role should be assigned to.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] users: IDs of users that the role should be assigned to.
         """
-        pulumi.set(__self__, "role_uid", role_uid)
+        RoleAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_uid=role_uid,
+            service_accounts=service_accounts,
+            teams=teams,
+            users=users,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_uid: pulumi.Input[str],
+             service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role_uid", role_uid)
         if service_accounts is not None:
-            pulumi.set(__self__, "service_accounts", service_accounts)
+            _setter("service_accounts", service_accounts)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
 
     @property
     @pulumi.getter(name="roleUid")
@@ -96,14 +111,29 @@ class _RoleAssignmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: IDs of teams that the role should be assigned to.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] users: IDs of users that the role should be assigned to.
         """
+        _RoleAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_uid=role_uid,
+            service_accounts=service_accounts,
+            teams=teams,
+            users=users,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_uid: Optional[pulumi.Input[str]] = None,
+             service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if role_uid is not None:
-            pulumi.set(__self__, "role_uid", role_uid)
+            _setter("role_uid", role_uid)
         if service_accounts is not None:
-            pulumi.set(__self__, "service_accounts", service_accounts)
+            _setter("service_accounts", service_accounts)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
 
     @property
     @pulumi.getter(name="roleUid")
@@ -251,6 +281,10 @@ class RoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

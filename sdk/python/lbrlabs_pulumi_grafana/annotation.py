@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AnnotationArgs', 'Annotation']
@@ -33,24 +33,47 @@ class AnnotationArgs:
         :param pulumi.Input[str] time: The RFC 3339-formatted time string indicating the annotation's time.
         :param pulumi.Input[str] time_end: The RFC 3339-formatted time string indicating the annotation's end time.
         """
-        pulumi.set(__self__, "text", text)
+        AnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            text=text,
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            org_id=org_id,
+            panel_id=panel_id,
+            tags=tags,
+            time=time,
+            time_end=time_end,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             text: pulumi.Input[str],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             panel_id: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time: Optional[pulumi.Input[str]] = None,
+             time_end: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("text", text)
         if dashboard_id is not None:
             warnings.warn("""Use dashboard_uid instead.""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead.""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if panel_id is not None:
-            pulumi.set(__self__, "panel_id", panel_id)
+            _setter("panel_id", panel_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time is not None:
-            pulumi.set(__self__, "time", time)
+            _setter("time", time)
         if time_end is not None:
-            pulumi.set(__self__, "time_end", time_end)
+            _setter("time_end", time_end)
 
     @property
     @pulumi.getter
@@ -174,25 +197,48 @@ class _AnnotationState:
         :param pulumi.Input[str] time: The RFC 3339-formatted time string indicating the annotation's time.
         :param pulumi.Input[str] time_end: The RFC 3339-formatted time string indicating the annotation's end time.
         """
+        _AnnotationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            org_id=org_id,
+            panel_id=panel_id,
+            tags=tags,
+            text=text,
+            time=time,
+            time_end=time_end,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             panel_id: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             text: Optional[pulumi.Input[str]] = None,
+             time: Optional[pulumi.Input[str]] = None,
+             time_end: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboard_id is not None:
             warnings.warn("""Use dashboard_uid instead.""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead.""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if panel_id is not None:
-            pulumi.set(__self__, "panel_id", panel_id)
+            _setter("panel_id", panel_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if time is not None:
-            pulumi.set(__self__, "time", time)
+            _setter("time", time)
         if time_end is not None:
-            pulumi.set(__self__, "time_end", time_end)
+            _setter("time_end", time_end)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -361,6 +407,10 @@ class Annotation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AnnotationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -383,9 +433,6 @@ class Annotation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnnotationArgs.__new__(AnnotationArgs)
 
-            if dashboard_id is not None and not opts.urn:
-                warnings.warn("""Use dashboard_uid instead.""", DeprecationWarning)
-                pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead.""")
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["dashboard_uid"] = dashboard_uid
             __props__.__dict__["org_id"] = org_id

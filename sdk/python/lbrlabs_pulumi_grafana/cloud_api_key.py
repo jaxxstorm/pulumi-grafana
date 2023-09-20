@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudApiKeyArgs', 'CloudApiKey']
@@ -23,10 +23,23 @@ class CloudApiKeyArgs:
         :param pulumi.Input[str] role: Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
         :param pulumi.Input[str] name: Name of the API key.
         """
-        pulumi.set(__self__, "cloud_org_slug", cloud_org_slug)
-        pulumi.set(__self__, "role", role)
+        CloudApiKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_org_slug=cloud_org_slug,
+            role=role,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_org_slug: pulumi.Input[str],
+             role: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cloud_org_slug", cloud_org_slug)
+        _setter("role", role)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="cloudOrgSlug")
@@ -79,14 +92,29 @@ class _CloudApiKeyState:
         :param pulumi.Input[str] name: Name of the API key.
         :param pulumi.Input[str] role: Role of the API key. Should be one of [Viewer Editor Admin MetricsPublisher PluginPublisher]. See https://grafana.com/docs/grafana-cloud/api/#create-api-key for details.
         """
+        _CloudApiKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cloud_org_slug=cloud_org_slug,
+            key=key,
+            name=name,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cloud_org_slug: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cloud_org_slug is not None:
-            pulumi.set(__self__, "cloud_org_slug", cloud_org_slug)
+            _setter("cloud_org_slug", cloud_org_slug)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="cloudOrgSlug")
@@ -210,6 +238,10 @@ class CloudApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

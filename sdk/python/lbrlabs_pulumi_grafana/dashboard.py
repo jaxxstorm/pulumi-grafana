@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DashboardArgs', 'Dashboard']
@@ -27,15 +27,32 @@ class DashboardArgs:
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         :param pulumi.Input[bool] overwrite: Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same dashboard uid.
         """
-        pulumi.set(__self__, "config_json", config_json)
+        DashboardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_json=config_json,
+            folder=folder,
+            message=message,
+            org_id=org_id,
+            overwrite=overwrite,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_json: pulumi.Input[str],
+             folder: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             overwrite: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_json", config_json)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if overwrite is not None:
-            pulumi.set(__self__, "overwrite", overwrite)
+            _setter("overwrite", overwrite)
 
     @property
     @pulumi.getter(name="configJson")
@@ -122,24 +139,49 @@ class _DashboardState:
         :param pulumi.Input[str] url: The full URL of the dashboard.
         :param pulumi.Input[int] version: Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your dashboard are not lost.
         """
+        _DashboardState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_json=config_json,
+            dashboard_id=dashboard_id,
+            folder=folder,
+            message=message,
+            org_id=org_id,
+            overwrite=overwrite,
+            uid=uid,
+            url=url,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_json: Optional[pulumi.Input[str]] = None,
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             overwrite: Optional[pulumi.Input[bool]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if overwrite is not None:
-            pulumi.set(__self__, "overwrite", overwrite)
+            _setter("overwrite", overwrite)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="configJson")
@@ -335,6 +377,10 @@ class Dashboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DashboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

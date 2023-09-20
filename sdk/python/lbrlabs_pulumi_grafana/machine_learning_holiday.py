@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,16 +29,33 @@ class MachineLearningHolidayArgs:
         :param pulumi.Input[str] ical_url: A URL to an iCal file containing all occurrences of the holiday.
         :param pulumi.Input[str] name: The name of the holiday.
         """
+        MachineLearningHolidayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_periods=custom_periods,
+            description=description,
+            ical_timezone=ical_timezone,
+            ical_url=ical_url,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_periods: Optional[pulumi.Input[Sequence[pulumi.Input['MachineLearningHolidayCustomPeriodArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ical_timezone: Optional[pulumi.Input[str]] = None,
+             ical_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_periods is not None:
-            pulumi.set(__self__, "custom_periods", custom_periods)
+            _setter("custom_periods", custom_periods)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ical_timezone is not None:
-            pulumi.set(__self__, "ical_timezone", ical_timezone)
+            _setter("ical_timezone", ical_timezone)
         if ical_url is not None:
-            pulumi.set(__self__, "ical_url", ical_url)
+            _setter("ical_url", ical_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="customPeriods")
@@ -117,16 +134,33 @@ class _MachineLearningHolidayState:
         :param pulumi.Input[str] ical_url: A URL to an iCal file containing all occurrences of the holiday.
         :param pulumi.Input[str] name: The name of the holiday.
         """
+        _MachineLearningHolidayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_periods=custom_periods,
+            description=description,
+            ical_timezone=ical_timezone,
+            ical_url=ical_url,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_periods: Optional[pulumi.Input[Sequence[pulumi.Input['MachineLearningHolidayCustomPeriodArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ical_timezone: Optional[pulumi.Input[str]] = None,
+             ical_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_periods is not None:
-            pulumi.set(__self__, "custom_periods", custom_periods)
+            _setter("custom_periods", custom_periods)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ical_timezone is not None:
-            pulumi.set(__self__, "ical_timezone", ical_timezone)
+            _setter("ical_timezone", ical_timezone)
         if ical_url is not None:
-            pulumi.set(__self__, "ical_url", ical_url)
+            _setter("ical_url", ical_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="customPeriods")
@@ -234,6 +268,10 @@ class MachineLearningHoliday(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MachineLearningHolidayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

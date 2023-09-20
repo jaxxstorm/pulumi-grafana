@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,23 +37,48 @@ class RoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Specific set of actions granted by the role.
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
         """
-        pulumi.set(__self__, "version", version)
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            version=version,
+            description=description,
+            display_name=display_name,
+            global_=global_,
+            group=group,
+            hidden=hidden,
+            name=name,
+            permissions=permissions,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             version: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             global_: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("version", version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if global_ is not None:
-            pulumi.set(__self__, "global_", global_)
+            _setter("global_", global_)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -188,24 +213,49 @@ class _RoleState:
         :param pulumi.Input[str] uid: Unique identifier of the role. Used for assignments.
         :param pulumi.Input[int] version: Version of the role. A role is updated only on version increase.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            global_=global_,
+            group=group,
+            hidden=hidden,
+            name=name,
+            permissions=permissions,
+            uid=uid,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             global_: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if global_ is not None:
-            pulumi.set(__self__, "global_", global_)
+            _setter("global_", global_)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -437,6 +487,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

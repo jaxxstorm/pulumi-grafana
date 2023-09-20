@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -112,10 +112,23 @@ class CloudAccessPolicyRealmArgs:
         :param pulumi.Input[str] identifier: The identifier of the org or stack. For orgs, this is the slug, for stacks, this is the stack ID.
         :param pulumi.Input[str] type: Whether a policy applies to a Cloud org or a specific stack. Should be one of `org` or `stack`.
         """
-        pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "type", type)
+        CloudAccessPolicyRealmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identifier=identifier,
+            type=type,
+            label_policies=label_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identifier: pulumi.Input[str],
+             type: pulumi.Input[str],
+             label_policies: Optional[pulumi.Input[Sequence[pulumi.Input['CloudAccessPolicyRealmLabelPolicyArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("identifier", identifier)
+        _setter("type", type)
         if label_policies is not None:
-            pulumi.set(__self__, "label_policies", label_policies)
+            _setter("label_policies", label_policies)
 
     @property
     @pulumi.getter
@@ -155,7 +168,16 @@ class CloudAccessPolicyRealmArgs:
 class CloudAccessPolicyRealmLabelPolicyArgs:
     def __init__(__self__, *,
                  selector: pulumi.Input[str]):
-        pulumi.set(__self__, "selector", selector)
+        CloudAccessPolicyRealmLabelPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            selector=selector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             selector: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("selector", selector)
 
     @property
     @pulumi.getter
@@ -184,17 +206,36 @@ class ContactPointAlertmanagerArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointAlertmanagerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            basic_auth_password=basic_auth_password,
+            basic_auth_user=basic_auth_user,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             basic_auth_password: Optional[pulumi.Input[str]] = None,
+             basic_auth_user: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if basic_auth_password is not None:
-            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+            _setter("basic_auth_password", basic_auth_password)
         if basic_auth_user is not None:
-            pulumi.set(__self__, "basic_auth_user", basic_auth_user)
+            _setter("basic_auth_user", basic_auth_user)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -288,19 +329,40 @@ class ContactPointDingdingArgs:
         :param pulumi.Input[str] title: The templated title of the message.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointDingdingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            message_type=message_type,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             message_type: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -406,19 +468,40 @@ class ContactPointDiscordArgs:
         :param pulumi.Input[str] uid: The UID of the contact point.
         :param pulumi.Input[bool] use_discord_username: Whether to use the bot account's plain username instead of "Grafana." Defaults to `false`.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointDiscordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            avatar_url=avatar_url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+            use_discord_username=use_discord_username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             avatar_url: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             use_discord_username: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if avatar_url is not None:
-            pulumi.set(__self__, "avatar_url", avatar_url)
+            _setter("avatar_url", avatar_url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if use_discord_username is not None:
-            pulumi.set(__self__, "use_discord_username", use_discord_username)
+            _setter("use_discord_username", use_discord_username)
 
     @property
     @pulumi.getter
@@ -524,19 +607,40 @@ class ContactPointEmailArgs:
         :param pulumi.Input[str] subject: The templated subject line of the email. Defaults to ``.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "addresses", addresses)
+        ContactPointEmailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addresses=addresses,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            single_email=single_email,
+            subject=subject,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             single_email: Optional[pulumi.Input[bool]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addresses", addresses)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if single_email is not None:
-            pulumi.set(__self__, "single_email", single_email)
+            _setter("single_email", single_email)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -638,15 +742,32 @@ class ContactPointGooglechatArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointGooglechatArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -724,14 +845,31 @@ class ContactPointKafkaArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "rest_proxy_url", rest_proxy_url)
-        pulumi.set(__self__, "topic", topic)
+        ContactPointKafkaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rest_proxy_url=rest_proxy_url,
+            topic=topic,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rest_proxy_url: pulumi.Input[str],
+             topic: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rest_proxy_url", rest_proxy_url)
+        _setter("topic", topic)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="restProxyUrl")
@@ -819,25 +957,52 @@ class ContactPointOpsgenyArgs:
         :param pulumi.Input[str] uid: The UID of the contact point.
         :param pulumi.Input[str] url: Allows customization of the OpsGenie API URL.
         """
-        pulumi.set(__self__, "api_key", api_key)
+        ContactPointOpsgenyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            auto_close=auto_close,
+            description=description,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            override_priority=override_priority,
+            send_tags_as=send_tags_as,
+            settings=settings,
+            uid=uid,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: pulumi.Input[str],
+             auto_close: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             override_priority: Optional[pulumi.Input[bool]] = None,
+             send_tags_as: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_key", api_key)
         if auto_close is not None:
-            pulumi.set(__self__, "auto_close", auto_close)
+            _setter("auto_close", auto_close)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if override_priority is not None:
-            pulumi.set(__self__, "override_priority", override_priority)
+            _setter("override_priority", override_priority)
         if send_tags_as is not None:
-            pulumi.set(__self__, "send_tags_as", send_tags_as)
+            _setter("send_tags_as", send_tags_as)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -991,31 +1156,64 @@ class ContactPointPagerdutyArgs:
         :param pulumi.Input[str] summary: The templated summary message of the event.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "integration_key", integration_key)
+        ContactPointPagerdutyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            integration_key=integration_key,
+            class_=class_,
+            client=client,
+            client_url=client_url,
+            component=component,
+            details=details,
+            disable_resolve_message=disable_resolve_message,
+            group=group,
+            settings=settings,
+            severity=severity,
+            source=source,
+            summary=summary,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             integration_key: pulumi.Input[str],
+             class_: Optional[pulumi.Input[str]] = None,
+             client: Optional[pulumi.Input[str]] = None,
+             client_url: Optional[pulumi.Input[str]] = None,
+             component: Optional[pulumi.Input[str]] = None,
+             details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             severity: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             summary: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("integration_key", integration_key)
         if class_ is not None:
-            pulumi.set(__self__, "class_", class_)
+            _setter("class_", class_)
         if client is not None:
-            pulumi.set(__self__, "client", client)
+            _setter("client", client)
         if client_url is not None:
-            pulumi.set(__self__, "client_url", client_url)
+            _setter("client_url", client_url)
         if component is not None:
-            pulumi.set(__self__, "component", component)
+            _setter("component", component)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if summary is not None:
-            pulumi.set(__self__, "summary", summary)
+            _setter("summary", summary)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="integrationKey")
@@ -1207,32 +1405,67 @@ class ContactPointPushoverArgs:
         :param pulumi.Input[str] title: The templated title of the message.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_token", api_token)
-        pulumi.set(__self__, "user_key", user_key)
+        ContactPointPushoverArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_token=api_token,
+            user_key=user_key,
+            device=device,
+            disable_resolve_message=disable_resolve_message,
+            expire=expire,
+            message=message,
+            ok_priority=ok_priority,
+            ok_sound=ok_sound,
+            priority=priority,
+            retry=retry,
+            settings=settings,
+            sound=sound,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_token: pulumi.Input[str],
+             user_key: pulumi.Input[str],
+             device: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             expire: Optional[pulumi.Input[int]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             ok_priority: Optional[pulumi.Input[int]] = None,
+             ok_sound: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             retry: Optional[pulumi.Input[int]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             sound: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_token", api_token)
+        _setter("user_key", user_key)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if expire is not None:
-            pulumi.set(__self__, "expire", expire)
+            _setter("expire", expire)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if ok_priority is not None:
-            pulumi.set(__self__, "ok_priority", ok_priority)
+            _setter("ok_priority", ok_priority)
         if ok_sound is not None:
-            pulumi.set(__self__, "ok_sound", ok_sound)
+            _setter("ok_sound", ok_sound)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if sound is not None:
-            pulumi.set(__self__, "sound", sound)
+            _setter("sound", sound)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -1428,24 +1661,51 @@ class ContactPointSensugoArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "url", url)
+        ContactPointSensugoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            url=url,
+            check=check,
+            disable_resolve_message=disable_resolve_message,
+            entity=entity,
+            handler=handler,
+            message=message,
+            namespace=namespace,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: pulumi.Input[str],
+             url: pulumi.Input[str],
+             check: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             entity: Optional[pulumi.Input[str]] = None,
+             handler: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_key", api_key)
+        _setter("url", url)
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if entity is not None:
-            pulumi.set(__self__, "entity", entity)
+            _setter("entity", entity)
         if handler is not None:
-            pulumi.set(__self__, "handler", handler)
+            _setter("handler", handler)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -1603,36 +1863,73 @@ class ContactPointSlackArgs:
         :param pulumi.Input[str] url: A Slack webhook URL,for sending messages via the webhook method.
         :param pulumi.Input[str] username: Username for the bot to use.
         """
+        ContactPointSlackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_resolve_message=disable_resolve_message,
+            endpoint_url=endpoint_url,
+            icon_emoji=icon_emoji,
+            icon_url=icon_url,
+            mention_channel=mention_channel,
+            mention_groups=mention_groups,
+            mention_users=mention_users,
+            recipient=recipient,
+            settings=settings,
+            text=text,
+            title=title,
+            token=token,
+            uid=uid,
+            url=url,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             endpoint_url: Optional[pulumi.Input[str]] = None,
+             icon_emoji: Optional[pulumi.Input[str]] = None,
+             icon_url: Optional[pulumi.Input[str]] = None,
+             mention_channel: Optional[pulumi.Input[str]] = None,
+             mention_groups: Optional[pulumi.Input[str]] = None,
+             mention_users: Optional[pulumi.Input[str]] = None,
+             recipient: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             text: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if endpoint_url is not None:
-            pulumi.set(__self__, "endpoint_url", endpoint_url)
+            _setter("endpoint_url", endpoint_url)
         if icon_emoji is not None:
-            pulumi.set(__self__, "icon_emoji", icon_emoji)
+            _setter("icon_emoji", icon_emoji)
         if icon_url is not None:
-            pulumi.set(__self__, "icon_url", icon_url)
+            _setter("icon_url", icon_url)
         if mention_channel is not None:
-            pulumi.set(__self__, "mention_channel", mention_channel)
+            _setter("mention_channel", mention_channel)
         if mention_groups is not None:
-            pulumi.set(__self__, "mention_groups", mention_groups)
+            _setter("mention_groups", mention_groups)
         if mention_users is not None:
-            pulumi.set(__self__, "mention_users", mention_users)
+            _setter("mention_users", mention_users)
         if recipient is not None:
-            pulumi.set(__self__, "recipient", recipient)
+            _setter("recipient", recipient)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="disableResolveMessage")
@@ -1834,19 +2131,40 @@ class ContactPointTeamArgs:
         :param pulumi.Input[str] title: The templated title of the message.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointTeamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            section_title=section_title,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             section_title: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if section_title is not None:
-            pulumi.set(__self__, "section_title", section_title)
+            _setter("section_title", section_title)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -1950,16 +2268,35 @@ class ContactPointTelegramArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "chat_id", chat_id)
-        pulumi.set(__self__, "token", token)
+        ContactPointTelegramArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chat_id=chat_id,
+            token=token,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chat_id: pulumi.Input[str],
+             token: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chat_id", chat_id)
+        _setter("token", token)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="chatId")
@@ -2055,17 +2392,40 @@ class ContactPointThreemaArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_secret", api_secret)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gateway_id", gateway_id)
-        pulumi.set(__self__, "recipient_id", recipient_id)
-        pulumi.set(__self__, "title", title)
+        ContactPointThreemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_secret=api_secret,
+            description=description,
+            gateway_id=gateway_id,
+            recipient_id=recipient_id,
+            title=title,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_secret: pulumi.Input[str],
+             description: pulumi.Input[str],
+             gateway_id: pulumi.Input[str],
+             recipient_id: pulumi.Input[str],
+             title: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_secret", api_secret)
+        _setter("description", description)
+        _setter("gateway_id", gateway_id)
+        _setter("recipient_id", recipient_id)
+        _setter("title", title)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiSecret")
@@ -2183,19 +2543,40 @@ class ContactPointVictoropArgs:
         :param pulumi.Input[str] title: Templated title to display.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointVictoropArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            description=description,
+            disable_resolve_message=disable_resolve_message,
+            message_type=message_type,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message_type: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2311,29 +2692,60 @@ class ContactPointWebhookArgs:
         :param pulumi.Input[str] title: Templated title of the message.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointWebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            authorization_credentials=authorization_credentials,
+            authorization_scheme=authorization_scheme,
+            basic_auth_password=basic_auth_password,
+            basic_auth_user=basic_auth_user,
+            disable_resolve_message=disable_resolve_message,
+            http_method=http_method,
+            max_alerts=max_alerts,
+            message=message,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             authorization_credentials: Optional[pulumi.Input[str]] = None,
+             authorization_scheme: Optional[pulumi.Input[str]] = None,
+             basic_auth_password: Optional[pulumi.Input[str]] = None,
+             basic_auth_user: Optional[pulumi.Input[str]] = None,
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             http_method: Optional[pulumi.Input[str]] = None,
+             max_alerts: Optional[pulumi.Input[int]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if authorization_credentials is not None:
-            pulumi.set(__self__, "authorization_credentials", authorization_credentials)
+            _setter("authorization_credentials", authorization_credentials)
         if authorization_scheme is not None:
-            pulumi.set(__self__, "authorization_scheme", authorization_scheme)
+            _setter("authorization_scheme", authorization_scheme)
         if basic_auth_password is not None:
-            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+            _setter("basic_auth_password", basic_auth_password)
         if basic_auth_user is not None:
-            pulumi.set(__self__, "basic_auth_user", basic_auth_user)
+            _setter("basic_auth_user", basic_auth_user)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if max_alerts is not None:
-            pulumi.set(__self__, "max_alerts", max_alerts)
+            _setter("max_alerts", max_alerts)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2497,17 +2909,36 @@ class ContactPointWecomArgs:
         :param pulumi.Input[str] title: The templated title of the message to send.
         :param pulumi.Input[str] uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointWecomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             disable_resolve_message: Optional[pulumi.Input[bool]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2595,13 +3026,28 @@ class DashboardPermissionPermissionArgs:
         :param pulumi.Input[str] team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param pulumi.Input[int] user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        DashboardPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            role=role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: pulumi.Input[str],
+             role: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2665,13 +3111,28 @@ class DataSourcePermissionPermissionArgs:
         :param pulumi.Input[str] team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param pulumi.Input[int] user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        DataSourcePermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            built_in_role=built_in_role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: pulumi.Input[str],
+             built_in_role: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if built_in_role is not None:
-            pulumi.set(__self__, "built_in_role", built_in_role)
+            _setter("built_in_role", built_in_role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2735,13 +3196,28 @@ class FolderPermissionPermissionArgs:
         :param pulumi.Input[str] team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param pulumi.Input[int] user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        FolderPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            role=role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: pulumi.Input[str],
+             role: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2801,10 +3277,23 @@ class MachineLearningHolidayCustomPeriodArgs:
         """
         :param pulumi.Input[str] name: The name of the custom period.
         """
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "start_time", start_time)
+        MachineLearningHolidayCustomPeriodArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            start_time=start_time,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: pulumi.Input[str],
+             start_time: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_time", end_time)
+        _setter("start_time", start_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="endTime")
@@ -2848,10 +3337,23 @@ class MachineLearningOutlierDetectorAlgorithmArgs:
         :param pulumi.Input[float] sensitivity: Specify the sensitivity of the detector (in range [0,1]).
         :param pulumi.Input['MachineLearningOutlierDetectorAlgorithmConfigArgs'] config: For DBSCAN only, specify the configuration map
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "sensitivity", sensitivity)
+        MachineLearningOutlierDetectorAlgorithmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity=sensitivity,
+            config=config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             sensitivity: pulumi.Input[float],
+             config: Optional[pulumi.Input['MachineLearningOutlierDetectorAlgorithmConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("sensitivity", sensitivity)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
 
     @property
     @pulumi.getter
@@ -2894,7 +3396,16 @@ class MachineLearningOutlierDetectorAlgorithmArgs:
 class MachineLearningOutlierDetectorAlgorithmConfigArgs:
     def __init__(__self__, *,
                  epsilon: pulumi.Input[float]):
-        pulumi.set(__self__, "epsilon", epsilon)
+        MachineLearningOutlierDetectorAlgorithmConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epsilon=epsilon,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epsilon: pulumi.Input[float],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epsilon", epsilon)
 
     @property
     @pulumi.getter
@@ -2921,16 +3432,33 @@ class MuteTimingIntervalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] weekdays: An inclusive range of weekdays, e.g. "monday" or "tuesday:thursday".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] years: A positive inclusive range of years, e.g. "2030" or "2025:2026".
         """
+        MuteTimingIntervalArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            days_of_months=days_of_months,
+            months=months,
+            times=times,
+            weekdays=weekdays,
+            years=years,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             days_of_months: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             months: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             times: Optional[pulumi.Input[Sequence[pulumi.Input['MuteTimingIntervalTimeArgs']]]] = None,
+             weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             years: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if days_of_months is not None:
-            pulumi.set(__self__, "days_of_months", days_of_months)
+            _setter("days_of_months", days_of_months)
         if months is not None:
-            pulumi.set(__self__, "months", months)
+            _setter("months", months)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
         if weekdays is not None:
-            pulumi.set(__self__, "weekdays", weekdays)
+            _setter("weekdays", weekdays)
         if years is not None:
-            pulumi.set(__self__, "years", years)
+            _setter("years", years)
 
     @property
     @pulumi.getter(name="daysOfMonths")
@@ -2998,8 +3526,19 @@ class MuteTimingIntervalTimeArgs:
     def __init__(__self__, *,
                  end: pulumi.Input[str],
                  start: pulumi.Input[str]):
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
+        MuteTimingIntervalTimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            start=start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: pulumi.Input[str],
+             start: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("start", start)
 
     @property
     @pulumi.getter
@@ -3043,22 +3582,47 @@ class NotificationPolicyPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyArgs']]] policies: Routing rules for specific label sets.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: pulumi.Input[str],
+             group_bies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             continue_: Optional[pulumi.Input[bool]] = None,
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyMatcherArgs']]]] = None,
+             mute_timings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyArgs']]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3175,9 +3739,22 @@ class NotificationPolicyPolicyMatcherArgs:
                  label: pulumi.Input[str],
                  match: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyMatcherArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             match: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3230,22 +3807,47 @@ class NotificationPolicyPolicyPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyArgs']]] policies: Routing rules for specific label sets.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: pulumi.Input[str],
+             group_bies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             continue_: Optional[pulumi.Input[bool]] = None,
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyMatcherArgs']]]] = None,
+             mute_timings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyArgs']]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3362,9 +3964,22 @@ class NotificationPolicyPolicyPolicyMatcherArgs:
                  label: pulumi.Input[str],
                  match: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyMatcherArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             match: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3417,22 +4032,47 @@ class NotificationPolicyPolicyPolicyPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyPolicyArgs']]] policies: Routing rules for specific label sets.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicyPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: pulumi.Input[str],
+             group_bies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             continue_: Optional[pulumi.Input[bool]] = None,
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyMatcherArgs']]]] = None,
+             mute_timings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyPolicyArgs']]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3549,9 +4189,22 @@ class NotificationPolicyPolicyPolicyPolicyMatcherArgs:
                  label: pulumi.Input[str],
                  match: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyPolicyMatcherArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             match: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3602,20 +4255,43 @@ class NotificationPolicyPolicyPolicyPolicyPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mute_timings: A list of mute timing names to apply to alerts that match this policy.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicyPolicyPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: pulumi.Input[str],
+             group_bies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             continue_: Optional[pulumi.Input[bool]] = None,
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyPolicyPolicyPolicyMatcherArgs']]]] = None,
+             mute_timings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3720,9 +4396,22 @@ class NotificationPolicyPolicyPolicyPolicyPolicyMatcherArgs:
                  label: pulumi.Input[str],
                  match: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyPolicyPolicyMatcherArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             match: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3767,16 +4456,33 @@ class OncallIntegrationDefaultRouteArgs:
         :param pulumi.Input['OncallIntegrationDefaultRouteSlackArgs'] slack: Slack-specific settings for a route.
         :param pulumi.Input['OncallIntegrationDefaultRouteTelegramArgs'] telegram: Telegram-specific settings for a route.
         """
+        OncallIntegrationDefaultRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            escalation_chain_id=escalation_chain_id,
+            id=id,
+            msteams=msteams,
+            slack=slack,
+            telegram=telegram,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             escalation_chain_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             msteams: Optional[pulumi.Input['OncallIntegrationDefaultRouteMsteamsArgs']] = None,
+             slack: Optional[pulumi.Input['OncallIntegrationDefaultRouteSlackArgs']] = None,
+             telegram: Optional[pulumi.Input['OncallIntegrationDefaultRouteTelegramArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if escalation_chain_id is not None:
-            pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
+            _setter("escalation_chain_id", escalation_chain_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if msteams is not None:
-            pulumi.set(__self__, "msteams", msteams)
+            _setter("msteams", msteams)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
 
     @property
     @pulumi.getter(name="escalationChainId")
@@ -3847,10 +4553,21 @@ class OncallIntegrationDefaultRouteMsteamsArgs:
         """
         :param pulumi.Input[str] id: The ID of this resource.
         """
+        OncallIntegrationDefaultRouteMsteamsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -3879,10 +4596,21 @@ class OncallIntegrationDefaultRouteSlackArgs:
     def __init__(__self__, *,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
+        OncallIntegrationDefaultRouteSlackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="channelId")
@@ -3911,10 +4639,21 @@ class OncallIntegrationDefaultRouteTelegramArgs:
         """
         :param pulumi.Input[str] id: The ID of this resource.
         """
+        OncallIntegrationDefaultRouteTelegramArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -3965,28 +4704,57 @@ class OncallIntegrationTemplatesArgs:
         :param pulumi.Input['OncallIntegrationTemplatesTelegramArgs'] telegram: Templates for Telegram.
         :param pulumi.Input['OncallIntegrationTemplatesWebArgs'] web: Templates for Web.
         """
+        OncallIntegrationTemplatesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acknowledge_signal=acknowledge_signal,
+            email=email,
+            grouping_key=grouping_key,
+            microsoft_teams=microsoft_teams,
+            phone_call=phone_call,
+            resolve_signal=resolve_signal,
+            slack=slack,
+            sms=sms,
+            source_link=source_link,
+            telegram=telegram,
+            web=web,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acknowledge_signal: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input['OncallIntegrationTemplatesEmailArgs']] = None,
+             grouping_key: Optional[pulumi.Input[str]] = None,
+             microsoft_teams: Optional[pulumi.Input['OncallIntegrationTemplatesMicrosoftTeamsArgs']] = None,
+             phone_call: Optional[pulumi.Input['OncallIntegrationTemplatesPhoneCallArgs']] = None,
+             resolve_signal: Optional[pulumi.Input[str]] = None,
+             slack: Optional[pulumi.Input['OncallIntegrationTemplatesSlackArgs']] = None,
+             sms: Optional[pulumi.Input['OncallIntegrationTemplatesSmsArgs']] = None,
+             source_link: Optional[pulumi.Input[str]] = None,
+             telegram: Optional[pulumi.Input['OncallIntegrationTemplatesTelegramArgs']] = None,
+             web: Optional[pulumi.Input['OncallIntegrationTemplatesWebArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acknowledge_signal is not None:
-            pulumi.set(__self__, "acknowledge_signal", acknowledge_signal)
+            _setter("acknowledge_signal", acknowledge_signal)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if grouping_key is not None:
-            pulumi.set(__self__, "grouping_key", grouping_key)
+            _setter("grouping_key", grouping_key)
         if microsoft_teams is not None:
-            pulumi.set(__self__, "microsoft_teams", microsoft_teams)
+            _setter("microsoft_teams", microsoft_teams)
         if phone_call is not None:
-            pulumi.set(__self__, "phone_call", phone_call)
+            _setter("phone_call", phone_call)
         if resolve_signal is not None:
-            pulumi.set(__self__, "resolve_signal", resolve_signal)
+            _setter("resolve_signal", resolve_signal)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if sms is not None:
-            pulumi.set(__self__, "sms", sms)
+            _setter("sms", sms)
         if source_link is not None:
-            pulumi.set(__self__, "source_link", source_link)
+            _setter("source_link", source_link)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
         if web is not None:
-            pulumi.set(__self__, "web", web)
+            _setter("web", web)
 
     @property
     @pulumi.getter(name="acknowledgeSignal")
@@ -4126,10 +4894,21 @@ class OncallIntegrationTemplatesEmailArgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesEmailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -4156,12 +4935,25 @@ class OncallIntegrationTemplatesMicrosoftTeamsArgs:
                  image_url: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesMicrosoftTeamsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4195,8 +4987,17 @@ class OncallIntegrationTemplatesMicrosoftTeamsArgs:
 class OncallIntegrationTemplatesPhoneCallArgs:
     def __init__(__self__, *,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesPhoneCallArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -4214,12 +5015,25 @@ class OncallIntegrationTemplatesSlackArgs:
                  image_url: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesSlackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4253,8 +5067,17 @@ class OncallIntegrationTemplatesSlackArgs:
 class OncallIntegrationTemplatesSmsArgs:
     def __init__(__self__, *,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesSmsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -4272,12 +5095,25 @@ class OncallIntegrationTemplatesTelegramArgs:
                  image_url: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesTelegramArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4313,12 +5149,25 @@ class OncallIntegrationTemplatesWebArgs:
                  image_url: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        OncallIntegrationTemplatesWebArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4357,10 +5206,21 @@ class OncallRouteMsteamsArgs:
         :param pulumi.Input[bool] enabled: Enable notification in MS teams. Defaults to `true`.
         :param pulumi.Input[str] id: MS teams channel id. Alerts will be directed to this channel in Microsoft teams.
         """
+        OncallRouteMsteamsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -4396,10 +5256,21 @@ class OncallRouteSlackArgs:
         :param pulumi.Input[str] channel_id: Slack channel id. Alerts will be directed to this channel in Slack.
         :param pulumi.Input[bool] enabled: Enable notification in Slack. Defaults to `true`.
         """
+        OncallRouteSlackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="channelId")
@@ -4435,10 +5306,21 @@ class OncallRouteTelegramArgs:
         :param pulumi.Input[bool] enabled: Enable notification in Telegram. Defaults to `true`.
         :param pulumi.Input[str] id: Telegram channel id. Alerts will be directed to this channel in Telegram.
         """
+        OncallRouteTelegramArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -4474,10 +5356,21 @@ class OncallScheduleSlackArgs:
         :param pulumi.Input[str] channel_id: Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
         :param pulumi.Input[str] user_group_id: Slack user group id. Members of user group will be updated when on-call users change.
         """
+        OncallScheduleSlackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            user_group_id=user_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             user_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if user_group_id is not None:
-            pulumi.set(__self__, "user_group_id", user_group_id)
+            _setter("user_group_id", user_group_id)
 
     @property
     @pulumi.getter(name="channelId")
@@ -4515,14 +5408,31 @@ class PlaylistItemArgs:
         """
         :param pulumi.Input[str] id: The ID of this resource.
         """
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "title", title)
+        PlaylistItemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            order=order,
+            title=title,
+            id=id,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             order: pulumi.Input[int],
+             title: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("order", order)
+        _setter("title", title)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4591,17 +5501,36 @@ class ReportScheduleArgs:
         :param pulumi.Input[str] start_time: Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
         :param pulumi.Input[bool] workdays_only: Whether to send the report only on work days. Defaults to `false`.
         """
-        pulumi.set(__self__, "frequency", frequency)
+        ReportScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            frequency=frequency,
+            custom_interval=custom_interval,
+            end_time=end_time,
+            last_day_of_month=last_day_of_month,
+            start_time=start_time,
+            workdays_only=workdays_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             frequency: pulumi.Input[str],
+             custom_interval: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             last_day_of_month: Optional[pulumi.Input[bool]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             workdays_only: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("frequency", frequency)
         if custom_interval is not None:
-            pulumi.set(__self__, "custom_interval", custom_interval)
+            _setter("custom_interval", custom_interval)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if last_day_of_month is not None:
-            pulumi.set(__self__, "last_day_of_month", last_day_of_month)
+            _setter("last_day_of_month", last_day_of_month)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if workdays_only is not None:
-            pulumi.set(__self__, "workdays_only", workdays_only)
+            _setter("workdays_only", workdays_only)
 
     @property
     @pulumi.getter
@@ -4686,10 +5615,21 @@ class ReportTimeRangeArgs:
         :param pulumi.Input[str] from_: Start of the time range.
         :param pulumi.Input[str] to: End of the time range.
         """
+        ReportTimeRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: Optional[pulumi.Input[str]] = None,
+             to: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
+            _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -4725,9 +5665,20 @@ class RolePermissionArgs:
         :param pulumi.Input[str] action: Specific action users granted with the role will be allowed to perform (for example: `users:read`)
         :param pulumi.Input[str] scope: Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`) Defaults to ``.
         """
-        pulumi.set(__self__, "action", action)
+        RolePermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: pulumi.Input[str],
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -4779,23 +5730,50 @@ class RuleGroupRuleArgs:
         :param pulumi.Input[str] no_data_state: Describes what state to enter when the rule's query returns No Data. Options are OK, NoData, and Alerting. Defaults to `NoData`.
         :param pulumi.Input[str] uid: The unique identifier of the alert rule.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "datas", datas)
-        pulumi.set(__self__, "name", name)
+        RuleGroupRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            datas=datas,
+            name=name,
+            annotations=annotations,
+            exec_err_state=exec_err_state,
+            for_=for_,
+            is_paused=is_paused,
+            labels=labels,
+            no_data_state=no_data_state,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: pulumi.Input[str],
+             datas: pulumi.Input[Sequence[pulumi.Input['RuleGroupRuleDataArgs']]],
+             name: pulumi.Input[str],
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             exec_err_state: Optional[pulumi.Input[str]] = None,
+             for_: Optional[pulumi.Input[str]] = None,
+             is_paused: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             no_data_state: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("datas", datas)
+        _setter("name", name)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if exec_err_state is not None:
-            pulumi.set(__self__, "exec_err_state", exec_err_state)
+            _setter("exec_err_state", exec_err_state)
         if for_ is not None:
-            pulumi.set(__self__, "for_", for_)
+            _setter("for_", for_)
         if is_paused is not None:
-            pulumi.set(__self__, "is_paused", is_paused)
+            _setter("is_paused", is_paused)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if no_data_state is not None:
-            pulumi.set(__self__, "no_data_state", no_data_state)
+            _setter("no_data_state", no_data_state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -4926,12 +5904,29 @@ class RuleGroupRuleDataArgs:
                  ref_id: pulumi.Input[str],
                  relative_time_range: pulumi.Input['RuleGroupRuleDataRelativeTimeRangeArgs'],
                  query_type: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "datasource_uid", datasource_uid)
-        pulumi.set(__self__, "model", model)
-        pulumi.set(__self__, "ref_id", ref_id)
-        pulumi.set(__self__, "relative_time_range", relative_time_range)
+        RuleGroupRuleDataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datasource_uid=datasource_uid,
+            model=model,
+            ref_id=ref_id,
+            relative_time_range=relative_time_range,
+            query_type=query_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datasource_uid: pulumi.Input[str],
+             model: pulumi.Input[str],
+             ref_id: pulumi.Input[str],
+             relative_time_range: pulumi.Input['RuleGroupRuleDataRelativeTimeRangeArgs'],
+             query_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datasource_uid", datasource_uid)
+        _setter("model", model)
+        _setter("ref_id", ref_id)
+        _setter("relative_time_range", relative_time_range)
         if query_type is not None:
-            pulumi.set(__self__, "query_type", query_type)
+            _setter("query_type", query_type)
 
     @property
     @pulumi.getter(name="datasourceUid")
@@ -4984,8 +5979,19 @@ class RuleGroupRuleDataRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  from_: pulumi.Input[int],
                  to: pulumi.Input[int]):
-        pulumi.set(__self__, "from_", from_)
-        pulumi.set(__self__, "to", to)
+        RuleGroupRuleDataRelativeTimeRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: pulumi.Input[int],
+             to: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
+        _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -5019,14 +6025,29 @@ class SLOAlertingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SLOAlertingLabelArgs']]] labels: Labels will be attached to all alerts generated by any of these rules.
         :param pulumi.Input[Sequence[pulumi.Input['SLOAlertingSlowburnArgs']]] slowburns: Alerting Rules generated for Slow Burn alerts
         """
+        SLOAlertingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            fastburns=fastburns,
+            labels=labels,
+            slowburns=slowburns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingAnnotationArgs']]]] = None,
+             fastburns: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingFastburnArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingLabelArgs']]]] = None,
+             slowburns: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingSlowburnArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if fastburns is not None:
-            pulumi.set(__self__, "fastburns", fastburns)
+            _setter("fastburns", fastburns)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if slowburns is not None:
-            pulumi.set(__self__, "slowburns", slowburns)
+            _setter("slowburns", slowburns)
 
     @property
     @pulumi.getter
@@ -5082,8 +6103,19 @@ class SLOAlertingAnnotationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingAnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5112,10 +6144,21 @@ class SLOAlertingFastburnArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['SLOAlertingFastburnLabelArgs']]] labels: Additional labels that will be attached to all metrics generated from the query. These labels are useful for grouping SLOs in dashboard views that you create by hand. Labels must adhere to Prometheus label name schema - "^[a-zA-Z*][a-zA-Z0-9*]*$"
         """
+        SLOAlertingFastburnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingFastburnAnnotationArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingFastburnLabelArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -5144,8 +6187,19 @@ class SLOAlertingFastburnAnnotationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingFastburnAnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5171,8 +6225,19 @@ class SLOAlertingFastburnLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingFastburnLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5198,8 +6263,19 @@ class SLOAlertingLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5228,10 +6304,21 @@ class SLOAlertingSlowburnArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['SLOAlertingSlowburnLabelArgs']]] labels: Additional labels that will be attached to all metrics generated from the query. These labels are useful for grouping SLOs in dashboard views that you create by hand. Labels must adhere to Prometheus label name schema - "^[a-zA-Z*][a-zA-Z0-9*]*$"
         """
+        SLOAlertingSlowburnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingSlowburnAnnotationArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingSlowburnLabelArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -5260,8 +6347,19 @@ class SLOAlertingSlowburnAnnotationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingSlowburnAnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5287,8 +6385,19 @@ class SLOAlertingSlowburnLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingSlowburnLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5314,8 +6423,19 @@ class SLOLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5345,8 +6465,19 @@ class SLOObjectiveArgs:
         :param pulumi.Input[float] value: Value between 0 and 1. If the value of the query is above the objective, the SLO is met.
         :param pulumi.Input[str] window: A Prometheus-parsable time duration string like 24h, 60m. This is the time window the objective is measured over.
         """
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "window", window)
+        SLOObjectiveArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[float],
+             window: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
+        _setter("window", window)
 
     @property
     @pulumi.getter
@@ -5382,11 +6513,24 @@ class SLOQueryArgs:
         """
         :param pulumi.Input[str] type: Query type must be one of: "freeform", "query", "ratio", or "threshold"
         """
-        pulumi.set(__self__, "type", type)
+        SLOQueryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            freeform=freeform,
+            ratio=ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             freeform: Optional[pulumi.Input['SLOQueryFreeformArgs']] = None,
+             ratio: Optional[pulumi.Input['SLOQueryRatioArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if freeform is not None:
-            pulumi.set(__self__, "freeform", freeform)
+            _setter("freeform", freeform)
         if ratio is not None:
-            pulumi.set(__self__, "ratio", ratio)
+            _setter("ratio", ratio)
 
     @property
     @pulumi.getter
@@ -5426,7 +6570,16 @@ class SLOQueryFreeformArgs:
         """
         :param pulumi.Input[str] query: Query describes the indicator that will be measured against the objective. Freeform Query types are currently supported.
         """
-        pulumi.set(__self__, "query", query)
+        SLOQueryFreeformArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
 
     @property
     @pulumi.getter
@@ -5447,10 +6600,23 @@ class SLOQueryRatioArgs:
                  success_metric: pulumi.Input[str],
                  total_metric: pulumi.Input[str],
                  group_by_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        pulumi.set(__self__, "success_metric", success_metric)
-        pulumi.set(__self__, "total_metric", total_metric)
+        SLOQueryRatioArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            success_metric=success_metric,
+            total_metric=total_metric,
+            group_by_labels=group_by_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             success_metric: pulumi.Input[str],
+             total_metric: pulumi.Input[str],
+             group_by_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("success_metric", success_metric)
+        _setter("total_metric", total_metric)
         if group_by_labels is not None:
-            pulumi.set(__self__, "group_by_labels", group_by_labels)
+            _setter("group_by_labels", group_by_labels)
 
     @property
     @pulumi.getter(name="successMetric")
@@ -5491,11 +6657,24 @@ class ServiceAccountPermissionPermissionArgs:
         :param pulumi.Input[str] team_id: ID of the team to manage permissions for. Specify either this or `user_id`. Defaults to `0`.
         :param pulumi.Input[int] user_id: ID of the user to manage permissions for. Specify either this or `team_id`. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        ServiceAccountPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: pulumi.Input[str],
+             team_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -5549,16 +6728,33 @@ class SyntheticMonitoringCheckSettingsArgs:
         :param pulumi.Input['SyntheticMonitoringCheckSettingsTcpArgs'] tcp: Settings for TCP check. The target must be of the form `<host>:<port>`, where the host portion must be a valid hostname or IP address.
         :param pulumi.Input['SyntheticMonitoringCheckSettingsTracerouteArgs'] traceroute: Settings for traceroute check. The target must be a valid hostname or IP address
         """
+        SyntheticMonitoringCheckSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns=dns,
+            http=http,
+            ping=ping,
+            tcp=tcp,
+            traceroute=traceroute,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsDnsArgs']] = None,
+             http: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsHttpArgs']] = None,
+             ping: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsPingArgs']] = None,
+             tcp: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsTcpArgs']] = None,
+             traceroute: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsTracerouteArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if http is not None:
-            pulumi.set(__self__, "http", http)
+            _setter("http", http)
         if ping is not None:
-            pulumi.set(__self__, "ping", ping)
+            _setter("ping", ping)
         if tcp is not None:
-            pulumi.set(__self__, "tcp", tcp)
+            _setter("tcp", tcp)
         if traceroute is not None:
-            pulumi.set(__self__, "traceroute", traceroute)
+            _setter("traceroute", traceroute)
 
     @property
     @pulumi.getter
@@ -5634,26 +6830,53 @@ class SyntheticMonitoringCheckSettingsDnsArgs:
                  validate_additional_rrs: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAdditionalRrArgs']]]] = None,
                  validate_answer_rrs: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAnswerRrsArgs']] = None,
                  validate_authority_rrs: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrsArgs']] = None):
+        SyntheticMonitoringCheckSettingsDnsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_version=ip_version,
+            port=port,
+            protocol=protocol,
+            record_type=record_type,
+            server=server,
+            source_ip_address=source_ip_address,
+            valid_r_codes=valid_r_codes,
+            validate_additional_rrs=validate_additional_rrs,
+            validate_answer_rrs=validate_answer_rrs,
+            validate_authority_rrs=validate_authority_rrs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_version: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             source_ip_address: Optional[pulumi.Input[str]] = None,
+             valid_r_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             validate_additional_rrs: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAdditionalRrArgs']]]] = None,
+             validate_answer_rrs: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAnswerRrsArgs']] = None,
+             validate_authority_rrs: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if server is not None:
-            pulumi.set(__self__, "server", server)
+            _setter("server", server)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if valid_r_codes is not None:
-            pulumi.set(__self__, "valid_r_codes", valid_r_codes)
+            _setter("valid_r_codes", valid_r_codes)
         if validate_additional_rrs is not None:
-            pulumi.set(__self__, "validate_additional_rrs", validate_additional_rrs)
+            _setter("validate_additional_rrs", validate_additional_rrs)
         if validate_answer_rrs is not None:
-            pulumi.set(__self__, "validate_answer_rrs", validate_answer_rrs)
+            _setter("validate_answer_rrs", validate_answer_rrs)
         if validate_authority_rrs is not None:
-            pulumi.set(__self__, "validate_authority_rrs", validate_authority_rrs)
+            _setter("validate_authority_rrs", validate_authority_rrs)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -5751,10 +6974,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAdditionalRrArgs:
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAdditionalRrArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5780,10 +7014,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAnswerRrsArgs:
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAnswerRrsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5809,10 +7054,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrsArgs:
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fail_if_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5854,42 +7110,85 @@ class SyntheticMonitoringCheckSettingsHttpArgs:
                  tls_config: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsHttpTlsConfigArgs']] = None,
                  valid_http_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  valid_status_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        SyntheticMonitoringCheckSettingsHttpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_auth=basic_auth,
+            bearer_token=bearer_token,
+            body=body,
+            cache_busting_query_param_name=cache_busting_query_param_name,
+            fail_if_body_matches_regexps=fail_if_body_matches_regexps,
+            fail_if_body_not_matches_regexps=fail_if_body_not_matches_regexps,
+            fail_if_header_matches_regexps=fail_if_header_matches_regexps,
+            fail_if_header_not_matches_regexps=fail_if_header_not_matches_regexps,
+            fail_if_not_ssl=fail_if_not_ssl,
+            fail_if_ssl=fail_if_ssl,
+            headers=headers,
+            ip_version=ip_version,
+            method=method,
+            no_follow_redirects=no_follow_redirects,
+            proxy_url=proxy_url,
+            tls_config=tls_config,
+            valid_http_versions=valid_http_versions,
+            valid_status_codes=valid_status_codes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_auth: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsHttpBasicAuthArgs']] = None,
+             bearer_token: Optional[pulumi.Input[str]] = None,
+             body: Optional[pulumi.Input[str]] = None,
+             cache_busting_query_param_name: Optional[pulumi.Input[str]] = None,
+             fail_if_body_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fail_if_body_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fail_if_header_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexpArgs']]]] = None,
+             fail_if_header_not_matches_regexps: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexpArgs']]]] = None,
+             fail_if_not_ssl: Optional[pulumi.Input[bool]] = None,
+             fail_if_ssl: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             no_follow_redirects: Optional[pulumi.Input[bool]] = None,
+             proxy_url: Optional[pulumi.Input[str]] = None,
+             tls_config: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsHttpTlsConfigArgs']] = None,
+             valid_http_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             valid_status_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if basic_auth is not None:
-            pulumi.set(__self__, "basic_auth", basic_auth)
+            _setter("basic_auth", basic_auth)
         if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
+            _setter("bearer_token", bearer_token)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if cache_busting_query_param_name is not None:
-            pulumi.set(__self__, "cache_busting_query_param_name", cache_busting_query_param_name)
+            _setter("cache_busting_query_param_name", cache_busting_query_param_name)
         if fail_if_body_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_body_matches_regexps", fail_if_body_matches_regexps)
+            _setter("fail_if_body_matches_regexps", fail_if_body_matches_regexps)
         if fail_if_body_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_body_not_matches_regexps", fail_if_body_not_matches_regexps)
+            _setter("fail_if_body_not_matches_regexps", fail_if_body_not_matches_regexps)
         if fail_if_header_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_header_matches_regexps", fail_if_header_matches_regexps)
+            _setter("fail_if_header_matches_regexps", fail_if_header_matches_regexps)
         if fail_if_header_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_header_not_matches_regexps", fail_if_header_not_matches_regexps)
+            _setter("fail_if_header_not_matches_regexps", fail_if_header_not_matches_regexps)
         if fail_if_not_ssl is not None:
-            pulumi.set(__self__, "fail_if_not_ssl", fail_if_not_ssl)
+            _setter("fail_if_not_ssl", fail_if_not_ssl)
         if fail_if_ssl is not None:
-            pulumi.set(__self__, "fail_if_ssl", fail_if_ssl)
+            _setter("fail_if_ssl", fail_if_ssl)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if no_follow_redirects is not None:
-            pulumi.set(__self__, "no_follow_redirects", no_follow_redirects)
+            _setter("no_follow_redirects", no_follow_redirects)
         if proxy_url is not None:
-            pulumi.set(__self__, "proxy_url", proxy_url)
+            _setter("proxy_url", proxy_url)
         if tls_config is not None:
-            pulumi.set(__self__, "tls_config", tls_config)
+            _setter("tls_config", tls_config)
         if valid_http_versions is not None:
-            pulumi.set(__self__, "valid_http_versions", valid_http_versions)
+            _setter("valid_http_versions", valid_http_versions)
         if valid_status_codes is not None:
-            pulumi.set(__self__, "valid_status_codes", valid_status_codes)
+            _setter("valid_status_codes", valid_status_codes)
 
     @property
     @pulumi.getter(name="basicAuth")
@@ -6059,8 +7358,19 @@ class SyntheticMonitoringCheckSettingsHttpBasicAuthArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  username: pulumi.Input[str]):
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        SyntheticMonitoringCheckSettingsHttpBasicAuthArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: pulumi.Input[str],
+             username: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -6087,10 +7397,23 @@ class SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexpArgs:
                  header: pulumi.Input[str],
                  regexp: pulumi.Input[str],
                  allow_missing: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "header", header)
-        pulumi.set(__self__, "regexp", regexp)
+        SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header=header,
+            regexp=regexp,
+            allow_missing=allow_missing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header: pulumi.Input[str],
+             regexp: pulumi.Input[str],
+             allow_missing: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header", header)
+        _setter("regexp", regexp)
         if allow_missing is not None:
-            pulumi.set(__self__, "allow_missing", allow_missing)
+            _setter("allow_missing", allow_missing)
 
     @property
     @pulumi.getter
@@ -6126,10 +7449,23 @@ class SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexpArgs:
                  header: pulumi.Input[str],
                  regexp: pulumi.Input[str],
                  allow_missing: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "header", header)
-        pulumi.set(__self__, "regexp", regexp)
+        SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header=header,
+            regexp=regexp,
+            allow_missing=allow_missing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header: pulumi.Input[str],
+             regexp: pulumi.Input[str],
+             allow_missing: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header", header)
+        _setter("regexp", regexp)
         if allow_missing is not None:
-            pulumi.set(__self__, "allow_missing", allow_missing)
+            _setter("allow_missing", allow_missing)
 
     @property
     @pulumi.getter
@@ -6167,16 +7503,33 @@ class SyntheticMonitoringCheckSettingsHttpTlsConfigArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  insecure_skip_verify: Optional[pulumi.Input[bool]] = None,
                  server_name: Optional[pulumi.Input[str]] = None):
+        SyntheticMonitoringCheckSettingsHttpTlsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_cert=ca_cert,
+            client_cert=client_cert,
+            client_key=client_key,
+            insecure_skip_verify=insecure_skip_verify,
+            server_name=server_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             insecure_skip_verify: Optional[pulumi.Input[bool]] = None,
+             server_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if insecure_skip_verify is not None:
-            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+            _setter("insecure_skip_verify", insecure_skip_verify)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
 
     @property
     @pulumi.getter(name="caCert")
@@ -6231,14 +7584,29 @@ class SyntheticMonitoringCheckSettingsPingArgs:
                  ip_version: Optional[pulumi.Input[str]] = None,
                  payload_size: Optional[pulumi.Input[int]] = None,
                  source_ip_address: Optional[pulumi.Input[str]] = None):
+        SyntheticMonitoringCheckSettingsPingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dont_fragment=dont_fragment,
+            ip_version=ip_version,
+            payload_size=payload_size,
+            source_ip_address=source_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dont_fragment: Optional[pulumi.Input[bool]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             payload_size: Optional[pulumi.Input[int]] = None,
+             source_ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dont_fragment is not None:
-            pulumi.set(__self__, "dont_fragment", dont_fragment)
+            _setter("dont_fragment", dont_fragment)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if payload_size is not None:
-            pulumi.set(__self__, "payload_size", payload_size)
+            _setter("payload_size", payload_size)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
 
     @property
     @pulumi.getter(name="dontFragment")
@@ -6285,16 +7653,33 @@ class SyntheticMonitoringCheckSettingsTcpArgs:
                  source_ip_address: Optional[pulumi.Input[str]] = None,
                  tls: Optional[pulumi.Input[bool]] = None,
                  tls_config: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsTcpTlsConfigArgs']] = None):
+        SyntheticMonitoringCheckSettingsTcpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_version=ip_version,
+            query_responses=query_responses,
+            source_ip_address=source_ip_address,
+            tls=tls,
+            tls_config=tls_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_version: Optional[pulumi.Input[str]] = None,
+             query_responses: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticMonitoringCheckSettingsTcpQueryResponseArgs']]]] = None,
+             source_ip_address: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[bool]] = None,
+             tls_config: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsTcpTlsConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if query_responses is not None:
-            pulumi.set(__self__, "query_responses", query_responses)
+            _setter("query_responses", query_responses)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if tls_config is not None:
-            pulumi.set(__self__, "tls_config", tls_config)
+            _setter("tls_config", tls_config)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -6348,10 +7733,23 @@ class SyntheticMonitoringCheckSettingsTcpQueryResponseArgs:
                  expect: pulumi.Input[str],
                  send: pulumi.Input[str],
                  start_tls: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "expect", expect)
-        pulumi.set(__self__, "send", send)
+        SyntheticMonitoringCheckSettingsTcpQueryResponseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expect=expect,
+            send=send,
+            start_tls=start_tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expect: pulumi.Input[str],
+             send: pulumi.Input[str],
+             start_tls: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expect", expect)
+        _setter("send", send)
         if start_tls is not None:
-            pulumi.set(__self__, "start_tls", start_tls)
+            _setter("start_tls", start_tls)
 
     @property
     @pulumi.getter
@@ -6389,16 +7787,33 @@ class SyntheticMonitoringCheckSettingsTcpTlsConfigArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  insecure_skip_verify: Optional[pulumi.Input[bool]] = None,
                  server_name: Optional[pulumi.Input[str]] = None):
+        SyntheticMonitoringCheckSettingsTcpTlsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_cert=ca_cert,
+            client_cert=client_cert,
+            client_key=client_key,
+            insecure_skip_verify=insecure_skip_verify,
+            server_name=server_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             insecure_skip_verify: Optional[pulumi.Input[bool]] = None,
+             server_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if insecure_skip_verify is not None:
-            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+            _setter("insecure_skip_verify", insecure_skip_verify)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
 
     @property
     @pulumi.getter(name="caCert")
@@ -6452,12 +7867,25 @@ class SyntheticMonitoringCheckSettingsTracerouteArgs:
                  max_hops: Optional[pulumi.Input[int]] = None,
                  max_unknown_hops: Optional[pulumi.Input[int]] = None,
                  ptr_lookup: Optional[pulumi.Input[bool]] = None):
+        SyntheticMonitoringCheckSettingsTracerouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_hops=max_hops,
+            max_unknown_hops=max_unknown_hops,
+            ptr_lookup=ptr_lookup,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_hops: Optional[pulumi.Input[int]] = None,
+             max_unknown_hops: Optional[pulumi.Input[int]] = None,
+             ptr_lookup: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_hops is not None:
-            pulumi.set(__self__, "max_hops", max_hops)
+            _setter("max_hops", max_hops)
         if max_unknown_hops is not None:
-            pulumi.set(__self__, "max_unknown_hops", max_unknown_hops)
+            _setter("max_unknown_hops", max_unknown_hops)
         if ptr_lookup is not None:
-            pulumi.set(__self__, "ptr_lookup", ptr_lookup)
+            _setter("ptr_lookup", ptr_lookup)
 
     @property
     @pulumi.getter(name="maxHops")
@@ -6493,12 +7921,25 @@ class TeamPreferencesArgs:
                  home_dashboard_uid: Optional[pulumi.Input[str]] = None,
                  theme: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None):
+        TeamPreferencesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            home_dashboard_uid=home_dashboard_uid,
+            theme=theme,
+            timezone=timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             home_dashboard_uid: Optional[pulumi.Input[str]] = None,
+             theme: Optional[pulumi.Input[str]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if home_dashboard_uid is not None:
-            pulumi.set(__self__, "home_dashboard_uid", home_dashboard_uid)
+            _setter("home_dashboard_uid", home_dashboard_uid)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
 
     @property
     @pulumi.getter(name="homeDashboardUid")
@@ -6532,8 +7973,17 @@ class TeamPreferencesArgs:
 class TeamTeamSyncArgs:
     def __init__(__self__, *,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        TeamTeamSyncArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,23 @@ class DataSourcePermissionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DataSourcePermissionPermissionArgs']]] permissions: The permission items to add/update. Items that are omitted from the list will be removed.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
-        pulumi.set(__self__, "datasource_id", datasource_id)
-        pulumi.set(__self__, "permissions", permissions)
+        DataSourcePermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datasource_id=datasource_id,
+            permissions=permissions,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datasource_id: pulumi.Input[str],
+             permissions: pulumi.Input[Sequence[pulumi.Input['DataSourcePermissionPermissionArgs']]],
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datasource_id", datasource_id)
+        _setter("permissions", permissions)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter(name="datasourceId")
@@ -79,12 +92,25 @@ class _DataSourcePermissionState:
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         :param pulumi.Input[Sequence[pulumi.Input['DataSourcePermissionPermissionArgs']]] permissions: The permission items to add/update. Items that are omitted from the list will be removed.
         """
+        _DataSourcePermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datasource_id=datasource_id,
+            org_id=org_id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datasource_id: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DataSourcePermissionPermissionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if datasource_id is not None:
-            pulumi.set(__self__, "datasource_id", datasource_id)
+            _setter("datasource_id", datasource_id)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
 
     @property
     @pulumi.getter(name="datasourceId")
@@ -240,6 +266,10 @@ class DataSourcePermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataSourcePermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

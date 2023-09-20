@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SyntheticMonitoringProbeArgs', 'SyntheticMonitoringProbe']
@@ -29,15 +29,34 @@ class SyntheticMonitoringProbeArgs:
         :param pulumi.Input[str] name: Name of the probe.
         :param pulumi.Input[bool] public: Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set to `true`. Defaults to `false`.
         """
-        pulumi.set(__self__, "latitude", latitude)
-        pulumi.set(__self__, "longitude", longitude)
-        pulumi.set(__self__, "region", region)
+        SyntheticMonitoringProbeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            latitude=latitude,
+            longitude=longitude,
+            region=region,
+            labels=labels,
+            name=name,
+            public=public,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             latitude: pulumi.Input[float],
+             longitude: pulumi.Input[float],
+             region: pulumi.Input[str],
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("latitude", latitude)
+        _setter("longitude", longitude)
+        _setter("region", region)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
 
     @property
     @pulumi.getter
@@ -134,22 +153,45 @@ class _SyntheticMonitoringProbeState:
         :param pulumi.Input[str] region: Region of the probe.
         :param pulumi.Input[int] tenant_id: The tenant ID of the probe.
         """
+        _SyntheticMonitoringProbeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_token=auth_token,
+            labels=labels,
+            latitude=latitude,
+            longitude=longitude,
+            name=name,
+            public=public,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_token: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             latitude: Optional[pulumi.Input[float]] = None,
+             longitude: Optional[pulumi.Input[float]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auth_token is not None:
-            pulumi.set(__self__, "auth_token", auth_token)
+            _setter("auth_token", auth_token)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if latitude is not None:
-            pulumi.set(__self__, "latitude", latitude)
+            _setter("latitude", latitude)
         if longitude is not None:
-            pulumi.set(__self__, "longitude", longitude)
+            _setter("longitude", longitude)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="authToken")
@@ -351,6 +393,10 @@ class SyntheticMonitoringProbe(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SyntheticMonitoringProbeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

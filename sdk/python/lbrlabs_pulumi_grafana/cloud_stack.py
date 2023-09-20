@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudStackArgs', 'CloudStack']
@@ -32,19 +32,40 @@ class CloudStackArgs:
         :param pulumi.Input[bool] wait_for_readiness: Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
         :param pulumi.Input[str] wait_for_readiness_timeout: How long to wait for readiness (if enabled). Defaults to `5m0s`.
         """
-        pulumi.set(__self__, "slug", slug)
+        CloudStackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            slug=slug,
+            description=description,
+            name=name,
+            region_slug=region_slug,
+            url=url,
+            wait_for_readiness=wait_for_readiness,
+            wait_for_readiness_timeout=wait_for_readiness_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             slug: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region_slug: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             wait_for_readiness: Optional[pulumi.Input[bool]] = None,
+             wait_for_readiness_timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("slug", slug)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region_slug is not None:
-            pulumi.set(__self__, "region_slug", region_slug)
+            _setter("region_slug", region_slug)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if wait_for_readiness is not None:
-            pulumi.set(__self__, "wait_for_readiness", wait_for_readiness)
+            _setter("wait_for_readiness", wait_for_readiness)
         if wait_for_readiness_timeout is not None:
-            pulumi.set(__self__, "wait_for_readiness_timeout", wait_for_readiness_timeout)
+            _setter("wait_for_readiness_timeout", wait_for_readiness_timeout)
 
     @property
     @pulumi.getter
@@ -194,72 +215,145 @@ class _CloudStackState:
         :param pulumi.Input[bool] wait_for_readiness: Whether to wait for readiness of the stack after creating it. The check is a HEAD request to the stack URL (Grafana instance). Defaults to `true`.
         :param pulumi.Input[str] wait_for_readiness_timeout: How long to wait for readiness (if enabled). Defaults to `5m0s`.
         """
+        _CloudStackState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alertmanager_name=alertmanager_name,
+            alertmanager_status=alertmanager_status,
+            alertmanager_url=alertmanager_url,
+            alertmanager_user_id=alertmanager_user_id,
+            description=description,
+            graphite_name=graphite_name,
+            graphite_status=graphite_status,
+            graphite_url=graphite_url,
+            graphite_user_id=graphite_user_id,
+            logs_name=logs_name,
+            logs_status=logs_status,
+            logs_url=logs_url,
+            logs_user_id=logs_user_id,
+            name=name,
+            org_id=org_id,
+            org_name=org_name,
+            org_slug=org_slug,
+            prometheus_name=prometheus_name,
+            prometheus_remote_endpoint=prometheus_remote_endpoint,
+            prometheus_remote_write_endpoint=prometheus_remote_write_endpoint,
+            prometheus_status=prometheus_status,
+            prometheus_url=prometheus_url,
+            prometheus_user_id=prometheus_user_id,
+            region_slug=region_slug,
+            slug=slug,
+            status=status,
+            traces_name=traces_name,
+            traces_status=traces_status,
+            traces_url=traces_url,
+            traces_user_id=traces_user_id,
+            url=url,
+            wait_for_readiness=wait_for_readiness,
+            wait_for_readiness_timeout=wait_for_readiness_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alertmanager_name: Optional[pulumi.Input[str]] = None,
+             alertmanager_status: Optional[pulumi.Input[str]] = None,
+             alertmanager_url: Optional[pulumi.Input[str]] = None,
+             alertmanager_user_id: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             graphite_name: Optional[pulumi.Input[str]] = None,
+             graphite_status: Optional[pulumi.Input[str]] = None,
+             graphite_url: Optional[pulumi.Input[str]] = None,
+             graphite_user_id: Optional[pulumi.Input[int]] = None,
+             logs_name: Optional[pulumi.Input[str]] = None,
+             logs_status: Optional[pulumi.Input[str]] = None,
+             logs_url: Optional[pulumi.Input[str]] = None,
+             logs_user_id: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[int]] = None,
+             org_name: Optional[pulumi.Input[str]] = None,
+             org_slug: Optional[pulumi.Input[str]] = None,
+             prometheus_name: Optional[pulumi.Input[str]] = None,
+             prometheus_remote_endpoint: Optional[pulumi.Input[str]] = None,
+             prometheus_remote_write_endpoint: Optional[pulumi.Input[str]] = None,
+             prometheus_status: Optional[pulumi.Input[str]] = None,
+             prometheus_url: Optional[pulumi.Input[str]] = None,
+             prometheus_user_id: Optional[pulumi.Input[int]] = None,
+             region_slug: Optional[pulumi.Input[str]] = None,
+             slug: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             traces_name: Optional[pulumi.Input[str]] = None,
+             traces_status: Optional[pulumi.Input[str]] = None,
+             traces_url: Optional[pulumi.Input[str]] = None,
+             traces_user_id: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             wait_for_readiness: Optional[pulumi.Input[bool]] = None,
+             wait_for_readiness_timeout: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alertmanager_name is not None:
-            pulumi.set(__self__, "alertmanager_name", alertmanager_name)
+            _setter("alertmanager_name", alertmanager_name)
         if alertmanager_status is not None:
-            pulumi.set(__self__, "alertmanager_status", alertmanager_status)
+            _setter("alertmanager_status", alertmanager_status)
         if alertmanager_url is not None:
-            pulumi.set(__self__, "alertmanager_url", alertmanager_url)
+            _setter("alertmanager_url", alertmanager_url)
         if alertmanager_user_id is not None:
-            pulumi.set(__self__, "alertmanager_user_id", alertmanager_user_id)
+            _setter("alertmanager_user_id", alertmanager_user_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if graphite_name is not None:
-            pulumi.set(__self__, "graphite_name", graphite_name)
+            _setter("graphite_name", graphite_name)
         if graphite_status is not None:
-            pulumi.set(__self__, "graphite_status", graphite_status)
+            _setter("graphite_status", graphite_status)
         if graphite_url is not None:
-            pulumi.set(__self__, "graphite_url", graphite_url)
+            _setter("graphite_url", graphite_url)
         if graphite_user_id is not None:
-            pulumi.set(__self__, "graphite_user_id", graphite_user_id)
+            _setter("graphite_user_id", graphite_user_id)
         if logs_name is not None:
-            pulumi.set(__self__, "logs_name", logs_name)
+            _setter("logs_name", logs_name)
         if logs_status is not None:
-            pulumi.set(__self__, "logs_status", logs_status)
+            _setter("logs_status", logs_status)
         if logs_url is not None:
-            pulumi.set(__self__, "logs_url", logs_url)
+            _setter("logs_url", logs_url)
         if logs_user_id is not None:
-            pulumi.set(__self__, "logs_user_id", logs_user_id)
+            _setter("logs_user_id", logs_user_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if org_name is not None:
-            pulumi.set(__self__, "org_name", org_name)
+            _setter("org_name", org_name)
         if org_slug is not None:
-            pulumi.set(__self__, "org_slug", org_slug)
+            _setter("org_slug", org_slug)
         if prometheus_name is not None:
-            pulumi.set(__self__, "prometheus_name", prometheus_name)
+            _setter("prometheus_name", prometheus_name)
         if prometheus_remote_endpoint is not None:
-            pulumi.set(__self__, "prometheus_remote_endpoint", prometheus_remote_endpoint)
+            _setter("prometheus_remote_endpoint", prometheus_remote_endpoint)
         if prometheus_remote_write_endpoint is not None:
-            pulumi.set(__self__, "prometheus_remote_write_endpoint", prometheus_remote_write_endpoint)
+            _setter("prometheus_remote_write_endpoint", prometheus_remote_write_endpoint)
         if prometheus_status is not None:
-            pulumi.set(__self__, "prometheus_status", prometheus_status)
+            _setter("prometheus_status", prometheus_status)
         if prometheus_url is not None:
-            pulumi.set(__self__, "prometheus_url", prometheus_url)
+            _setter("prometheus_url", prometheus_url)
         if prometheus_user_id is not None:
-            pulumi.set(__self__, "prometheus_user_id", prometheus_user_id)
+            _setter("prometheus_user_id", prometheus_user_id)
         if region_slug is not None:
-            pulumi.set(__self__, "region_slug", region_slug)
+            _setter("region_slug", region_slug)
         if slug is not None:
-            pulumi.set(__self__, "slug", slug)
+            _setter("slug", slug)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if traces_name is not None:
-            pulumi.set(__self__, "traces_name", traces_name)
+            _setter("traces_name", traces_name)
         if traces_status is not None:
-            pulumi.set(__self__, "traces_status", traces_status)
+            _setter("traces_status", traces_status)
         if traces_url is not None:
-            pulumi.set(__self__, "traces_url", traces_url)
+            _setter("traces_url", traces_url)
         if traces_user_id is not None:
-            pulumi.set(__self__, "traces_user_id", traces_user_id)
+            _setter("traces_user_id", traces_user_id)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if wait_for_readiness is not None:
-            pulumi.set(__self__, "wait_for_readiness", wait_for_readiness)
+            _setter("wait_for_readiness", wait_for_readiness)
         if wait_for_readiness_timeout is not None:
-            pulumi.set(__self__, "wait_for_readiness_timeout", wait_for_readiness_timeout)
+            _setter("wait_for_readiness_timeout", wait_for_readiness_timeout)
 
     @property
     @pulumi.getter(name="alertmanagerName")
@@ -716,6 +810,10 @@ class CloudStack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudStackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

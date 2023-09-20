@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudAccessPolicyTokenArgs', 'CloudAccessPolicyToken']
@@ -27,14 +27,31 @@ class CloudAccessPolicyTokenArgs:
         :param pulumi.Input[str] expires_at: Expiration date of the access policy token. Does not expire by default.
         :param pulumi.Input[str] name: Name of the access policy token.
         """
-        pulumi.set(__self__, "access_policy_id", access_policy_id)
-        pulumi.set(__self__, "region", region)
+        CloudAccessPolicyTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_policy_id=access_policy_id,
+            region=region,
+            display_name=display_name,
+            expires_at=expires_at,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_policy_id: pulumi.Input[str],
+             region: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_policy_id", access_policy_id)
+        _setter("region", region)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="accessPolicyId")
@@ -118,22 +135,45 @@ class _CloudAccessPolicyTokenState:
         :param pulumi.Input[str] region: Region of the access policy. Should be set to the same region as the access policy. Use the region list API to get the list of available regions: https://grafana.com/docs/grafana-cloud/reference/cloud-api/#list-regions.
         :param pulumi.Input[str] updated_at: Last update date of the access policy token.
         """
+        _CloudAccessPolicyTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_policy_id=access_policy_id,
+            created_at=created_at,
+            display_name=display_name,
+            expires_at=expires_at,
+            name=name,
+            region=region,
+            token=token,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_policy_id: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_policy_id is not None:
-            pulumi.set(__self__, "access_policy_id", access_policy_id)
+            _setter("access_policy_id", access_policy_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accessPolicyId")
@@ -330,6 +370,10 @@ class CloudAccessPolicyToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudAccessPolicyTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

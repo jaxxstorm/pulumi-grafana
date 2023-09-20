@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,20 +37,45 @@ class MachineLearningOutlierDetectorArgs:
         :param pulumi.Input[int] interval: The data interval in seconds to monitor. Defaults to `300`.
         :param pulumi.Input[str] name: The name of the outlier detector.
         """
-        pulumi.set(__self__, "algorithm", algorithm)
-        pulumi.set(__self__, "datasource_type", datasource_type)
-        pulumi.set(__self__, "metric", metric)
-        pulumi.set(__self__, "query_params", query_params)
+        MachineLearningOutlierDetectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            datasource_type=datasource_type,
+            metric=metric,
+            query_params=query_params,
+            datasource_id=datasource_id,
+            datasource_uid=datasource_uid,
+            description=description,
+            interval=interval,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: pulumi.Input['MachineLearningOutlierDetectorAlgorithmArgs'],
+             datasource_type: pulumi.Input[str],
+             metric: pulumi.Input[str],
+             query_params: pulumi.Input[Mapping[str, Any]],
+             datasource_id: Optional[pulumi.Input[int]] = None,
+             datasource_uid: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("algorithm", algorithm)
+        _setter("datasource_type", datasource_type)
+        _setter("metric", metric)
+        _setter("query_params", query_params)
         if datasource_id is not None:
-            pulumi.set(__self__, "datasource_id", datasource_id)
+            _setter("datasource_id", datasource_id)
         if datasource_uid is not None:
-            pulumi.set(__self__, "datasource_uid", datasource_uid)
+            _setter("datasource_uid", datasource_uid)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -185,24 +210,49 @@ class _MachineLearningOutlierDetectorState:
         :param pulumi.Input[str] name: The name of the outlier detector.
         :param pulumi.Input[Mapping[str, Any]] query_params: An object representing the query params to query Grafana with.
         """
+        _MachineLearningOutlierDetectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            datasource_id=datasource_id,
+            datasource_type=datasource_type,
+            datasource_uid=datasource_uid,
+            description=description,
+            interval=interval,
+            metric=metric,
+            name=name,
+            query_params=query_params,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input['MachineLearningOutlierDetectorAlgorithmArgs']] = None,
+             datasource_id: Optional[pulumi.Input[int]] = None,
+             datasource_type: Optional[pulumi.Input[str]] = None,
+             datasource_uid: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             query_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if datasource_id is not None:
-            pulumi.set(__self__, "datasource_id", datasource_id)
+            _setter("datasource_id", datasource_id)
         if datasource_type is not None:
-            pulumi.set(__self__, "datasource_type", datasource_type)
+            _setter("datasource_type", datasource_type)
         if datasource_uid is not None:
-            pulumi.set(__self__, "datasource_uid", datasource_uid)
+            _setter("datasource_uid", datasource_uid)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+            _setter("metric", metric)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if query_params is not None:
-            pulumi.set(__self__, "query_params", query_params)
+            _setter("query_params", query_params)
 
     @property
     @pulumi.getter
@@ -370,6 +420,10 @@ class MachineLearningOutlierDetector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MachineLearningOutlierDetectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -393,6 +447,11 @@ class MachineLearningOutlierDetector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MachineLearningOutlierDetectorArgs.__new__(MachineLearningOutlierDetectorArgs)
 
+            if not isinstance(algorithm, MachineLearningOutlierDetectorAlgorithmArgs):
+                algorithm = algorithm or {}
+                def _setter(key, value):
+                    algorithm[key] = value
+                MachineLearningOutlierDetectorAlgorithmArgs._configure(_setter, **algorithm)
             if algorithm is None and not opts.urn:
                 raise TypeError("Missing required property 'algorithm'")
             __props__.__dict__["algorithm"] = algorithm

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,10 +23,21 @@ class MuteTimingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MuteTimingIntervalArgs']]] intervals: The time intervals at which to mute notifications.
         :param pulumi.Input[str] name: The name of the mute timing.
         """
+        MuteTimingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            intervals=intervals,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             intervals: Optional[pulumi.Input[Sequence[pulumi.Input['MuteTimingIntervalArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if intervals is not None:
-            pulumi.set(__self__, "intervals", intervals)
+            _setter("intervals", intervals)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -63,10 +74,21 @@ class _MuteTimingState:
         :param pulumi.Input[Sequence[pulumi.Input['MuteTimingIntervalArgs']]] intervals: The time intervals at which to mute notifications.
         :param pulumi.Input[str] name: The name of the mute timing.
         """
+        _MuteTimingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            intervals=intervals,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             intervals: Optional[pulumi.Input[Sequence[pulumi.Input['MuteTimingIntervalArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if intervals is not None:
-            pulumi.set(__self__, "intervals", intervals)
+            _setter("intervals", intervals)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -210,6 +232,10 @@ class MuteTiming(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MuteTimingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,20 +38,41 @@ class TeamArgs:
                documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-team-sync/) * [HTTP
                API](https://grafana.com/docs/grafana/latest/developers/http_api/external_group_sync/)
         """
+        TeamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            ignore_externally_synced_members=ignore_externally_synced_members,
+            members=members,
+            name=name,
+            org_id=org_id,
+            preferences=preferences,
+            team_sync=team_sync,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             ignore_externally_synced_members: Optional[pulumi.Input[bool]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             preferences: Optional[pulumi.Input['TeamPreferencesArgs']] = None,
+             team_sync: Optional[pulumi.Input['TeamTeamSyncArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if ignore_externally_synced_members is not None:
-            pulumi.set(__self__, "ignore_externally_synced_members", ignore_externally_synced_members)
+            _setter("ignore_externally_synced_members", ignore_externally_synced_members)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if preferences is not None:
-            pulumi.set(__self__, "preferences", preferences)
+            _setter("preferences", preferences)
         if team_sync is not None:
-            pulumi.set(__self__, "team_sync", team_sync)
+            _setter("team_sync", team_sync)
 
     @property
     @pulumi.getter
@@ -168,22 +189,45 @@ class _TeamState:
                documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-team-sync/) * [HTTP
                API](https://grafana.com/docs/grafana/latest/developers/http_api/external_group_sync/)
         """
+        _TeamState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            ignore_externally_synced_members=ignore_externally_synced_members,
+            members=members,
+            name=name,
+            org_id=org_id,
+            preferences=preferences,
+            team_id=team_id,
+            team_sync=team_sync,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             ignore_externally_synced_members: Optional[pulumi.Input[bool]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             preferences: Optional[pulumi.Input['TeamPreferencesArgs']] = None,
+             team_id: Optional[pulumi.Input[int]] = None,
+             team_sync: Optional[pulumi.Input['TeamTeamSyncArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if ignore_externally_synced_members is not None:
-            pulumi.set(__self__, "ignore_externally_synced_members", ignore_externally_synced_members)
+            _setter("ignore_externally_synced_members", ignore_externally_synced_members)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if preferences is not None:
-            pulumi.set(__self__, "preferences", preferences)
+            _setter("preferences", preferences)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if team_sync is not None:
-            pulumi.set(__self__, "team_sync", team_sync)
+            _setter("team_sync", team_sync)
 
     @property
     @pulumi.getter
@@ -359,6 +403,10 @@ class Team(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -385,7 +433,17 @@ class Team(pulumi.CustomResource):
             __props__.__dict__["members"] = members
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
+            if not isinstance(preferences, TeamPreferencesArgs):
+                preferences = preferences or {}
+                def _setter(key, value):
+                    preferences[key] = value
+                TeamPreferencesArgs._configure(_setter, **preferences)
             __props__.__dict__["preferences"] = preferences
+            if not isinstance(team_sync, TeamTeamSyncArgs):
+                team_sync = team_sync or {}
+                def _setter(key, value):
+                    team_sync[key] = value
+                TeamTeamSyncArgs._configure(_setter, **team_sync)
             __props__.__dict__["team_sync"] = team_sync
             __props__.__dict__["team_id"] = None
         super(Team, __self__).__init__(

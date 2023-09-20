@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,21 +35,44 @@ class OncallScheduleArgs:
         :param pulumi.Input[str] team_id: The ID of the OnCall team. To get one, create a team in Grafana, and navigate to the OnCall plugin (to sync the team with OnCall). You can then get the ID using the `get_oncall_team` datasource.
         :param pulumi.Input[str] time_zone: The schedule's time zone.
         """
-        pulumi.set(__self__, "type", type)
+        OncallScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            ical_url_overrides=ical_url_overrides,
+            ical_url_primary=ical_url_primary,
+            name=name,
+            shifts=shifts,
+            slack=slack,
+            team_id=team_id,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             ical_url_overrides: Optional[pulumi.Input[str]] = None,
+             ical_url_primary: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             shifts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             slack: Optional[pulumi.Input['OncallScheduleSlackArgs']] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if ical_url_overrides is not None:
-            pulumi.set(__self__, "ical_url_overrides", ical_url_overrides)
+            _setter("ical_url_overrides", ical_url_overrides)
         if ical_url_primary is not None:
-            pulumi.set(__self__, "ical_url_primary", ical_url_primary)
+            _setter("ical_url_primary", ical_url_primary)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if shifts is not None:
-            pulumi.set(__self__, "shifts", shifts)
+            _setter("shifts", shifts)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -170,22 +193,45 @@ class _OncallScheduleState:
         :param pulumi.Input[str] time_zone: The schedule's time zone.
         :param pulumi.Input[str] type: The schedule's type.
         """
+        _OncallScheduleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ical_url_overrides=ical_url_overrides,
+            ical_url_primary=ical_url_primary,
+            name=name,
+            shifts=shifts,
+            slack=slack,
+            team_id=team_id,
+            time_zone=time_zone,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ical_url_overrides: Optional[pulumi.Input[str]] = None,
+             ical_url_primary: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             shifts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             slack: Optional[pulumi.Input['OncallScheduleSlackArgs']] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ical_url_overrides is not None:
-            pulumi.set(__self__, "ical_url_overrides", ical_url_overrides)
+            _setter("ical_url_overrides", ical_url_overrides)
         if ical_url_primary is not None:
-            pulumi.set(__self__, "ical_url_primary", ical_url_primary)
+            _setter("ical_url_primary", ical_url_primary)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if shifts is not None:
-            pulumi.set(__self__, "shifts", shifts)
+            _setter("shifts", shifts)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="icalUrlOverrides")
@@ -395,6 +441,10 @@ class OncallSchedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -421,6 +471,11 @@ class OncallSchedule(pulumi.CustomResource):
             __props__.__dict__["ical_url_primary"] = ical_url_primary
             __props__.__dict__["name"] = name
             __props__.__dict__["shifts"] = shifts
+            if not isinstance(slack, OncallScheduleSlackArgs):
+                slack = slack or {}
+                def _setter(key, value):
+                    slack[key] = value
+                OncallScheduleSlackArgs._configure(_setter, **slack)
             __props__.__dict__["slack"] = slack
             __props__.__dict__["team_id"] = team_id
             __props__.__dict__["time_zone"] = time_zone

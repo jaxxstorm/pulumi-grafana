@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApiKeyArgs', 'ApiKey']
@@ -22,13 +22,28 @@ class ApiKeyArgs:
         The set of arguments for constructing a ApiKey resource.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
-        pulumi.set(__self__, "role", role)
+        ApiKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            name=name,
+            org_id=org_id,
+            seconds_to_live=seconds_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role", role)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
 
     @property
     @pulumi.getter
@@ -83,18 +98,37 @@ class _ApiKeyState:
         Input properties used for looking up and filtering ApiKey resources.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
+        _ApiKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expiration=expiration,
+            key=key,
+            name=name,
+            org_id=org_id,
+            role=role,
+            seconds_to_live=seconds_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expiration: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
 
     @property
     @pulumi.getter
@@ -214,6 +248,10 @@ class ApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

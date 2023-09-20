@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServiceAccountTokenArgs', 'ServiceAccountToken']
@@ -20,11 +20,24 @@ class ServiceAccountTokenArgs:
         """
         The set of arguments for constructing a ServiceAccountToken resource.
         """
-        pulumi.set(__self__, "service_account_id", service_account_id)
+        ServiceAccountTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_account_id=service_account_id,
+            name=name,
+            seconds_to_live=seconds_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_account_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_account_id", service_account_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
 
     @property
     @pulumi.getter(name="serviceAccountId")
@@ -66,18 +79,37 @@ class _ServiceAccountTokenState:
         """
         Input properties used for looking up and filtering ServiceAccountToken resources.
         """
+        _ServiceAccountTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expiration=expiration,
+            has_expired=has_expired,
+            key=key,
+            name=name,
+            seconds_to_live=seconds_to_live,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expiration: Optional[pulumi.Input[str]] = None,
+             has_expired: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             seconds_to_live: Optional[pulumi.Input[int]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if has_expired is not None:
-            pulumi.set(__self__, "has_expired", has_expired)
+            _setter("has_expired", has_expired)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if seconds_to_live is not None:
-            pulumi.set(__self__, "seconds_to_live", seconds_to_live)
+            _setter("seconds_to_live", seconds_to_live)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter
@@ -202,6 +234,10 @@ class ServiceAccountToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceAccountTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudStackServiceAccountArgs', 'CloudStackServiceAccount']
@@ -24,13 +24,28 @@ class CloudStackServiceAccountArgs:
         :param pulumi.Input[str] name: The name of the service account.
         :param pulumi.Input[str] role: The basic role of the service account in the organization.
         """
-        pulumi.set(__self__, "stack_slug", stack_slug)
+        CloudStackServiceAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            stack_slug=stack_slug,
+            is_disabled=is_disabled,
+            name=name,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             stack_slug: pulumi.Input[str],
+             is_disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("stack_slug", stack_slug)
         if is_disabled is not None:
-            pulumi.set(__self__, "is_disabled", is_disabled)
+            _setter("is_disabled", is_disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="stackSlug")
@@ -91,14 +106,29 @@ class _CloudStackServiceAccountState:
         :param pulumi.Input[str] name: The name of the service account.
         :param pulumi.Input[str] role: The basic role of the service account in the organization.
         """
+        _CloudStackServiceAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_disabled=is_disabled,
+            name=name,
+            role=role,
+            stack_slug=stack_slug,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             stack_slug: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if is_disabled is not None:
-            pulumi.set(__self__, "is_disabled", is_disabled)
+            _setter("is_disabled", is_disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if stack_slug is not None:
-            pulumi.set(__self__, "stack_slug", stack_slug)
+            _setter("stack_slug", stack_slug)
 
     @property
     @pulumi.getter(name="isDisabled")
@@ -220,6 +250,10 @@ class CloudStackServiceAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudStackServiceAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

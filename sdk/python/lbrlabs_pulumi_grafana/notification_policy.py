@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,35 @@ class NotificationPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyArgs']]] policies: Routing rules for specific label sets.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: pulumi.Input[str],
+             group_bies: pulumi.Input[Sequence[pulumi.Input[str]]],
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyArgs']]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -133,18 +152,37 @@ class _NotificationPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyArgs']]] policies: Routing rules for specific label sets.
         :param pulumi.Input[str] repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
+        _NotificationPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: Optional[pulumi.Input[str]] = None,
+             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_interval: Optional[pulumi.Input[str]] = None,
+             group_wait: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPolicyArgs']]]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if contact_point is not None:
-            pulumi.set(__self__, "contact_point", contact_point)
+            _setter("contact_point", contact_point)
         if group_bies is not None:
-            pulumi.set(__self__, "group_bies", group_bies)
+            _setter("group_bies", group_bies)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -408,6 +446,10 @@ class NotificationPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NotificationPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

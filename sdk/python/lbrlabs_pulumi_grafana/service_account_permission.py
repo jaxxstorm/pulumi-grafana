@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,23 @@ class ServiceAccountPermissionArgs:
         :param pulumi.Input[str] service_account_id: The id of the service account.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "service_account_id", service_account_id)
+        ServiceAccountPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            service_account_id=service_account_id,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: pulumi.Input[Sequence[pulumi.Input['ServiceAccountPermissionPermissionArgs']]],
+             service_account_id: pulumi.Input[str],
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("service_account_id", service_account_id)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -79,12 +92,25 @@ class _ServiceAccountPermissionState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountPermissionPermissionArgs']]] permissions: The permission items to add/update. Items that are omitted from the list will be removed.
         :param pulumi.Input[str] service_account_id: The id of the service account.
         """
+        _ServiceAccountPermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            org_id=org_id,
+            permissions=permissions,
+            service_account_id=service_account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             org_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountPermissionPermissionArgs']]]] = None,
+             service_account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if service_account_id is not None:
-            pulumi.set(__self__, "service_account_id", service_account_id)
+            _setter("service_account_id", service_account_id)
 
     @property
     @pulumi.getter(name="orgId")
@@ -220,6 +246,10 @@ class ServiceAccountPermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceAccountPermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

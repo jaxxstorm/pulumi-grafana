@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MessageTemplateArgs', 'MessageTemplate']
@@ -21,9 +21,20 @@ class MessageTemplateArgs:
         :param pulumi.Input[str] template: The content of the message template.
         :param pulumi.Input[str] name: The name of the message template.
         """
-        pulumi.set(__self__, "template", template)
+        MessageTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            template=template,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             template: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("template", template)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -60,10 +71,21 @@ class _MessageTemplateState:
         :param pulumi.Input[str] name: The name of the message template.
         :param pulumi.Input[str] template: The content of the message template.
         """
+        _MessageTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            template=template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
 
     @property
     @pulumi.getter
@@ -171,6 +193,10 @@ class MessageTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MessageTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -151,10 +151,23 @@ class CloudAccessPolicyRealm(dict):
         :param str identifier: The identifier of the org or stack. For orgs, this is the slug, for stacks, this is the stack ID.
         :param str type: Whether a policy applies to a Cloud org or a specific stack. Should be one of `org` or `stack`.
         """
-        pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "type", type)
+        CloudAccessPolicyRealm._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identifier=identifier,
+            type=type,
+            label_policies=label_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identifier: str,
+             type: str,
+             label_policies: Optional[Sequence['outputs.CloudAccessPolicyRealmLabelPolicy']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("identifier", identifier)
+        _setter("type", type)
         if label_policies is not None:
-            pulumi.set(__self__, "label_policies", label_policies)
+            _setter("label_policies", label_policies)
 
     @property
     @pulumi.getter
@@ -182,7 +195,16 @@ class CloudAccessPolicyRealm(dict):
 class CloudAccessPolicyRealmLabelPolicy(dict):
     def __init__(__self__, *,
                  selector: str):
-        pulumi.set(__self__, "selector", selector)
+        CloudAccessPolicyRealmLabelPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            selector=selector,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             selector: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("selector", selector)
 
     @property
     @pulumi.getter
@@ -228,17 +250,36 @@ class ContactPointAlertmanager(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointAlertmanager._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            basic_auth_password=basic_auth_password,
+            basic_auth_user=basic_auth_user,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             basic_auth_password: Optional[str] = None,
+             basic_auth_user: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if basic_auth_password is not None:
-            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+            _setter("basic_auth_password", basic_auth_password)
         if basic_auth_user is not None:
-            pulumi.set(__self__, "basic_auth_user", basic_auth_user)
+            _setter("basic_auth_user", basic_auth_user)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -327,19 +368,40 @@ class ContactPointDingding(dict):
         :param str title: The templated title of the message.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointDingding._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            message_type=message_type,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             message_type: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -438,19 +500,40 @@ class ContactPointDiscord(dict):
         :param str uid: The UID of the contact point.
         :param bool use_discord_username: Whether to use the bot account's plain username instead of "Grafana." Defaults to `false`.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointDiscord._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            avatar_url=avatar_url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+            use_discord_username=use_discord_username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             avatar_url: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             use_discord_username: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if avatar_url is not None:
-            pulumi.set(__self__, "avatar_url", avatar_url)
+            _setter("avatar_url", avatar_url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if use_discord_username is not None:
-            pulumi.set(__self__, "use_discord_username", use_discord_username)
+            _setter("use_discord_username", use_discord_username)
 
     @property
     @pulumi.getter
@@ -547,19 +630,40 @@ class ContactPointEmail(dict):
         :param str subject: The templated subject line of the email. Defaults to ``.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "addresses", addresses)
+        ContactPointEmail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addresses=addresses,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            single_email=single_email,
+            subject=subject,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addresses: Sequence[str],
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             single_email: Optional[bool] = None,
+             subject: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addresses", addresses)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if single_email is not None:
-            pulumi.set(__self__, "single_email", single_email)
+            _setter("single_email", single_email)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -650,15 +754,32 @@ class ContactPointGooglechat(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointGooglechat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -735,14 +856,31 @@ class ContactPointKafka(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "rest_proxy_url", rest_proxy_url)
-        pulumi.set(__self__, "topic", topic)
+        ContactPointKafka._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rest_proxy_url=rest_proxy_url,
+            topic=topic,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rest_proxy_url: str,
+             topic: str,
+             disable_resolve_message: Optional[bool] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rest_proxy_url", rest_proxy_url)
+        _setter("topic", topic)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="restProxyUrl")
@@ -835,25 +973,52 @@ class ContactPointOpsgeny(dict):
         :param str uid: The UID of the contact point.
         :param str url: Allows customization of the OpsGenie API URL.
         """
-        pulumi.set(__self__, "api_key", api_key)
+        ContactPointOpsgeny._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            auto_close=auto_close,
+            description=description,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            override_priority=override_priority,
+            send_tags_as=send_tags_as,
+            settings=settings,
+            uid=uid,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: str,
+             auto_close: Optional[bool] = None,
+             description: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             override_priority: Optional[bool] = None,
+             send_tags_as: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_key", api_key)
         if auto_close is not None:
-            pulumi.set(__self__, "auto_close", auto_close)
+            _setter("auto_close", auto_close)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if override_priority is not None:
-            pulumi.set(__self__, "override_priority", override_priority)
+            _setter("override_priority", override_priority)
         if send_tags_as is not None:
-            pulumi.set(__self__, "send_tags_as", send_tags_as)
+            _setter("send_tags_as", send_tags_as)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -990,31 +1155,64 @@ class ContactPointPagerduty(dict):
         :param str summary: The templated summary message of the event.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "integration_key", integration_key)
+        ContactPointPagerduty._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            integration_key=integration_key,
+            class_=class_,
+            client=client,
+            client_url=client_url,
+            component=component,
+            details=details,
+            disable_resolve_message=disable_resolve_message,
+            group=group,
+            settings=settings,
+            severity=severity,
+            source=source,
+            summary=summary,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             integration_key: str,
+             class_: Optional[str] = None,
+             client: Optional[str] = None,
+             client_url: Optional[str] = None,
+             component: Optional[str] = None,
+             details: Optional[Mapping[str, str]] = None,
+             disable_resolve_message: Optional[bool] = None,
+             group: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             severity: Optional[str] = None,
+             source: Optional[str] = None,
+             summary: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("integration_key", integration_key)
         if class_ is not None:
-            pulumi.set(__self__, "class_", class_)
+            _setter("class_", class_)
         if client is not None:
-            pulumi.set(__self__, "client", client)
+            _setter("client", client)
         if client_url is not None:
-            pulumi.set(__self__, "client_url", client_url)
+            _setter("client_url", client_url)
         if component is not None:
-            pulumi.set(__self__, "component", component)
+            _setter("component", component)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if summary is not None:
-            pulumi.set(__self__, "summary", summary)
+            _setter("summary", summary)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="integrationKey")
@@ -1179,32 +1377,67 @@ class ContactPointPushover(dict):
         :param str title: The templated title of the message.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_token", api_token)
-        pulumi.set(__self__, "user_key", user_key)
+        ContactPointPushover._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_token=api_token,
+            user_key=user_key,
+            device=device,
+            disable_resolve_message=disable_resolve_message,
+            expire=expire,
+            message=message,
+            ok_priority=ok_priority,
+            ok_sound=ok_sound,
+            priority=priority,
+            retry=retry,
+            settings=settings,
+            sound=sound,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_token: str,
+             user_key: str,
+             device: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             expire: Optional[int] = None,
+             message: Optional[str] = None,
+             ok_priority: Optional[int] = None,
+             ok_sound: Optional[str] = None,
+             priority: Optional[int] = None,
+             retry: Optional[int] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             sound: Optional[str] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_token", api_token)
+        _setter("user_key", user_key)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if expire is not None:
-            pulumi.set(__self__, "expire", expire)
+            _setter("expire", expire)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if ok_priority is not None:
-            pulumi.set(__self__, "ok_priority", ok_priority)
+            _setter("ok_priority", ok_priority)
         if ok_sound is not None:
-            pulumi.set(__self__, "ok_sound", ok_sound)
+            _setter("ok_sound", ok_sound)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if sound is not None:
-            pulumi.set(__self__, "sound", sound)
+            _setter("sound", sound)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -1363,24 +1596,51 @@ class ContactPointSensugo(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "url", url)
+        ContactPointSensugo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            url=url,
+            check=check,
+            disable_resolve_message=disable_resolve_message,
+            entity=entity,
+            handler=handler,
+            message=message,
+            namespace=namespace,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: str,
+             url: str,
+             check: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             entity: Optional[str] = None,
+             handler: Optional[str] = None,
+             message: Optional[str] = None,
+             namespace: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_key", api_key)
+        _setter("url", url)
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if entity is not None:
-            pulumi.set(__self__, "entity", entity)
+            _setter("entity", entity)
         if handler is not None:
-            pulumi.set(__self__, "handler", handler)
+            _setter("handler", handler)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -1527,36 +1787,73 @@ class ContactPointSlack(dict):
         :param str url: A Slack webhook URL,for sending messages via the webhook method.
         :param str username: Username for the bot to use.
         """
+        ContactPointSlack._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_resolve_message=disable_resolve_message,
+            endpoint_url=endpoint_url,
+            icon_emoji=icon_emoji,
+            icon_url=icon_url,
+            mention_channel=mention_channel,
+            mention_groups=mention_groups,
+            mention_users=mention_users,
+            recipient=recipient,
+            settings=settings,
+            text=text,
+            title=title,
+            token=token,
+            uid=uid,
+            url=url,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_resolve_message: Optional[bool] = None,
+             endpoint_url: Optional[str] = None,
+             icon_emoji: Optional[str] = None,
+             icon_url: Optional[str] = None,
+             mention_channel: Optional[str] = None,
+             mention_groups: Optional[str] = None,
+             mention_users: Optional[str] = None,
+             recipient: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             text: Optional[str] = None,
+             title: Optional[str] = None,
+             token: Optional[str] = None,
+             uid: Optional[str] = None,
+             url: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if endpoint_url is not None:
-            pulumi.set(__self__, "endpoint_url", endpoint_url)
+            _setter("endpoint_url", endpoint_url)
         if icon_emoji is not None:
-            pulumi.set(__self__, "icon_emoji", icon_emoji)
+            _setter("icon_emoji", icon_emoji)
         if icon_url is not None:
-            pulumi.set(__self__, "icon_url", icon_url)
+            _setter("icon_url", icon_url)
         if mention_channel is not None:
-            pulumi.set(__self__, "mention_channel", mention_channel)
+            _setter("mention_channel", mention_channel)
         if mention_groups is not None:
-            pulumi.set(__self__, "mention_groups", mention_groups)
+            _setter("mention_groups", mention_groups)
         if mention_users is not None:
-            pulumi.set(__self__, "mention_users", mention_users)
+            _setter("mention_users", mention_users)
         if recipient is not None:
-            pulumi.set(__self__, "recipient", recipient)
+            _setter("recipient", recipient)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="disableResolveMessage")
@@ -1717,19 +2014,40 @@ class ContactPointTeam(dict):
         :param str title: The templated title of the message.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointTeam._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            section_title=section_title,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             section_title: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if section_title is not None:
-            pulumi.set(__self__, "section_title", section_title)
+            _setter("section_title", section_title)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -1824,16 +2142,35 @@ class ContactPointTelegram(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "chat_id", chat_id)
-        pulumi.set(__self__, "token", token)
+        ContactPointTelegram._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chat_id=chat_id,
+            token=token,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chat_id: str,
+             token: str,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chat_id", chat_id)
+        _setter("token", token)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="chatId")
@@ -1928,17 +2265,40 @@ class ContactPointThreema(dict):
         :param Mapping[str, str] settings: Additional custom properties to attach to the notifier. Defaults to `map[]`.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "api_secret", api_secret)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gateway_id", gateway_id)
-        pulumi.set(__self__, "recipient_id", recipient_id)
-        pulumi.set(__self__, "title", title)
+        ContactPointThreema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_secret=api_secret,
+            description=description,
+            gateway_id=gateway_id,
+            recipient_id=recipient_id,
+            title=title,
+            disable_resolve_message=disable_resolve_message,
+            settings=settings,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_secret: str,
+             description: str,
+             gateway_id: str,
+             recipient_id: str,
+             title: str,
+             disable_resolve_message: Optional[bool] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_secret", api_secret)
+        _setter("description", description)
+        _setter("gateway_id", gateway_id)
+        _setter("recipient_id", recipient_id)
+        _setter("title", title)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter(name="apiSecret")
@@ -2043,19 +2403,40 @@ class ContactPointVictorop(dict):
         :param str title: Templated title to display.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointVictorop._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            description=description,
+            disable_resolve_message=disable_resolve_message,
+            message_type=message_type,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             description: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             message_type: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2172,29 +2553,60 @@ class ContactPointWebhook(dict):
         :param str title: Templated title of the message.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointWebhook._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            authorization_credentials=authorization_credentials,
+            authorization_scheme=authorization_scheme,
+            basic_auth_password=basic_auth_password,
+            basic_auth_user=basic_auth_user,
+            disable_resolve_message=disable_resolve_message,
+            http_method=http_method,
+            max_alerts=max_alerts,
+            message=message,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             authorization_credentials: Optional[str] = None,
+             authorization_scheme: Optional[str] = None,
+             basic_auth_password: Optional[str] = None,
+             basic_auth_user: Optional[str] = None,
+             disable_resolve_message: Optional[bool] = None,
+             http_method: Optional[str] = None,
+             max_alerts: Optional[int] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if authorization_credentials is not None:
-            pulumi.set(__self__, "authorization_credentials", authorization_credentials)
+            _setter("authorization_credentials", authorization_credentials)
         if authorization_scheme is not None:
-            pulumi.set(__self__, "authorization_scheme", authorization_scheme)
+            _setter("authorization_scheme", authorization_scheme)
         if basic_auth_password is not None:
-            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+            _setter("basic_auth_password", basic_auth_password)
         if basic_auth_user is not None:
-            pulumi.set(__self__, "basic_auth_user", basic_auth_user)
+            _setter("basic_auth_user", basic_auth_user)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if max_alerts is not None:
-            pulumi.set(__self__, "max_alerts", max_alerts)
+            _setter("max_alerts", max_alerts)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2327,17 +2739,36 @@ class ContactPointWecom(dict):
         :param str title: The templated title of the message to send.
         :param str uid: The UID of the contact point.
         """
-        pulumi.set(__self__, "url", url)
+        ContactPointWecom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            disable_resolve_message=disable_resolve_message,
+            message=message,
+            settings=settings,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: str,
+             disable_resolve_message: Optional[bool] = None,
+             message: Optional[str] = None,
+             settings: Optional[Mapping[str, str]] = None,
+             title: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if disable_resolve_message is not None:
-            pulumi.set(__self__, "disable_resolve_message", disable_resolve_message)
+            _setter("disable_resolve_message", disable_resolve_message)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -2420,13 +2851,28 @@ class DashboardPermissionPermission(dict):
         :param str team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param int user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        DashboardPermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            role=role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: str,
+             role: Optional[str] = None,
+             team_id: Optional[str] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2495,13 +2941,28 @@ class DataSourcePermissionPermission(dict):
         :param str team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param int user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        DataSourcePermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            built_in_role=built_in_role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: str,
+             built_in_role: Optional[str] = None,
+             team_id: Optional[str] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if built_in_role is not None:
-            pulumi.set(__self__, "built_in_role", built_in_role)
+            _setter("built_in_role", built_in_role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2568,13 +3029,28 @@ class FolderPermissionPermission(dict):
         :param str team_id: ID of the team to manage permissions for. Defaults to `0`.
         :param int user_id: ID of the user to manage permissions for. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        FolderPermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            role=role,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: str,
+             role: Optional[str] = None,
+             team_id: Optional[str] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -2637,10 +3113,23 @@ class MachineLearningHolidayCustomPeriod(dict):
         """
         :param str name: The name of the custom period.
         """
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "start_time", start_time)
+        MachineLearningHolidayCustomPeriod._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            start_time=start_time,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: str,
+             start_time: str,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_time", end_time)
+        _setter("start_time", start_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="endTime")
@@ -2672,10 +3161,23 @@ class MachineLearningOutlierDetectorAlgorithm(dict):
         :param float sensitivity: Specify the sensitivity of the detector (in range [0,1]).
         :param 'MachineLearningOutlierDetectorAlgorithmConfigArgs' config: For DBSCAN only, specify the configuration map
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "sensitivity", sensitivity)
+        MachineLearningOutlierDetectorAlgorithm._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            sensitivity=sensitivity,
+            config=config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             sensitivity: float,
+             config: Optional['outputs.MachineLearningOutlierDetectorAlgorithmConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("sensitivity", sensitivity)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
 
     @property
     @pulumi.getter
@@ -2706,7 +3208,16 @@ class MachineLearningOutlierDetectorAlgorithm(dict):
 class MachineLearningOutlierDetectorAlgorithmConfig(dict):
     def __init__(__self__, *,
                  epsilon: float):
-        pulumi.set(__self__, "epsilon", epsilon)
+        MachineLearningOutlierDetectorAlgorithmConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epsilon=epsilon,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epsilon: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epsilon", epsilon)
 
     @property
     @pulumi.getter
@@ -2746,16 +3257,33 @@ class MuteTimingInterval(dict):
         :param Sequence[str] weekdays: An inclusive range of weekdays, e.g. "monday" or "tuesday:thursday".
         :param Sequence[str] years: A positive inclusive range of years, e.g. "2030" or "2025:2026".
         """
+        MuteTimingInterval._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            days_of_months=days_of_months,
+            months=months,
+            times=times,
+            weekdays=weekdays,
+            years=years,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             days_of_months: Optional[Sequence[str]] = None,
+             months: Optional[Sequence[str]] = None,
+             times: Optional[Sequence['outputs.MuteTimingIntervalTime']] = None,
+             weekdays: Optional[Sequence[str]] = None,
+             years: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if days_of_months is not None:
-            pulumi.set(__self__, "days_of_months", days_of_months)
+            _setter("days_of_months", days_of_months)
         if months is not None:
-            pulumi.set(__self__, "months", months)
+            _setter("months", months)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
         if weekdays is not None:
-            pulumi.set(__self__, "weekdays", weekdays)
+            _setter("weekdays", weekdays)
         if years is not None:
-            pulumi.set(__self__, "years", years)
+            _setter("years", years)
 
     @property
     @pulumi.getter(name="daysOfMonths")
@@ -2803,8 +3331,19 @@ class MuteTimingIntervalTime(dict):
     def __init__(__self__, *,
                  end: str,
                  start: str):
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
+        MuteTimingIntervalTime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            start=start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: str,
+             start: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("start", start)
 
     @property
     @pulumi.getter
@@ -2869,22 +3408,47 @@ class NotificationPolicyPolicy(dict):
         :param Sequence['NotificationPolicyPolicyPolicyArgs'] policies: Routing rules for specific label sets.
         :param str repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: str,
+             group_bies: Sequence[str],
+             continue_: Optional[bool] = None,
+             group_interval: Optional[str] = None,
+             group_wait: Optional[str] = None,
+             matchers: Optional[Sequence['outputs.NotificationPolicyPolicyMatcher']] = None,
+             mute_timings: Optional[Sequence[str]] = None,
+             policies: Optional[Sequence['outputs.NotificationPolicyPolicyPolicy']] = None,
+             repeat_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -2965,9 +3529,22 @@ class NotificationPolicyPolicyMatcher(dict):
                  label: str,
                  match: str,
                  value: str):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             match: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3037,22 +3614,47 @@ class NotificationPolicyPolicyPolicy(dict):
         :param Sequence['NotificationPolicyPolicyPolicyPolicyArgs'] policies: Routing rules for specific label sets.
         :param str repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: str,
+             group_bies: Sequence[str],
+             continue_: Optional[bool] = None,
+             group_interval: Optional[str] = None,
+             group_wait: Optional[str] = None,
+             matchers: Optional[Sequence['outputs.NotificationPolicyPolicyPolicyMatcher']] = None,
+             mute_timings: Optional[Sequence[str]] = None,
+             policies: Optional[Sequence['outputs.NotificationPolicyPolicyPolicyPolicy']] = None,
+             repeat_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3133,9 +3735,22 @@ class NotificationPolicyPolicyPolicyMatcher(dict):
                  label: str,
                  match: str,
                  value: str):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             match: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3205,22 +3820,47 @@ class NotificationPolicyPolicyPolicyPolicy(dict):
         :param Sequence['NotificationPolicyPolicyPolicyPolicyPolicyArgs'] policies: Routing rules for specific label sets.
         :param str repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            policies=policies,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: str,
+             group_bies: Sequence[str],
+             continue_: Optional[bool] = None,
+             group_interval: Optional[str] = None,
+             group_wait: Optional[str] = None,
+             matchers: Optional[Sequence['outputs.NotificationPolicyPolicyPolicyPolicyMatcher']] = None,
+             mute_timings: Optional[Sequence[str]] = None,
+             policies: Optional[Sequence['outputs.NotificationPolicyPolicyPolicyPolicyPolicy']] = None,
+             repeat_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3301,9 +3941,22 @@ class NotificationPolicyPolicyPolicyPolicyMatcher(dict):
                  label: str,
                  match: str,
                  value: str):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyPolicyMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             match: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3371,20 +4024,43 @@ class NotificationPolicyPolicyPolicyPolicyPolicy(dict):
         :param Sequence[str] mute_timings: A list of mute timing names to apply to alerts that match this policy.
         :param str repeat_interval: Minimum time interval for re-sending a notification if an alert is still firing. Default is 4 hours.
         """
-        pulumi.set(__self__, "contact_point", contact_point)
-        pulumi.set(__self__, "group_bies", group_bies)
+        NotificationPolicyPolicyPolicyPolicyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_point=contact_point,
+            group_bies=group_bies,
+            continue_=continue_,
+            group_interval=group_interval,
+            group_wait=group_wait,
+            matchers=matchers,
+            mute_timings=mute_timings,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_point: str,
+             group_bies: Sequence[str],
+             continue_: Optional[bool] = None,
+             group_interval: Optional[str] = None,
+             group_wait: Optional[str] = None,
+             matchers: Optional[Sequence['outputs.NotificationPolicyPolicyPolicyPolicyPolicyMatcher']] = None,
+             mute_timings: Optional[Sequence[str]] = None,
+             repeat_interval: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_point", contact_point)
+        _setter("group_bies", group_bies)
         if continue_ is not None:
-            pulumi.set(__self__, "continue_", continue_)
+            _setter("continue_", continue_)
         if group_interval is not None:
-            pulumi.set(__self__, "group_interval", group_interval)
+            _setter("group_interval", group_interval)
         if group_wait is not None:
-            pulumi.set(__self__, "group_wait", group_wait)
+            _setter("group_wait", group_wait)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if mute_timings is not None:
-            pulumi.set(__self__, "mute_timings", mute_timings)
+            _setter("mute_timings", mute_timings)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="contactPoint")
@@ -3457,9 +4133,22 @@ class NotificationPolicyPolicyPolicyPolicyPolicyMatcher(dict):
                  label: str,
                  match: str,
                  value: str):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "value", value)
+        NotificationPolicyPolicyPolicyPolicyPolicyMatcher._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            match=match,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             match: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("match", match)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3509,16 +4198,33 @@ class OncallIntegrationDefaultRoute(dict):
         :param 'OncallIntegrationDefaultRouteSlackArgs' slack: Slack-specific settings for a route.
         :param 'OncallIntegrationDefaultRouteTelegramArgs' telegram: Telegram-specific settings for a route.
         """
+        OncallIntegrationDefaultRoute._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            escalation_chain_id=escalation_chain_id,
+            id=id,
+            msteams=msteams,
+            slack=slack,
+            telegram=telegram,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             escalation_chain_id: Optional[str] = None,
+             id: Optional[str] = None,
+             msteams: Optional['outputs.OncallIntegrationDefaultRouteMsteams'] = None,
+             slack: Optional['outputs.OncallIntegrationDefaultRouteSlack'] = None,
+             telegram: Optional['outputs.OncallIntegrationDefaultRouteTelegram'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if escalation_chain_id is not None:
-            pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
+            _setter("escalation_chain_id", escalation_chain_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if msteams is not None:
-            pulumi.set(__self__, "msteams", msteams)
+            _setter("msteams", msteams)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
 
     @property
     @pulumi.getter(name="escalationChainId")
@@ -3569,10 +4275,21 @@ class OncallIntegrationDefaultRouteMsteams(dict):
         """
         :param str id: The ID of this resource.
         """
+        OncallIntegrationDefaultRouteMsteams._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -3610,10 +4327,21 @@ class OncallIntegrationDefaultRouteSlack(dict):
     def __init__(__self__, *,
                  channel_id: Optional[str] = None,
                  enabled: Optional[bool] = None):
+        OncallIntegrationDefaultRouteSlack._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="channelId")
@@ -3634,10 +4362,21 @@ class OncallIntegrationDefaultRouteTelegram(dict):
         """
         :param str id: The ID of this resource.
         """
+        OncallIntegrationDefaultRouteTelegram._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -3707,28 +4446,57 @@ class OncallIntegrationTemplates(dict):
         :param 'OncallIntegrationTemplatesTelegramArgs' telegram: Templates for Telegram.
         :param 'OncallIntegrationTemplatesWebArgs' web: Templates for Web.
         """
+        OncallIntegrationTemplates._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acknowledge_signal=acknowledge_signal,
+            email=email,
+            grouping_key=grouping_key,
+            microsoft_teams=microsoft_teams,
+            phone_call=phone_call,
+            resolve_signal=resolve_signal,
+            slack=slack,
+            sms=sms,
+            source_link=source_link,
+            telegram=telegram,
+            web=web,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acknowledge_signal: Optional[str] = None,
+             email: Optional['outputs.OncallIntegrationTemplatesEmail'] = None,
+             grouping_key: Optional[str] = None,
+             microsoft_teams: Optional['outputs.OncallIntegrationTemplatesMicrosoftTeams'] = None,
+             phone_call: Optional['outputs.OncallIntegrationTemplatesPhoneCall'] = None,
+             resolve_signal: Optional[str] = None,
+             slack: Optional['outputs.OncallIntegrationTemplatesSlack'] = None,
+             sms: Optional['outputs.OncallIntegrationTemplatesSms'] = None,
+             source_link: Optional[str] = None,
+             telegram: Optional['outputs.OncallIntegrationTemplatesTelegram'] = None,
+             web: Optional['outputs.OncallIntegrationTemplatesWeb'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acknowledge_signal is not None:
-            pulumi.set(__self__, "acknowledge_signal", acknowledge_signal)
+            _setter("acknowledge_signal", acknowledge_signal)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if grouping_key is not None:
-            pulumi.set(__self__, "grouping_key", grouping_key)
+            _setter("grouping_key", grouping_key)
         if microsoft_teams is not None:
-            pulumi.set(__self__, "microsoft_teams", microsoft_teams)
+            _setter("microsoft_teams", microsoft_teams)
         if phone_call is not None:
-            pulumi.set(__self__, "phone_call", phone_call)
+            _setter("phone_call", phone_call)
         if resolve_signal is not None:
-            pulumi.set(__self__, "resolve_signal", resolve_signal)
+            _setter("resolve_signal", resolve_signal)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if sms is not None:
-            pulumi.set(__self__, "sms", sms)
+            _setter("sms", sms)
         if source_link is not None:
-            pulumi.set(__self__, "source_link", source_link)
+            _setter("source_link", source_link)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
         if web is not None:
-            pulumi.set(__self__, "web", web)
+            _setter("web", web)
 
     @property
     @pulumi.getter(name="acknowledgeSignal")
@@ -3824,10 +4592,21 @@ class OncallIntegrationTemplatesEmail(dict):
     def __init__(__self__, *,
                  message: Optional[str] = None,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesEmail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -3863,12 +4642,25 @@ class OncallIntegrationTemplatesMicrosoftTeams(dict):
                  image_url: Optional[str] = None,
                  message: Optional[str] = None,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesMicrosoftTeams._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[str] = None,
+             message: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -3890,8 +4682,17 @@ class OncallIntegrationTemplatesMicrosoftTeams(dict):
 class OncallIntegrationTemplatesPhoneCall(dict):
     def __init__(__self__, *,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesPhoneCall._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -3922,12 +4723,25 @@ class OncallIntegrationTemplatesSlack(dict):
                  image_url: Optional[str] = None,
                  message: Optional[str] = None,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesSlack._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[str] = None,
+             message: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -3949,8 +4763,17 @@ class OncallIntegrationTemplatesSlack(dict):
 class OncallIntegrationTemplatesSms(dict):
     def __init__(__self__, *,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesSms._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -3981,12 +4804,25 @@ class OncallIntegrationTemplatesTelegram(dict):
                  image_url: Optional[str] = None,
                  message: Optional[str] = None,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesTelegram._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[str] = None,
+             message: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4027,12 +4863,25 @@ class OncallIntegrationTemplatesWeb(dict):
                  image_url: Optional[str] = None,
                  message: Optional[str] = None,
                  title: Optional[str] = None):
+        OncallIntegrationTemplatesWeb._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_url=image_url,
+            message=message,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_url: Optional[str] = None,
+             message: Optional[str] = None,
+             title: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="imageUrl")
@@ -4059,10 +4908,21 @@ class OncallRouteMsteams(dict):
         :param bool enabled: Enable notification in MS teams. Defaults to `true`.
         :param str id: MS teams channel id. Alerts will be directed to this channel in Microsoft teams.
         """
+        OncallRouteMsteams._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -4107,10 +4967,21 @@ class OncallRouteSlack(dict):
         :param str channel_id: Slack channel id. Alerts will be directed to this channel in Slack.
         :param bool enabled: Enable notification in Slack. Defaults to `true`.
         """
+        OncallRouteSlack._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="channelId")
@@ -4138,10 +5009,21 @@ class OncallRouteTelegram(dict):
         :param bool enabled: Enable notification in Telegram. Defaults to `true`.
         :param str id: Telegram channel id. Alerts will be directed to this channel in Telegram.
         """
+        OncallRouteTelegram._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -4188,10 +5070,21 @@ class OncallScheduleSlack(dict):
         :param str channel_id: Slack channel id. Reminder about schedule shifts will be directed to this channel in Slack.
         :param str user_group_id: Slack user group id. Members of user group will be updated when on-call users change.
         """
+        OncallScheduleSlack._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            user_group_id=user_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[str] = None,
+             user_group_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if user_group_id is not None:
-            pulumi.set(__self__, "user_group_id", user_group_id)
+            _setter("user_group_id", user_group_id)
 
     @property
     @pulumi.getter(name="channelId")
@@ -4221,14 +5114,31 @@ class PlaylistItem(dict):
         """
         :param str id: The ID of this resource.
         """
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "title", title)
+        PlaylistItem._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            order=order,
+            title=title,
+            id=id,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             order: int,
+             title: str,
+             id: Optional[str] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("order", order)
+        _setter("title", title)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4302,17 +5212,36 @@ class ReportSchedule(dict):
         :param str start_time: Start time of the report. If empty, the start date will be set to the creation time. Note that times will be saved as UTC in Grafana.
         :param bool workdays_only: Whether to send the report only on work days. Defaults to `false`.
         """
-        pulumi.set(__self__, "frequency", frequency)
+        ReportSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            frequency=frequency,
+            custom_interval=custom_interval,
+            end_time=end_time,
+            last_day_of_month=last_day_of_month,
+            start_time=start_time,
+            workdays_only=workdays_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             frequency: str,
+             custom_interval: Optional[str] = None,
+             end_time: Optional[str] = None,
+             last_day_of_month: Optional[bool] = None,
+             start_time: Optional[str] = None,
+             workdays_only: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("frequency", frequency)
         if custom_interval is not None:
-            pulumi.set(__self__, "custom_interval", custom_interval)
+            _setter("custom_interval", custom_interval)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if last_day_of_month is not None:
-            pulumi.set(__self__, "last_day_of_month", last_day_of_month)
+            _setter("last_day_of_month", last_day_of_month)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if workdays_only is not None:
-            pulumi.set(__self__, "workdays_only", workdays_only)
+            _setter("workdays_only", workdays_only)
 
     @property
     @pulumi.getter
@@ -4390,10 +5319,21 @@ class ReportTimeRange(dict):
         :param str from_: Start of the time range.
         :param str to: End of the time range.
         """
+        ReportTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: Optional[str] = None,
+             to: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
+            _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -4421,9 +5361,20 @@ class RolePermission(dict):
         :param str action: Specific action users granted with the role will be allowed to perform (for example: `users:read`)
         :param str scope: Scope to restrict the action to a set of resources (for example: `users:*` or `roles:customrole1`) Defaults to ``.
         """
-        pulumi.set(__self__, "action", action)
+        RolePermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -4490,23 +5441,50 @@ class RuleGroupRule(dict):
         :param str no_data_state: Describes what state to enter when the rule's query returns No Data. Options are OK, NoData, and Alerting. Defaults to `NoData`.
         :param str uid: The unique identifier of the alert rule.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "datas", datas)
-        pulumi.set(__self__, "name", name)
+        RuleGroupRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            datas=datas,
+            name=name,
+            annotations=annotations,
+            exec_err_state=exec_err_state,
+            for_=for_,
+            is_paused=is_paused,
+            labels=labels,
+            no_data_state=no_data_state,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             datas: Sequence['outputs.RuleGroupRuleData'],
+             name: str,
+             annotations: Optional[Mapping[str, str]] = None,
+             exec_err_state: Optional[str] = None,
+             for_: Optional[str] = None,
+             is_paused: Optional[bool] = None,
+             labels: Optional[Mapping[str, str]] = None,
+             no_data_state: Optional[str] = None,
+             uid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("datas", datas)
+        _setter("name", name)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if exec_err_state is not None:
-            pulumi.set(__self__, "exec_err_state", exec_err_state)
+            _setter("exec_err_state", exec_err_state)
         if for_ is not None:
-            pulumi.set(__self__, "for_", for_)
+            _setter("for_", for_)
         if is_paused is not None:
-            pulumi.set(__self__, "is_paused", is_paused)
+            _setter("is_paused", is_paused)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if no_data_state is not None:
-            pulumi.set(__self__, "no_data_state", no_data_state)
+            _setter("no_data_state", no_data_state)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
 
     @property
     @pulumi.getter
@@ -4620,12 +5598,29 @@ class RuleGroupRuleData(dict):
                  ref_id: str,
                  relative_time_range: 'outputs.RuleGroupRuleDataRelativeTimeRange',
                  query_type: Optional[str] = None):
-        pulumi.set(__self__, "datasource_uid", datasource_uid)
-        pulumi.set(__self__, "model", model)
-        pulumi.set(__self__, "ref_id", ref_id)
-        pulumi.set(__self__, "relative_time_range", relative_time_range)
+        RuleGroupRuleData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datasource_uid=datasource_uid,
+            model=model,
+            ref_id=ref_id,
+            relative_time_range=relative_time_range,
+            query_type=query_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datasource_uid: str,
+             model: str,
+             ref_id: str,
+             relative_time_range: 'outputs.RuleGroupRuleDataRelativeTimeRange',
+             query_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datasource_uid", datasource_uid)
+        _setter("model", model)
+        _setter("ref_id", ref_id)
+        _setter("relative_time_range", relative_time_range)
         if query_type is not None:
-            pulumi.set(__self__, "query_type", query_type)
+            _setter("query_type", query_type)
 
     @property
     @pulumi.getter(name="datasourceUid")
@@ -4675,8 +5670,19 @@ class RuleGroupRuleDataRelativeTimeRange(dict):
     def __init__(__self__, *,
                  from_: int,
                  to: int):
-        pulumi.set(__self__, "from_", from_)
-        pulumi.set(__self__, "to", to)
+        RuleGroupRuleDataRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: int,
+             to: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
+        _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -4702,14 +5708,29 @@ class SLOAlerting(dict):
         :param Sequence['SLOAlertingLabelArgs'] labels: Labels will be attached to all alerts generated by any of these rules.
         :param Sequence['SLOAlertingSlowburnArgs'] slowburns: Alerting Rules generated for Slow Burn alerts
         """
+        SLOAlerting._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            fastburns=fastburns,
+            labels=labels,
+            slowburns=slowburns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.SLOAlertingAnnotation']] = None,
+             fastburns: Optional[Sequence['outputs.SLOAlertingFastburn']] = None,
+             labels: Optional[Sequence['outputs.SLOAlertingLabel']] = None,
+             slowburns: Optional[Sequence['outputs.SLOAlertingSlowburn']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if fastburns is not None:
-            pulumi.set(__self__, "fastburns", fastburns)
+            _setter("fastburns", fastburns)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if slowburns is not None:
-            pulumi.set(__self__, "slowburns", slowburns)
+            _setter("slowburns", slowburns)
 
     @property
     @pulumi.getter
@@ -4749,8 +5770,19 @@ class SLOAlertingAnnotation(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingAnnotation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4771,10 +5803,21 @@ class SLOAlertingFastburn(dict):
         """
         :param Sequence['SLOAlertingFastburnLabelArgs'] labels: Additional labels that will be attached to all metrics generated from the query. These labels are useful for grouping SLOs in dashboard views that you create by hand. Labels must adhere to Prometheus label name schema - "^[a-zA-Z*][a-zA-Z0-9*]*$"
         """
+        SLOAlertingFastburn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.SLOAlertingFastburnAnnotation']] = None,
+             labels: Optional[Sequence['outputs.SLOAlertingFastburnLabel']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -4795,8 +5838,19 @@ class SLOAlertingFastburnAnnotation(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingFastburnAnnotation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4814,8 +5868,19 @@ class SLOAlertingFastburnLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingFastburnLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4833,8 +5898,19 @@ class SLOAlertingLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4855,10 +5931,21 @@ class SLOAlertingSlowburn(dict):
         """
         :param Sequence['SLOAlertingSlowburnLabelArgs'] labels: Additional labels that will be attached to all metrics generated from the query. These labels are useful for grouping SLOs in dashboard views that you create by hand. Labels must adhere to Prometheus label name schema - "^[a-zA-Z*][a-zA-Z0-9*]*$"
         """
+        SLOAlertingSlowburn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.SLOAlertingSlowburnAnnotation']] = None,
+             labels: Optional[Sequence['outputs.SLOAlertingSlowburnLabel']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -4879,8 +5966,19 @@ class SLOAlertingSlowburnAnnotation(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingSlowburnAnnotation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4898,8 +5996,19 @@ class SLOAlertingSlowburnLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOAlertingSlowburnLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4917,8 +6026,19 @@ class SLOLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        SLOLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -4940,8 +6060,19 @@ class SLOObjective(dict):
         :param float value: Value between 0 and 1. If the value of the query is above the objective, the SLO is met.
         :param str window: A Prometheus-parsable time duration string like 24h, 60m. This is the time window the objective is measured over.
         """
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "window", window)
+        SLOObjective._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: float,
+             window: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
+        _setter("window", window)
 
     @property
     @pulumi.getter
@@ -4969,11 +6100,24 @@ class SLOQuery(dict):
         """
         :param str type: Query type must be one of: "freeform", "query", "ratio", or "threshold"
         """
-        pulumi.set(__self__, "type", type)
+        SLOQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            freeform=freeform,
+            ratio=ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             freeform: Optional['outputs.SLOQueryFreeform'] = None,
+             ratio: Optional['outputs.SLOQueryRatio'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if freeform is not None:
-            pulumi.set(__self__, "freeform", freeform)
+            _setter("freeform", freeform)
         if ratio is not None:
-            pulumi.set(__self__, "ratio", ratio)
+            _setter("ratio", ratio)
 
     @property
     @pulumi.getter
@@ -5001,7 +6145,16 @@ class SLOQueryFreeform(dict):
         """
         :param str query: Query describes the indicator that will be measured against the objective. Freeform Query types are currently supported.
         """
-        pulumi.set(__self__, "query", query)
+        SLOQueryFreeform._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
 
     @property
     @pulumi.getter
@@ -5039,10 +6192,23 @@ class SLOQueryRatio(dict):
                  success_metric: str,
                  total_metric: str,
                  group_by_labels: Optional[Sequence[str]] = None):
-        pulumi.set(__self__, "success_metric", success_metric)
-        pulumi.set(__self__, "total_metric", total_metric)
+        SLOQueryRatio._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            success_metric=success_metric,
+            total_metric=total_metric,
+            group_by_labels=group_by_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             success_metric: str,
+             total_metric: str,
+             group_by_labels: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("success_metric", success_metric)
+        _setter("total_metric", total_metric)
         if group_by_labels is not None:
-            pulumi.set(__self__, "group_by_labels", group_by_labels)
+            _setter("group_by_labels", group_by_labels)
 
     @property
     @pulumi.getter(name="successMetric")
@@ -5090,11 +6256,24 @@ class ServiceAccountPermissionPermission(dict):
         :param str team_id: ID of the team to manage permissions for. Specify either this or `user_id`. Defaults to `0`.
         :param int user_id: ID of the user to manage permissions for. Specify either this or `team_id`. Defaults to `0`.
         """
-        pulumi.set(__self__, "permission", permission)
+        ServiceAccountPermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            team_id=team_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: str,
+             team_id: Optional[str] = None,
+             user_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission", permission)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -5136,16 +6315,33 @@ class SyntheticMonitoringCheckSettings(dict):
         :param 'SyntheticMonitoringCheckSettingsTcpArgs' tcp: Settings for TCP check. The target must be of the form `<host>:<port>`, where the host portion must be a valid hostname or IP address.
         :param 'SyntheticMonitoringCheckSettingsTracerouteArgs' traceroute: Settings for traceroute check. The target must be a valid hostname or IP address
         """
+        SyntheticMonitoringCheckSettings._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns=dns,
+            http=http,
+            ping=ping,
+            tcp=tcp,
+            traceroute=traceroute,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns: Optional['outputs.SyntheticMonitoringCheckSettingsDns'] = None,
+             http: Optional['outputs.SyntheticMonitoringCheckSettingsHttp'] = None,
+             ping: Optional['outputs.SyntheticMonitoringCheckSettingsPing'] = None,
+             tcp: Optional['outputs.SyntheticMonitoringCheckSettingsTcp'] = None,
+             traceroute: Optional['outputs.SyntheticMonitoringCheckSettingsTraceroute'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if http is not None:
-            pulumi.set(__self__, "http", http)
+            _setter("http", http)
         if ping is not None:
-            pulumi.set(__self__, "ping", ping)
+            _setter("ping", ping)
         if tcp is not None:
-            pulumi.set(__self__, "tcp", tcp)
+            _setter("tcp", tcp)
         if traceroute is not None:
-            pulumi.set(__self__, "traceroute", traceroute)
+            _setter("traceroute", traceroute)
 
     @property
     @pulumi.getter
@@ -5230,26 +6426,53 @@ class SyntheticMonitoringCheckSettingsDns(dict):
                  validate_additional_rrs: Optional[Sequence['outputs.SyntheticMonitoringCheckSettingsDnsValidateAdditionalRr']] = None,
                  validate_answer_rrs: Optional['outputs.SyntheticMonitoringCheckSettingsDnsValidateAnswerRrs'] = None,
                  validate_authority_rrs: Optional['outputs.SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrs'] = None):
+        SyntheticMonitoringCheckSettingsDns._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_version=ip_version,
+            port=port,
+            protocol=protocol,
+            record_type=record_type,
+            server=server,
+            source_ip_address=source_ip_address,
+            valid_r_codes=valid_r_codes,
+            validate_additional_rrs=validate_additional_rrs,
+            validate_answer_rrs=validate_answer_rrs,
+            validate_authority_rrs=validate_authority_rrs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_version: Optional[str] = None,
+             port: Optional[int] = None,
+             protocol: Optional[str] = None,
+             record_type: Optional[str] = None,
+             server: Optional[str] = None,
+             source_ip_address: Optional[str] = None,
+             valid_r_codes: Optional[Sequence[str]] = None,
+             validate_additional_rrs: Optional[Sequence['outputs.SyntheticMonitoringCheckSettingsDnsValidateAdditionalRr']] = None,
+             validate_answer_rrs: Optional['outputs.SyntheticMonitoringCheckSettingsDnsValidateAnswerRrs'] = None,
+             validate_authority_rrs: Optional['outputs.SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrs'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if server is not None:
-            pulumi.set(__self__, "server", server)
+            _setter("server", server)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if valid_r_codes is not None:
-            pulumi.set(__self__, "valid_r_codes", valid_r_codes)
+            _setter("valid_r_codes", valid_r_codes)
         if validate_additional_rrs is not None:
-            pulumi.set(__self__, "validate_additional_rrs", validate_additional_rrs)
+            _setter("validate_additional_rrs", validate_additional_rrs)
         if validate_answer_rrs is not None:
-            pulumi.set(__self__, "validate_answer_rrs", validate_answer_rrs)
+            _setter("validate_answer_rrs", validate_answer_rrs)
         if validate_authority_rrs is not None:
-            pulumi.set(__self__, "validate_authority_rrs", validate_authority_rrs)
+            _setter("validate_authority_rrs", validate_authority_rrs)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -5326,10 +6549,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAdditionalRr(dict):
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[Sequence[str]] = None,
                  fail_if_not_matches_regexps: Optional[Sequence[str]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAdditionalRr._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[Sequence[str]] = None,
+             fail_if_not_matches_regexps: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5366,10 +6600,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAnswerRrs(dict):
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[Sequence[str]] = None,
                  fail_if_not_matches_regexps: Optional[Sequence[str]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAnswerRrs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[Sequence[str]] = None,
+             fail_if_not_matches_regexps: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5406,10 +6651,21 @@ class SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrs(dict):
     def __init__(__self__, *,
                  fail_if_matches_regexps: Optional[Sequence[str]] = None,
                  fail_if_not_matches_regexps: Optional[Sequence[str]] = None):
+        SyntheticMonitoringCheckSettingsDnsValidateAuthorityRrs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fail_if_matches_regexps=fail_if_matches_regexps,
+            fail_if_not_matches_regexps=fail_if_not_matches_regexps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fail_if_matches_regexps: Optional[Sequence[str]] = None,
+             fail_if_not_matches_regexps: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fail_if_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_matches_regexps", fail_if_matches_regexps)
+            _setter("fail_if_matches_regexps", fail_if_matches_regexps)
         if fail_if_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_not_matches_regexps", fail_if_not_matches_regexps)
+            _setter("fail_if_not_matches_regexps", fail_if_not_matches_regexps)
 
     @property
     @pulumi.getter(name="failIfMatchesRegexps")
@@ -5488,42 +6744,85 @@ class SyntheticMonitoringCheckSettingsHttp(dict):
                  tls_config: Optional['outputs.SyntheticMonitoringCheckSettingsHttpTlsConfig'] = None,
                  valid_http_versions: Optional[Sequence[str]] = None,
                  valid_status_codes: Optional[Sequence[int]] = None):
+        SyntheticMonitoringCheckSettingsHttp._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            basic_auth=basic_auth,
+            bearer_token=bearer_token,
+            body=body,
+            cache_busting_query_param_name=cache_busting_query_param_name,
+            fail_if_body_matches_regexps=fail_if_body_matches_regexps,
+            fail_if_body_not_matches_regexps=fail_if_body_not_matches_regexps,
+            fail_if_header_matches_regexps=fail_if_header_matches_regexps,
+            fail_if_header_not_matches_regexps=fail_if_header_not_matches_regexps,
+            fail_if_not_ssl=fail_if_not_ssl,
+            fail_if_ssl=fail_if_ssl,
+            headers=headers,
+            ip_version=ip_version,
+            method=method,
+            no_follow_redirects=no_follow_redirects,
+            proxy_url=proxy_url,
+            tls_config=tls_config,
+            valid_http_versions=valid_http_versions,
+            valid_status_codes=valid_status_codes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             basic_auth: Optional['outputs.SyntheticMonitoringCheckSettingsHttpBasicAuth'] = None,
+             bearer_token: Optional[str] = None,
+             body: Optional[str] = None,
+             cache_busting_query_param_name: Optional[str] = None,
+             fail_if_body_matches_regexps: Optional[Sequence[str]] = None,
+             fail_if_body_not_matches_regexps: Optional[Sequence[str]] = None,
+             fail_if_header_matches_regexps: Optional[Sequence['outputs.SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp']] = None,
+             fail_if_header_not_matches_regexps: Optional[Sequence['outputs.SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp']] = None,
+             fail_if_not_ssl: Optional[bool] = None,
+             fail_if_ssl: Optional[bool] = None,
+             headers: Optional[Sequence[str]] = None,
+             ip_version: Optional[str] = None,
+             method: Optional[str] = None,
+             no_follow_redirects: Optional[bool] = None,
+             proxy_url: Optional[str] = None,
+             tls_config: Optional['outputs.SyntheticMonitoringCheckSettingsHttpTlsConfig'] = None,
+             valid_http_versions: Optional[Sequence[str]] = None,
+             valid_status_codes: Optional[Sequence[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if basic_auth is not None:
-            pulumi.set(__self__, "basic_auth", basic_auth)
+            _setter("basic_auth", basic_auth)
         if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
+            _setter("bearer_token", bearer_token)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if cache_busting_query_param_name is not None:
-            pulumi.set(__self__, "cache_busting_query_param_name", cache_busting_query_param_name)
+            _setter("cache_busting_query_param_name", cache_busting_query_param_name)
         if fail_if_body_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_body_matches_regexps", fail_if_body_matches_regexps)
+            _setter("fail_if_body_matches_regexps", fail_if_body_matches_regexps)
         if fail_if_body_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_body_not_matches_regexps", fail_if_body_not_matches_regexps)
+            _setter("fail_if_body_not_matches_regexps", fail_if_body_not_matches_regexps)
         if fail_if_header_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_header_matches_regexps", fail_if_header_matches_regexps)
+            _setter("fail_if_header_matches_regexps", fail_if_header_matches_regexps)
         if fail_if_header_not_matches_regexps is not None:
-            pulumi.set(__self__, "fail_if_header_not_matches_regexps", fail_if_header_not_matches_regexps)
+            _setter("fail_if_header_not_matches_regexps", fail_if_header_not_matches_regexps)
         if fail_if_not_ssl is not None:
-            pulumi.set(__self__, "fail_if_not_ssl", fail_if_not_ssl)
+            _setter("fail_if_not_ssl", fail_if_not_ssl)
         if fail_if_ssl is not None:
-            pulumi.set(__self__, "fail_if_ssl", fail_if_ssl)
+            _setter("fail_if_ssl", fail_if_ssl)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if no_follow_redirects is not None:
-            pulumi.set(__self__, "no_follow_redirects", no_follow_redirects)
+            _setter("no_follow_redirects", no_follow_redirects)
         if proxy_url is not None:
-            pulumi.set(__self__, "proxy_url", proxy_url)
+            _setter("proxy_url", proxy_url)
         if tls_config is not None:
-            pulumi.set(__self__, "tls_config", tls_config)
+            _setter("tls_config", tls_config)
         if valid_http_versions is not None:
-            pulumi.set(__self__, "valid_http_versions", valid_http_versions)
+            _setter("valid_http_versions", valid_http_versions)
         if valid_status_codes is not None:
-            pulumi.set(__self__, "valid_status_codes", valid_status_codes)
+            _setter("valid_status_codes", valid_status_codes)
 
     @property
     @pulumi.getter(name="basicAuth")
@@ -5621,8 +6920,19 @@ class SyntheticMonitoringCheckSettingsHttpBasicAuth(dict):
     def __init__(__self__, *,
                  password: str,
                  username: str):
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        SyntheticMonitoringCheckSettingsHttpBasicAuth._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -5658,10 +6968,23 @@ class SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp(dict):
                  header: str,
                  regexp: str,
                  allow_missing: Optional[bool] = None):
-        pulumi.set(__self__, "header", header)
-        pulumi.set(__self__, "regexp", regexp)
+        SyntheticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header=header,
+            regexp=regexp,
+            allow_missing=allow_missing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header: str,
+             regexp: str,
+             allow_missing: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header", header)
+        _setter("regexp", regexp)
         if allow_missing is not None:
-            pulumi.set(__self__, "allow_missing", allow_missing)
+            _setter("allow_missing", allow_missing)
 
     @property
     @pulumi.getter
@@ -5702,10 +7025,23 @@ class SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp(dict):
                  header: str,
                  regexp: str,
                  allow_missing: Optional[bool] = None):
-        pulumi.set(__self__, "header", header)
-        pulumi.set(__self__, "regexp", regexp)
+        SyntheticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header=header,
+            regexp=regexp,
+            allow_missing=allow_missing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header: str,
+             regexp: str,
+             allow_missing: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header", header)
+        _setter("regexp", regexp)
         if allow_missing is not None:
-            pulumi.set(__self__, "allow_missing", allow_missing)
+            _setter("allow_missing", allow_missing)
 
     @property
     @pulumi.getter
@@ -5756,16 +7092,33 @@ class SyntheticMonitoringCheckSettingsHttpTlsConfig(dict):
                  client_key: Optional[str] = None,
                  insecure_skip_verify: Optional[bool] = None,
                  server_name: Optional[str] = None):
+        SyntheticMonitoringCheckSettingsHttpTlsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_cert=ca_cert,
+            client_cert=client_cert,
+            client_key=client_key,
+            insecure_skip_verify=insecure_skip_verify,
+            server_name=server_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_cert: Optional[str] = None,
+             client_cert: Optional[str] = None,
+             client_key: Optional[str] = None,
+             insecure_skip_verify: Optional[bool] = None,
+             server_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if insecure_skip_verify is not None:
-            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+            _setter("insecure_skip_verify", insecure_skip_verify)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
 
     @property
     @pulumi.getter(name="caCert")
@@ -5823,14 +7176,29 @@ class SyntheticMonitoringCheckSettingsPing(dict):
                  ip_version: Optional[str] = None,
                  payload_size: Optional[int] = None,
                  source_ip_address: Optional[str] = None):
+        SyntheticMonitoringCheckSettingsPing._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dont_fragment=dont_fragment,
+            ip_version=ip_version,
+            payload_size=payload_size,
+            source_ip_address=source_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dont_fragment: Optional[bool] = None,
+             ip_version: Optional[str] = None,
+             payload_size: Optional[int] = None,
+             source_ip_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dont_fragment is not None:
-            pulumi.set(__self__, "dont_fragment", dont_fragment)
+            _setter("dont_fragment", dont_fragment)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if payload_size is not None:
-            pulumi.set(__self__, "payload_size", payload_size)
+            _setter("payload_size", payload_size)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
 
     @property
     @pulumi.getter(name="dontFragment")
@@ -5884,16 +7252,33 @@ class SyntheticMonitoringCheckSettingsTcp(dict):
                  source_ip_address: Optional[str] = None,
                  tls: Optional[bool] = None,
                  tls_config: Optional['outputs.SyntheticMonitoringCheckSettingsTcpTlsConfig'] = None):
+        SyntheticMonitoringCheckSettingsTcp._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_version=ip_version,
+            query_responses=query_responses,
+            source_ip_address=source_ip_address,
+            tls=tls,
+            tls_config=tls_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_version: Optional[str] = None,
+             query_responses: Optional[Sequence['outputs.SyntheticMonitoringCheckSettingsTcpQueryResponse']] = None,
+             source_ip_address: Optional[str] = None,
+             tls: Optional[bool] = None,
+             tls_config: Optional['outputs.SyntheticMonitoringCheckSettingsTcpTlsConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if query_responses is not None:
-            pulumi.set(__self__, "query_responses", query_responses)
+            _setter("query_responses", query_responses)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if tls_config is not None:
-            pulumi.set(__self__, "tls_config", tls_config)
+            _setter("tls_config", tls_config)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -5944,10 +7329,23 @@ class SyntheticMonitoringCheckSettingsTcpQueryResponse(dict):
                  expect: str,
                  send: str,
                  start_tls: Optional[bool] = None):
-        pulumi.set(__self__, "expect", expect)
-        pulumi.set(__self__, "send", send)
+        SyntheticMonitoringCheckSettingsTcpQueryResponse._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expect=expect,
+            send=send,
+            start_tls=start_tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expect: str,
+             send: str,
+             start_tls: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expect", expect)
+        _setter("send", send)
         if start_tls is not None:
-            pulumi.set(__self__, "start_tls", start_tls)
+            _setter("start_tls", start_tls)
 
     @property
     @pulumi.getter
@@ -5998,16 +7396,33 @@ class SyntheticMonitoringCheckSettingsTcpTlsConfig(dict):
                  client_key: Optional[str] = None,
                  insecure_skip_verify: Optional[bool] = None,
                  server_name: Optional[str] = None):
+        SyntheticMonitoringCheckSettingsTcpTlsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_cert=ca_cert,
+            client_cert=client_cert,
+            client_key=client_key,
+            insecure_skip_verify=insecure_skip_verify,
+            server_name=server_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_cert: Optional[str] = None,
+             client_cert: Optional[str] = None,
+             client_key: Optional[str] = None,
+             insecure_skip_verify: Optional[bool] = None,
+             server_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if insecure_skip_verify is not None:
-            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+            _setter("insecure_skip_verify", insecure_skip_verify)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
 
     @property
     @pulumi.getter(name="caCert")
@@ -6062,12 +7477,25 @@ class SyntheticMonitoringCheckSettingsTraceroute(dict):
                  max_hops: Optional[int] = None,
                  max_unknown_hops: Optional[int] = None,
                  ptr_lookup: Optional[bool] = None):
+        SyntheticMonitoringCheckSettingsTraceroute._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_hops=max_hops,
+            max_unknown_hops=max_unknown_hops,
+            ptr_lookup=ptr_lookup,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_hops: Optional[int] = None,
+             max_unknown_hops: Optional[int] = None,
+             ptr_lookup: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_hops is not None:
-            pulumi.set(__self__, "max_hops", max_hops)
+            _setter("max_hops", max_hops)
         if max_unknown_hops is not None:
-            pulumi.set(__self__, "max_unknown_hops", max_unknown_hops)
+            _setter("max_unknown_hops", max_unknown_hops)
         if ptr_lookup is not None:
-            pulumi.set(__self__, "ptr_lookup", ptr_lookup)
+            _setter("ptr_lookup", ptr_lookup)
 
     @property
     @pulumi.getter(name="maxHops")
@@ -6108,12 +7536,25 @@ class TeamPreferences(dict):
                  home_dashboard_uid: Optional[str] = None,
                  theme: Optional[str] = None,
                  timezone: Optional[str] = None):
+        TeamPreferences._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            home_dashboard_uid=home_dashboard_uid,
+            theme=theme,
+            timezone=timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             home_dashboard_uid: Optional[str] = None,
+             theme: Optional[str] = None,
+             timezone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if home_dashboard_uid is not None:
-            pulumi.set(__self__, "home_dashboard_uid", home_dashboard_uid)
+            _setter("home_dashboard_uid", home_dashboard_uid)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
 
     @property
     @pulumi.getter(name="homeDashboardUid")
@@ -6135,8 +7576,17 @@ class TeamPreferences(dict):
 class TeamTeamSync(dict):
     def __init__(__self__, *,
                  groups: Optional[Sequence[str]] = None):
+        TeamTeamSync._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
 
     @property
     @pulumi.getter
@@ -6150,9 +7600,22 @@ class GetDashboardsDashboardResult(dict):
                  folder_title: str,
                  title: str,
                  uid: str):
-        pulumi.set(__self__, "folder_title", folder_title)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "uid", uid)
+        GetDashboardsDashboardResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_title=folder_title,
+            title=title,
+            uid=uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_title: str,
+             title: str,
+             uid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder_title", folder_title)
+        _setter("title", title)
+        _setter("uid", uid)
 
     @property
     @pulumi.getter(name="folderTitle")
@@ -6180,10 +7643,25 @@ class GetFoldersFolderResult(dict):
         """
         :param int id: The ID of this resource.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "uid", uid)
-        pulumi.set(__self__, "url", url)
+        GetFoldersFolderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            title=title,
+            uid=uid,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: int,
+             title: str,
+             uid: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("title", title)
+        _setter("uid", uid)
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -6214,9 +7692,20 @@ class GetRolePermissionResult(dict):
     def __init__(__self__, *,
                  action: str,
                  scope: Optional[str] = None):
-        pulumi.set(__self__, "action", action)
+        GetRolePermissionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -6239,13 +7728,34 @@ class GetSlosSloResult(dict):
                  objectives: Sequence['outputs.GetSlosSloObjectiveResult'],
                  queries: Sequence['outputs.GetSlosSloQueryResult'],
                  uuid: str):
-        pulumi.set(__self__, "alertings", alertings)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "objectives", objectives)
-        pulumi.set(__self__, "queries", queries)
-        pulumi.set(__self__, "uuid", uuid)
+        GetSlosSloResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alertings=alertings,
+            description=description,
+            labels=labels,
+            name=name,
+            objectives=objectives,
+            queries=queries,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alertings: Sequence['outputs.GetSlosSloAlertingResult'],
+             description: str,
+             labels: Sequence['outputs.GetSlosSloLabelResult'],
+             name: str,
+             objectives: Sequence['outputs.GetSlosSloObjectiveResult'],
+             queries: Sequence['outputs.GetSlosSloQueryResult'],
+             uuid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alertings", alertings)
+        _setter("description", description)
+        _setter("labels", labels)
+        _setter("name", name)
+        _setter("objectives", objectives)
+        _setter("queries", queries)
+        _setter("uuid", uuid)
 
     @property
     @pulumi.getter
@@ -6290,14 +7800,29 @@ class GetSlosSloAlertingResult(dict):
                  fastburns: Optional[Sequence['outputs.GetSlosSloAlertingFastburnResult']] = None,
                  labels: Optional[Sequence['outputs.GetSlosSloAlertingLabelResult']] = None,
                  slowburns: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnResult']] = None):
+        GetSlosSloAlertingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            fastburns=fastburns,
+            labels=labels,
+            slowburns=slowburns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.GetSlosSloAlertingAnnotationResult']] = None,
+             fastburns: Optional[Sequence['outputs.GetSlosSloAlertingFastburnResult']] = None,
+             labels: Optional[Sequence['outputs.GetSlosSloAlertingLabelResult']] = None,
+             slowburns: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if fastburns is not None:
-            pulumi.set(__self__, "fastburns", fastburns)
+            _setter("fastburns", fastburns)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if slowburns is not None:
-            pulumi.set(__self__, "slowburns", slowburns)
+            _setter("slowburns", slowburns)
 
     @property
     @pulumi.getter
@@ -6325,8 +7850,19 @@ class GetSlosSloAlertingAnnotationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingAnnotationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6344,10 +7880,21 @@ class GetSlosSloAlertingFastburnResult(dict):
     def __init__(__self__, *,
                  annotations: Optional[Sequence['outputs.GetSlosSloAlertingFastburnAnnotationResult']] = None,
                  labels: Optional[Sequence['outputs.GetSlosSloAlertingFastburnLabelResult']] = None):
+        GetSlosSloAlertingFastburnResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.GetSlosSloAlertingFastburnAnnotationResult']] = None,
+             labels: Optional[Sequence['outputs.GetSlosSloAlertingFastburnLabelResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -6365,8 +7912,19 @@ class GetSlosSloAlertingFastburnAnnotationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingFastburnAnnotationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6384,8 +7942,19 @@ class GetSlosSloAlertingFastburnLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingFastburnLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6403,8 +7972,19 @@ class GetSlosSloAlertingLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6422,10 +8002,21 @@ class GetSlosSloAlertingSlowburnResult(dict):
     def __init__(__self__, *,
                  annotations: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnAnnotationResult']] = None,
                  labels: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnLabelResult']] = None):
+        GetSlosSloAlertingSlowburnResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnAnnotationResult']] = None,
+             labels: Optional[Sequence['outputs.GetSlosSloAlertingSlowburnLabelResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter
@@ -6443,8 +8034,19 @@ class GetSlosSloAlertingSlowburnAnnotationResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingSlowburnAnnotationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6462,8 +8064,19 @@ class GetSlosSloAlertingSlowburnLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloAlertingSlowburnLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6481,8 +8094,19 @@ class GetSlosSloLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetSlosSloLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6500,8 +8124,19 @@ class GetSlosSloObjectiveResult(dict):
     def __init__(__self__, *,
                  value: float,
                  window: str):
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "window", window)
+        GetSlosSloObjectiveResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: float,
+             window: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
+        _setter("window", window)
 
     @property
     @pulumi.getter
@@ -6520,11 +8155,24 @@ class GetSlosSloQueryResult(dict):
                  type: str,
                  freeform: Optional['outputs.GetSlosSloQueryFreeformResult'] = None,
                  ratio: Optional['outputs.GetSlosSloQueryRatioResult'] = None):
-        pulumi.set(__self__, "type", type)
+        GetSlosSloQueryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            freeform=freeform,
+            ratio=ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             freeform: Optional['outputs.GetSlosSloQueryFreeformResult'] = None,
+             ratio: Optional['outputs.GetSlosSloQueryRatioResult'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if freeform is not None:
-            pulumi.set(__self__, "freeform", freeform)
+            _setter("freeform", freeform)
         if ratio is not None:
-            pulumi.set(__self__, "ratio", ratio)
+            _setter("ratio", ratio)
 
     @property
     @pulumi.getter
@@ -6546,7 +8194,16 @@ class GetSlosSloQueryResult(dict):
 class GetSlosSloQueryFreeformResult(dict):
     def __init__(__self__, *,
                  query: str):
-        pulumi.set(__self__, "query", query)
+        GetSlosSloQueryFreeformResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
 
     @property
     @pulumi.getter
@@ -6560,10 +8217,23 @@ class GetSlosSloQueryRatioResult(dict):
                  success_metric: str,
                  total_metric: str,
                  group_by_labels: Optional[Sequence[str]] = None):
-        pulumi.set(__self__, "success_metric", success_metric)
-        pulumi.set(__self__, "total_metric", total_metric)
+        GetSlosSloQueryRatioResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            success_metric=success_metric,
+            total_metric=total_metric,
+            group_by_labels=group_by_labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             success_metric: str,
+             total_metric: str,
+             group_by_labels: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("success_metric", success_metric)
+        _setter("total_metric", total_metric)
         if group_by_labels is not None:
-            pulumi.set(__self__, "group_by_labels", group_by_labels)
+            _setter("group_by_labels", group_by_labels)
 
     @property
     @pulumi.getter(name="successMetric")
@@ -6587,12 +8257,25 @@ class GetTeamPreferenceResult(dict):
                  home_dashboard_uid: Optional[str] = None,
                  theme: Optional[str] = None,
                  timezone: Optional[str] = None):
+        GetTeamPreferenceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            home_dashboard_uid=home_dashboard_uid,
+            theme=theme,
+            timezone=timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             home_dashboard_uid: Optional[str] = None,
+             theme: Optional[str] = None,
+             timezone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if home_dashboard_uid is not None:
-            pulumi.set(__self__, "home_dashboard_uid", home_dashboard_uid)
+            _setter("home_dashboard_uid", home_dashboard_uid)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
 
     @property
     @pulumi.getter(name="homeDashboardUid")
@@ -6614,8 +8297,17 @@ class GetTeamPreferenceResult(dict):
 class GetTeamTeamSyncResult(dict):
     def __init__(__self__, *,
                  groups: Optional[Sequence[str]] = None):
+        GetTeamTeamSyncResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
 
     @property
     @pulumi.getter
@@ -6634,11 +8326,28 @@ class GetUsersUserResult(dict):
         """
         :param int id: The ID of this resource.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_admin", is_admin)
-        pulumi.set(__self__, "login", login)
-        pulumi.set(__self__, "name", name)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            id=id,
+            is_admin=is_admin,
+            login=login,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: str,
+             id: int,
+             is_admin: bool,
+             login: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
+        _setter("id", id)
+        _setter("is_admin", is_admin)
+        _setter("login", login)
+        _setter("name", name)
 
     @property
     @pulumi.getter

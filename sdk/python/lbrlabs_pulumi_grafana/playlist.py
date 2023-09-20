@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,12 +25,27 @@ class PlaylistArgs:
         :param pulumi.Input[str] name: The name of the playlist.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "items", items)
+        PlaylistArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interval=interval,
+            items=items,
+            name=name,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interval: pulumi.Input[str],
+             items: pulumi.Input[Sequence[pulumi.Input['PlaylistItemArgs']]],
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("interval", interval)
+        _setter("items", items)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -87,14 +102,29 @@ class _PlaylistState:
         :param pulumi.Input[str] name: The name of the playlist.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
+        _PlaylistState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interval=interval,
+            items=items,
+            name=name,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interval: Optional[pulumi.Input[str]] = None,
+             items: Optional[pulumi.Input[Sequence[pulumi.Input['PlaylistItemArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if items is not None:
-            pulumi.set(__self__, "items", items)
+            _setter("items", items)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -178,6 +208,10 @@ class Playlist(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PlaylistArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

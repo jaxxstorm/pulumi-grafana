@@ -26,9 +26,10 @@
             "rootNamespace": "Lbrlabs.PulumiPackage"
         },
         "go": {
-            "importBasePath": "github.com/lbrlabs/pulumi-grafana/sdk/go/grafana",
+            "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
-            "generateExtraInputTypes": true
+            "generics": "side-by-side",
+            "importBasePath": "github.com/lbrlabs/pulumi-grafana/sdk/go/grafana"
         },
         "nodejs": {
             "packageName": "@lbrlabs/pulumi-grafana",

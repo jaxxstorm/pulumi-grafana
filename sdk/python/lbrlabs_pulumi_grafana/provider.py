@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -62,71 +62,110 @@ class ProviderArgs:
                the `GRAFANA_TLS_KEY` environment variable.
         :param pulumi.Input[str] url: The root URL of a Grafana server. May alternatively be set via the `GRAFANA_URL` environment variable.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth=auth,
+            ca_cert=ca_cert,
+            cloud_api_key=cloud_api_key,
+            cloud_api_url=cloud_api_url,
+            insecure_skip_verify=insecure_skip_verify,
+            oncall_access_token=oncall_access_token,
+            oncall_url=oncall_url,
+            org_id=org_id,
+            retries=retries,
+            retry_status_codes=retry_status_codes,
+            sm_access_token=sm_access_token,
+            sm_url=sm_url,
+            store_dashboard_sha256=store_dashboard_sha256,
+            tls_cert=tls_cert,
+            tls_key=tls_key,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth: Optional[pulumi.Input[str]] = None,
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             cloud_api_key: Optional[pulumi.Input[str]] = None,
+             cloud_api_url: Optional[pulumi.Input[str]] = None,
+             insecure_skip_verify: Optional[pulumi.Input[bool]] = None,
+             oncall_access_token: Optional[pulumi.Input[str]] = None,
+             oncall_url: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[int]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             retry_status_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sm_access_token: Optional[pulumi.Input[str]] = None,
+             sm_url: Optional[pulumi.Input[str]] = None,
+             store_dashboard_sha256: Optional[pulumi.Input[bool]] = None,
+             tls_cert: Optional[pulumi.Input[str]] = None,
+             tls_key: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auth is None:
             auth = _utilities.get_env('GRAFANA_AUTH')
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if ca_cert is None:
             ca_cert = _utilities.get_env('GRAFANA_CA_CERT')
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if cloud_api_key is None:
             cloud_api_key = _utilities.get_env('GRAFANA_CLOUD_API_KEY')
         if cloud_api_key is not None:
-            pulumi.set(__self__, "cloud_api_key", cloud_api_key)
+            _setter("cloud_api_key", cloud_api_key)
         if cloud_api_url is None:
             cloud_api_url = _utilities.get_env('GRAFANA_CLOUD_API_URL')
         if cloud_api_url is not None:
-            pulumi.set(__self__, "cloud_api_url", cloud_api_url)
+            _setter("cloud_api_url", cloud_api_url)
         if insecure_skip_verify is None:
             insecure_skip_verify = _utilities.get_env_bool('GRAFANA_INSECURE_SKIP_VERIFY')
         if insecure_skip_verify is not None:
-            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+            _setter("insecure_skip_verify", insecure_skip_verify)
         if oncall_access_token is None:
             oncall_access_token = _utilities.get_env('GRAFANA_ONCALL_ACCESS_TOKEN')
         if oncall_access_token is not None:
-            pulumi.set(__self__, "oncall_access_token", oncall_access_token)
+            _setter("oncall_access_token", oncall_access_token)
         if oncall_url is None:
             oncall_url = _utilities.get_env('GRAFANA_ONCALL_URL')
         if oncall_url is not None:
-            pulumi.set(__self__, "oncall_url", oncall_url)
-        if org_id is None:
-            org_id = _utilities.get_env_int('GRAFANA_ORG_ID')
+            _setter("oncall_url", oncall_url)
         if org_id is not None:
             warnings.warn("""Use the `org_id` attributes on resources instead.""", DeprecationWarning)
             pulumi.log.warn("""org_id is deprecated: Use the `org_id` attributes on resources instead.""")
+        if org_id is None:
+            org_id = _utilities.get_env_int('GRAFANA_ORG_ID')
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if retries is None:
             retries = _utilities.get_env_int('GRAFANA_RETRIES')
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if retry_status_codes is not None:
-            pulumi.set(__self__, "retry_status_codes", retry_status_codes)
+            _setter("retry_status_codes", retry_status_codes)
         if sm_access_token is None:
             sm_access_token = _utilities.get_env('GRAFANA_SM_ACCESS_TOKEN')
         if sm_access_token is not None:
-            pulumi.set(__self__, "sm_access_token", sm_access_token)
+            _setter("sm_access_token", sm_access_token)
         if sm_url is None:
             sm_url = _utilities.get_env('GRAFANA_SM_URL')
         if sm_url is not None:
-            pulumi.set(__self__, "sm_url", sm_url)
+            _setter("sm_url", sm_url)
         if store_dashboard_sha256 is None:
             store_dashboard_sha256 = _utilities.get_env_bool('GRAFANA_STORE_DASHBOARD_SHA256')
         if store_dashboard_sha256 is not None:
-            pulumi.set(__self__, "store_dashboard_sha256", store_dashboard_sha256)
+            _setter("store_dashboard_sha256", store_dashboard_sha256)
         if tls_cert is None:
             tls_cert = _utilities.get_env('GRAFANA_TLS_CERT')
         if tls_cert is not None:
-            pulumi.set(__self__, "tls_cert", tls_cert)
+            _setter("tls_cert", tls_cert)
         if tls_key is None:
             tls_key = _utilities.get_env('GRAFANA_TLS_KEY')
         if tls_key is not None:
-            pulumi.set(__self__, "tls_key", tls_key)
+            _setter("tls_key", tls_key)
         if url is None:
             url = _utilities.get_env('GRAFANA_URL')
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -419,6 +458,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -470,9 +513,6 @@ class Provider(pulumi.ProviderResource):
             if oncall_url is None:
                 oncall_url = _utilities.get_env('GRAFANA_ONCALL_URL')
             __props__.__dict__["oncall_url"] = oncall_url
-            if org_id is not None and not opts.urn:
-                warnings.warn("""Use the `org_id` attributes on resources instead.""", DeprecationWarning)
-                pulumi.log.warn("""org_id is deprecated: Use the `org_id` attributes on resources instead.""")
             if org_id is None:
                 org_id = _utilities.get_env_int('GRAFANA_ORG_ID')
             __props__.__dict__["org_id"] = pulumi.Output.from_input(org_id).apply(pulumi.runtime.to_json) if org_id is not None else None

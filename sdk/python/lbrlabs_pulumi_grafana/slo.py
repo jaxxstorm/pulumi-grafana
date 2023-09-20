@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,15 +35,34 @@ class SLOArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SLOLabelArgs']]] labels: Additional labels that will be attached to all metrics generated from the query. These labels are useful for grouping SLOs in dashboard views that you create by hand. Labels must adhere to Prometheus label name schema - "^[a-zA-Z*][a-zA-Z0-9*]*$"
         :param pulumi.Input[str] name: Name should be a short description of your indicator. Consider names like "API Availability"
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "objectives", objectives)
-        pulumi.set(__self__, "queries", queries)
+        SLOArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            objectives=objectives,
+            queries=queries,
+            alertings=alertings,
+            labels=labels,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             objectives: pulumi.Input[Sequence[pulumi.Input['SLOObjectiveArgs']]],
+             queries: pulumi.Input[Sequence[pulumi.Input['SLOQueryArgs']]],
+             alertings: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['SLOLabelArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("objectives", objectives)
+        _setter("queries", queries)
         if alertings is not None:
-            pulumi.set(__self__, "alertings", alertings)
+            _setter("alertings", alertings)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -144,18 +163,37 @@ class _SLOState:
         :param pulumi.Input[Sequence[pulumi.Input['SLOObjectiveArgs']]] objectives: Over each rolling time window, the remaining error budget will be calculated, and separate alerts can be generated for each time window based on the SLO burn rate or remaining error budget.
         :param pulumi.Input[Sequence[pulumi.Input['SLOQueryArgs']]] queries: Query describes the indicator that will be measured against the objective. Freeform Query types are currently supported.
         """
+        _SLOState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alertings=alertings,
+            description=description,
+            labels=labels,
+            name=name,
+            objectives=objectives,
+            queries=queries,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alertings: Optional[pulumi.Input[Sequence[pulumi.Input['SLOAlertingArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['SLOLabelArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             objectives: Optional[pulumi.Input[Sequence[pulumi.Input['SLOObjectiveArgs']]]] = None,
+             queries: Optional[pulumi.Input[Sequence[pulumi.Input['SLOQueryArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alertings is not None:
-            pulumi.set(__self__, "alertings", alertings)
+            _setter("alertings", alertings)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if objectives is not None:
-            pulumi.set(__self__, "objectives", objectives)
+            _setter("objectives", objectives)
         if queries is not None:
-            pulumi.set(__self__, "queries", queries)
+            _setter("queries", queries)
 
     @property
     @pulumi.getter
@@ -293,6 +331,10 @@ class SLO(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SLOArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

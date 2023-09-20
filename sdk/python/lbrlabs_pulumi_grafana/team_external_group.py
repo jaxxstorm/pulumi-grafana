@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TeamExternalGroupArgs', 'TeamExternalGroup']
@@ -21,8 +21,19 @@ class TeamExternalGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The team external groups list
         :param pulumi.Input[str] team_id: The Team ID
         """
-        pulumi.set(__self__, "groups", groups)
-        pulumi.set(__self__, "team_id", team_id)
+        TeamExternalGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+            team_id=team_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+             team_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("groups", groups)
+        _setter("team_id", team_id)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _TeamExternalGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: The team external groups list
         :param pulumi.Input[str] team_id: The Team ID
         """
+        _TeamExternalGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            groups=groups,
+            team_id=team_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
 
     @property
     @pulumi.getter
@@ -164,6 +186,10 @@ class TeamExternalGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamExternalGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

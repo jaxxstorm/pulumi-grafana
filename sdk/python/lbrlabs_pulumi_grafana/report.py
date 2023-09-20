@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,35 +47,70 @@ class ReportArgs:
         :param pulumi.Input[str] reply_to: Reply-to email address of the report.
         :param pulumi.Input['ReportTimeRangeArgs'] time_range: Time range of the report.
         """
-        pulumi.set(__self__, "recipients", recipients)
-        pulumi.set(__self__, "schedule", schedule)
+        ReportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            recipients=recipients,
+            schedule=schedule,
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            formats=formats,
+            include_dashboard_link=include_dashboard_link,
+            include_table_csv=include_table_csv,
+            layout=layout,
+            message=message,
+            name=name,
+            org_id=org_id,
+            orientation=orientation,
+            reply_to=reply_to,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             recipients: pulumi.Input[Sequence[pulumi.Input[str]]],
+             schedule: pulumi.Input['ReportScheduleArgs'],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             formats: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_dashboard_link: Optional[pulumi.Input[bool]] = None,
+             include_table_csv: Optional[pulumi.Input[bool]] = None,
+             layout: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             orientation: Optional[pulumi.Input[str]] = None,
+             reply_to: Optional[pulumi.Input[str]] = None,
+             time_range: Optional[pulumi.Input['ReportTimeRangeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("recipients", recipients)
+        _setter("schedule", schedule)
         if dashboard_id is not None:
             warnings.warn("""Use dashboard_uid instead""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if formats is not None:
-            pulumi.set(__self__, "formats", formats)
+            _setter("formats", formats)
         if include_dashboard_link is not None:
-            pulumi.set(__self__, "include_dashboard_link", include_dashboard_link)
+            _setter("include_dashboard_link", include_dashboard_link)
         if include_table_csv is not None:
-            pulumi.set(__self__, "include_table_csv", include_table_csv)
+            _setter("include_table_csv", include_table_csv)
         if layout is not None:
-            pulumi.set(__self__, "layout", layout)
+            _setter("layout", layout)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+            _setter("orientation", orientation)
         if reply_to is not None:
-            pulumi.set(__self__, "reply_to", reply_to)
+            _setter("reply_to", reply_to)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -283,37 +318,72 @@ class _ReportState:
         :param pulumi.Input['ReportScheduleArgs'] schedule: Schedule of the report.
         :param pulumi.Input['ReportTimeRangeArgs'] time_range: Time range of the report.
         """
+        _ReportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            formats=formats,
+            include_dashboard_link=include_dashboard_link,
+            include_table_csv=include_table_csv,
+            layout=layout,
+            message=message,
+            name=name,
+            org_id=org_id,
+            orientation=orientation,
+            recipients=recipients,
+            reply_to=reply_to,
+            schedule=schedule,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             formats: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_dashboard_link: Optional[pulumi.Input[bool]] = None,
+             include_table_csv: Optional[pulumi.Input[bool]] = None,
+             layout: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             orientation: Optional[pulumi.Input[str]] = None,
+             recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             reply_to: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['ReportScheduleArgs']] = None,
+             time_range: Optional[pulumi.Input['ReportTimeRangeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboard_id is not None:
             warnings.warn("""Use dashboard_uid instead""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if formats is not None:
-            pulumi.set(__self__, "formats", formats)
+            _setter("formats", formats)
         if include_dashboard_link is not None:
-            pulumi.set(__self__, "include_dashboard_link", include_dashboard_link)
+            _setter("include_dashboard_link", include_dashboard_link)
         if include_table_csv is not None:
-            pulumi.set(__self__, "include_table_csv", include_table_csv)
+            _setter("include_table_csv", include_table_csv)
         if layout is not None:
-            pulumi.set(__self__, "layout", layout)
+            _setter("layout", layout)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+            _setter("orientation", orientation)
         if recipients is not None:
-            pulumi.set(__self__, "recipients", recipients)
+            _setter("recipients", recipients)
         if reply_to is not None:
-            pulumi.set(__self__, "reply_to", reply_to)
+            _setter("reply_to", reply_to)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -594,6 +664,10 @@ class Report(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -622,9 +696,6 @@ class Report(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReportArgs.__new__(ReportArgs)
 
-            if dashboard_id is not None and not opts.urn:
-                warnings.warn("""Use dashboard_uid instead""", DeprecationWarning)
-                pulumi.log.warn("""dashboard_id is deprecated: Use dashboard_uid instead""")
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["dashboard_uid"] = dashboard_uid
             __props__.__dict__["formats"] = formats
@@ -639,9 +710,19 @@ class Report(pulumi.CustomResource):
                 raise TypeError("Missing required property 'recipients'")
             __props__.__dict__["recipients"] = recipients
             __props__.__dict__["reply_to"] = reply_to
+            if not isinstance(schedule, ReportScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                ReportScheduleArgs._configure(_setter, **schedule)
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
+            if not isinstance(time_range, ReportTimeRangeArgs):
+                time_range = time_range or {}
+                def _setter(key, value):
+                    time_range[key] = value
+                ReportTimeRangeArgs._configure(_setter, **time_range)
             __props__.__dict__["time_range"] = time_range
         super(Report, __self__).__init__(
             'grafana:index/report:Report',

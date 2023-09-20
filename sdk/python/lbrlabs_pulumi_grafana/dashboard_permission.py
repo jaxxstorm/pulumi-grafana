@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,16 +27,31 @@ class DashboardPermissionArgs:
         :param pulumi.Input[str] dashboard_uid: UID of the dashboard to apply permissions to.
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         """
-        pulumi.set(__self__, "permissions", permissions)
+        DashboardPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            org_id=org_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: pulumi.Input[Sequence[pulumi.Input['DashboardPermissionPermissionArgs']]],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
         if dashboard_id is not None:
             warnings.warn("""use `dashboard_uid` instead""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: use `dashboard_uid` instead""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
 
     @property
     @pulumi.getter
@@ -104,17 +119,32 @@ class _DashboardPermissionState:
         :param pulumi.Input[str] org_id: The Organization ID. If not set, the Org ID defined in the provider block will be used.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardPermissionPermissionArgs']]] permissions: The permission items to add/update. Items that are omitted from the list will be removed.
         """
+        _DashboardPermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            dashboard_uid=dashboard_uid,
+            org_id=org_id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: Optional[pulumi.Input[int]] = None,
+             dashboard_uid: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionPermissionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboard_id is not None:
             warnings.warn("""use `dashboard_uid` instead""", DeprecationWarning)
             pulumi.log.warn("""dashboard_id is deprecated: use `dashboard_uid` instead""")
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if dashboard_uid is not None:
-            pulumi.set(__self__, "dashboard_uid", dashboard_uid)
+            _setter("dashboard_uid", dashboard_uid)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -275,6 +305,10 @@ class DashboardPermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DashboardPermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -293,9 +327,6 @@ class DashboardPermission(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DashboardPermissionArgs.__new__(DashboardPermissionArgs)
 
-            if dashboard_id is not None and not opts.urn:
-                warnings.warn("""use `dashboard_uid` instead""", DeprecationWarning)
-                pulumi.log.warn("""dashboard_id is deprecated: use `dashboard_uid` instead""")
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["dashboard_uid"] = dashboard_uid
             __props__.__dict__["org_id"] = org_id

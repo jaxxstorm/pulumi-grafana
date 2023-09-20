@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,31 @@ class OncallIntegrationArgs:
         :param pulumi.Input[str] team_id: The ID of the OnCall team. To get one, create a team in Grafana, and navigate to the OnCall plugin (to sync the team with OnCall). You can then get the ID using the `get_oncall_team` datasource.
         :param pulumi.Input['OncallIntegrationTemplatesArgs'] templates: Jinja2 templates for Alert payload.
         """
-        pulumi.set(__self__, "default_route", default_route)
-        pulumi.set(__self__, "type", type)
+        OncallIntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_route=default_route,
+            type=type,
+            name=name,
+            team_id=team_id,
+            templates=templates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_route: pulumi.Input['OncallIntegrationDefaultRouteArgs'],
+             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             templates: Optional[pulumi.Input['OncallIntegrationTemplatesArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_route", default_route)
+        _setter("type", type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if templates is not None:
-            pulumi.set(__self__, "templates", templates)
+            _setter("templates", templates)
 
     @property
     @pulumi.getter(name="defaultRoute")
@@ -117,18 +134,37 @@ class _OncallIntegrationState:
         :param pulumi.Input['OncallIntegrationTemplatesArgs'] templates: Jinja2 templates for Alert payload.
         :param pulumi.Input[str] type: The type of integration. Can be grafana, grafana*alerting, webhook, alertmanager, kapacitor, fabric, newrelic, datadog, pagerduty, pingdom, elastalert, amazon*sns, curler, sentry, formatted*webhook, heartbeat, demo, manual, stackdriver, uptimerobot, sentry*platform, zabbix, prtg, slack*channel, inbound*email, direct_paging.
         """
+        _OncallIntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_route=default_route,
+            link=link,
+            name=name,
+            team_id=team_id,
+            templates=templates,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_route: Optional[pulumi.Input['OncallIntegrationDefaultRouteArgs']] = None,
+             link: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             templates: Optional[pulumi.Input['OncallIntegrationTemplatesArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_route is not None:
-            pulumi.set(__self__, "default_route", default_route)
+            _setter("default_route", default_route)
         if link is not None:
-            pulumi.set(__self__, "link", link)
+            _setter("link", link)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if templates is not None:
-            pulumi.set(__self__, "templates", templates)
+            _setter("templates", templates)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="defaultRoute")
@@ -258,6 +294,10 @@ class OncallIntegration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallIntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -277,11 +317,21 @@ class OncallIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OncallIntegrationArgs.__new__(OncallIntegrationArgs)
 
+            if not isinstance(default_route, OncallIntegrationDefaultRouteArgs):
+                default_route = default_route or {}
+                def _setter(key, value):
+                    default_route[key] = value
+                OncallIntegrationDefaultRouteArgs._configure(_setter, **default_route)
             if default_route is None and not opts.urn:
                 raise TypeError("Missing required property 'default_route'")
             __props__.__dict__["default_route"] = default_route
             __props__.__dict__["name"] = name
             __props__.__dict__["team_id"] = team_id
+            if not isinstance(templates, OncallIntegrationTemplatesArgs):
+                templates = templates or {}
+                def _setter(key, value):
+                    templates[key] = value
+                OncallIntegrationTemplatesArgs._configure(_setter, **templates)
             __props__.__dict__["templates"] = templates
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")

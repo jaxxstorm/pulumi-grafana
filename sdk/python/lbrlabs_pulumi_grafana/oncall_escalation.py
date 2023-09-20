@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OncallEscalationArgs', 'OncallEscalation']
@@ -41,28 +41,59 @@ class OncallEscalationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] persons_to_notify_next_each_times: The list of ID's of users for notify*person*next*each*time type step.
         :param pulumi.Input[str] type: The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
         """
-        pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
-        pulumi.set(__self__, "position", position)
+        OncallEscalationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            escalation_chain_id=escalation_chain_id,
+            position=position,
+            action_to_trigger=action_to_trigger,
+            duration=duration,
+            group_to_notify=group_to_notify,
+            important=important,
+            notify_if_time_from=notify_if_time_from,
+            notify_if_time_to=notify_if_time_to,
+            notify_on_call_from_schedule=notify_on_call_from_schedule,
+            persons_to_notifies=persons_to_notifies,
+            persons_to_notify_next_each_times=persons_to_notify_next_each_times,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             escalation_chain_id: pulumi.Input[str],
+             position: pulumi.Input[int],
+             action_to_trigger: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             group_to_notify: Optional[pulumi.Input[str]] = None,
+             important: Optional[pulumi.Input[bool]] = None,
+             notify_if_time_from: Optional[pulumi.Input[str]] = None,
+             notify_if_time_to: Optional[pulumi.Input[str]] = None,
+             notify_on_call_from_schedule: Optional[pulumi.Input[str]] = None,
+             persons_to_notifies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             persons_to_notify_next_each_times: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("escalation_chain_id", escalation_chain_id)
+        _setter("position", position)
         if action_to_trigger is not None:
-            pulumi.set(__self__, "action_to_trigger", action_to_trigger)
+            _setter("action_to_trigger", action_to_trigger)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if group_to_notify is not None:
-            pulumi.set(__self__, "group_to_notify", group_to_notify)
+            _setter("group_to_notify", group_to_notify)
         if important is not None:
-            pulumi.set(__self__, "important", important)
+            _setter("important", important)
         if notify_if_time_from is not None:
-            pulumi.set(__self__, "notify_if_time_from", notify_if_time_from)
+            _setter("notify_if_time_from", notify_if_time_from)
         if notify_if_time_to is not None:
-            pulumi.set(__self__, "notify_if_time_to", notify_if_time_to)
+            _setter("notify_if_time_to", notify_if_time_to)
         if notify_on_call_from_schedule is not None:
-            pulumi.set(__self__, "notify_on_call_from_schedule", notify_on_call_from_schedule)
+            _setter("notify_on_call_from_schedule", notify_on_call_from_schedule)
         if persons_to_notifies is not None:
-            pulumi.set(__self__, "persons_to_notifies", persons_to_notifies)
+            _setter("persons_to_notifies", persons_to_notifies)
         if persons_to_notify_next_each_times is not None:
-            pulumi.set(__self__, "persons_to_notify_next_each_times", persons_to_notify_next_each_times)
+            _setter("persons_to_notify_next_each_times", persons_to_notify_next_each_times)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="escalationChainId")
@@ -239,30 +270,61 @@ class _OncallEscalationState:
         :param pulumi.Input[int] position: The position of the escalation step (starts from 0).
         :param pulumi.Input[str] type: The type of escalation policy. Can be wait, notify*persons, notify*person*next*each*time, notify*on*call*from*schedule, trigger*action, notify*user*group, resolve, notify*whole*channel, notify*if*time*from*to, repeat_escalation
         """
+        _OncallEscalationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action_to_trigger=action_to_trigger,
+            duration=duration,
+            escalation_chain_id=escalation_chain_id,
+            group_to_notify=group_to_notify,
+            important=important,
+            notify_if_time_from=notify_if_time_from,
+            notify_if_time_to=notify_if_time_to,
+            notify_on_call_from_schedule=notify_on_call_from_schedule,
+            persons_to_notifies=persons_to_notifies,
+            persons_to_notify_next_each_times=persons_to_notify_next_each_times,
+            position=position,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action_to_trigger: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             escalation_chain_id: Optional[pulumi.Input[str]] = None,
+             group_to_notify: Optional[pulumi.Input[str]] = None,
+             important: Optional[pulumi.Input[bool]] = None,
+             notify_if_time_from: Optional[pulumi.Input[str]] = None,
+             notify_if_time_to: Optional[pulumi.Input[str]] = None,
+             notify_on_call_from_schedule: Optional[pulumi.Input[str]] = None,
+             persons_to_notifies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             persons_to_notify_next_each_times: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action_to_trigger is not None:
-            pulumi.set(__self__, "action_to_trigger", action_to_trigger)
+            _setter("action_to_trigger", action_to_trigger)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if escalation_chain_id is not None:
-            pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
+            _setter("escalation_chain_id", escalation_chain_id)
         if group_to_notify is not None:
-            pulumi.set(__self__, "group_to_notify", group_to_notify)
+            _setter("group_to_notify", group_to_notify)
         if important is not None:
-            pulumi.set(__self__, "important", important)
+            _setter("important", important)
         if notify_if_time_from is not None:
-            pulumi.set(__self__, "notify_if_time_from", notify_if_time_from)
+            _setter("notify_if_time_from", notify_if_time_from)
         if notify_if_time_to is not None:
-            pulumi.set(__self__, "notify_if_time_to", notify_if_time_to)
+            _setter("notify_if_time_to", notify_if_time_to)
         if notify_on_call_from_schedule is not None:
-            pulumi.set(__self__, "notify_on_call_from_schedule", notify_on_call_from_schedule)
+            _setter("notify_on_call_from_schedule", notify_on_call_from_schedule)
         if persons_to_notifies is not None:
-            pulumi.set(__self__, "persons_to_notifies", persons_to_notifies)
+            _setter("persons_to_notifies", persons_to_notifies)
         if persons_to_notify_next_each_times is not None:
-            pulumi.set(__self__, "persons_to_notify_next_each_times", persons_to_notify_next_each_times)
+            _setter("persons_to_notify_next_each_times", persons_to_notify_next_each_times)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="actionToTrigger")
@@ -538,6 +600,10 @@ class OncallEscalation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallEscalationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

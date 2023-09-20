@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,42 +55,85 @@ class ContactPointArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContactPointWebhookArgs']]] webhooks: A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
         :param pulumi.Input[Sequence[pulumi.Input['ContactPointWecomArgs']]] wecoms: A contact point that sends notifications to WeCom.
         """
+        ContactPointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alertmanagers=alertmanagers,
+            dingdings=dingdings,
+            discords=discords,
+            emails=emails,
+            googlechats=googlechats,
+            kafkas=kafkas,
+            name=name,
+            opsgenies=opsgenies,
+            pagerduties=pagerduties,
+            pushovers=pushovers,
+            sensugos=sensugos,
+            slacks=slacks,
+            teams=teams,
+            telegrams=telegrams,
+            threemas=threemas,
+            victorops=victorops,
+            webhooks=webhooks,
+            wecoms=wecoms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alertmanagers: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointAlertmanagerArgs']]]] = None,
+             dingdings: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointDingdingArgs']]]] = None,
+             discords: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointDiscordArgs']]]] = None,
+             emails: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointEmailArgs']]]] = None,
+             googlechats: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointGooglechatArgs']]]] = None,
+             kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointKafkaArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opsgenies: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointOpsgenyArgs']]]] = None,
+             pagerduties: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointPagerdutyArgs']]]] = None,
+             pushovers: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointPushoverArgs']]]] = None,
+             sensugos: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointSensugoArgs']]]] = None,
+             slacks: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointSlackArgs']]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointTeamArgs']]]] = None,
+             telegrams: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointTelegramArgs']]]] = None,
+             threemas: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointThreemaArgs']]]] = None,
+             victorops: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointVictoropArgs']]]] = None,
+             webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointWebhookArgs']]]] = None,
+             wecoms: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointWecomArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alertmanagers is not None:
-            pulumi.set(__self__, "alertmanagers", alertmanagers)
+            _setter("alertmanagers", alertmanagers)
         if dingdings is not None:
-            pulumi.set(__self__, "dingdings", dingdings)
+            _setter("dingdings", dingdings)
         if discords is not None:
-            pulumi.set(__self__, "discords", discords)
+            _setter("discords", discords)
         if emails is not None:
-            pulumi.set(__self__, "emails", emails)
+            _setter("emails", emails)
         if googlechats is not None:
-            pulumi.set(__self__, "googlechats", googlechats)
+            _setter("googlechats", googlechats)
         if kafkas is not None:
-            pulumi.set(__self__, "kafkas", kafkas)
+            _setter("kafkas", kafkas)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if opsgenies is not None:
-            pulumi.set(__self__, "opsgenies", opsgenies)
+            _setter("opsgenies", opsgenies)
         if pagerduties is not None:
-            pulumi.set(__self__, "pagerduties", pagerduties)
+            _setter("pagerduties", pagerduties)
         if pushovers is not None:
-            pulumi.set(__self__, "pushovers", pushovers)
+            _setter("pushovers", pushovers)
         if sensugos is not None:
-            pulumi.set(__self__, "sensugos", sensugos)
+            _setter("sensugos", sensugos)
         if slacks is not None:
-            pulumi.set(__self__, "slacks", slacks)
+            _setter("slacks", slacks)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if telegrams is not None:
-            pulumi.set(__self__, "telegrams", telegrams)
+            _setter("telegrams", telegrams)
         if threemas is not None:
-            pulumi.set(__self__, "threemas", threemas)
+            _setter("threemas", threemas)
         if victorops is not None:
-            pulumi.set(__self__, "victorops", victorops)
+            _setter("victorops", victorops)
         if webhooks is not None:
-            pulumi.set(__self__, "webhooks", webhooks)
+            _setter("webhooks", webhooks)
         if wecoms is not None:
-            pulumi.set(__self__, "wecoms", wecoms)
+            _setter("wecoms", wecoms)
 
     @property
     @pulumi.getter
@@ -351,42 +394,85 @@ class _ContactPointState:
         :param pulumi.Input[Sequence[pulumi.Input['ContactPointWebhookArgs']]] webhooks: A contact point that sends notifications to an arbitrary webhook, using the Prometheus webhook format defined here: https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
         :param pulumi.Input[Sequence[pulumi.Input['ContactPointWecomArgs']]] wecoms: A contact point that sends notifications to WeCom.
         """
+        _ContactPointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alertmanagers=alertmanagers,
+            dingdings=dingdings,
+            discords=discords,
+            emails=emails,
+            googlechats=googlechats,
+            kafkas=kafkas,
+            name=name,
+            opsgenies=opsgenies,
+            pagerduties=pagerduties,
+            pushovers=pushovers,
+            sensugos=sensugos,
+            slacks=slacks,
+            teams=teams,
+            telegrams=telegrams,
+            threemas=threemas,
+            victorops=victorops,
+            webhooks=webhooks,
+            wecoms=wecoms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alertmanagers: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointAlertmanagerArgs']]]] = None,
+             dingdings: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointDingdingArgs']]]] = None,
+             discords: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointDiscordArgs']]]] = None,
+             emails: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointEmailArgs']]]] = None,
+             googlechats: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointGooglechatArgs']]]] = None,
+             kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointKafkaArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opsgenies: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointOpsgenyArgs']]]] = None,
+             pagerduties: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointPagerdutyArgs']]]] = None,
+             pushovers: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointPushoverArgs']]]] = None,
+             sensugos: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointSensugoArgs']]]] = None,
+             slacks: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointSlackArgs']]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointTeamArgs']]]] = None,
+             telegrams: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointTelegramArgs']]]] = None,
+             threemas: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointThreemaArgs']]]] = None,
+             victorops: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointVictoropArgs']]]] = None,
+             webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointWebhookArgs']]]] = None,
+             wecoms: Optional[pulumi.Input[Sequence[pulumi.Input['ContactPointWecomArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alertmanagers is not None:
-            pulumi.set(__self__, "alertmanagers", alertmanagers)
+            _setter("alertmanagers", alertmanagers)
         if dingdings is not None:
-            pulumi.set(__self__, "dingdings", dingdings)
+            _setter("dingdings", dingdings)
         if discords is not None:
-            pulumi.set(__self__, "discords", discords)
+            _setter("discords", discords)
         if emails is not None:
-            pulumi.set(__self__, "emails", emails)
+            _setter("emails", emails)
         if googlechats is not None:
-            pulumi.set(__self__, "googlechats", googlechats)
+            _setter("googlechats", googlechats)
         if kafkas is not None:
-            pulumi.set(__self__, "kafkas", kafkas)
+            _setter("kafkas", kafkas)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if opsgenies is not None:
-            pulumi.set(__self__, "opsgenies", opsgenies)
+            _setter("opsgenies", opsgenies)
         if pagerduties is not None:
-            pulumi.set(__self__, "pagerduties", pagerduties)
+            _setter("pagerduties", pagerduties)
         if pushovers is not None:
-            pulumi.set(__self__, "pushovers", pushovers)
+            _setter("pushovers", pushovers)
         if sensugos is not None:
-            pulumi.set(__self__, "sensugos", sensugos)
+            _setter("sensugos", sensugos)
         if slacks is not None:
-            pulumi.set(__self__, "slacks", slacks)
+            _setter("slacks", slacks)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if telegrams is not None:
-            pulumi.set(__self__, "telegrams", telegrams)
+            _setter("telegrams", telegrams)
         if threemas is not None:
-            pulumi.set(__self__, "threemas", threemas)
+            _setter("threemas", threemas)
         if victorops is not None:
-            pulumi.set(__self__, "victorops", victorops)
+            _setter("victorops", victorops)
         if webhooks is not None:
-            pulumi.set(__self__, "webhooks", webhooks)
+            _setter("webhooks", webhooks)
         if wecoms is not None:
-            pulumi.set(__self__, "wecoms", wecoms)
+            _setter("wecoms", wecoms)
 
     @property
     @pulumi.getter
@@ -730,6 +816,10 @@ class ContactPoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContactPointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

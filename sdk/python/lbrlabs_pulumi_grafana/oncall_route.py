@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,18 +35,41 @@ class OncallRouteArgs:
         :param pulumi.Input['OncallRouteSlackArgs'] slack: Slack-specific settings for a route.
         :param pulumi.Input['OncallRouteTelegramArgs'] telegram: Telegram-specific settings for a route.
         """
-        pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
-        pulumi.set(__self__, "integration_id", integration_id)
-        pulumi.set(__self__, "position", position)
-        pulumi.set(__self__, "routing_regex", routing_regex)
+        OncallRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            escalation_chain_id=escalation_chain_id,
+            integration_id=integration_id,
+            position=position,
+            routing_regex=routing_regex,
+            msteams=msteams,
+            routing_type=routing_type,
+            slack=slack,
+            telegram=telegram,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             escalation_chain_id: pulumi.Input[str],
+             integration_id: pulumi.Input[str],
+             position: pulumi.Input[int],
+             routing_regex: pulumi.Input[str],
+             msteams: Optional[pulumi.Input['OncallRouteMsteamsArgs']] = None,
+             routing_type: Optional[pulumi.Input[str]] = None,
+             slack: Optional[pulumi.Input['OncallRouteSlackArgs']] = None,
+             telegram: Optional[pulumi.Input['OncallRouteTelegramArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("escalation_chain_id", escalation_chain_id)
+        _setter("integration_id", integration_id)
+        _setter("position", position)
+        _setter("routing_regex", routing_regex)
         if msteams is not None:
-            pulumi.set(__self__, "msteams", msteams)
+            _setter("msteams", msteams)
         if routing_type is not None:
-            pulumi.set(__self__, "routing_type", routing_type)
+            _setter("routing_type", routing_type)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
 
     @property
     @pulumi.getter(name="escalationChainId")
@@ -167,22 +190,45 @@ class _OncallRouteState:
         :param pulumi.Input['OncallRouteSlackArgs'] slack: Slack-specific settings for a route.
         :param pulumi.Input['OncallRouteTelegramArgs'] telegram: Telegram-specific settings for a route.
         """
+        _OncallRouteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            escalation_chain_id=escalation_chain_id,
+            integration_id=integration_id,
+            msteams=msteams,
+            position=position,
+            routing_regex=routing_regex,
+            routing_type=routing_type,
+            slack=slack,
+            telegram=telegram,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             escalation_chain_id: Optional[pulumi.Input[str]] = None,
+             integration_id: Optional[pulumi.Input[str]] = None,
+             msteams: Optional[pulumi.Input['OncallRouteMsteamsArgs']] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             routing_regex: Optional[pulumi.Input[str]] = None,
+             routing_type: Optional[pulumi.Input[str]] = None,
+             slack: Optional[pulumi.Input['OncallRouteSlackArgs']] = None,
+             telegram: Optional[pulumi.Input['OncallRouteTelegramArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if escalation_chain_id is not None:
-            pulumi.set(__self__, "escalation_chain_id", escalation_chain_id)
+            _setter("escalation_chain_id", escalation_chain_id)
         if integration_id is not None:
-            pulumi.set(__self__, "integration_id", integration_id)
+            _setter("integration_id", integration_id)
         if msteams is not None:
-            pulumi.set(__self__, "msteams", msteams)
+            _setter("msteams", msteams)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if routing_regex is not None:
-            pulumi.set(__self__, "routing_regex", routing_regex)
+            _setter("routing_regex", routing_regex)
         if routing_type is not None:
-            pulumi.set(__self__, "routing_type", routing_type)
+            _setter("routing_type", routing_type)
         if slack is not None:
-            pulumi.set(__self__, "slack", slack)
+            _setter("slack", slack)
         if telegram is not None:
-            pulumi.set(__self__, "telegram", telegram)
+            _setter("telegram", telegram)
 
     @property
     @pulumi.getter(name="escalationChainId")
@@ -398,6 +444,10 @@ class OncallRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -426,6 +476,11 @@ class OncallRoute(pulumi.CustomResource):
             if integration_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_id'")
             __props__.__dict__["integration_id"] = integration_id
+            if not isinstance(msteams, OncallRouteMsteamsArgs):
+                msteams = msteams or {}
+                def _setter(key, value):
+                    msteams[key] = value
+                OncallRouteMsteamsArgs._configure(_setter, **msteams)
             __props__.__dict__["msteams"] = msteams
             if position is None and not opts.urn:
                 raise TypeError("Missing required property 'position'")
@@ -434,7 +489,17 @@ class OncallRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'routing_regex'")
             __props__.__dict__["routing_regex"] = routing_regex
             __props__.__dict__["routing_type"] = routing_type
+            if not isinstance(slack, OncallRouteSlackArgs):
+                slack = slack or {}
+                def _setter(key, value):
+                    slack[key] = value
+                OncallRouteSlackArgs._configure(_setter, **slack)
             __props__.__dict__["slack"] = slack
+            if not isinstance(telegram, OncallRouteTelegramArgs):
+                telegram = telegram or {}
+                def _setter(key, value):
+                    telegram[key] = value
+                OncallRouteTelegramArgs._configure(_setter, **telegram)
             __props__.__dict__["telegram"] = telegram
         super(OncallRoute, __self__).__init__(
             'grafana:index/oncallRoute:OncallRoute',

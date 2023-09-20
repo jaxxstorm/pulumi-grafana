@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DataSourceArgs', 'DataSource']
@@ -45,33 +45,68 @@ class DataSourceArgs:
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
         :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
-        pulumi.set(__self__, "type", type)
+        DataSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_mode=access_mode,
+            basic_auth_enabled=basic_auth_enabled,
+            basic_auth_username=basic_auth_username,
+            database_name=database_name,
+            http_headers=http_headers,
+            is_default=is_default,
+            json_data_encoded=json_data_encoded,
+            name=name,
+            org_id=org_id,
+            secure_json_data_encoded=secure_json_data_encoded,
+            uid=uid,
+            url=url,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             basic_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             basic_auth_username: Optional[pulumi.Input[str]] = None,
+             database_name: Optional[pulumi.Input[str]] = None,
+             http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             is_default: Optional[pulumi.Input[bool]] = None,
+             json_data_encoded: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             secure_json_data_encoded: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if basic_auth_enabled is not None:
-            pulumi.set(__self__, "basic_auth_enabled", basic_auth_enabled)
+            _setter("basic_auth_enabled", basic_auth_enabled)
         if basic_auth_username is not None:
-            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+            _setter("basic_auth_username", basic_auth_username)
         if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
+            _setter("database_name", database_name)
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
         if json_data_encoded is not None:
-            pulumi.set(__self__, "json_data_encoded", json_data_encoded)
+            _setter("json_data_encoded", json_data_encoded)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if secure_json_data_encoded is not None:
-            pulumi.set(__self__, "secure_json_data_encoded", secure_json_data_encoded)
+            _setter("secure_json_data_encoded", secure_json_data_encoded)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -276,34 +311,69 @@ class _DataSourceState:
         :param pulumi.Input[str] url: The URL for the data source. The type of URL required varies depending on the chosen data source type.
         :param pulumi.Input[str] username: (Required by some data source types) The username to use to authenticate to the data source. Defaults to ``.
         """
+        _DataSourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            basic_auth_enabled=basic_auth_enabled,
+            basic_auth_username=basic_auth_username,
+            database_name=database_name,
+            http_headers=http_headers,
+            is_default=is_default,
+            json_data_encoded=json_data_encoded,
+            name=name,
+            org_id=org_id,
+            secure_json_data_encoded=secure_json_data_encoded,
+            type=type,
+            uid=uid,
+            url=url,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[pulumi.Input[str]] = None,
+             basic_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             basic_auth_username: Optional[pulumi.Input[str]] = None,
+             database_name: Optional[pulumi.Input[str]] = None,
+             http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             is_default: Optional[pulumi.Input[bool]] = None,
+             json_data_encoded: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             secure_json_data_encoded: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             uid: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_mode is not None:
-            pulumi.set(__self__, "access_mode", access_mode)
+            _setter("access_mode", access_mode)
         if basic_auth_enabled is not None:
-            pulumi.set(__self__, "basic_auth_enabled", basic_auth_enabled)
+            _setter("basic_auth_enabled", basic_auth_enabled)
         if basic_auth_username is not None:
-            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+            _setter("basic_auth_username", basic_auth_username)
         if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
+            _setter("database_name", database_name)
         if http_headers is not None:
-            pulumi.set(__self__, "http_headers", http_headers)
+            _setter("http_headers", http_headers)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
         if json_data_encoded is not None:
-            pulumi.set(__self__, "json_data_encoded", json_data_encoded)
+            _setter("json_data_encoded", json_data_encoded)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if secure_json_data_encoded is not None:
-            pulumi.set(__self__, "secure_json_data_encoded", secure_json_data_encoded)
+            _setter("secure_json_data_encoded", secure_json_data_encoded)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+            _setter("uid", uid)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -689,6 +759,10 @@ class DataSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

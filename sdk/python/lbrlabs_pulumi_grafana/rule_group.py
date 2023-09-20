@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,12 +29,29 @@ class RuleGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RuleGroupRuleArgs']]] rules: The rules within the group.
         :param pulumi.Input[str] name: The name of the rule group.
         """
-        pulumi.set(__self__, "folder_uid", folder_uid)
-        pulumi.set(__self__, "interval_seconds", interval_seconds)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "rules", rules)
+        RuleGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_uid=folder_uid,
+            interval_seconds=interval_seconds,
+            org_id=org_id,
+            rules=rules,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_uid: pulumi.Input[str],
+             interval_seconds: pulumi.Input[int],
+             org_id: pulumi.Input[str],
+             rules: pulumi.Input[Sequence[pulumi.Input['RuleGroupRuleArgs']]],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder_uid", folder_uid)
+        _setter("interval_seconds", interval_seconds)
+        _setter("org_id", org_id)
+        _setter("rules", rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="folderUid")
@@ -113,16 +130,33 @@ class _RuleGroupState:
         :param pulumi.Input[str] org_id: The ID of the org to which the group belongs.
         :param pulumi.Input[Sequence[pulumi.Input['RuleGroupRuleArgs']]] rules: The rules within the group.
         """
+        _RuleGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_uid=folder_uid,
+            interval_seconds=interval_seconds,
+            name=name,
+            org_id=org_id,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_uid: Optional[pulumi.Input[str]] = None,
+             interval_seconds: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             org_id: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RuleGroupRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if folder_uid is not None:
-            pulumi.set(__self__, "folder_uid", folder_uid)
+            _setter("folder_uid", folder_uid)
         if interval_seconds is not None:
-            pulumi.set(__self__, "interval_seconds", interval_seconds)
+            _setter("interval_seconds", interval_seconds)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
+            _setter("org_id", org_id)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter(name="folderUid")
@@ -430,6 +464,10 @@ class RuleGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

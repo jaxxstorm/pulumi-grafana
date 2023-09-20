@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OncallOnCallShiftArgs', 'OncallOnCallShift']
@@ -49,35 +49,74 @@ class OncallOnCallShiftArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of on-call users (for single*event and recurrent*event event type).
         :param pulumi.Input[str] week_start: Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "start", start)
-        pulumi.set(__self__, "type", type)
+        OncallOnCallShiftArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            start=start,
+            type=type,
+            by_days=by_days,
+            by_monthdays=by_monthdays,
+            by_months=by_months,
+            frequency=frequency,
+            interval=interval,
+            level=level,
+            name=name,
+            rolling_users=rolling_users,
+            start_rotation_from_user_index=start_rotation_from_user_index,
+            team_id=team_id,
+            time_zone=time_zone,
+            users=users,
+            week_start=week_start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: pulumi.Input[int],
+             start: pulumi.Input[str],
+             type: pulumi.Input[str],
+             by_days: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             by_monthdays: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             by_months: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             level: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             rolling_users: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
+             start_rotation_from_user_index: Optional[pulumi.Input[int]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             week_start: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
+        _setter("start", start)
+        _setter("type", type)
         if by_days is not None:
-            pulumi.set(__self__, "by_days", by_days)
+            _setter("by_days", by_days)
         if by_monthdays is not None:
-            pulumi.set(__self__, "by_monthdays", by_monthdays)
+            _setter("by_monthdays", by_monthdays)
         if by_months is not None:
-            pulumi.set(__self__, "by_months", by_months)
+            _setter("by_months", by_months)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rolling_users is not None:
-            pulumi.set(__self__, "rolling_users", rolling_users)
+            _setter("rolling_users", rolling_users)
         if start_rotation_from_user_index is not None:
-            pulumi.set(__self__, "start_rotation_from_user_index", start_rotation_from_user_index)
+            _setter("start_rotation_from_user_index", start_rotation_from_user_index)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
         if week_start is not None:
-            pulumi.set(__self__, "week_start", week_start)
+            _setter("week_start", week_start)
 
     @property
     @pulumi.getter
@@ -310,38 +349,77 @@ class _OncallOnCallShiftState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of on-call users (for single*event and recurrent*event event type).
         :param pulumi.Input[str] week_start: Start day of the week in iCal format. Can be MO, TU, WE, TH, FR, SA, SU
         """
+        _OncallOnCallShiftState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            by_days=by_days,
+            by_monthdays=by_monthdays,
+            by_months=by_months,
+            duration=duration,
+            frequency=frequency,
+            interval=interval,
+            level=level,
+            name=name,
+            rolling_users=rolling_users,
+            start=start,
+            start_rotation_from_user_index=start_rotation_from_user_index,
+            team_id=team_id,
+            time_zone=time_zone,
+            type=type,
+            users=users,
+            week_start=week_start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             by_days: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             by_monthdays: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             by_months: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             level: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             rolling_users: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
+             start: Optional[pulumi.Input[str]] = None,
+             start_rotation_from_user_index: Optional[pulumi.Input[int]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             week_start: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if by_days is not None:
-            pulumi.set(__self__, "by_days", by_days)
+            _setter("by_days", by_days)
         if by_monthdays is not None:
-            pulumi.set(__self__, "by_monthdays", by_monthdays)
+            _setter("by_monthdays", by_monthdays)
         if by_months is not None:
-            pulumi.set(__self__, "by_months", by_months)
+            _setter("by_months", by_months)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rolling_users is not None:
-            pulumi.set(__self__, "rolling_users", rolling_users)
+            _setter("rolling_users", rolling_users)
         if start is not None:
-            pulumi.set(__self__, "start", start)
+            _setter("start", start)
         if start_rotation_from_user_index is not None:
-            pulumi.set(__self__, "start_rotation_from_user_index", start_rotation_from_user_index)
+            _setter("start_rotation_from_user_index", start_rotation_from_user_index)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
         if week_start is not None:
-            pulumi.set(__self__, "week_start", week_start)
+            _setter("week_start", week_start)
 
     @property
     @pulumi.getter(name="byDays")
@@ -611,6 +689,10 @@ class OncallOnCallShift(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallOnCallShiftArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

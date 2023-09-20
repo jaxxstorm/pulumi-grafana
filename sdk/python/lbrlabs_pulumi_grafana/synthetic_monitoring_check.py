@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,22 +39,49 @@ class SyntheticMonitoringCheckArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per check is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of the labels cannot be empty, and the maximum length is 32 bytes.
         :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
-        pulumi.set(__self__, "job", job)
-        pulumi.set(__self__, "probes", probes)
-        pulumi.set(__self__, "settings", settings)
-        pulumi.set(__self__, "target", target)
+        SyntheticMonitoringCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            job=job,
+            probes=probes,
+            settings=settings,
+            target=target,
+            alert_sensitivity=alert_sensitivity,
+            basic_metrics_only=basic_metrics_only,
+            enabled=enabled,
+            frequency=frequency,
+            labels=labels,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             job: pulumi.Input[str],
+             probes: pulumi.Input[Sequence[pulumi.Input[int]]],
+             settings: pulumi.Input['SyntheticMonitoringCheckSettingsArgs'],
+             target: pulumi.Input[str],
+             alert_sensitivity: Optional[pulumi.Input[str]] = None,
+             basic_metrics_only: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             frequency: Optional[pulumi.Input[int]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("job", job)
+        _setter("probes", probes)
+        _setter("settings", settings)
+        _setter("target", target)
         if alert_sensitivity is not None:
-            pulumi.set(__self__, "alert_sensitivity", alert_sensitivity)
+            _setter("alert_sensitivity", alert_sensitivity)
         if basic_metrics_only is not None:
-            pulumi.set(__self__, "basic_metrics_only", basic_metrics_only)
+            _setter("basic_metrics_only", basic_metrics_only)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -205,28 +232,57 @@ class _SyntheticMonitoringCheckState:
         :param pulumi.Input[int] tenant_id: The tenant ID of the check.
         :param pulumi.Input[int] timeout: Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms), and the maximum 10 seconds (10000 ms). Defaults to `3000`.
         """
+        _SyntheticMonitoringCheckState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_sensitivity=alert_sensitivity,
+            basic_metrics_only=basic_metrics_only,
+            enabled=enabled,
+            frequency=frequency,
+            job=job,
+            labels=labels,
+            probes=probes,
+            settings=settings,
+            target=target,
+            tenant_id=tenant_id,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_sensitivity: Optional[pulumi.Input[str]] = None,
+             basic_metrics_only: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             frequency: Optional[pulumi.Input[int]] = None,
+             job: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             probes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             settings: Optional[pulumi.Input['SyntheticMonitoringCheckSettingsArgs']] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alert_sensitivity is not None:
-            pulumi.set(__self__, "alert_sensitivity", alert_sensitivity)
+            _setter("alert_sensitivity", alert_sensitivity)
         if basic_metrics_only is not None:
-            pulumi.set(__self__, "basic_metrics_only", basic_metrics_only)
+            _setter("basic_metrics_only", basic_metrics_only)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if job is not None:
-            pulumi.set(__self__, "job", job)
+            _setter("job", job)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if probes is not None:
-            pulumi.set(__self__, "probes", probes)
+            _setter("probes", probes)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="alertSensitivity")
@@ -1152,6 +1208,10 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SyntheticMonitoringCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1187,6 +1247,11 @@ class SyntheticMonitoringCheck(pulumi.CustomResource):
             if probes is None and not opts.urn:
                 raise TypeError("Missing required property 'probes'")
             __props__.__dict__["probes"] = probes
+            if not isinstance(settings, SyntheticMonitoringCheckSettingsArgs):
+                settings = settings or {}
+                def _setter(key, value):
+                    settings[key] = value
+                SyntheticMonitoringCheckSettingsArgs._configure(_setter, **settings)
             if settings is None and not opts.urn:
                 raise TypeError("Missing required property 'settings'")
             __props__.__dict__["settings"] = settings

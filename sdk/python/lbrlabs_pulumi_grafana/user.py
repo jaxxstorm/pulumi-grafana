@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -27,14 +27,31 @@ class UserArgs:
         :param pulumi.Input[str] login: The username for the Grafana user.
         :param pulumi.Input[str] name: The display name for the Grafana user.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "password", password)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            password=password,
+            is_admin=is_admin,
+            login=login,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             password: pulumi.Input[str],
+             is_admin: Optional[pulumi.Input[bool]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
+        _setter("password", password)
         if is_admin is not None:
-            pulumi.set(__self__, "is_admin", is_admin)
+            _setter("is_admin", is_admin)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -115,18 +132,37 @@ class _UserState:
         :param pulumi.Input[str] password: The password for the Grafana user.
         :param pulumi.Input[int] user_id: The numerical ID of the Grafana user.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            is_admin=is_admin,
+            login=login,
+            name=name,
+            password=password,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             is_admin: Optional[pulumi.Input[bool]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if is_admin is not None:
-            pulumi.set(__self__, "is_admin", is_admin)
+            _setter("is_admin", is_admin)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -290,6 +326,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

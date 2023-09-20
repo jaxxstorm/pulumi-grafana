@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,13 +28,30 @@ class CloudAccessPolicyArgs:
         :param pulumi.Input[str] display_name: Display name of the access policy. Defaults to the name.
         :param pulumi.Input[str] name: Name of the access policy.
         """
-        pulumi.set(__self__, "realms", realms)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "scopes", scopes)
+        CloudAccessPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            realms=realms,
+            region=region,
+            scopes=scopes,
+            display_name=display_name,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             realms: pulumi.Input[Sequence[pulumi.Input['CloudAccessPolicyRealmArgs']]],
+             region: pulumi.Input[str],
+             scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("realms", realms)
+        _setter("region", region)
+        _setter("scopes", scopes)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -115,22 +132,45 @@ class _CloudAccessPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes of the access policy. See https://grafana.com/docs/grafana-cloud/authentication-and-permissions/access-policies/#scopes for possible values.
         :param pulumi.Input[str] updated_at: Last update date of the access policy.
         """
+        _CloudAccessPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            display_name=display_name,
+            name=name,
+            policy_id=policy_id,
+            realms=realms,
+            region=region,
+            scopes=scopes,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             realms: Optional[pulumi.Input[Sequence[pulumi.Input['CloudAccessPolicyRealmArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if realms is not None:
-            pulumi.set(__self__, "realms", realms)
+            _setter("realms", realms)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scopes is not None:
-            pulumi.set(__self__, "scopes", scopes)
+            _setter("scopes", scopes)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -338,6 +378,10 @@ class CloudAccessPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudAccessPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

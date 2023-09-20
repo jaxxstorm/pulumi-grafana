@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OncallOutgoingWebhookArgs', 'OncallOutgoingWebhook']
@@ -33,21 +33,44 @@ class OncallOutgoingWebhookArgs:
         :param pulumi.Input[str] team_id: The ID of the OnCall team. To get one, create a team in Grafana, and navigate to the OnCall plugin (to sync the team with OnCall). You can then get the ID using the `get_oncall_team` datasource.
         :param pulumi.Input[str] user: The auth data of the webhook. Used for Basic authentication.
         """
-        pulumi.set(__self__, "url", url)
+        OncallOutgoingWebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            authorization_header=authorization_header,
+            data=data,
+            forward_whole_payload=forward_whole_payload,
+            name=name,
+            password=password,
+            team_id=team_id,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             authorization_header: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input[str]] = None,
+             forward_whole_payload: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("url", url)
         if authorization_header is not None:
-            pulumi.set(__self__, "authorization_header", authorization_header)
+            _setter("authorization_header", authorization_header)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if forward_whole_payload is not None:
-            pulumi.set(__self__, "forward_whole_payload", forward_whole_payload)
+            _setter("forward_whole_payload", forward_whole_payload)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -168,22 +191,45 @@ class _OncallOutgoingWebhookState:
         :param pulumi.Input[str] url: The webhook URL.
         :param pulumi.Input[str] user: The auth data of the webhook. Used for Basic authentication.
         """
+        _OncallOutgoingWebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorization_header=authorization_header,
+            data=data,
+            forward_whole_payload=forward_whole_payload,
+            name=name,
+            password=password,
+            team_id=team_id,
+            url=url,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorization_header: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input[str]] = None,
+             forward_whole_payload: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorization_header is not None:
-            pulumi.set(__self__, "authorization_header", authorization_header)
+            _setter("authorization_header", authorization_header)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if forward_whole_payload is not None:
-            pulumi.set(__self__, "forward_whole_payload", forward_whole_payload)
+            _setter("forward_whole_payload", forward_whole_payload)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="authorizationHeader")
@@ -361,6 +407,10 @@ class OncallOutgoingWebhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OncallOutgoingWebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
