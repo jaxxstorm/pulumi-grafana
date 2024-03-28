@@ -6,8 +6,9 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/grafana/terraform-provider-grafana/v2 v2.14.3
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.31.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.78.0
-	github.com/pulumi/pulumi/sdk/v3 v3.111.1
+	github.com/pulumi/pulumi/sdk/v3 v3.112.0
 )
 
 require (
@@ -198,7 +199,6 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.9 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.31.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.6.0 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.111.1 // indirect
